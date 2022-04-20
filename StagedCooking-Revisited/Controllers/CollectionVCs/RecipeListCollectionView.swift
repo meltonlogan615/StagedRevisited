@@ -35,7 +35,7 @@ class RecipeListCollectionView: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    loadRecipes(for: searchedRecipe)
+    loadRecipes(for: searchedRecipe)
     recipeCollection.register(RecipeCell.self, forCellWithReuseIdentifier: "recipeCell")
     recipeCollection.dataSource = self
     recipeCollection.delegate = self
@@ -70,9 +70,9 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
     // TODO: - Temporary for testing purposes. Remove & Uncomment
-    //    guard let cellCount = model.results?.count  else { return 1 }
-//    return cellCount
-    15  // Remove this, uncomment above
+    guard let cellCount = model.results?.count  else { return 1 }
+    return cellCount
+//    15  // Remove this, uncomment above
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -84,7 +84,7 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
         print("nah")
       }
       if let recipeImage = recipeItems[indexPath.row].image {
-//        cell.image.loadImage(url: recipeImage)
+        cell.image.loadImage(url: recipeImage)
         cell.image.layer.cornerRadius = 8
         cell.image.clipsToBounds = true
       }
@@ -99,14 +99,13 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
 extension RecipeListCollectionView: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let recipeVC = RecipeViewController()
-//    guard let selectedID = model.results?[indexPath.row].id else { return }
-//    guard let selectedTitle = model.results?[indexPath.row].title else { return }
+    guard let selectedID = model.results?[indexPath.row].id else { return }
+    guard let selectedTitle = model.results?[indexPath.row].title else { return }
 // TODO: - Bring over and activate UserDefaults (AKA ChefDefault)
 //    ChefDefault.requestedID = selectedID - Used later along with UserDefaults
-//    recipeVC.title = selectedTitle
-//    recipeVC.recipeID = selectedID
-    recipeVC.title = "Hot Chicken"
-    print("poop")
+    recipeVC.title = selectedTitle
+    recipeVC.recipeID = selectedID
+//    recipeVC.title = "Hot Chicken" // Testing
     navigationController?.pushViewController(recipeVC, animated: true)
   }
 }

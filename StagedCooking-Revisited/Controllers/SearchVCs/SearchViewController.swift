@@ -38,7 +38,6 @@ extension SearchViewController {
   private func style() {
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = UIImage(systemName: "fork.knife.circle")
-//    imageView.tintColor = UIColor(named: "AppOrange")
     imageView.contentMode = .scaleAspectFit
     searchView.translatesAutoresizingMaskIntoConstraints = false
     

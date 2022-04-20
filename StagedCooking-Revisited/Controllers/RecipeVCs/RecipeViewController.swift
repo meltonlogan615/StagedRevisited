@@ -37,9 +37,9 @@ class RecipeViewController: UIViewController {
   var startCookingButton = UIButton(type: .roundedRect)
   
   override func viewWillAppear(_ animated: Bool) {
-//    loadRecipeByID(for: recipeID) // Gets the Data for the Recipe. Also generates data for ingredientList
-//    getInstructions(for: recipeID) // Generates stepIngredients & stepInstructions
-//    recipeView.label.text = recipeTitle
+    loadRecipeByID(for: recipeID) // Gets the Data for the Recipe. Also generates data for ingredientList
+    getInstructions(for: recipeID) // Generates stepIngredients & stepInstructions
+    recipeView.label.text = recipeTitle
   }
   
   
@@ -58,16 +58,16 @@ extension RecipeViewController {
     recipeView.translatesAutoresizingMaskIntoConstraints = false
 //    recipeView.image.loadImage(url: recipeImage)
     
-    /*
+    
     startCookingButton.translatesAutoresizingMaskIntoConstraints = false
     startCookingButton.setTitle("Start Cooking", for: [])
     startCookingButton.addTarget(self, action: #selector(startCookingButtonTapped), for: .primaryActionTriggered)
-     */
+     
   }
   
   func layout() {
     view.addSubview(recipeView)
-//    view.addSubview(startCookingButton)
+    view.addSubview(startCookingButton)
     
     NSLayoutConstraint.activate([
       recipeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -78,11 +78,11 @@ extension RecipeViewController {
     
     recipeView.image.frame.size = CGSize(width: 50, height: 50)
     
-//    NSLayoutConstraint.activate([
-//      startCookingButton.trailingAnchor.constraint(equalTo: recipeView.trailingAnchor),
-//      view.bottomAnchor.constraint(equalToSystemSpacingBelow: startCookingButton.bottomAnchor, multiplier: 5),
-//      startCookingButton.leadingAnchor.constraint(equalTo: recipeView.leadingAnchor)
-//    ])
+    NSLayoutConstraint.activate([
+      startCookingButton.trailingAnchor.constraint(equalTo: recipeView.trailingAnchor),
+      view.bottomAnchor.constraint(equalToSystemSpacingBelow: startCookingButton.bottomAnchor, multiplier: 5),
+      startCookingButton.leadingAnchor.constraint(equalTo: recipeView.leadingAnchor)
+    ])
   }
 }
 
@@ -194,9 +194,6 @@ extension RecipeViewController: CardBuilder {
                 mixingBowl.append(cabinet[j])
                 cabinet[j] = ""
               }
-//              else {
-//                continue
-//              }
               
             }
           }

@@ -31,12 +31,7 @@ class StagedCardContainerViewController: UIViewController {
     currentVC = cardVCs.first!
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 
-    // For [SafeCard]
-//    for i in 0 ..< stagedCards.count {
-//      let stagedCardView = StagedCardViewController(recipeName: "Poop", cardCounter: stagedCards[i].id, ingredients: stagedCards[i].ingredients, instructions: stagedCards[i].instructions)
-//      cardVCs.append(stagedCardView)
-//      print(cardVCs.count)
-//    }
+
   }
   
   required init?(coder: NSCoder) {
