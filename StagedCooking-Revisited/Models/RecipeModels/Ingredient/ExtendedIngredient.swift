@@ -8,7 +8,7 @@
 import Foundation
 
 struct ExtendedIngredient: Codable, Hashable, Identifiable {
-  var id: Int? //y
+  var id: Int? 
   var name: String?
   var aisle: String?
   var image: String?
@@ -19,5 +19,5 @@ struct ExtendedIngredient: Codable, Hashable, Identifiable {
 
   var nameClean: String?
   var original: String?
-  var originalName: String
+  var originalName: String?
 }

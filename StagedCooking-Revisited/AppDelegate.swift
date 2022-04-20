@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.makeKeyAndVisible()
     window?.backgroundColor = .systemBackground
-    window?.rootViewController = StagedCardContainerViewController()
+    window?.rootViewController = SearchViewController()
     
     return true
   }

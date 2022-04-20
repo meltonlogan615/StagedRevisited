@@ -100,14 +100,14 @@ extension SearchView {
 extension SearchView: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     searchTextField.endEditing(true)
-    searchTextField.resignFirstResponder()
     return true
   }
-  
+
   func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
     return true
   }
-  
+
   func textFieldDidEndEditing(_ textField: UITextField) {
   }
 }
+

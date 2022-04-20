@@ -13,11 +13,8 @@ class DataProvider  {
   
   private let networkDataFlow = NetworkDataFlow()
   private let endpoints = EndPoints()
-  
-  var query: String?
-  var recipeID: Int?
-  
-  func getRecipes<T: Decodable>(for: String, completion: @escaping (Result<T, Error>) -> Void) {
+    
+  func getRecipes<T: Decodable>(for query: String?, completion: @escaping (Result<T, Error>) -> Void) {
     if let query = query {
       let recipeEndpoint = endpoints.getFood(for: query)
       networkDataFlow.getData(for: recipeEndpoint.endpointURL) { (result: Result<T, Error>) in
@@ -26,7 +23,7 @@ class DataProvider  {
     }
   }
   
-  func getRecipeByID<T: Decodable>(for: Int, completion: @escaping (Result<T, Error>) -> Void) {
+  func getRecipeByID<T: Decodable>(for recipeID: Int?, completion: @escaping (Result<T, Error>) -> Void) {
     if let recipeID = recipeID {
       let recipeByIDEndpoint = endpoints.getRecipeByID(for: recipeID)
       networkDataFlow.getData(for: recipeByIDEndpoint.endpointForID)  { (result: Result<T, Error>) in
@@ -35,7 +32,7 @@ class DataProvider  {
     }
   }
   
-  func getInstructionsByID<T: Decodable>(for: Int, completion: @escaping (Result<T, Error>) -> Void) {
+  func getInstructionsByID<T: Decodable>(for recipeID: Int?, completion: @escaping (Result<T, Error>) -> Void) {
     if let recipeID = recipeID {
       let instructionsEndpoint = endpoints.getInstructions(forID: recipeID)
       networkDataFlow.getData(for: instructionsEndpoint.endpointForInstructions) { (result: Result<T, Error>) in

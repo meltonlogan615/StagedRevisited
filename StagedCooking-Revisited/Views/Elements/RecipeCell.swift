@@ -16,22 +16,34 @@ final class RecipeCell: UICollectionViewCell {
   
   let image: UIImageView = {
     let image = UIImageView(frame: .zero)
+    image.translatesAutoresizingMaskIntoConstraints = false
     image.contentMode = .scaleAspectFill
-    image.image = UIImage(systemName: "sun.haze.fill")
+    image.image = UIImage(named: "hotchiken")
+    image.layer.zPosition = 1
     return image
+  }()
+  
+  let labelBackground: UIView = {
+    let labelBackground = UIView()
+    labelBackground.translatesAutoresizingMaskIntoConstraints = false
+    labelBackground.backgroundColor = UIColor(named: "LabelBackground")
+    labelBackground.layer.zPosition = 10
+    return labelBackground
   }()
     
   let titleLabel: UILabel = {
     let label = UILabel()
-    label.textAlignment = .center
-    label.text = "Poop"
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = .preferredFont(forTextStyle: .title1)
+    label.textAlignment = .natural
+    label.adjustsFontSizeToFitWidth = true
     label.numberOfLines = 0
+    label.layer.zPosition = 20
     return label
   }()
   
   override init(frame: CGRect) {
     super.init(frame: .zero)
-    setup()
     layout()
   }
   
@@ -41,22 +53,13 @@ final class RecipeCell: UICollectionViewCell {
 }
 
 extension RecipeCell {
-  func setup() {
-    contentView.clipsToBounds = true
-    contentView.layer.cornerRadius = 8
-    // TODO: UI Improvements: contentView.layer.(shadow things
-    
-    image.translatesAutoresizingMaskIntoConstraints = false
-    
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    titleLabel.font = .preferredFont(forTextStyle: .title1)
-    titleLabel.textAlignment = .center
-    titleLabel.backgroundColor = UIColor(named: "LabelBackground")
-    titleLabel.adjustsFontSizeToFitWidth = true
-  }
   
   func layout() {
+    contentView.layer.cornerRadius = 8
+    contentView.clipsToBounds = true
+    
     contentView.addSubview(image)
+    contentView.addSubview(labelBackground)
     contentView.addSubview(titleLabel)
     
     NSLayoutConstraint.activate([
@@ -68,8 +71,15 @@ extension RecipeCell {
     
     
     NSLayoutConstraint.activate([
-      titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      contentView.bottomAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 1),
       titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 1)
     ])
+    
+    NSLayoutConstraint.activate([
+      labelBackground.bottomAnchor.constraint(equalTo: image.bottomAnchor),
+      labelBackground.widthAnchor.constraint(equalTo: image.widthAnchor),
+      labelBackground.heightAnchor.constraint(equalTo: titleLabel.heightAnchor, multiplier: 1.5)
+    ])
+    
   }
 }

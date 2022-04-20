@@ -33,10 +33,10 @@
 		322199CC27FA84CD003FD4F6 /* ViewController-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199CB27FA84CD003FD4F6 /* ViewController-Extensions.swift */; };
 		322199CE27FA8A4E003FD4F6 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199CD27FA8A4E003FD4F6 /* RecipeViewController.swift */; };
 		322199D227FA9733003FD4F6 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199D127FA9733003FD4F6 /* RecipeView.swift */; };
-		32A8C3852805A0E40091D785 /* QTInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8C3842805A0E40091D785 /* QTInstructions.swift */; };
+		32A8C3852805A0E40091D785 /* Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8C3842805A0E40091D785 /* Instructions.swift */; };
 		32AB724227FFE2CF00AF0E2A /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724127FFE2CF00AF0E2A /* CardModel.swift */; };
-		32AB724427FFE78D00AF0E2A /* Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724327FFE78D00AF0E2A /* Instructions.swift */; };
-		32AB724627FFE9DF00AF0E2A /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724527FFE9DF00AF0E2A /* Step.swift */; };
+		32AB724427FFE78D00AF0E2A /* Instructions-Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724327FFE78D00AF0E2A /* Instructions-Remove.swift */; };
+		32AB724627FFE9DF00AF0E2A /* Step-Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724527FFE9DF00AF0E2A /* Step-Remove.swift */; };
 		32AB724A27FFEDA800AF0E2A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724927FFEDA800AF0E2A /* Response.swift */; };
 		32AB724C27FFEDCA00AF0E2A /* BasicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724B27FFEDCA00AF0E2A /* BasicSearch.swift */; };
 		32AB724F27FFEDFF00AF0E2A /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724E27FFEDFF00AF0E2A /* Equipment.swift */; };
@@ -79,10 +79,10 @@
 		322199CB27FA84CD003FD4F6 /* ViewController-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController-Extensions.swift"; sourceTree = "<group>"; };
 		322199CD27FA8A4E003FD4F6 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		322199D127FA9733003FD4F6 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
-		32A8C3842805A0E40091D785 /* QTInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QTInstructions.swift; sourceTree = "<group>"; };
+		32A8C3842805A0E40091D785 /* Instructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructions.swift; sourceTree = "<group>"; };
 		32AB724127FFE2CF00AF0E2A /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
-		32AB724327FFE78D00AF0E2A /* Instructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructions.swift; sourceTree = "<group>"; };
-		32AB724527FFE9DF00AF0E2A /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		32AB724327FFE78D00AF0E2A /* Instructions-Remove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Instructions-Remove.swift"; sourceTree = "<group>"; };
+		32AB724527FFE9DF00AF0E2A /* Step-Remove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Step-Remove.swift"; sourceTree = "<group>"; };
 		32AB724927FFEDA800AF0E2A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		32AB724B27FFEDCA00AF0E2A /* BasicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSearch.swift; sourceTree = "<group>"; };
 		32AB724E27FFEDFF00AF0E2A /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
@@ -355,9 +355,9 @@
 		32AB724827FFEA3200AF0E2A /* Instructions */ = {
 			isa = PBXGroup;
 			children = (
-				32AB724327FFE78D00AF0E2A /* Instructions.swift */,
-				32AB724527FFE9DF00AF0E2A /* Step.swift */,
-				32A8C3842805A0E40091D785 /* QTInstructions.swift */,
+				32AB724327FFE78D00AF0E2A /* Instructions-Remove.swift */,
+				32AB724527FFE9DF00AF0E2A /* Step-Remove.swift */,
+				32A8C3842805A0E40091D785 /* Instructions.swift */,
 			);
 			path = Instructions;
 			sourceTree = "<group>";
@@ -373,9 +373,9 @@
 		32D70DBB28073A53000328B9 /* StagedCards */ = {
 			isa = PBXGroup;
 			children = (
+				32D70DC72808BEE1000328B9 /* GetCookingViewController.swift */,
 				32D70DBC28073A80000328B9 /* StagedCardViewController.swift */,
 				32D70DC32807565B000328B9 /* CardContainerViewController.swift */,
-				32D70DC72808BEE1000328B9 /* GetCookingViewController.swift */,
 			);
 			path = StagedCards;
 			sourceTree = "<group>";
@@ -477,9 +477,9 @@
 				322199C127FA6608003FD4F6 /* RecipeListCollectionView.swift in Sources */,
 				32D70DC82808BEE1000328B9 /* GetCookingViewController.swift in Sources */,
 				3221998527FA5DB2003FD4F6 /* SearchViewController.swift in Sources */,
-				32A8C3852805A0E40091D785 /* QTInstructions.swift in Sources */,
+				32A8C3852805A0E40091D785 /* Instructions.swift in Sources */,
 				322199BD27FA6517003FD4F6 /* ActionButton.swift in Sources */,
-				32AB724427FFE78D00AF0E2A /* Instructions.swift in Sources */,
+				32AB724427FFE78D00AF0E2A /* Instructions-Remove.swift in Sources */,
 				32D70DC42807565B000328B9 /* CardContainerViewController.swift in Sources */,
 				32AB724F27FFEDFF00AF0E2A /* Equipment.swift in Sources */,
 				322199C427FA6A55003FD4F6 /* SearchResult.swift in Sources */,
@@ -488,7 +488,7 @@
 				322199AC27FA5F75003FD4F6 /* Recipe.swift in Sources */,
 				322199CA27FA6C2F003FD4F6 /* UIImage-Extension.swift in Sources */,
 				322199D227FA9733003FD4F6 /* RecipeView.swift in Sources */,
-				32AB724627FFE9DF00AF0E2A /* Step.swift in Sources */,
+				32AB724627FFE9DF00AF0E2A /* Step-Remove.swift in Sources */,
 				322199C727FA6BB3003FD4F6 /* ImageURLProtocol.swift in Sources */,
 				32AB724A27FFEDA800AF0E2A /* Response.swift in Sources */,
 				32D70DBD28073A80000328B9 /* StagedCardViewController.swift in Sources */,

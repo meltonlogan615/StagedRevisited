@@ -8,16 +8,12 @@
 import Foundation
 import UIKit
 
-protocol CardBuilder {
-  func unwrapCards(_ cards: [Card])
-}
-
 class StagedCardViewController: UIViewController {
     
   let stepView = UIView()
   let cardStackView = UIStackView()
   let cardNumberLabel = UILabel()
-  let ingredientLabel = UILabel()
+  var ingredientLabel = UILabel()
   let directionsLabel = UILabel()
   
   var recipeName = String()
@@ -38,7 +34,7 @@ class StagedCardViewController: UIViewController {
     self.cardCounter = cardCounter
     self.ingredients = ingredients
     self.directions = instructions
-    print("Ingredients #\(cardCounter):", ingredients, "\n")
+    print("Ingredients #\(cardCounter):", ingredients, "")
     print("Instruction #\(cardCounter):", instructions, "\n")
     super.init(nibName: nil, bundle: nil)
   }
@@ -70,7 +66,7 @@ extension StagedCardViewController {
     cardStackView.translatesAutoresizingMaskIntoConstraints = false
     cardStackView.axis = .vertical
     cardStackView.distribution = .fillProportionally
-    cardStackView.spacing = 36
+    cardStackView.spacing = 16
     
     ingredientLabel.translatesAutoresizingMaskIntoConstraints = false
     //    ingredientLabel.text = ingredient
@@ -100,22 +96,28 @@ extension StagedCardViewController {
     ])
     
     for i in 0 ..< ingredients.count {
-      let ingredient = ingredients[i]
-      ingredientLabel.translatesAutoresizingMaskIntoConstraints = false
-      self.ingredientLabel.text = ingredient.capitalized
-      cardStackView.addArrangedSubview(ingredientLabel)
-      print("Step# \(cardCounter):", ingredient)
+      let ingredientLine = UILabel()
+      cardStackView.addArrangedSubview(ingredientLine)
+      ingredientLine.text = ingredients[i].capitalized
+      
+      ingredientLine.translatesAutoresizingMaskIntoConstraints = false
+      ingredientLine.font = .systemFont(ofSize: 24)
+
     }
-    
-    cardStackView.addArrangedSubview(directionsLabel)
     
     view.addSubview(cardStackView)
     NSLayoutConstraint.activate([
-      cardStackView.topAnchor.constraint(equalToSystemSpacingBelow: cardNumberLabel.bottomAnchor, multiplier: 4),
+      cardStackView.topAnchor.constraint(equalToSystemSpacingBelow: cardNumberLabel.bottomAnchor, multiplier: 2),
       stepView.trailingAnchor.constraint(equalToSystemSpacingAfter: cardStackView.trailingAnchor, multiplier: 2),
       cardStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: stepView.leadingAnchor, multiplier: 2),
       cardStackView.centerXAnchor.constraint(equalTo: stepView.centerXAnchor),
-      cardStackView.centerYAnchor.constraint(equalTo: stepView.centerYAnchor)
+    ])
+    
+    stepView.addSubview(directionsLabel)
+    NSLayoutConstraint.activate([
+      directionsLabel.topAnchor.constraint(equalToSystemSpacingBelow: cardStackView.bottomAnchor, multiplier: 4),
+      directionsLabel.trailingAnchor.constraint(equalTo: cardStackView.trailingAnchor),
+      directionsLabel.leadingAnchor.constraint(equalTo: cardStackView.leadingAnchor),
     ])
   }
 }

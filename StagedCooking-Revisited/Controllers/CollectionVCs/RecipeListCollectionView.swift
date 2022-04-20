@@ -10,7 +10,6 @@ import UIKit
 
 protocol RecipeByID: AnyObject {
   func loadRecipeByID(for chosenID: Int)
-  //  func loadIngredientsByID(for chosenID: Int)
 }
 
 class RecipeListCollectionView: UIViewController {
@@ -36,8 +35,7 @@ class RecipeListCollectionView: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    dataprovider.query = searchedRecipe
-    loadRecipes(for: searchedRecipe)
+//    loadRecipes(for: searchedRecipe)
     recipeCollection.register(RecipeCell.self, forCellWithReuseIdentifier: "recipeCell")
     recipeCollection.dataSource = self
     recipeCollection.delegate = self
@@ -67,12 +65,14 @@ extension RecipeListCollectionView {
   }
 }
 
-// MARK: - CollectionView Data Source
+// MARK: - CollectionView - DataSource
 extension RecipeListCollectionView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//    guard let cellCount = model.results?.count  else { return 1 }
+    
+    // TODO: - Temporary for testing purposes. Remove & Uncomment
+    //    guard let cellCount = model.results?.count  else { return 1 }
 //    return cellCount
-    1
+    15  // Remove this, uncomment above
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -84,42 +84,45 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
         print("nah")
       }
       if let recipeImage = recipeItems[indexPath.row].image {
-        cell.image.loadImage(url: recipeImage)
+//        cell.image.loadImage(url: recipeImage)
         cell.image.layer.cornerRadius = 8
         cell.image.clipsToBounds = true
       }
     } else {
-      cell.titleLabel.text = "No Results Found"
+      cell.titleLabel.text = "Nashville Hot Chicken"
     }
     return cell
   }
 }
 
-// MARK: - CollectionView Delegate
+// MARK: - CollectionView - Delegate
 extension RecipeListCollectionView: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let recipeVC = RecipeViewController()
-    guard let selectedID = model.results?[indexPath.row].id else { return }
-    guard let selectedTitle = model.results?[indexPath.row].title else { return }
+//    guard let selectedID = model.results?[indexPath.row].id else { return }
+//    guard let selectedTitle = model.results?[indexPath.row].title else { return }
+// TODO: - Bring over and activate UserDefaults (AKA ChefDefault)
 //    ChefDefault.requestedID = selectedID - Used later along with UserDefaults
-    recipeVC.title = selectedTitle
-    recipeVC.recipeID = selectedID
-    dataprovider.recipeID = selectedID
+//    recipeVC.title = selectedTitle
+//    recipeVC.recipeID = selectedID
+    recipeVC.title = "Hot Chicken"
+    print("poop")
     navigationController?.pushViewController(recipeVC, animated: true)
   }
 }
 
-// MARK: - Flow Layout
+// MARK: - CollectionView - Flow Layout
 extension RecipeListCollectionView: UICollectionViewDelegateFlowLayout {
   private enum LayoutConstant {
     static let spacing = CGFloat(4)
-    static let itemHeight = CGFloat(120)
+    static let itemHeight = CGFloat(150)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let width = itemWidth(for: view.frame.width, spacing: LayoutConstant.spacing)
     return CGSize(width: width, height: LayoutConstant.itemHeight)
   }
+  
   
   func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
     let itemsInRow = 1.0

@@ -9,17 +9,19 @@ import Foundation
 
 import UIKit
 
+protocol CardBuilder: AnyObject {
+  func buildCards(ingredients: [String], instructionsDictionary: [Int: String], ingredientDictionary: [Int: [String]]) -> [Card]
+}
+
 class StagedCardContainerViewController: UIViewController {
   let getStarted = GetCookingViewController()
   var cards = [Card]()
-  var stagedCards = [SafeCard]()
+//  var stagedCards = [SafeCard]()
   
   let pageViewController: UIPageViewController
   var cardVCs = [UIViewController]()
   var currentVC: UIViewController
   
-  let cardData = Temp.cardData
-  var ingredientList = [String]()
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -27,15 +29,14 @@ class StagedCardContainerViewController: UIViewController {
     cardVCs.append(placeholder)
     
     currentVC = cardVCs.first!
-
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    cards = self.createCards(from: cardData)
-    stagedCards = self.unwrapCards(cards)
-    for i in 0 ..< stagedCards.count {
-      let stagedCardView = StagedCardViewController(recipeName: "Poop", cardCounter: stagedCards[i].id, ingredients: stagedCards[i].ingredients, instructions: stagedCards[i].instructions)
-      cardVCs.append(stagedCardView)
-      print(cardVCs.count)
-    }
+
+    // For [SafeCard]
+//    for i in 0 ..< stagedCards.count {
+//      let stagedCardView = StagedCardViewController(recipeName: "Poop", cardCounter: stagedCards[i].id, ingredients: stagedCards[i].ingredients, instructions: stagedCards[i].instructions)
+//      cardVCs.append(stagedCardView)
+//      print(cardVCs.count)
+//    }
   }
   
   required init?(coder: NSCoder) {
@@ -51,7 +52,7 @@ class StagedCardContainerViewController: UIViewController {
 // MARK: - Setting Up/Styling View and LifeCylce
 extension StagedCardContainerViewController {
   private func setUp() {
-    view.backgroundColor = .orange
+    view.backgroundColor = UIColor(named: "SC-Orange")
     
     // Life Cycle, adding child VCs, all lines required
     addChild(pageViewController)
@@ -108,56 +109,55 @@ extension StagedCardContainerViewController: UIPageViewControllerDataSource {
 
 
 // MARK: - Taking the Dictionary Data and creating Cards with Optional Properties
-extension StagedCardContainerViewController {
-  func createCards(from cardData: [Int: [String: [String]]]) -> [Card] {
-    var cards = [Card]()
-    let sortedCards = cardData.sorted(by: { $0.0 < $1.0 })
-    for (key, _) in sortedCards {
-      let cardNumber = key
-      var cardIngredients = [String]()
-      var cardInstructions = String()
-      if let stepInstructions = cardData[key] {
-        for (stepKey, stepValue) in stepInstructions {
-          cardInstructions = stepKey
-          if stepValue.isEmpty {
-            cardIngredients = [""]
-          } else {
-            cardIngredients = stepValue
-          }
-          let card = Card(number: cardNumber, ingredients: cardIngredients, instructions: cardInstructions)
-          cards.append(card)
-        }
-      }
-      cards = cards.sorted()
-    }
-    return cards
-  }
-}
+//  Will now be a method called in RecipeViewController which will then pass the reference to [Card] to StagedCardViewController.
+//
+//extension StagedCardContainerViewController {
+//  func createCards(from cardData: [Int: [String: [String]]]) -> [Card] {
+//    var cards = [Card]()
+//    let sortedCards = cardData.sorted(by: { $0.0 < $1.0 })
+//    for (key, _) in sortedCards {
+//      let cardNumber = key
+//      var cardIngredients = [String]()
+//      var cardInstructions = String()
+//      if let stepInstructions = cardData[key] {
+//        for (stepKey, stepValue) in stepInstructions {
+//          cardInstructions = stepKey
+//          if stepValue.isEmpty {
+//            cardIngredients = [""]
+//          } else {
+//            cardIngredients = stepValue
+//          }
+//          let card = Card(id: cardNumber, ingredients: cardIngredients, instructions: cardInstructions)
+//          cards.append(card)
+//        }
+//      }
+//      cards = cards.sorted()
+//    }
+//    return cards
+//  }
+//}
 
 // MARK: - Unwrapping Array of Cards with optional Properties and returning an Array of Cards with unwrapped Properties
-extension StagedCardContainerViewController {
-  func unwrapCards(_ cards: [Card]) -> [SafeCard] {
-    var unwrappedNumber = Int()
-    var unwrappedIngredients = [String]()
-    var unwrappedInstructions = String()
-    var superDuper = [SafeCard]()
-    let pantry = cards
-    for i in 0 ..< pantry.count {
-      if let number = pantry[i].number {
-        unwrappedNumber = number
-      }
-      if let ingredients = pantry[i].ingredients {
-        unwrappedIngredients = ingredients
-      }
-      if let instructions = pantry[i].instructions {
-        unwrappedInstructions = instructions
-      }
-      let stagedCard = SafeCard(id: unwrappedNumber, ingredients: unwrappedIngredients, instructions: unwrappedInstructions)
-      superDuper.append(stagedCard)
-    }
-    //  print(superDuper)
-    return superDuper
-  }
-}
+//  With the revision of creating [Card] in the RecipeViewController, there will be no need to unwrap each property value.
+//
+//extension StagedCardContainerViewContrr
+//    let pantry = cards
+//    for i in 0 ..< pantry.count {
+//      if let number = pantry[i].number {
+//        unwrappedNumber = number
+//      }
+//      if let ingredients = pantry[i].ingredients {
+//        unwrappedIngredients = ingredients
+//      }
+//      if let instructions = pantry[i].instructions {
+//        unwrappedInstructions = instructions
+//      }
+//      let stagedCard = SafeCard(id: unwrappedNumber, ingredients: unwrappedIngredients, instructions: unwrappedInstructions)
+//      superDuper.append(stagedCard)
+//    }
+//    //  print(superDuper)
+//    return superDuper
+//  }
+//}
 
 
