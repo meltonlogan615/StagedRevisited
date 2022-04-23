@@ -19,7 +19,8 @@ struct EndPoints {
 extension EndPoints {
   var endpointURL: URL {
     guard let query = query else { fatalError("Endpoint URL Failed") }
-    let completedURL = URL(string: "\(baseURL)\(searchType)?apiKey=\(apiKey)&query=\(query)&number=900&instructionsRequired=true")
+    let formattedQuery = query.replacingOccurrences(of: " ", with: "%20", options: .regularExpression, range: nil)
+    let completedURL = URL(string: "\(baseURL)\(searchType)?apiKey=\(apiKey)&query=\(formattedQuery)&number=900&instructionsRequired=true")
     guard let url = completedURL else {
       preconditionFailure("Invalid URL: \(String(describing: completedURL))")
     }

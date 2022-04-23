@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Card: Comparable {
+struct Card: Codable, Identifiable, Comparable, Hashable {
   var id: Int
   var ingredients: [String]
   var instructions: String

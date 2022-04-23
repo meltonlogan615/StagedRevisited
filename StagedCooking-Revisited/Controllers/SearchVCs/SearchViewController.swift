@@ -22,7 +22,6 @@ class SearchViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    view.backgroundColor = UIColor(named: "AppWhite")
     style()
     layout()
     configureButtonActions()

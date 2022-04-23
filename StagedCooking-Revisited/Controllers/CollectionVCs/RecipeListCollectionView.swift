@@ -27,12 +27,6 @@ class RecipeListCollectionView: UIViewController {
     return recipeCollection
   }()
   
-  override func viewDidAppear(_ animated: Bool) {
-    style()
-    layout()
-  }
-  
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     loadRecipes(for: searchedRecipe)
@@ -42,10 +36,9 @@ class RecipeListCollectionView: UIViewController {
     
     title = searchedRecipe.capitalized
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(dismissView))
-
-
-//    style()
-//    layout()
+    
+    style()
+    layout()
   }
 }
 // MARK: - Styling & Layout
@@ -68,11 +61,8 @@ extension RecipeListCollectionView {
 // MARK: - CollectionView - DataSource
 extension RecipeListCollectionView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    
-    // TODO: - Temporary for testing purposes. Remove & Uncomment
     guard let cellCount = model.results?.count  else { return 1 }
     return cellCount
-//    15  // Remove this, uncomment above
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -88,8 +78,6 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
         cell.image.layer.cornerRadius = 8
         cell.image.clipsToBounds = true
       }
-    } else {
-      cell.titleLabel.text = "Nashville Hot Chicken"
     }
     return cell
   }
@@ -101,11 +89,12 @@ extension RecipeListCollectionView: UICollectionViewDelegate {
     let recipeVC = RecipeViewController()
     guard let selectedID = model.results?[indexPath.row].id else { return }
     guard let selectedTitle = model.results?[indexPath.row].title else { return }
-// TODO: - Bring over and activate UserDefaults (AKA ChefDefault)
-//    ChefDefault.requestedID = selectedID - Used later along with UserDefaults
-    recipeVC.title = selectedTitle
     recipeVC.recipeID = selectedID
-//    recipeVC.title = "Hot Chicken" // Testing
+    recipeVC.title = selectedTitle.capitalized
+
+    
+    // TODO: - Bring over and activate UserDefaults (AKA ChefDefault)
+    //    ChefDefault.requestedID = selectedID - Used later along with UserDefaults
     navigationController?.pushViewController(recipeVC, animated: true)
   }
 }

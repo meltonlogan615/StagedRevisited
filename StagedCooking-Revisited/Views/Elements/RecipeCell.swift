@@ -34,11 +34,11 @@ final class RecipeCell: UICollectionViewCell {
   let titleLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = .preferredFont(forTextStyle: .title1)
+    label.font = .preferredFont(forTextStyle: .title3)
     label.textAlignment = .natural
     label.adjustsFontSizeToFitWidth = true
-    label.numberOfLines = 0
     label.layer.zPosition = 20
+    label.allowsDefaultTighteningForTruncation = true
     return label
   }()
   

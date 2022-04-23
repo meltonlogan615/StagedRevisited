@@ -29,7 +29,7 @@ class StagedCardViewController: UIViewController {
   }
   
   init(recipeName: String, cardCounter: Int, ingredients: [String], instructions: String) {
-    self.cardNumberLabel.text = "\(recipeName) Stage \(cardCounter)"
+    self.cardNumberLabel.text = "Step \(cardCounter)"
     self.directionsLabel.text = "\(instructions)"
     self.cardCounter = cardCounter
     self.ingredients = ingredients
@@ -56,11 +56,9 @@ extension StagedCardViewController {
     stepView.layer.borderColor = UIColor(named: "black")?.cgColor
     stepView.layer.cornerRadius = 8
     stepView.clipsToBounds = true
-    stepView.backgroundColor = .blue
     
     cardNumberLabel.translatesAutoresizingMaskIntoConstraints = false
     cardNumberLabel.font = .preferredFont(forTextStyle: .largeTitle)
-//    cardNumberLabel.text = ("\(recipeName) Stage \(cardCounter)")
     cardNumberLabel.textAlignment = .center
     
     cardStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,23 +67,20 @@ extension StagedCardViewController {
     cardStackView.spacing = 16
     
     ingredientLabel.translatesAutoresizingMaskIntoConstraints = false
-    //    ingredientLabel.text = ingredient
     ingredientLabel.font = .systemFont(ofSize: 24)
     
     directionsLabel.translatesAutoresizingMaskIntoConstraints = false
     directionsLabel.numberOfLines = 0
-//    directionsLabel.text = directions
-//    print("Direction:", directions)
     directionsLabel.font = .systemFont(ofSize: 24)
   }
   
   func layout() {
     view.addSubview(stepView)
     NSLayoutConstraint.activate([
-      stepView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 16),
+      stepView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2),
       stepView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-      view.trailingAnchor.constraint(equalToSystemSpacingAfter: stepView.trailingAnchor, multiplier: 4),
-      stepView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4)
+      view.trailingAnchor.constraint(equalToSystemSpacingAfter: stepView.trailingAnchor, multiplier: 2),
+      stepView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2)
     ])
     
     stepView.addSubview(cardNumberLabel)

@@ -52,6 +52,7 @@ extension StagedCardView {
 
     ingredientLabel.translatesAutoresizingMaskIntoConstraints = false
 //    ingredientLabel.text = ingredient
+    ingredientLabel.numberOfLines = 0
     ingredientLabel.font = .systemFont(ofSize: 24)
     
     directionsLabel.translatesAutoresizingMaskIntoConstraints = false

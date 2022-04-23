@@ -9,12 +9,14 @@ import Foundation
 import UIKit
 
 class RecipeViewController: UIViewController {
-  
-  let recipeView = RecipeView()
+
   let dataprovider = DataProvider()
-  let test = TempData()
   
   var steps = [Step]()
+  var cards = [Card]()
+  
+  let scrollView = UIScrollView()
+  let recipeView = UIView()
   
   // Instructions
   var instructions = Instructions()
@@ -29,60 +31,104 @@ class RecipeViewController: UIViewController {
   // Recipe
   var recipe = Recipe()
   var recipeID = 0
-  var recipeImage = String()
   var recipeTitle = String()
+  var recipeStack = UIStackView()
+  var recipeImageView = UIImageView()
+  var recipeImage = String()
+  var recipeImageSize = CGFloat()
   
-  var cards = [Card]()
-  
+  var summaryLabel = UILabel()
   var startCookingButton = UIButton(type: .roundedRect)
   
   override func viewWillAppear(_ animated: Bool) {
     loadRecipeByID(for: recipeID) // Gets the Data for the Recipe. Also generates data for ingredientList
     getInstructions(for: recipeID) // Generates stepIngredients & stepInstructions
-    recipeView.label.text = recipeTitle
+    style()
+    layout()
   }
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = "Hot Chicken"
-    view.backgroundColor = .red
-    style()
-    layout()
+    recipeImageSize = (view.frame.size.height / 4.5)
   }
 }
 
 extension RecipeViewController {
   
   func style() {
-    recipeView.translatesAutoresizingMaskIntoConstraints = false
-//    recipeView.image.loadImage(url: recipeImage)
+    scrollView.translatesAutoresizingMaskIntoConstraints = false
+    scrollView.bounces = true
     
+    recipeView.translatesAutoresizingMaskIntoConstraints = false
+    
+    summaryLabel.translatesAutoresizingMaskIntoConstraints = false
+    summaryLabel.numberOfLines = 0
+    summaryLabel.font = .systemFont(ofSize: 24)
+    
+    recipeImageView.translatesAutoresizingMaskIntoConstraints = false
+    recipeImageView.contentMode = .scaleAspectFit
+    recipeImageView.layer.cornerRadius = 8
+    recipeImageView.clipsToBounds = true
+    recipeImageView.frame.size.height = CGFloat(view.frame.height / 4)
+    
+    recipeStack.translatesAutoresizingMaskIntoConstraints = false
+    recipeStack.axis = .vertical
+    recipeStack.spacing = 8
     
     startCookingButton.translatesAutoresizingMaskIntoConstraints = false
-    startCookingButton.setTitle("Start Cooking", for: [])
+    startCookingButton.setTitle("Start Cooking", for: .normal)
     startCookingButton.addTarget(self, action: #selector(startCookingButtonTapped), for: .primaryActionTriggered)
-     
   }
   
   func layout() {
-    view.addSubview(recipeView)
-    view.addSubview(startCookingButton)
-    
+    view.addSubview(scrollView)
     NSLayoutConstraint.activate([
-      recipeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      recipeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//      recipeView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-      recipeView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+      scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+      scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
     ])
     
-    recipeView.image.frame.size = CGSize(width: 50, height: 50)
-    
+    scrollView.addSubview(recipeView)
     NSLayoutConstraint.activate([
-      startCookingButton.trailingAnchor.constraint(equalTo: recipeView.trailingAnchor),
-      view.bottomAnchor.constraint(equalToSystemSpacingBelow: startCookingButton.bottomAnchor, multiplier: 5),
-      startCookingButton.leadingAnchor.constraint(equalTo: recipeView.leadingAnchor)
+      recipeView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+      recipeView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+      recipeView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+      recipeView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+      recipeView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
     ])
+    
+    recipeView.addSubview(recipeStack)
+    NSLayoutConstraint.activate([
+      recipeStack.topAnchor.constraint(equalToSystemSpacingBelow: recipeView.topAnchor, multiplier: 1),
+      recipeView.trailingAnchor.constraint(equalToSystemSpacingAfter: recipeStack.trailingAnchor, multiplier: 2),
+      recipeView.bottomAnchor.constraint(equalToSystemSpacingBelow: recipeStack.bottomAnchor, multiplier: 2),
+      recipeStack.leadingAnchor.constraint(equalToSystemSpacingAfter: recipeView.leadingAnchor, multiplier: 2)
+    ])
+    
+    recipeStack.addArrangedSubview(recipeImageView)
+    NSLayoutConstraint.activate([
+      recipeImageView.centerXAnchor.constraint(equalTo: recipeStack.centerXAnchor),
+      recipeImageView.heightAnchor.constraint(equalToConstant: recipeImageSize)
+    ])
+    
+    for i in 0 ..< ingredientList.count {
+      let ingredientLine = UILabel()
+      ingredientLine.translatesAutoresizingMaskIntoConstraints = false
+      recipeStack.addArrangedSubview(ingredientLine)
+      ingredientLine.text = ingredientList[i].capitalized
+      ingredientLine.numberOfLines = 0
+      ingredientLine.font = .systemFont(ofSize: 16)
+    }
+    
+    recipeStack.addArrangedSubview(summaryLabel)
+    NSLayoutConstraint.activate([
+      summaryLabel.trailingAnchor.constraint(equalTo: recipeStack.trailingAnchor),
+      summaryLabel.leadingAnchor.constraint(equalTo: recipeStack.leadingAnchor)
+    ])
+    
+    recipeView.addSubview(startCookingButton)
   }
 }
 
@@ -95,19 +141,10 @@ extension RecipeViewController: RecipeByID {
         case .success(let model):
           DispatchQueue.main.async { [self] in
             guard let selectedRecipe = model as Recipe? else { return }
-            self.recipe = selectedRecipe
-            
-            guard let title = self.recipe.title else { return }
-            
-            self.title = title
-            self.recipeTitle = title
+            self.setProperties(for: selectedRecipe)
             
             // MARK: - Ingredients Array - `ingredientList`
-            guard let extendedIngredients = selectedRecipe.extendedIngredients as [ExtendedIngredient]? else { return }
-            for i in 0 ..< extendedIngredients.count {
-              guard let original = extendedIngredients[i].original else { return }
-              self.ingredientList.append(original)
-            }
+
           }
         case .failure(let error):
           print("recipe error:", error)
@@ -163,8 +200,8 @@ extension RecipeViewController {
 // MARK: - Building Cards for StagedCards
 extension RecipeViewController: CardBuilder {
   func buildCards(ingredients: [String], instructionsDictionary: [Int: String], ingredientDictionary: [Int: [String]]) -> [Card]{
-    print(ingredientDictionary)
-    print(instructionsDictionary)
+//    print(ingredientDictionary)
+//    print(instructionsDictionary)
     var cards = [Card]()
     let sortedInstructions = instructionsDictionary.sorted(by: { $0.key < $1.key } )
     let sortedIngredients = ingredientDictionary.sorted(by: { $0.key < $1.key } )
@@ -196,11 +233,7 @@ extension RecipeViewController: CardBuilder {
               }
               
             }
-          }
-          print("Card Number:", cardNumber)
-          print("Ingredients:", mixingBowl)
-          print("Instructions:", instructionsValue, "\n")
-          
+          }          
           let card = Card(id: cardNumber, ingredients: mixingBowl, instructions: instructionsValue)
           cards.append(card)
         }
@@ -211,14 +244,36 @@ extension RecipeViewController: CardBuilder {
   }
 }
 
+extension RecipeViewController {
+  func setProperties(for selectedRecipe: Recipe) {
+    self.recipe = selectedRecipe
+    
+    guard let title = selectedRecipe.title else { return }
+    self.recipeTitle = title
+    
+    guard let image = selectedRecipe.image else { return }
+//    self.recipeImage = image
+    self.recipeImageView.loadImage(url: image)
+    
+    guard let summery = self.recipe.summary else { return }
+    let formattedSummery = summery.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+    self.summaryLabel.text = formattedSummery
+    
+    guard let extendedIngredients = selectedRecipe.extendedIngredients as [ExtendedIngredient]? else { return }
+    for i in 0 ..< extendedIngredients.count {
+      guard let original = extendedIngredients[i].original else { return }
+      self.ingredientList.append(original)
+    }
+  }
+}
 
 extension RecipeViewController {
   @objc func startCookingButtonTapped(_ sender: UIButton) {
+    print("tapped")
     let stagesVC = StagedCardContainerViewController()
     let cards = buildCards(ingredients: ingredientList, instructionsDictionary: stepInstructions, ingredientDictionary: stepIngredients)
+    stagesVC.recipe = recipe
     stagesVC.cards = cards
-    print(cards.count)
     navigationController?.pushViewController(stagesVC, animated: true)
-    print("tapped")
   }
 }

@@ -33,20 +33,16 @@
 		322199CC27FA84CD003FD4F6 /* ViewController-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199CB27FA84CD003FD4F6 /* ViewController-Extensions.swift */; };
 		322199CE27FA8A4E003FD4F6 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199CD27FA8A4E003FD4F6 /* RecipeViewController.swift */; };
 		322199D227FA9733003FD4F6 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199D127FA9733003FD4F6 /* RecipeView.swift */; };
+		3236E77B2814562B00E0D373 /* Scroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236E77A2814562B00E0D373 /* Scroller.swift */; };
 		32A8C3852805A0E40091D785 /* Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8C3842805A0E40091D785 /* Instructions.swift */; };
 		32AB724227FFE2CF00AF0E2A /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724127FFE2CF00AF0E2A /* CardModel.swift */; };
-		32AB724427FFE78D00AF0E2A /* Instructions-Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724327FFE78D00AF0E2A /* Instructions-Remove.swift */; };
-		32AB724627FFE9DF00AF0E2A /* Step-Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724527FFE9DF00AF0E2A /* Step-Remove.swift */; };
 		32AB724A27FFEDA800AF0E2A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724927FFEDA800AF0E2A /* Response.swift */; };
 		32AB724C27FFEDCA00AF0E2A /* BasicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724B27FFEDCA00AF0E2A /* BasicSearch.swift */; };
-		32AB724F27FFEDFF00AF0E2A /* Equipment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724E27FFEDFF00AF0E2A /* Equipment.swift */; };
 		32AB72532801E7C900AF0E2A /* doop in Resources */ = {isa = PBXBuildFile; fileRef = 32AB72522801E7C900AF0E2A /* doop */; };
 		32D70DBD28073A80000328B9 /* StagedCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D70DBC28073A80000328B9 /* StagedCardViewController.swift */; };
 		32D70DC228073F50000328B9 /* StagedCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D70DC128073F50000328B9 /* StagedCardView.swift */; };
 		32D70DC42807565B000328B9 /* CardContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D70DC32807565B000328B9 /* CardContainerViewController.swift */; };
-		32D70DC62807DA59000328B9 /* TempData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D70DC52807DA59000328B9 /* TempData.swift */; };
 		32D70DC82808BEE1000328B9 /* GetCookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D70DC72808BEE1000328B9 /* GetCookingViewController.swift */; };
-		32D70DCA2809351C000328B9 /* SafeCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D70DC92809351C000328B9 /* SafeCardModel.swift */; };
 		32F15C6927FD58700031A724 /* ChefsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F15C6827FD58700031A724 /* ChefsList.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,20 +75,16 @@
 		322199CB27FA84CD003FD4F6 /* ViewController-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController-Extensions.swift"; sourceTree = "<group>"; };
 		322199CD27FA8A4E003FD4F6 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		322199D127FA9733003FD4F6 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		3236E77A2814562B00E0D373 /* Scroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scroller.swift; sourceTree = "<group>"; };
 		32A8C3842805A0E40091D785 /* Instructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructions.swift; sourceTree = "<group>"; };
 		32AB724127FFE2CF00AF0E2A /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
-		32AB724327FFE78D00AF0E2A /* Instructions-Remove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Instructions-Remove.swift"; sourceTree = "<group>"; };
-		32AB724527FFE9DF00AF0E2A /* Step-Remove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Step-Remove.swift"; sourceTree = "<group>"; };
 		32AB724927FFEDA800AF0E2A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		32AB724B27FFEDCA00AF0E2A /* BasicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSearch.swift; sourceTree = "<group>"; };
-		32AB724E27FFEDFF00AF0E2A /* Equipment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipment.swift; sourceTree = "<group>"; };
 		32AB72522801E7C900AF0E2A /* doop */ = {isa = PBXFileReference; lastKnownFileType = text; path = doop; sourceTree = "<group>"; };
 		32D70DBC28073A80000328B9 /* StagedCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagedCardViewController.swift; sourceTree = "<group>"; };
 		32D70DC128073F50000328B9 /* StagedCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagedCardView.swift; sourceTree = "<group>"; };
 		32D70DC32807565B000328B9 /* CardContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContainerViewController.swift; sourceTree = "<group>"; };
-		32D70DC52807DA59000328B9 /* TempData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempData.swift; sourceTree = "<group>"; };
 		32D70DC72808BEE1000328B9 /* GetCookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookingViewController.swift; sourceTree = "<group>"; };
-		32D70DC92809351C000328B9 /* SafeCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeCardModel.swift; sourceTree = "<group>"; };
 		32F15C6827FD58700031A724 /* ChefsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefsList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,7 +169,6 @@
 			children = (
 				322199AA27FA5F67003FD4F6 /* RecipeModels */,
 				322199A727FA5F23003FD4F6 /* AppData */,
-				32D70DC52807DA59000328B9 /* TempData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -231,7 +222,6 @@
 			children = (
 				32AB724127FFE2CF00AF0E2A /* CardModel.swift */,
 				322199A827FA5F34003FD4F6 /* ChefDefault.swift */,
-				32D70DC92809351C000328B9 /* SafeCardModel.swift */,
 			);
 			path = AppData;
 			sourceTree = "<group>";
@@ -239,7 +229,6 @@
 		322199AA27FA5F67003FD4F6 /* RecipeModels */ = {
 			isa = PBXGroup;
 			children = (
-				32AB724D27FFEDF000AF0E2A /* Equipment */,
 				322199C227FA6A45003FD4F6 /* SearchResults */,
 				32AB724727FFEA0B00AF0E2A /* Recipes */,
 				32AB724827FFEA3200AF0E2A /* Instructions */,
@@ -355,19 +344,9 @@
 		32AB724827FFEA3200AF0E2A /* Instructions */ = {
 			isa = PBXGroup;
 			children = (
-				32AB724327FFE78D00AF0E2A /* Instructions-Remove.swift */,
-				32AB724527FFE9DF00AF0E2A /* Step-Remove.swift */,
 				32A8C3842805A0E40091D785 /* Instructions.swift */,
 			);
 			path = Instructions;
-			sourceTree = "<group>";
-		};
-		32AB724D27FFEDF000AF0E2A /* Equipment */ = {
-			isa = PBXGroup;
-			children = (
-				32AB724E27FFEDFF00AF0E2A /* Equipment.swift */,
-			);
-			path = Equipment;
 			sourceTree = "<group>";
 		};
 		32D70DBB28073A53000328B9 /* StagedCards */ = {
@@ -376,6 +355,7 @@
 				32D70DC72808BEE1000328B9 /* GetCookingViewController.swift */,
 				32D70DBC28073A80000328B9 /* StagedCardViewController.swift */,
 				32D70DC32807565B000328B9 /* CardContainerViewController.swift */,
+				3236E77A2814562B00E0D373 /* Scroller.swift */,
 			);
 			path = StagedCards;
 			sourceTree = "<group>";
@@ -478,24 +458,21 @@
 				32D70DC82808BEE1000328B9 /* GetCookingViewController.swift in Sources */,
 				3221998527FA5DB2003FD4F6 /* SearchViewController.swift in Sources */,
 				32A8C3852805A0E40091D785 /* Instructions.swift in Sources */,
+				3236E77B2814562B00E0D373 /* Scroller.swift in Sources */,
 				322199BD27FA6517003FD4F6 /* ActionButton.swift in Sources */,
-				32AB724427FFE78D00AF0E2A /* Instructions-Remove.swift in Sources */,
 				32D70DC42807565B000328B9 /* CardContainerViewController.swift in Sources */,
-				32AB724F27FFEDFF00AF0E2A /* Equipment.swift in Sources */,
 				322199C427FA6A55003FD4F6 /* SearchResult.swift in Sources */,
 				322199A027FA5E99003FD4F6 /* EndPoints.swift in Sources */,
 				3221998127FA5DB2003FD4F6 /* AppDelegate.swift in Sources */,
 				322199AC27FA5F75003FD4F6 /* Recipe.swift in Sources */,
 				322199CA27FA6C2F003FD4F6 /* UIImage-Extension.swift in Sources */,
 				322199D227FA9733003FD4F6 /* RecipeView.swift in Sources */,
-				32AB724627FFE9DF00AF0E2A /* Step-Remove.swift in Sources */,
 				322199C727FA6BB3003FD4F6 /* ImageURLProtocol.swift in Sources */,
 				32AB724A27FFEDA800AF0E2A /* Response.swift in Sources */,
 				32D70DBD28073A80000328B9 /* StagedCardViewController.swift in Sources */,
 				322199BF27FA6567003FD4F6 /* CustonTextField.swift in Sources */,
 				322199B427FA627A003FD4F6 /* Ingredient.swift in Sources */,
 				322199B827FA6328003FD4F6 /* SearchView.swift in Sources */,
-				32D70DC62807DA59000328B9 /* TempData.swift in Sources */,
 				322199CE27FA8A4E003FD4F6 /* RecipeViewController.swift in Sources */,
 				322199AE27FA5FAA003FD4F6 /* RecipeSummary.swift in Sources */,
 				322199B127FA618A003FD4F6 /* IgnoreFile.swift in Sources */,
@@ -503,7 +480,6 @@
 				322199CC27FA84CD003FD4F6 /* ViewController-Extensions.swift in Sources */,
 				322199A927FA5F34003FD4F6 /* ChefDefault.swift in Sources */,
 				32D70DC228073F50000328B9 /* StagedCardView.swift in Sources */,
-				32D70DCA2809351C000328B9 /* SafeCardModel.swift in Sources */,
 				32F15C6927FD58700031A724 /* ChefsList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,9 +10,11 @@ import UIKit
 
 class RecipeView: UIView {
 
-  var recipeStack = UIStackView()
   var image = UIImageView()
+  var ingredientsStack = UIStackView()
   var label = UILabel()
+  
+  var ingredients = [String]()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -30,63 +32,41 @@ extension RecipeView {
   
   func style() {
     translatesAutoresizingMaskIntoConstraints = false
-    backgroundColor = .blue // Debuggin
     
-    recipeStack.translatesAutoresizingMaskIntoConstraints = false
-//    recipeStack.axis = .vertical
-//    recipeStack.distribution = .fill
-
-    recipeStack.backgroundColor = .orange // Debuggin
-//    recipeStack.frame.size = CGSize(width: 100, height: 100)
-//    image.frame.size = CGSize(width: 10, height: 10)
-
-    
-    image.backgroundColor = .green // Debuggin
     image.translatesAutoresizingMaskIntoConstraints = false
-    image.image = UIImage(named: "hotchiken") // Debuggin
+    image.image = UIImage(systemName: "brain") // buggin
     image.contentMode = .scaleAspectFit
     image.layer.cornerRadius = 8
     image.clipsToBounds = true
     
-    label.translatesAutoresizingMaskIntoConstraints = false
+    ingredientsStack.translatesAutoresizingMaskIntoConstraints = false
+    ingredientsStack.axis = .vertical
+    ingredientsStack.spacing = 8
   }
-  
+
   func layout() {
-//    addSubview(image)
-//    NSLayoutConstraint.activate([
-//      image.centerXAnchor.constraint(equalTo: centerXAnchor),
-//      image.centerYAnchor.constraint(equalTo: centerYAnchor),
-//      trailingAnchor.constraint(equalToSystemSpacingAfter: image.trailingAnchor, multiplier: 8),
-//      image.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 8)
-//    ])
-    
-    recipeStack.addArrangedSubview(image)
-//    recipeStack.addArrangedSubview(label)
-    
-    addSubview(recipeStack)
-
+    addSubview(image)
     NSLayoutConstraint.activate([
-      recipeStack.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 2),
-      trailingAnchor.constraint(equalToSystemSpacingAfter: recipeStack.trailingAnchor, multiplier: 4),
-      bottomAnchor.constraint(equalTo: recipeStack.bottomAnchor),
-      recipeStack.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 4),
+      image.centerXAnchor.constraint(equalTo: centerXAnchor),
+      image.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1),
+      trailingAnchor.constraint(equalToSystemSpacingAfter: image.trailingAnchor, multiplier: 8),
+      image.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 8),
     ])
-
+    
+    addSubview(ingredientsStack)
     NSLayoutConstraint.activate([
-//      image.centerXAnchor.constraint(equalTo: recipeStack.centerXAnchor),
-//      image.centerYAnchor.constraint(equalTo: recipeStack.centerYAnchor),
-//      recipeStack.trailingAnchor.constraint(equalToSystemSpacingAfter: image.trailingAnchor, multiplier: 8),
-//      image.leadingAnchor.constraint(equalToSystemSpacingAfter: recipeStack.leadingAnchor, multiplier: 8)
+      ingredientsStack.topAnchor.constraint(equalToSystemSpacingBelow: image.bottomAnchor, multiplier: 2),
+      ingredientsStack.trailingAnchor.constraint(equalTo: trailingAnchor),
+      ingredientsStack.leadingAnchor.constraint(equalTo: leadingAnchor)
     ])
-    print(recipeStack.frame.height, recipeStack.frame.width)
-    print(image.frame.height, image.frame.width)
     
-//    addSubview(label)
-    
-//    NSLayoutConstraint.activate([
-//      label.centerXAnchor.constraint(equalTo: centerXAnchor),
-//      label.centerYAnchor.constraint(equalTo: centerYAnchor)
-//    ])
+    for i in 0 ..< ingredients.count {
+      let ingredientLine = UILabel()
+      ingredientLine.translatesAutoresizingMaskIntoConstraints = false
+      ingredientsStack.addArrangedSubview(ingredientLine)
+      ingredientLine.text = ingredients[i].capitalized
+      ingredientLine.font = .systemFont(ofSize: 24)
+    }
     
   }
 }

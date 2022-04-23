@@ -13,7 +13,7 @@ struct ExtendedIngredient: Codable, Hashable, Identifiable {
   var aisle: String?
   var image: String?
   var amount: Double?
-  var consistency: String // replace with Conistency object
+  var consistency: String? // replace with Conistency object
 //  var unit: Units?
   var meta: [String]?
 

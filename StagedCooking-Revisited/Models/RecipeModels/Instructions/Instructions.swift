@@ -25,7 +25,7 @@ struct Step: Codable, Hashable, Comparable {
   var number: Int?
   var step: String?
   var ingredients: [StepIngredient]?
-  var equipment: [Ent]?
+  var equipment: [StepEquipment]?
   var length: Length?
   
   static func <(lhs: Self, rhs: Self) -> Bool {
@@ -39,19 +39,25 @@ struct Step: Codable, Hashable, Comparable {
   }
 }
 
-// MARK: - Ent
+// MARK: - Step Subs
 struct StepIngredient: Codable, Identifiable, Hashable {
   var id: Int?
   var name, localizedName, image: String?
 }
 
-struct Ent: Codable, Identifiable, Hashable {
+struct StepEquipment: Codable, Identifiable, Hashable {
   var id: Int?
   var name, localizedName, image: String?
 }
 
 // MARK: - Length
 struct Length: Codable, Hashable {
+  var number: Int?
+  var unit: String?
+}
+
+// MARK: - Temperature
+struct Temperature: Codable, Hashable {
   var number: Int?
   var unit: String?
 }
