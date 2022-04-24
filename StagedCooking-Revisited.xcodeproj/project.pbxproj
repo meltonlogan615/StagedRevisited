@@ -33,7 +33,6 @@
 		322199CC27FA84CD003FD4F6 /* ViewController-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199CB27FA84CD003FD4F6 /* ViewController-Extensions.swift */; };
 		322199CE27FA8A4E003FD4F6 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199CD27FA8A4E003FD4F6 /* RecipeViewController.swift */; };
 		322199D227FA9733003FD4F6 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199D127FA9733003FD4F6 /* RecipeView.swift */; };
-		3236E77B2814562B00E0D373 /* Scroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3236E77A2814562B00E0D373 /* Scroller.swift */; };
 		32A8C3852805A0E40091D785 /* Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8C3842805A0E40091D785 /* Instructions.swift */; };
 		32AB724227FFE2CF00AF0E2A /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724127FFE2CF00AF0E2A /* CardModel.swift */; };
 		32AB724A27FFEDA800AF0E2A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724927FFEDA800AF0E2A /* Response.swift */; };
@@ -75,7 +74,6 @@
 		322199CB27FA84CD003FD4F6 /* ViewController-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController-Extensions.swift"; sourceTree = "<group>"; };
 		322199CD27FA8A4E003FD4F6 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		322199D127FA9733003FD4F6 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
-		3236E77A2814562B00E0D373 /* Scroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scroller.swift; sourceTree = "<group>"; };
 		32A8C3842805A0E40091D785 /* Instructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructions.swift; sourceTree = "<group>"; };
 		32AB724127FFE2CF00AF0E2A /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		32AB724927FFEDA800AF0E2A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
@@ -355,7 +353,6 @@
 				32D70DC72808BEE1000328B9 /* GetCookingViewController.swift */,
 				32D70DBC28073A80000328B9 /* StagedCardViewController.swift */,
 				32D70DC32807565B000328B9 /* CardContainerViewController.swift */,
-				3236E77A2814562B00E0D373 /* Scroller.swift */,
 			);
 			path = StagedCards;
 			sourceTree = "<group>";
@@ -458,7 +455,6 @@
 				32D70DC82808BEE1000328B9 /* GetCookingViewController.swift in Sources */,
 				3221998527FA5DB2003FD4F6 /* SearchViewController.swift in Sources */,
 				32A8C3852805A0E40091D785 /* Instructions.swift in Sources */,
-				3236E77B2814562B00E0D373 /* Scroller.swift in Sources */,
 				322199BD27FA6517003FD4F6 /* ActionButton.swift in Sources */,
 				32D70DC42807565B000328B9 /* CardContainerViewController.swift in Sources */,
 				322199C427FA6A55003FD4F6 /* SearchResult.swift in Sources */,

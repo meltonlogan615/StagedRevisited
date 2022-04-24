@@ -15,8 +15,22 @@ class RecipeViewController: UIViewController {
   var steps = [Step]()
   var cards = [Card]()
   
+  // View Elements
   let scrollView = UIScrollView()
   let recipeView = UIView()
+  var recipeStack = UIStackView()
+  
+  var recipeImageView = UIImageView()
+  var recipeImage = String()
+  var recipeImageSize = CGFloat()
+  
+  let recipeTitleLabel = UILabel()
+  var recipeTitle = String()
+  var summaryLabel = UILabel()
+  
+  var startCookingButton = UIButton()
+  
+
   
   // Instructions
   var instructions = Instructions()
@@ -31,14 +45,6 @@ class RecipeViewController: UIViewController {
   // Recipe
   var recipe = Recipe()
   var recipeID = 0
-  var recipeTitle = String()
-  var recipeStack = UIStackView()
-  var recipeImageView = UIImageView()
-  var recipeImage = String()
-  var recipeImageSize = CGFloat()
-  
-  var summaryLabel = UILabel()
-  var startCookingButton = UIButton(type: .roundedRect)
   
   override func viewWillAppear(_ animated: Bool) {
     loadRecipeByID(for: recipeID) // Gets the Data for the Recipe. Also generates data for ingredientList
@@ -47,10 +53,9 @@ class RecipeViewController: UIViewController {
     layout()
   }
   
-  
   override func viewDidLoad() {
     super.viewDidLoad()
-    recipeImageSize = (view.frame.size.height / 4.5)
+    recipeImageSize = (view.frame.size.height / 5)
   }
 }
 
@@ -62,22 +67,30 @@ extension RecipeViewController {
     
     recipeView.translatesAutoresizingMaskIntoConstraints = false
     
-    summaryLabel.translatesAutoresizingMaskIntoConstraints = false
-    summaryLabel.numberOfLines = 0
-    summaryLabel.font = .systemFont(ofSize: 24)
+    recipeStack.translatesAutoresizingMaskIntoConstraints = false
+    recipeStack.axis = .vertical
+    recipeStack.spacing = 12
+    
+    recipeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+    recipeTitleLabel.numberOfLines = 0
+    recipeTitleLabel.font = .preferredFont(forTextStyle: .title2)
+    recipeTitleLabel.textAlignment = .center
+    recipeTitleLabel.text = recipeTitle
     
     recipeImageView.translatesAutoresizingMaskIntoConstraints = false
     recipeImageView.contentMode = .scaleAspectFit
-    recipeImageView.layer.cornerRadius = 8
+    recipeImageView.layer.cornerRadius = 16
     recipeImageView.clipsToBounds = true
-    recipeImageView.frame.size.height = CGFloat(view.frame.height / 4)
     
-    recipeStack.translatesAutoresizingMaskIntoConstraints = false
-    recipeStack.axis = .vertical
-    recipeStack.spacing = 8
+    summaryLabel.translatesAutoresizingMaskIntoConstraints = false
+    summaryLabel.numberOfLines = 0
+    summaryLabel.font = .systemFont(ofSize: 20)
+    summaryLabel.adjustsFontSizeToFitWidth = true
+    summaryLabel.textAlignment = .justified
     
     startCookingButton.translatesAutoresizingMaskIntoConstraints = false
     startCookingButton.setTitle("Start Cooking", for: .normal)
+    startCookingButton.backgroundColor = .link
     startCookingButton.addTarget(self, action: #selector(startCookingButtonTapped), for: .primaryActionTriggered)
   }
   
@@ -101,34 +114,32 @@ extension RecipeViewController {
     
     recipeView.addSubview(recipeStack)
     NSLayoutConstraint.activate([
-      recipeStack.topAnchor.constraint(equalToSystemSpacingBelow: recipeView.topAnchor, multiplier: 1),
-      recipeView.trailingAnchor.constraint(equalToSystemSpacingAfter: recipeStack.trailingAnchor, multiplier: 2),
+      recipeStack.topAnchor.constraint(equalToSystemSpacingBelow: recipeView.topAnchor, multiplier: 2),
+      recipeView.trailingAnchor.constraint(equalToSystemSpacingAfter: recipeStack.trailingAnchor, multiplier: 4),
       recipeView.bottomAnchor.constraint(equalToSystemSpacingBelow: recipeStack.bottomAnchor, multiplier: 2),
-      recipeStack.leadingAnchor.constraint(equalToSystemSpacingAfter: recipeView.leadingAnchor, multiplier: 2)
+      recipeStack.leadingAnchor.constraint(equalToSystemSpacingAfter: recipeView.leadingAnchor, multiplier: 4)
     ])
+    
     
     recipeStack.addArrangedSubview(recipeImageView)
     NSLayoutConstraint.activate([
-      recipeImageView.centerXAnchor.constraint(equalTo: recipeStack.centerXAnchor),
-      recipeImageView.heightAnchor.constraint(equalToConstant: recipeImageSize)
+      recipeImageView.heightAnchor.constraint(equalToConstant: recipeImageSize),
     ])
     
-    for i in 0 ..< ingredientList.count {
-      let ingredientLine = UILabel()
-      ingredientLine.translatesAutoresizingMaskIntoConstraints = false
-      recipeStack.addArrangedSubview(ingredientLine)
-      ingredientLine.text = ingredientList[i].capitalized
-      ingredientLine.numberOfLines = 0
-      ingredientLine.font = .systemFont(ofSize: 16)
-    }
+    recipeStack.addArrangedSubview(recipeTitleLabel)
+    
+//    for i in 0 ..< ingredientList.count {
+//      let ingredientLine = UILabel()
+//      ingredientLine.translatesAutoresizingMaskIntoConstraints = false
+//      recipeStack.addArrangedSubview(ingredientLine)
+//      ingredientLine.text = ingredientList[i].capitalized
+//      ingredientLine.numberOfLines = 0
+//      ingredientLine.font = .systemFont(ofSize: 16)
+//    }
     
     recipeStack.addArrangedSubview(summaryLabel)
-    NSLayoutConstraint.activate([
-      summaryLabel.trailingAnchor.constraint(equalTo: recipeStack.trailingAnchor),
-      summaryLabel.leadingAnchor.constraint(equalTo: recipeStack.leadingAnchor)
-    ])
     
-    recipeView.addSubview(startCookingButton)
+    recipeStack.addArrangedSubview(startCookingButton)
   }
 }
 
@@ -256,7 +267,7 @@ extension RecipeViewController {
     self.recipeImageView.loadImage(url: image)
     
     guard let summery = self.recipe.summary else { return }
-    let formattedSummery = summery.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+    let formattedSummery = summery.replacingOccurrences(of: "<[^>]+>", with: " ", options: .regularExpression, range: nil)
     self.summaryLabel.text = formattedSummery
     
     guard let extendedIngredients = selectedRecipe.extendedIngredients as [ExtendedIngredient]? else { return }

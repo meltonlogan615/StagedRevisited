@@ -90,7 +90,7 @@ extension RecipeListCollectionView: UICollectionViewDelegate {
     guard let selectedID = model.results?[indexPath.row].id else { return }
     guard let selectedTitle = model.results?[indexPath.row].title else { return }
     recipeVC.recipeID = selectedID
-    recipeVC.title = selectedTitle.capitalized
+    recipeVC.recipeTitle = selectedTitle.capitalized
 
     
     // TODO: - Bring over and activate UserDefaults (AKA ChefDefault)

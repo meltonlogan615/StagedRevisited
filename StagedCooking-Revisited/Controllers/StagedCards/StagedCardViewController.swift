@@ -9,16 +9,19 @@ import Foundation
 import UIKit
 
 class StagedCardViewController: UIViewController {
-    
+  
   let stepView = UIView()
   let cardStackView = UIStackView()
+  let dividerView = UIView()
+  let dividerViewSequel = UIView()
+  
+  
   let cardNumberLabel = UILabel()
   var ingredientLabel = UILabel()
   let directionsLabel = UILabel()
   
   var recipeName = String()
   var cardCounter = Int()
-  var ingredient = String()
   var ingredients = [String]()
   var directions = String()
   
@@ -29,7 +32,7 @@ class StagedCardViewController: UIViewController {
   }
   
   init(recipeName: String, cardCounter: Int, ingredients: [String], instructions: String) {
-    self.cardNumberLabel.text = "Step \(cardCounter)"
+    self.cardNumberLabel.text = "Stage \(cardCounter)"
     self.directionsLabel.text = "\(instructions)"
     self.cardCounter = cardCounter
     self.ingredients = ingredients
@@ -58,29 +61,37 @@ extension StagedCardViewController {
     stepView.clipsToBounds = true
     
     cardNumberLabel.translatesAutoresizingMaskIntoConstraints = false
-    cardNumberLabel.font = .preferredFont(forTextStyle: .largeTitle)
+    cardNumberLabel.font = .preferredFont(forTextStyle: .title1)
     cardNumberLabel.textAlignment = .center
+    
+    dividerView.translatesAutoresizingMaskIntoConstraints = false
+    dividerView.backgroundColor = .label
     
     cardStackView.translatesAutoresizingMaskIntoConstraints = false
     cardStackView.axis = .vertical
     cardStackView.distribution = .fillProportionally
-    cardStackView.spacing = 16
+    cardStackView.spacing = 8
     
-    ingredientLabel.translatesAutoresizingMaskIntoConstraints = false
-    ingredientLabel.font = .systemFont(ofSize: 24)
+    dividerViewSequel.translatesAutoresizingMaskIntoConstraints = false
+    dividerViewSequel.backgroundColor = .label
     
     directionsLabel.translatesAutoresizingMaskIntoConstraints = false
     directionsLabel.numberOfLines = 0
-    directionsLabel.font = .systemFont(ofSize: 24)
+    directionsLabel.font = .systemFont(ofSize: 20)
+    directionsLabel.adjustsFontSizeToFitWidth = true
+    
   }
   
   func layout() {
     view.addSubview(stepView)
     NSLayoutConstraint.activate([
-      stepView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2),
+      stepView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 6),
+      
       stepView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-      view.trailingAnchor.constraint(equalToSystemSpacingAfter: stepView.trailingAnchor, multiplier: 2),
-      stepView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2)
+      
+      view.trailingAnchor.constraint(equalToSystemSpacingAfter: stepView.trailingAnchor, multiplier: 4),
+      
+      stepView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4)
     ])
     
     stepView.addSubview(cardNumberLabel)
@@ -90,27 +101,49 @@ extension StagedCardViewController {
       cardNumberLabel.heightAnchor.constraint(equalToConstant: 40)
     ])
     
-    for i in 0 ..< ingredients.count {
+    stepView.addSubview(dividerView)
+    NSLayoutConstraint.activate([
+      dividerView.heightAnchor.constraint(equalToConstant: 2),
+      dividerView.topAnchor.constraint(equalToSystemSpacingBelow: cardNumberLabel.bottomAnchor, multiplier: 1),
+      stepView.trailingAnchor.constraint(equalToSystemSpacingAfter: dividerView.trailingAnchor, multiplier: 4),
+      dividerView.leadingAnchor.constraint(equalToSystemSpacingAfter: stepView.leadingAnchor, multiplier: 4)
+    ])
+    
+    if ingredients.isEmpty {
       let ingredientLine = UILabel()
       cardStackView.addArrangedSubview(ingredientLine)
-      ingredientLine.text = ingredients[i].capitalized
-      
       ingredientLine.translatesAutoresizingMaskIntoConstraints = false
-      ingredientLine.font = .systemFont(ofSize: 24)
-
+      ingredientLine.text = "No Ingredients Used"
+      ingredientLine.font = .systemFont(ofSize: 20)
+    } else {
+      for i in 0 ..< ingredients.count {
+        let ingredientLine = UILabel()
+        cardStackView.addArrangedSubview(ingredientLine)
+        ingredientLine.text = ingredients[i].capitalized
+        ingredientLine.translatesAutoresizingMaskIntoConstraints = false
+        ingredientLine.font = .systemFont(ofSize: 20)
+      }
     }
     
     view.addSubview(cardStackView)
     NSLayoutConstraint.activate([
-      cardStackView.topAnchor.constraint(equalToSystemSpacingBelow: cardNumberLabel.bottomAnchor, multiplier: 2),
+      cardStackView.topAnchor.constraint(equalToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 2),
       stepView.trailingAnchor.constraint(equalToSystemSpacingAfter: cardStackView.trailingAnchor, multiplier: 2),
       cardStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: stepView.leadingAnchor, multiplier: 2),
       cardStackView.centerXAnchor.constraint(equalTo: stepView.centerXAnchor),
     ])
     
+    stepView.addSubview(dividerViewSequel)
+    NSLayoutConstraint.activate([
+      dividerViewSequel.heightAnchor.constraint(equalToConstant: 2),
+      dividerViewSequel.topAnchor.constraint(equalToSystemSpacingBelow: cardStackView.bottomAnchor, multiplier: 2),
+      dividerViewSequel.widthAnchor.constraint(equalTo: dividerView.widthAnchor),
+      dividerViewSequel.centerXAnchor.constraint(equalTo: stepView.centerXAnchor)
+    ])
+    
     stepView.addSubview(directionsLabel)
     NSLayoutConstraint.activate([
-      directionsLabel.topAnchor.constraint(equalToSystemSpacingBelow: cardStackView.bottomAnchor, multiplier: 4),
+      directionsLabel.topAnchor.constraint(equalToSystemSpacingBelow: dividerViewSequel.bottomAnchor, multiplier: 2),
       directionsLabel.trailingAnchor.constraint(equalTo: cardStackView.trailingAnchor),
       directionsLabel.leadingAnchor.constraint(equalTo: cardStackView.leadingAnchor),
     ])

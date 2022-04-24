@@ -26,7 +26,6 @@ class StagedCardContainerViewController: UIViewController {
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     cardVCs.append(getStarted)
-    
     currentVC = cardVCs.first!
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
   }
@@ -37,6 +36,7 @@ class StagedCardContainerViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = .orange
     getStarted.recipeLabel.text = recipe.title ?? ""
     getStarted.noOfSteps = cards.count
     getStarted.totalTime = recipe.readyInMinutes ?? 0
@@ -48,6 +48,7 @@ class StagedCardContainerViewController: UIViewController {
 extension StagedCardContainerViewController {
   private func setUp() {
     guard let recipeName = recipe.title else { return }
+    
     // Life Cycle, adding child VCs, all lines required
     for i in 0 ..< cards.count {
       let card = StagedCardViewController(recipeName: recipeName, cardCounter: cards[i].id, ingredients: cards[i].ingredients, instructions: cards[i].instructions)
