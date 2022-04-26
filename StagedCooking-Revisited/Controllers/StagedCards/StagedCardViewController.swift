@@ -10,16 +10,18 @@ import UIKit
 
 class StagedCardViewController: UIViewController {
   
+// MARK: - Views
   let stepView = UIView()
   let cardStackView = UIStackView()
   let dividerView = UIView()
   let dividerViewSequel = UIView()
   
-  
+//  MARK: - Labels
   let cardNumberLabel = UILabel()
   var ingredientLabel = UILabel()
   let directionsLabel = UILabel()
   
+//  MARK: = VC Data
   var recipeName = String()
   var cardCounter = Int()
   var ingredients = [String]()
@@ -37,35 +39,33 @@ class StagedCardViewController: UIViewController {
     self.cardCounter = cardCounter
     self.ingredients = ingredients
     self.directions = instructions
-    print("Ingredients #\(cardCounter):", ingredients, "")
-    print("Instruction #\(cardCounter):", instructions, "\n")
     super.init(nibName: nil, bundle: nil)
   }
-  
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 }
 
-
 extension StagedCardViewController {
   
   func style() {
-    view.backgroundColor = .lightGray
+    view.backgroundColor = UIColor(named: "SC-Primary")
     
     stepView.translatesAutoresizingMaskIntoConstraints = false
+    stepView.backgroundColor = UIColor(named: "SC-Primary")
     stepView.layer.borderWidth = 2
-    stepView.layer.borderColor = UIColor(named: "black")?.cgColor
+    stepView.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
     stepView.layer.cornerRadius = 8
     stepView.clipsToBounds = true
     
     cardNumberLabel.translatesAutoresizingMaskIntoConstraints = false
     cardNumberLabel.font = .preferredFont(forTextStyle: .title1)
+    cardNumberLabel.textColor = UIColor(named: "SC-Primary-Reversed")
     cardNumberLabel.textAlignment = .center
     
     dividerView.translatesAutoresizingMaskIntoConstraints = false
-    dividerView.backgroundColor = .label
+    dividerView.backgroundColor = UIColor(named: "AccentColor")
     
     cardStackView.translatesAutoresizingMaskIntoConstraints = false
     cardStackView.axis = .vertical
@@ -73,9 +73,10 @@ extension StagedCardViewController {
     cardStackView.spacing = 8
     
     dividerViewSequel.translatesAutoresizingMaskIntoConstraints = false
-    dividerViewSequel.backgroundColor = .label
+    dividerViewSequel.backgroundColor = UIColor(named: "AccentColor")
     
     directionsLabel.translatesAutoresizingMaskIntoConstraints = false
+    directionsLabel.textColor = UIColor(named: "SC-Primary-Reversed")
     directionsLabel.numberOfLines = 0
     directionsLabel.font = .systemFont(ofSize: 20)
     directionsLabel.adjustsFontSizeToFitWidth = true
@@ -86,11 +87,8 @@ extension StagedCardViewController {
     view.addSubview(stepView)
     NSLayoutConstraint.activate([
       stepView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 6),
-      
       stepView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-      
       view.trailingAnchor.constraint(equalToSystemSpacingAfter: stepView.trailingAnchor, multiplier: 4),
-      
       stepView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4)
     ])
     
@@ -113,14 +111,16 @@ extension StagedCardViewController {
       let ingredientLine = UILabel()
       cardStackView.addArrangedSubview(ingredientLine)
       ingredientLine.translatesAutoresizingMaskIntoConstraints = false
+      ingredientLine.numberOfLines = 0
       ingredientLine.text = "No Ingredients Used"
       ingredientLine.font = .systemFont(ofSize: 20)
     } else {
       for i in 0 ..< ingredients.count {
         let ingredientLine = UILabel()
         cardStackView.addArrangedSubview(ingredientLine)
-        ingredientLine.text = ingredients[i].capitalized
         ingredientLine.translatesAutoresizingMaskIntoConstraints = false
+        ingredientLine.numberOfLines = 0
+        ingredientLine.text = ingredients[i].capitalized
         ingredientLine.font = .systemFont(ofSize: 20)
       }
     }

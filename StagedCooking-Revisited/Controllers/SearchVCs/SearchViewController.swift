@@ -22,6 +22,7 @@ class SearchViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = UIColor(named: "SC-Primary")
     style()
     layout()
     configureButtonActions()
@@ -72,9 +73,8 @@ extension SearchViewController {
   @objc func configureButtonActions() {
     searchView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .primaryActionTriggered)
     
-// TODO: - Bring over and activate UserDefaults (AKA ChefDefault)
-
-    // For use later with User Defaults
+    // MARK: - ChefDefaults Button Actions
+    // TODO: - Once it gets close to release time, bring these back into play
 //    searchView.searchHistoryButton.addTarget(self, action: #selector(searchHistoryButtonTapped), for: .primaryActionTriggered)
 //    searchView.viewedHistoryButton.addTarget(self, action: #selector(viewedHistoryButtonTapped), for: .primaryActionTriggered)
 //    searchView.advancedSearchButton.addTarget(self, action: #selector(advancedSearchButtonTapped), for: .primaryActionTriggered)
@@ -101,6 +101,9 @@ extension SearchViewController {
       return
     } else {
       listVC.searchedRecipe = searched
+      
+      // MARK: - ChefDefaults Adds Searched Phrase to ChefDefault.searchHistory Array
+      // TODO: - Once it gets close to release time, bring these back into play
 //      ChefDefault.searchHistory.insert(searched, at: 0)
 //      ChefDefault.defaults.set(ChefDefault.searchHistory, forKey: "history")
 //      if let query = searched.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
@@ -113,6 +116,9 @@ extension SearchViewController {
     }
   }
   
+  // MARK: - ChefDefaults Button Methods
+  // TODO: - Once it gets close to release time, bring these back into play
+
 //  @objc func searchHistoryButtonTapped(_ sender: UIButton) {
 //    let searchHistoryVC = SearchHistoryViewController()
 //    let navigationController = UINavigationController(rootViewController: searchHistoryVC)

@@ -8,14 +8,14 @@
 import Foundation
 
 struct SearchResult: Decodable, Identifiable, Comparable, Hashable {
-  var id: Int? //716429,
-  var title: String? // Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs,
-  var calories: Int? // 584,
-  var carbs: String? // 84g,
-  var fat: String? // 20g,
-  var image: String? // https://spoonacular.com/recipeImages/716429-312x231.jpg,
-  var imageType: String? // jpg,
-  var protein: String? // 19g
+  var id: Int?
+  var title: String?
+  var calories: Int?
+  var carbs: String?
+  var fat: String?
+  var image: String?
+  var imageType: String?
+  var protein: String?
   
   static func < (lhs: Self, rhs: Self) -> Bool {
     var result = false

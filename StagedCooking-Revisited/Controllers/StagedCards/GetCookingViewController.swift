@@ -11,18 +11,20 @@ import UIKit
 class GetCookingViewController: UIViewController {
   
   let getCookingStack = UIStackView()
+  
   var recipeLabel = UILabel()
 
   let numberOfStepsLabel = UILabel()
-  var noOfSteps = 0 // when completed replace static value with initialized Int
+  var noOfSteps = Int()
+  
   let totalTimeLabel = UILabel()
-  var totalTime = 0 // when completed replace static value with initalized Int
+  var totalTime = Int()
   
   let startLabel = UILabel()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    view.backgroundColor = UIColor(named: "SC-Primary")
     style()
     layout()
   }
@@ -38,22 +40,25 @@ extension GetCookingViewController {
     getCookingStack.spacing = 24
     
     recipeLabel.translatesAutoresizingMaskIntoConstraints = false
-    recipeLabel.textAlignment = .center
     recipeLabel.font = .boldSystemFont(ofSize: 36)
+    recipeLabel.textColor = UIColor(named: "SC-Primary-Reversed")
+    recipeLabel.textAlignment = .center
     recipeLabel.numberOfLines = 0
-    recipeLabel.textColor = UIColor(named: "SC-Green")
 
     startLabel.translatesAutoresizingMaskIntoConstraints = false
-    startLabel.textAlignment = .center
     startLabel.font = .preferredFont(forTextStyle: .title1)
+    startLabel.textColor = UIColor(named: "SC-Primary-Reversed")
+    startLabel.textAlignment = .center
     startLabel.text = "Swipe Left To Get Started"
     
     numberOfStepsLabel.translatesAutoresizingMaskIntoConstraints = false
-    numberOfStepsLabel.textAlignment = .center
     numberOfStepsLabel.font = .preferredFont(forTextStyle: .title3)
+    numberOfStepsLabel.textColor = UIColor(named: "SC-Primary-Reversed")
+    numberOfStepsLabel.textAlignment = .center
     numberOfStepsLabel.text = "Number of Steps: \(noOfSteps)"
 
     totalTimeLabel.translatesAutoresizingMaskIntoConstraints = false
+    totalTimeLabel.textColor = UIColor(named: "SC-Primary-Reversed")
     totalTimeLabel.textAlignment = .center
     totalTimeLabel.font = .preferredFont(forTextStyle: .title3)
     totalTimeLabel.text = "Total Time: \(totalTime) minutes"
@@ -67,7 +72,6 @@ extension GetCookingViewController {
     
     view.addSubview(getCookingStack)
     NSLayoutConstraint.activate([
-//      getCookingStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       getCookingStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
       view.trailingAnchor.constraint(equalToSystemSpacingAfter: getCookingStack.trailingAnchor, multiplier: 2),
       getCookingStack.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2)

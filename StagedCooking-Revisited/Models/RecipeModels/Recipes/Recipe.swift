@@ -36,8 +36,8 @@ struct Recipe: Decodable, Identifiable, Hashable {
   var dishTypes: [String]?
   var extendedIngredients: [ExtendedIngredient]?
   var summary: String?
-////  var winePairing: WinePairing?
-//
+//  var winePairing: WinePairing?
+
   static func < (lhs: Self, rhs: Self) -> Bool {
     var result = false
     if let leftTitle = lhs.title {

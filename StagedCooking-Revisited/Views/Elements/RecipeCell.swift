@@ -26,7 +26,7 @@ final class RecipeCell: UICollectionViewCell {
   let labelBackground: UIView = {
     let labelBackground = UIView()
     labelBackground.translatesAutoresizingMaskIntoConstraints = false
-    labelBackground.backgroundColor = UIColor(named: "LabelBackground")
+    labelBackground.backgroundColor = UIColor(named: "SC-Primary")
     labelBackground.layer.zPosition = 10
     return labelBackground
   }()
@@ -35,6 +35,7 @@ final class RecipeCell: UICollectionViewCell {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.font = .preferredFont(forTextStyle: .title3)
+    label.textColor = UIColor(named: "SC-Primary-Reversed")
     label.textAlignment = .natural
     label.adjustsFontSizeToFitWidth = true
     label.layer.zPosition = 20

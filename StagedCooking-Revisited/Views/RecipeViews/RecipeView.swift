@@ -18,7 +18,6 @@ class RecipeView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
     style()
     layout()
   }
@@ -34,7 +33,7 @@ extension RecipeView {
     translatesAutoresizingMaskIntoConstraints = false
     
     image.translatesAutoresizingMaskIntoConstraints = false
-    image.image = UIImage(systemName: "brain") // buggin
+    image.image = UIImage(systemName: "brain") // will show if image is missing
     image.contentMode = .scaleAspectFit
     image.layer.cornerRadius = 8
     image.clipsToBounds = true
@@ -53,20 +52,22 @@ extension RecipeView {
       image.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 8),
     ])
     
+    for i in 0 ..< ingredients.count {
+      let ingredientLine = UILabel()
+      ingredientLine.translatesAutoresizingMaskIntoConstraints = false
+      ingredientLine.textColor = UIColor(named: "SC-Primary-Reversed")
+      ingredientLine.font = .systemFont(ofSize: 24)
+      ingredientLine.numberOfLines = 0
+      ingredientLine.text = ingredients[i].capitalized
+      ingredientsStack.addArrangedSubview(ingredientLine)
+    }
+    
     addSubview(ingredientsStack)
     NSLayoutConstraint.activate([
       ingredientsStack.topAnchor.constraint(equalToSystemSpacingBelow: image.bottomAnchor, multiplier: 2),
       ingredientsStack.trailingAnchor.constraint(equalTo: trailingAnchor),
       ingredientsStack.leadingAnchor.constraint(equalTo: leadingAnchor)
     ])
-    
-    for i in 0 ..< ingredients.count {
-      let ingredientLine = UILabel()
-      ingredientLine.translatesAutoresizingMaskIntoConstraints = false
-      ingredientsStack.addArrangedSubview(ingredientLine)
-      ingredientLine.text = ingredients[i].capitalized
-      ingredientLine.font = .systemFont(ofSize: 24)
-    }
     
   }
 }

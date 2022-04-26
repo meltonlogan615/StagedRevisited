@@ -13,15 +13,12 @@ class CustomTextField: UITextField {
     self.isAccessibilityElement = true
     style()
   }
-  
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
 }
 
 extension CustomTextField {
-  
   func style() {
     translatesAutoresizingMaskIntoConstraints = false
     textAlignment = .center
@@ -32,6 +29,5 @@ extension CustomTextField {
     layer.borderColor = UIColor.secondaryLabel.cgColor
     heightAnchor.constraint(equalToConstant: 32).isActive = true
   }
-  
 }
 

@@ -29,6 +29,8 @@ class RecipeListCollectionView: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = UIColor(named: "SC-Primary")
+    
     loadRecipes(for: searchedRecipe)
     recipeCollection.register(RecipeCell.self, forCellWithReuseIdentifier: "recipeCell")
     recipeCollection.dataSource = self
@@ -70,8 +72,6 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
     if let recipeItems = model.results {
       if let receipeTitle = recipeItems[indexPath.row].title {
         cell.titleLabel.text = receipeTitle
-      } else {
-        print("nah")
       }
       if let recipeImage = recipeItems[indexPath.row].image {
         cell.image.loadImage(url: recipeImage)
@@ -93,7 +93,8 @@ extension RecipeListCollectionView: UICollectionViewDelegate {
     recipeVC.recipeTitle = selectedTitle.capitalized
 
     
-    // TODO: - Bring over and activate UserDefaults (AKA ChefDefault)
+    // MARK: - ChefDefaults Button Actions
+    // TODO: - Once it gets close to release time, bring these back into play
     //    ChefDefault.requestedID = selectedID - Used later along with UserDefaults
     navigationController?.pushViewController(recipeVC, animated: true)
   }
@@ -120,7 +121,7 @@ extension RecipeListCollectionView: UICollectionViewDelegateFlowLayout {
   }
 }
 
-// MARK: - Networking
+// MARK: - Networking, Spoonacular ComplexSearch
 extension RecipeListCollectionView {
   func loadRecipes(for recipe: String) {
     dataprovider.getRecipes(for: recipe) { [weak self] (foodResult: Result<Response, Error>) in

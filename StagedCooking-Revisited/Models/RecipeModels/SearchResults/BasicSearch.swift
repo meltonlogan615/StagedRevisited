@@ -11,7 +11,7 @@ struct BasicSearch: Decodable, Identifiable, Comparable, Hashable {
   var id: Int?
   var title: String?
   var readyInMinutes: Int?
-  var image: String? // just image name & extension
+  var image: String? // just image name & extension, not url as that is below. May be useful as Alt-Text?
   var imageURL: String? // full url
   
   static func < (lhs: Self, rhs: Self) -> Bool {

@@ -13,12 +13,7 @@ class SearchView: UIView {
   let stackView = UIStackView()
   let searchTextField = CustomTextField()
   let searchButton = ActionButton()
-//  let advancedSearchButton = ActionButton()
   let errorLabel = UILabel()
-  
-//  let historyStack = UIStackView()
-//  let searchHistoryButton = UIButton(type: .system)
-//  let viewedHistoryButton = UIButton(type: .system)
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -50,6 +45,8 @@ extension SearchView {
     searchButton.translatesAutoresizingMaskIntoConstraints = false
     searchButton.setTitle("Search", for: [])
     
+    // MARK: - ChefDefaults Buttons
+    // TODO: - Once it gets close to release time, bring these back into play
 //    advancedSearchButton.translatesAutoresizingMaskIntoConstraints = false
 //    advancedSearchButton.setTitle("Advanced Search", for: [])
     
@@ -73,8 +70,11 @@ extension SearchView {
   func layout() {
     stackView.addArrangedSubview(searchTextField)
     stackView.addArrangedSubview(searchButton)
-//    stackView.addArrangedSubview(advancedSearchButton)
     
+    // MARK: - ChefDefaults Added to view
+    // TODO: - Once it gets close to release time, bring these back into play
+    // TODO: - Will also neewd to apply constraints
+//    stackView.addArrangedSubview(advancedSearchButton)
 //    historyStack.addArrangedSubview(searchHistoryButton)
 //    historyStack.addArrangedSubview(viewedHistoryButton)
 //    stackView.addArrangedSubview(historyStack)

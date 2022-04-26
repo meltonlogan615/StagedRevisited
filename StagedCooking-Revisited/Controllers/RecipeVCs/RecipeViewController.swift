@@ -15,23 +15,26 @@ class RecipeViewController: UIViewController {
   var steps = [Step]()
   var cards = [Card]()
   
-  // View Elements
+// MARK: - View Elements
+//  Setting up ScrollView
   let scrollView = UIScrollView()
   let recipeView = UIView()
   var recipeStack = UIStackView()
   
+//  Recipe Images
   var recipeImageView = UIImageView()
   var recipeImage = String()
   var recipeImageSize = CGFloat()
   
+// Recipe Labels
   let recipeTitleLabel = UILabel()
   var recipeTitle = String()
   var summaryLabel = UILabel()
   
-  var startCookingButton = UIButton()
+  var startCookingButton = ActionButton()
+  /* Still not completely satisfied with the placement of this button, but not 100% on what to do to move it forward */
   
-
-  
+  // MARK: - VC Data
   // Instructions
   var instructions = Instructions()
   var instructionsList = [String]()
@@ -204,16 +207,14 @@ extension RecipeViewController {
       }
     }
   }
-  // END of Extension
-}
+} // END of Extension
 
 
 // MARK: - Building Cards for StagedCards
 extension RecipeViewController: CardBuilder {
   func buildCards(ingredients: [String], instructionsDictionary: [Int: String], ingredientDictionary: [Int: [String]]) -> [Card]{
-//    print(ingredientDictionary)
-//    print(instructionsDictionary)
     var cards = [Card]()
+    // Sort Dictionaries bu their IDs
     let sortedInstructions = instructionsDictionary.sorted(by: { $0.key < $1.key } )
     let sortedIngredients = ingredientDictionary.sorted(by: { $0.key < $1.key } )
     var cabinet = ingredients // need mutable [String]
@@ -244,17 +245,19 @@ extension RecipeViewController: CardBuilder {
               }
               
             }
-          }          
+          }
+          //  Build the cards from the parameters passed in
           let card = Card(id: cardNumber, ingredients: mixingBowl, instructions: instructionsValue)
           cards.append(card)
         }
       }
     }
-    cards = cards.sorted()
-    return cards
+//    cards = cards.sorted() // sorts by id, aka card number, aka step number
+    return cards.sorted()  // sorts by id, aka card number, aka step number
   }
 }
 
+// MARK: - setProperties Method, receives data, unwraps and sends to the view to display
 extension RecipeViewController {
   func setProperties(for selectedRecipe: Recipe) {
     self.recipe = selectedRecipe
@@ -263,9 +266,9 @@ extension RecipeViewController {
     self.recipeTitle = title
     
     guard let image = selectedRecipe.image else { return }
-//    self.recipeImage = image
     self.recipeImageView.loadImage(url: image)
     
+// Removes the html tags from the recipe summary and returns a regular string rather than previous attempts that we using attributed strings for html
     guard let summery = self.recipe.summary else { return }
     let formattedSummery = summery.replacingOccurrences(of: "<[^>]+>", with: " ", options: .regularExpression, range: nil)
     self.summaryLabel.text = formattedSummery
@@ -280,7 +283,6 @@ extension RecipeViewController {
 
 extension RecipeViewController {
   @objc func startCookingButtonTapped(_ sender: UIButton) {
-    print("tapped")
     let stagesVC = StagedCardContainerViewController()
     let cards = buildCards(ingredients: ingredientList, instructionsDictionary: stepInstructions, ingredientDictionary: stepIngredients)
     stagesVC.recipe = recipe

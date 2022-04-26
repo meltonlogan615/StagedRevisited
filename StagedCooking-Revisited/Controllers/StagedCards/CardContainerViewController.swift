@@ -14,19 +14,22 @@ protocol CardBuilder: AnyObject {
 }
 
 class StagedCardContainerViewController: UIViewController {
-  let getStarted = GetCookingViewController()
-  var cards = [Card]()
-  var recipe = Recipe()
   
+  // MARK: - PageViewController and Associates
   let pageViewController: UIPageViewController
-  var cardVCs = [UIViewController]()
-  var currentVC: UIViewController
+  
+  let getStarted = GetCookingViewController() //  Intro View
+  var cardVCs = [UIViewController]() // All Recipe Step Views
+  var currentVC: UIViewController // Recipe StepView
+  
+  var cards = [Card]() //
+  var recipe = Recipe()
   
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     cardVCs.append(getStarted)
-    currentVC = cardVCs.first!
+    currentVC = cardVCs.first! // will always hold at least 1 card
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
   }
   
@@ -36,7 +39,7 @@ class StagedCardContainerViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .orange
+    view.backgroundColor = UIColor(named: "AccentColor")
     getStarted.recipeLabel.text = recipe.title ?? ""
     getStarted.noOfSteps = cards.count
     getStarted.totalTime = recipe.readyInMinutes ?? 0
@@ -74,11 +77,11 @@ extension StagedCardContainerViewController {
   }
 }
 
+// MARK: - IntroView Properties being set
 extension StagedCardContainerViewController {
   func setProperties() {
     guard let title = recipe.title else { return }
     getStarted.recipeLabel.text = title
-    
     getStarted.noOfSteps = cards.count
     
     guard let time = recipe.readyInMinutes else { return }
