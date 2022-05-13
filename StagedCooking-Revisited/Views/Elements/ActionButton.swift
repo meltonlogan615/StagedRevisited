@@ -12,8 +12,21 @@ import UIKit
 class ActionButton: UIButton {
   override init(frame: CGRect) {
     super.init(frame: frame)
+    
+    translatesAutoresizingMaskIntoConstraints = false
     self.isAccessibilityElement = true
-    style()
+    
+    var config = UIButton.Configuration.filled()
+    config.buttonSize = .medium
+    config.imagePadding = 12
+    config.baseBackgroundColor = UIColor(named: "AccentColor")
+    config.baseForegroundColor = UIColor(named: "SC-Primary")
+    config.titleAlignment = .center
+    config.cornerStyle = .fixed
+    configuration = config
+    
+    titleLabel?.font = .systemFont(ofSize: 18)
+    heightAnchor.constraint(equalToConstant: 48).isActive = true
   }
   
   required init?(coder: NSCoder) {
@@ -21,15 +34,3 @@ class ActionButton: UIButton {
   }
 }
 
-extension ActionButton {
-  func style() {
-    translatesAutoresizingMaskIntoConstraints = false
-    backgroundColor = UIColor.link
-    tintColor = UIColor.white
-    configuration = .borderedTinted()
-    configuration?.buttonSize = .medium
-    configuration?.imagePadding = 8
-    layer.cornerRadius = 8
-    clipsToBounds = true
-  }
-}

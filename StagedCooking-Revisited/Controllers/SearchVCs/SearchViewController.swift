@@ -30,6 +30,7 @@ class SearchViewController: UIViewController {
   
   override func viewDidDisappear(_ animated: Bool) {
     searchView.searchTextField.text = ""
+    searchView.searchTextField.becomeFirstResponder()
     searchView.errorLabel.isHidden = true
   }
 }
@@ -40,23 +41,23 @@ extension SearchViewController {
     imageView.image = UIImage(systemName: "fork.knife.circle")
     imageView.contentMode = .scaleAspectFit
     searchView.translatesAutoresizingMaskIntoConstraints = false
-    
   }
   
   private func layout() {
     view.addSubview(imageView)
     NSLayoutConstraint.activate([
-      imageView.heightAnchor.constraint(equalToConstant: 200),
-      imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 10),
+      imageView.heightAnchor.constraint(equalToConstant: 175),
+      imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 8),
       imageView.widthAnchor.constraint(equalTo: view.widthAnchor)
     ])
     
     view.addSubview(searchView)
     NSLayoutConstraint.activate([
-      searchView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 10),
-      view.trailingAnchor.constraint(equalToSystemSpacingAfter: searchView.trailingAnchor, multiplier: 2),
-      searchView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+//      searchView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 10),
+      view.trailingAnchor.constraint(equalToSystemSpacingAfter: searchView.trailingAnchor, multiplier: 4),
+      searchView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
       searchView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      searchView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
     ])
   }
 }

@@ -5,6 +5,13 @@
 //  Created by Logan Melton on 4/3/22.
 //
 
+// MARK: - Notes From Daniel:
+// Ability to add filters
+// Add Time to Cook Label
+// Add Difficulty Level Label
+// If image is missing, remove from list
+// Format Title Labels
+
 import Foundation
 import UIKit
 
@@ -71,7 +78,7 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCell
     if let recipeItems = model.results {
       if let receipeTitle = recipeItems[indexPath.row].title {
-        cell.titleLabel.text = receipeTitle
+        cell.titleLabel.text = receipeTitle.capitalized
       }
       if let recipeImage = recipeItems[indexPath.row].image {
         cell.image.loadImage(url: recipeImage)
@@ -86,7 +93,7 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
 // MARK: - CollectionView - Delegate
 extension RecipeListCollectionView: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let recipeVC = RecipeViewController()
+    let recipeVC = NewRecipeViewController()
     guard let selectedID = model.results?[indexPath.row].id else { return }
     guard let selectedTitle = model.results?[indexPath.row].title else { return }
     recipeVC.recipeID = selectedID

@@ -5,6 +5,12 @@
 //  Created by Logan Melton on 4/3/22.
 //
 
+// MARK: - Notes From Daniel:
+// Remove Summary, and embed into modal onTap
+// Option to see: Allergens, Difficulty, Prep-Time, Servings
+// All as disclosures
+
+
 import Foundation
 import UIKit
 
@@ -58,7 +64,10 @@ class RecipeViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    print(recipeID)
     recipeImageSize = (view.frame.size.height / 5)
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Start Cookin'", style: .plain, target: self, action: #selector(startCookingButtonTapped))
+
   }
 }
 
@@ -287,6 +296,7 @@ extension RecipeViewController {
     let cards = buildCards(ingredients: ingredientList, instructionsDictionary: stepInstructions, ingredientDictionary: stepIngredients)
     stagesVC.recipe = recipe
     stagesVC.cards = cards
+    stagesVC.ingredientList = self.ingredientList
     navigationController?.pushViewController(stagesVC, animated: true)
   }
 }

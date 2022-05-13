@@ -39,6 +39,7 @@ final class RecipeCell: UICollectionViewCell {
     label.textAlignment = .natural
     label.adjustsFontSizeToFitWidth = true
     label.layer.zPosition = 20
+    label.numberOfLines = 0
     label.allowsDefaultTighteningForTruncation = true
     return label
   }()
@@ -70,7 +71,6 @@ extension RecipeCell {
       image.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
     ])
     
-    
     NSLayoutConstraint.activate([
       contentView.bottomAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 1),
       titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 1)
@@ -81,6 +81,7 @@ extension RecipeCell {
       labelBackground.widthAnchor.constraint(equalTo: image.widthAnchor),
       labelBackground.heightAnchor.constraint(equalTo: titleLabel.heightAnchor, multiplier: 1.5)
     ])
+    
     
   }
 }

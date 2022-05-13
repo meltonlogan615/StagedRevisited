@@ -5,6 +5,8 @@
 //  Created by Logan Melton on 4/3/22.
 //
 
+
+
 import Foundation
 import UIKit
 
@@ -34,7 +36,7 @@ extension RecipeView {
     
     image.translatesAutoresizingMaskIntoConstraints = false
     image.image = UIImage(systemName: "brain") // will show if image is missing
-    image.contentMode = .scaleAspectFit
+    image.contentMode = .scaleAspectFill
     image.layer.cornerRadius = 8
     image.clipsToBounds = true
     

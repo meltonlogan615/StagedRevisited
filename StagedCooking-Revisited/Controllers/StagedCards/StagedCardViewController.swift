@@ -125,7 +125,7 @@ extension StagedCardViewController {
       }
     }
     
-    view.addSubview(cardStackView)
+    stepView.addSubview(cardStackView)
     NSLayoutConstraint.activate([
       cardStackView.topAnchor.constraint(equalToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 2),
       stepView.trailingAnchor.constraint(equalToSystemSpacingAfter: cardStackView.trailingAnchor, multiplier: 2),

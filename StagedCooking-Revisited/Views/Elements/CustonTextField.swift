@@ -21,13 +21,14 @@ class CustomTextField: UITextField {
 extension CustomTextField {
   func style() {
     translatesAutoresizingMaskIntoConstraints = false
+    becomeFirstResponder()
     textAlignment = .center
     layer.cornerRadius = 8
     clipsToBounds = true
     backgroundColor = .secondarySystemBackground
     layer.borderWidth = 1
     layer.borderColor = UIColor.secondaryLabel.cgColor
-    heightAnchor.constraint(equalToConstant: 32).isActive = true
+    heightAnchor.constraint(equalToConstant: 48).isActive = true
   }
 }
 

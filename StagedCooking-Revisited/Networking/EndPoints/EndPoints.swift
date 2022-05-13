@@ -20,7 +20,7 @@ extension EndPoints {
   var endpointURL: URL {
     guard let query = query else { fatalError("Endpoint URL Failed") }
     let formattedQuery = query.replacingOccurrences(of: " ", with: "%20", options: .regularExpression, range: nil)
-    let completedURL = URL(string: "\(baseURL)\(searchType)?apiKey=\(apiKey)&query=\(formattedQuery)&number=900&instructionsRequired=true")
+    let completedURL = URL(string: "\(baseURL)\(searchType)?apiKey=\(apiKey)&query=\(formattedQuery)&number=1&instructionsRequired=true&addRecipeNutrition=true")
     guard let url = completedURL else {
       preconditionFailure("Invalid URL: \(String(describing: completedURL))")
     }
@@ -32,7 +32,7 @@ extension EndPoints {
 extension EndPoints {
   var endpointForID: URL {
     guard let recipeID = recipeID else { fatalError("Endpoint for ID Failed") }
-    let idURL = URL(string: "\(baseURL)\(recipeID)/information?apiKey=\(apiKey)&includeNutrition=false")
+    let idURL = URL(string: "\(baseURL)\(recipeID)/information?apiKey=\(apiKey)&includeNutrition=true")
     guard let idURL = idURL else {
       preconditionFailure("Invalid URL: \(String(describing: idURL))")
     }

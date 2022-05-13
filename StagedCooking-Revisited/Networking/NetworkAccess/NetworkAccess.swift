@@ -13,7 +13,6 @@ enum NetworkError: Error {
   case responseError
   case invalidData
 }
-
 // allows for the use of enum values in completion handlers
 typealias NetworkCompletion = (Result<Data, NetworkError>) -> Void
 
@@ -29,6 +28,7 @@ struct NetworkAccess {
   
   func fetchData(with completion: @escaping NetworkCompletion) {
     let task = session.dataTask(with: url) { (data, response, error) in
+      
       // if error is received, will return a networkError
       guard error == nil else {
         completion(.failure(.networkError))
@@ -51,5 +51,5 @@ struct NetworkAccess {
     }
     task.resume()
   }
+  
 }
-

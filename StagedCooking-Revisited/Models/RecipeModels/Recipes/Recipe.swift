@@ -7,44 +7,55 @@
 
 import Foundation
 
-struct Recipe: Decodable, Identifiable, Hashable {
+struct Recipe: Decodable, Identifiable {
+  
+  // Basics
   var id: Int?
   var title: String?
   var image: String?
   var imageType: String?
+  var instructions: String?
+
+  var extendedIngredients: [ExtendedIngredient]?
+  
+  var summary: String?
+  
+//  RecipeModal Health Values
+  var dishTypes: [String]?
+  var cuisines: [String]?
   var servings: Int?
   var readyInMinutes: Int?
-  var license, sourceName: String?
-  var sourceURL: String?
-  var spoonacularSourceURL: String?
-  var aggregateLikes, healthScore, spoonacularScore: Int?
-  var pricePerServing: Double?
-  //    var analyzedInstructions: [JSONAnyQ]?
+  var veryPopular: Bool?
+  var sustainable: Bool?
   var cheap: Bool?
-  var creditsText: String?
-  //    var cuisines: [JSONAnyQ]?
-  var dairyFree: Bool?
-  //  var diets: [JSONAnyQ]?
-  var gaps: String?
-  var glutenFree: Bool?
-  var instructions: String?
-  var ketogenic, lowFodmap: Bool?
-    //    var occasions: [JSONAnyQ]?
-  var sustainable, vegan, vegetarian, veryHealthy: Bool?
-  var veryPopular, whole30: Bool?
+  var pricePerServing: Double?
+  
+//  RecipeModal Health Values
+  var nutrition: Nutrition?
+  var veryHealthy: Bool?
+  var healthScore: Int?
   var weightWatcherSmartPoints: Int?
-  var dishTypes: [String]?
-  var extendedIngredients: [ExtendedIngredient]?
-  var summary: String?
-//  var winePairing: WinePairing?
+  var whole30: Bool?
 
-  static func < (lhs: Self, rhs: Self) -> Bool {
-    var result = false
-    if let leftTitle = lhs.title {
-      if let rightTitle = rhs.title {
-        result = leftTitle < rightTitle
-      }
-    }
-    return result
-  }
+  // Allergens Missing??
+//  var allergens: [String]?
+  var diets: [String]? // May need to be updated to dedicated type
+  var vegan: Bool?
+  var vegetarian: Bool?
+  var dairyFree: Bool?
+  var glutenFree: Bool?
+  var ketogenic: Bool?
+  var lowFodmap: Bool?
+  
+  //  Unused
+//  var license, sourceName: String?
+//  var sourceURL: String?
+//  var spoonacularSourceURL: String?
+//  var aggregateLikes: Int?
+//  var spoonacularScore: Int?
+  //    var analyzedInstructions: [JSONAnyQ]?
+//  var creditsText: String?
+//  var gaps: String?
+    //    var occasions: [JSONAnyQ]?
+//  var winePairing: WinePairing?
 }

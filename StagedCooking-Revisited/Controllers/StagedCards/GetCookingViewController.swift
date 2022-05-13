@@ -28,8 +28,6 @@ class GetCookingViewController: UIViewController {
     style()
     layout()
   }
-  
-  
 }
 
 extension GetCookingViewController {

@@ -41,6 +41,7 @@ extension SearchView {
     
     searchTextField.translatesAutoresizingMaskIntoConstraints = false
     searchTextField.placeholder = "Search"
+    searchTextField.font = .systemFont(ofSize: 16, weight: .semibold)
     
     searchButton.translatesAutoresizingMaskIntoConstraints = false
     searchButton.setTitle("Search", for: [])

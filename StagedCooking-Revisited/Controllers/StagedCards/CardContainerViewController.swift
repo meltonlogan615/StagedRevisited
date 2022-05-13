@@ -19,16 +19,20 @@ class StagedCardContainerViewController: UIViewController {
   let pageViewController: UIPageViewController
   
   let getStarted = GetCookingViewController() //  Intro View
+  let listView = IngredientListViewController()
   var cardVCs = [UIViewController]() // All Recipe Step Views
   var currentVC: UIViewController // Recipe StepView
   
   var cards = [Card]() //
   var recipe = Recipe()
+  var ingredientList = [String]()
+  
   
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     cardVCs.append(getStarted)
+    cardVCs.append(listView)
     currentVC = cardVCs.first! // will always hold at least 1 card
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
   }
@@ -43,8 +47,11 @@ class StagedCardContainerViewController: UIViewController {
     getStarted.recipeLabel.text = recipe.title ?? ""
     getStarted.noOfSteps = cards.count
     getStarted.totalTime = recipe.readyInMinutes ?? 0
+    listView.recipeName = recipe.title ?? ""
+    listView.ingredients = ingredientList
     setUp()
   }
+
 }
 
 // MARK: - Setting Up/Styling View and LifeCylce
