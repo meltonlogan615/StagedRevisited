@@ -1,13 +1,13 @@
 #  Flow & Architecture
 
-## Flow
+<h2>Flow<h2>
 
-### Frontend
-SearchViewController (`~/Controllers/SearchVCs/SearchViewController`)
-            |---> Loads SearchView (`~/Views/SearchViews/SearchView`)
-                  |---> UITextField Recieves Input ---|
+<h3>Frontend<h3>
+SearchViewController (`~/Controllers/SearchVCs/SearchViewController`)<br>
+            |---> Loads SearchView (`~/Views/SearchViews/SearchView`)<br>
+                  |---> UITextField Recieves Input ---|<br>
                                                       |
-      |------------ SearchButtonTapped ---------------|
+      |------------ SearchButtonTapped ---------------|<br>
       |
       |---> If UITexField is Empty, display error message
       |
@@ -22,38 +22,38 @@ SearchViewController (`~/Controllers/SearchVCs/SearchViewController`)
             |     |---> None
             |
             |---> Methods That Run on viewWillAppear
-            |     |---> loadRecipeByID(for: recipeID)   (local method)
-            |     |---> getInstructions(for: recipeID)  (local method)
+            |     |---> loadRecipeByID(for: `recipeID`)   (local method)
+            |     |---> getInstructions(for: `recipeID`)  (local method)
             |
             |---> Loads RecipeView
             |     |
             |     |---> General Button: 
             |     |     |---> Loads GeneralModal (`~/Views/Modals/GeneralModal`)
             |     |     |---> Displays Basic Info, i.e. Time To Make, # of Servings, etc.
-            |     |     |---> Data populated from method generateGeneralInfo(for selectedRecipe: Recipe) (`~/Controllers/VCMethods/DataGeneration/GeneralInfo`) *Extension of RecipeViewController*
+            |     |     |---> Data populated from method generateGeneralInfo(for selectedRecipe: `Recipe`) (`~/Controllers/VCMethods/DataGeneration/GeneralInfo`) *Extension of RecipeViewController*
             |     |
             |     |---> Ingredients Button:
             |     |     |---> Loads IngredientsModal (`~/Views/Modals/IngredientsModal`)
             |     |     |---> Displays all Ingredients & Units of Measure
-            |     |     |---> Data populated from method generateIngredientsList(for selectedRecipe: Recipe) (`~/Controllers/VCMethods/DataGeneration/GenerateIngredientsList`) *Extension of RecipeViewController*
+            |     |     |---> Data populated from method generateIngredientsList(for selectedRecipe: `Recipe`) (`~/Controllers/VCMethods/DataGeneration/GenerateIngredientsList`) *Extension of RecipeViewController*
             |     |
             |     |---> Summery Button:
             |     |     |---> Loads SummaryModal (~/Views/Modals/SummaryModal)
             |     |     |---> Displays Summary of Recipe from API
-            |     |     |---> Data populated from method generateSummary(for selectedRecipe: Recipe) (`~/Controllers/VCMethods/DataGeneration/GenerateSummary`) *Extension of RecipeViewController*
+            |     |     |---> Data populated from method generateSummary(for selectedRecipe: `Recipe`) (`~/Controllers/VCMethods/DataGeneration/GenerateSummary`) *Extension of RecipeViewController*
             |     |
             |     |---> Nutrition Button:
             |     |     |---> Loads SummaryModal (`~/Views/Modals/MacrosModal`)
             |     |     |---> Displays Nutrition Information, i.e. calories, iron, vitamins, etc
-            |     |     |---> Data populated from method generateDietsInfo(for selectedRecipe: Recipe) (`~/Controllers/VCMethods/DataGeneration/GenerateMacros`) *Extension of RecipeViewController*
+            |     |     |---> Data populated from method generateDietsInfo(for selectedRecipe: `Recipe`) (`~/Controllers/VCMethods/DataGeneration/GenerateMacros`) *Extension of RecipeViewController*
             |     |
             |     |---> Diets Button:
             |     |     |---> Loads SummaryModal (~/Views/Modals/DietsModal)
             |     |     |---> Displays Diets Information, i.e. vegan, gluten free, keto, etc
-            |     |     |---> Data populated from method generateMacrosModel(for selectedRecipe: Recipe) (`~/Controllers/VCMethods/DataGeneration/GenerateDietsInfo`) *Extension of RecipeViewController*
+            |     |     |---> Data populated from method generateMacrosModel(for selectedRecipe: `Recipe`) (`~/Controllers/VCMethods/DataGeneration/GenerateDietsInfo`) *Extension of RecipeViewController*
             |     |
             |     |---> Start Cooking Button:
-            |     |     |---> Loads StagedCardContainerViewController (~/Controllers/StagedCards/CardContainerViewController)
+            |     |     |---> Loads StagedCardContainerViewController (`~/Controllers/StagedCards/CardContainerViewController`)
             |     |     |---> Calls Method buildCards(ingredients: `[String]`, instructionsDictionary: `[Int: String]`, ingredientDictionary: `[Int: [String]]`) -> `[Card]` (`~/Controllers/VCMethods/CardRelated/CardBuilder`)
 
 
