@@ -1,5 +1,5 @@
 //
-//  NewRecipeView.swift
+//  RecipeView.swift
 //  StagedCooking-Revisited
 //
 //  Created by Logan Melton on 5/3/22.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class NewRecipeView: UIView {
+class RecipeView: UIView {
   
   var stackView = UIStackView()
   var mainImage = UIImageView()
@@ -36,7 +36,7 @@ class NewRecipeView: UIView {
 }
 
 // MARK: - Styling and Layout
-extension NewRecipeView {
+extension RecipeView {
   
   func style() {
     translatesAutoresizingMaskIntoConstraints = false

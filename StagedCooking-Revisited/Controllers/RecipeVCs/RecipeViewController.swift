@@ -10,7 +10,7 @@ import UIKit
 class RecipeViewController: UIViewController {
   
   let dataprovider = DataProvider()
-  let recipeView = NewRecipeView()
+  let recipeView = RecipeView()
   
   // Recipe
   var recipe = Recipe()
