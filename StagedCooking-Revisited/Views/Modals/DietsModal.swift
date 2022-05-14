@@ -94,16 +94,3 @@ extension DietsModal {
   }
 }
 
-/*
- var dietsLabel: diets,
- var whole30Label: whole30,
- var veganLabel: vegan,
- var vegetarianLabel: vegetarian,
- var dairyFreeLabel: dairyFree,
- var glutenFreeLabel: glutenFree,
- var ketoLabel: keto,
- var lowFodmapLabel: lowFodmap,
- var veryHealthyLabel: veryHealthy,
- var healthScoreLabel: healthScore,
- var wwSmartPointsLabel: wwSmartPoints
- */

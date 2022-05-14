@@ -9,6 +9,9 @@ import Foundation
 
 import UIKit
 
+// Acts as a holder for the StagedCardViewControllers
+
+
 protocol CardBuilder: AnyObject {
   func buildCards(ingredients: [String], instructionsDictionary: [Int: String], ingredientDictionary: [Int: [String]]) -> [Card]
 }

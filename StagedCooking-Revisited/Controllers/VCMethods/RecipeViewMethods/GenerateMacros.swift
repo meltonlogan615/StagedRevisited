@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension NewRecipeViewController {
+extension RecipeViewController {
   func generateMacrosModel(for selectedRecipe: Recipe) {
     guard let nutrition = selectedRecipe.nutrition as Nutrition? else { return }
     guard let nutrients = nutrition.nutrients as [Flavonoid]? else { return }

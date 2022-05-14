@@ -1,5 +1,5 @@
 //
-//  NewRecipeViewController.swift
+//  RecipeViewController.swift
 //  StagedCooking-Revisited
 //
 //  Created by Logan Melton on 5/3/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewRecipeViewController: UIViewController {
+class RecipeViewController: UIViewController {
   
   let dataprovider = DataProvider()
   let recipeView = NewRecipeView()
@@ -59,7 +59,7 @@ class NewRecipeViewController: UIViewController {
 }
 
 // MARK: - Button Actions
-extension NewRecipeViewController: ModalDataSource {
+extension RecipeViewController: ModalDataSource {
   @objc func showModal(_ sender: UIButton) {
     guard let senderTitle = sender.currentTitle else { return }
     let modal = ModalViewController()
@@ -115,7 +115,7 @@ extension NewRecipeViewController: ModalDataSource {
 }
 
 // MARK: - Style & Layout
-extension NewRecipeViewController {
+extension RecipeViewController {
   func style() {
     recipeView.translatesAutoresizingMaskIntoConstraints = false
     recipeView.titleLabel.text = self.recipeTitle
@@ -149,7 +149,7 @@ extension NewRecipeViewController {
 }
 
 // MARK: - loadRecipe Method - Get Recipe Information and create an array from Recipe.extendedIngrediets property
-extension NewRecipeViewController: RecipeByID {
+extension RecipeViewController: RecipeByID {
   func loadRecipeByID(for selectedRecipe: Int) {
     dataprovider.getRecipeByID(for: selectedRecipe) { [weak self] (foodResult: Result<Recipe, Error>) in
       guard let self = self else { return }
@@ -167,7 +167,7 @@ extension NewRecipeViewController: RecipeByID {
 } // END of Extension
 
 // MARK: - setProperties Method, receives data, unwraps and sends to the view to display
-extension NewRecipeViewController {
+extension RecipeViewController {
   func setProperties(for selectedRecipe: Recipe) {
     self.recipe = selectedRecipe
     guard let title = selectedRecipe.title else { return }

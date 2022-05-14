@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension NewRecipeViewController {
+extension RecipeViewController {
   func generateIngredientsList(for selectedRecipe: Recipe) {
     guard let extendedIngredients = selectedRecipe.extendedIngredients as [ExtendedIngredient]? else { return }
     for i in 0 ..< extendedIngredients.count {

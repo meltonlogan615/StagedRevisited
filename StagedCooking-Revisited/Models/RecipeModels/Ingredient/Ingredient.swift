@@ -12,7 +12,6 @@ struct Ingredient: Codable, Identifiable, Comparable, Hashable {
   var aisle: String?
   var image: String?
   var name: String?
-  //  var amount: [Units]?
   var originalString: String?
   var metaInformation: [String]?
   

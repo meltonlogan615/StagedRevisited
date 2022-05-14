@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 // MARK: - Build Cards
-extension NewRecipeViewController: CardBuilder {
+extension RecipeViewController: CardBuilder {
   func buildCards(ingredients: [String], instructionsDictionary: [Int: String], ingredientDictionary: [Int: [String]]) -> [Card]{
     var cards = [Card]()
     // Sort Dictionaries bu their IDs

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 // MARK: - Get the instructions and create a dictionary [Step.Number(Int): Step.StepInstructions(String)]
-extension NewRecipeViewController {
+extension RecipeViewController {
   func getInstructions(for selectedsRecipe: Int) {
     dataprovider.getInstructionsByID(for: selectedsRecipe) { [weak self] (analyzedInstructions: Result<[Instructions], Error>) in
       guard let self = self else { return }

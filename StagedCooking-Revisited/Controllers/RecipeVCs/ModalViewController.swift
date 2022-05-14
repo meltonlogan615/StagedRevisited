@@ -5,6 +5,8 @@
 //  Created by Logan Melton on 5/3/22.
 //
 
+// Acts as a holder for the Modal Views
+
 import UIKit
 
 protocol ModalDataSource: AnyObject {

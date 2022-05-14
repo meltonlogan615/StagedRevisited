@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension NewRecipeViewController {
+extension RecipeViewController {
   func generateGeneralInfo(for selectedRecipe: Recipe) {
     guard let totalTime = selectedRecipe.readyInMinutes else { return }
     guard let servings = selectedRecipe.servings else { return }

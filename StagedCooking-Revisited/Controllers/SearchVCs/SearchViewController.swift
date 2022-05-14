@@ -53,7 +53,6 @@ extension SearchViewController {
     
     view.addSubview(searchView)
     NSLayoutConstraint.activate([
-//      searchView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 10),
       view.trailingAnchor.constraint(equalToSystemSpacingAfter: searchView.trailingAnchor, multiplier: 4),
       searchView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
       searchView.centerXAnchor.constraint(equalTo: view.centerXAnchor),

@@ -93,7 +93,7 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
 // MARK: - CollectionView - Delegate
 extension RecipeListCollectionView: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let recipeVC = NewRecipeViewController()
+    let recipeVC = RecipeViewController()
     guard let selectedID = model.results?[indexPath.row].id else { return }
     guard let selectedTitle = model.results?[indexPath.row].title else { return }
     recipeVC.recipeID = selectedID
@@ -107,7 +107,7 @@ extension RecipeListCollectionView: UICollectionViewDelegate {
   }
 }
 
-// MARK: - CollectionView - Flow Layout
+// MARK: - CollectionView - Flow Layout & Cell Sizing
 extension RecipeListCollectionView: UICollectionViewDelegateFlowLayout {
   private enum LayoutConstant {
     static let spacing = CGFloat(4)

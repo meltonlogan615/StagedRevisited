@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension NewRecipeViewController {
+extension RecipeViewController {
   func generateDietsInfo(for selectedRecipe: Recipe) {
     var veryHealthySafe = String()
     var dietsSafe = String()

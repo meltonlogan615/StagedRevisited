@@ -35,12 +35,9 @@
 		322199C727FA6BB3003FD4F6 /* ImageURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199C627FA6BB3003FD4F6 /* ImageURLProtocol.swift */; };
 		322199CA27FA6C2F003FD4F6 /* UIImage-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199C927FA6C2F003FD4F6 /* UIImage-Extension.swift */; };
 		322199CC27FA84CD003FD4F6 /* ViewController-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199CB27FA84CD003FD4F6 /* ViewController-Extensions.swift */; };
-		322199CE27FA8A4E003FD4F6 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199CD27FA8A4E003FD4F6 /* RecipeViewController.swift */; };
-		322199D227FA9733003FD4F6 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199D127FA9733003FD4F6 /* RecipeView.swift */; };
 		32441EFB2827711E00DA426F /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32441EFA2827711E00DA426F /* Divider.swift */; };
 		326F9F8B281D099C0086BA53 /* IngredientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */; };
 		326F9F9D282216C60086BA53 /* NewRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F9C282216C60086BA53 /* NewRecipeView.swift */; };
-		326F9F9F282216D80086BA53 /* OldRecipeModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F9E282216D80086BA53 /* OldRecipeModal.swift */; };
 		326F9FA1282223EB0086BA53 /* NewRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9FA0282223EB0086BA53 /* NewRecipeViewController.swift */; };
 		326F9FA32822298F0086BA53 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9FA22822298F0086BA53 /* ModalViewController.swift */; };
 		32761020282A12C7005346D4 /* MacrosModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276101F282A12C7005346D4 /* MacrosModal.swift */; };
@@ -102,13 +99,10 @@
 		322199C627FA6BB3003FD4F6 /* ImageURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageURLProtocol.swift; sourceTree = "<group>"; };
 		322199C927FA6C2F003FD4F6 /* UIImage-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage-Extension.swift"; sourceTree = "<group>"; };
 		322199CB27FA84CD003FD4F6 /* ViewController-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController-Extensions.swift"; sourceTree = "<group>"; };
-		322199CD27FA8A4E003FD4F6 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
-		322199D127FA9733003FD4F6 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		32441EF92827660F00DA426F /* Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Notes.md; sourceTree = "<group>"; };
 		32441EFA2827711E00DA426F /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
 		326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListViewController.swift; sourceTree = "<group>"; };
 		326F9F9C282216C60086BA53 /* NewRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipeView.swift; sourceTree = "<group>"; };
-		326F9F9E282216D80086BA53 /* OldRecipeModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldRecipeModal.swift; sourceTree = "<group>"; };
 		326F9FA0282223EB0086BA53 /* NewRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipeViewController.swift; sourceTree = "<group>"; };
 		326F9FA22822298F0086BA53 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		3276101F282A12C7005346D4 /* MacrosModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosModal.swift; sourceTree = "<group>"; };
@@ -194,7 +188,6 @@
 		3221999427FA5DB9003FD4F6 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
-				32F15C6727FD57B60031A724 /* ChefDefaults */,
 				322199C827FA6C1C003FD4F6 /* Extensions */,
 				322199C527FA6B9B003FD4F6 /* Protocols */,
 				3221998027FA5DB2003FD4F6 /* AppDelegate.swift */,
@@ -284,8 +277,8 @@
 		322199A727FA5F23003FD4F6 /* AppData */ = {
 			isa = PBXGroup;
 			children = (
+				32F15C6727FD57B60031A724 /* ChefDefaults */,
 				32AB724127FFE2CF00AF0E2A /* CardModel.swift */,
-				322199A827FA5F34003FD4F6 /* ChefDefault.swift */,
 			);
 			path = AppData;
 			sourceTree = "<group>";
@@ -372,7 +365,6 @@
 		322199D027FA9715003FD4F6 /* RecipeViews */ = {
 			isa = PBXGroup;
 			children = (
-				322199D127FA9733003FD4F6 /* RecipeView.swift */,
 				326F9F9C282216C60086BA53 /* NewRecipeView.swift */,
 			);
 			path = RecipeViews;
@@ -397,7 +389,6 @@
 		322199D527FA9790003FD4F6 /* RecipeVCs */ = {
 			isa = PBXGroup;
 			children = (
-				322199CD27FA8A4E003FD4F6 /* RecipeViewController.swift */,
 				326F9FA0282223EB0086BA53 /* NewRecipeViewController.swift */,
 				326F9FA22822298F0086BA53 /* ModalViewController.swift */,
 			);
@@ -413,7 +404,6 @@
 				32761021282A12D8005346D4 /* SummaryModal.swift */,
 				3276101F282A12C7005346D4 /* MacrosModal.swift */,
 				3276103C282CB1C6005346D4 /* DietsModal.swift */,
-				326F9F9E282216D80086BA53 /* OldRecipeModal.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -496,6 +486,7 @@
 		32F15C6727FD57B60031A724 /* ChefDefaults */ = {
 			isa = PBXGroup;
 			children = (
+				322199A827FA5F34003FD4F6 /* ChefDefault.swift */,
 				32F15C6827FD58700031A724 /* ChefsList.swift */,
 			);
 			path = ChefDefaults;
@@ -580,7 +571,6 @@
 				326F9FA32822298F0086BA53 /* ModalViewController.swift in Sources */,
 				322199A227FA5EC2003FD4F6 /* JsonParser.swift in Sources */,
 				32761053282CC01B005346D4 /* GetInstructions.swift in Sources */,
-				326F9F9F282216D80086BA53 /* OldRecipeModal.swift in Sources */,
 				32027D50282A03D900F0F167 /* WeightPerServing.swift in Sources */,
 				32AB724227FFE2CF00AF0E2A /* CardModel.swift in Sources */,
 				322199B627FA62C4003FD4F6 /* ExtendedIngredient.swift in Sources */,
@@ -608,7 +598,6 @@
 				322199AC27FA5F75003FD4F6 /* Recipe.swift in Sources */,
 				32761022282A12D8005346D4 /* SummaryModal.swift in Sources */,
 				322199CA27FA6C2F003FD4F6 /* UIImage-Extension.swift in Sources */,
-				322199D227FA9733003FD4F6 /* RecipeView.swift in Sources */,
 				3276104B282CB94D005346D4 /* GenerateSummary.swift in Sources */,
 				32761020282A12C7005346D4 /* MacrosModal.swift in Sources */,
 				32027D4E282A038E00F0F167 /* Flavonoid.swift in Sources */,
@@ -623,7 +612,6 @@
 				322199B827FA6328003FD4F6 /* SearchView.swift in Sources */,
 				3276103D282CB1C6005346D4 /* DietsModal.swift in Sources */,
 				32441EFB2827711E00DA426F /* Divider.swift in Sources */,
-				322199CE27FA8A4E003FD4F6 /* RecipeViewController.swift in Sources */,
 				322199AE27FA5FAA003FD4F6 /* RecipeSummary.swift in Sources */,
 				322199B127FA618A003FD4F6 /* IgnoreFile.swift in Sources */,
 				32AB724C27FFEDCA00AF0E2A /* BasicSearch.swift in Sources */,
