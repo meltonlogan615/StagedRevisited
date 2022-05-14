@@ -3,11 +3,11 @@
 ## Flow
 
 ### Frontend
-SearchViewController (`~/Controllers/SearchVCs/SearchViewController)
-            |---> Loads SearchView (`~/Views/SearchViews/SearchView)
+SearchViewController (`~/Controllers/SearchVCs/SearchViewController`)
+            |---> Loads SearchView (`~/Views/SearchViews/SearchView`)
                   |---> UITextField Recieves Input ---|
                                                       |
-      |------------ SearchButtonTapped <--------------|
+      |------------ SearchButtonTapped ---------------|
       |
       |---> If UITexField is Empty, display error message
       |
