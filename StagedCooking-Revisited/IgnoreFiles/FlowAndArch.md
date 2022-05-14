@@ -3,7 +3,7 @@
 <h2>Flow<h2>
 
 <h3>Frontend<h3>
-SearchViewController (`~/Controllers/SearchVCs/SearchViewController`)<br>
+<p>SearchViewController (<code>~/Controllers/SearchVCs/SearchViewController</code>)<p>
             |---> Loads SearchView (`~/Views/SearchViews/SearchView`)<br>
                   |---> UITextField Recieves Input ---|<br>
                                                       |
