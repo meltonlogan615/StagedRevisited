@@ -26,7 +26,6 @@ class DietsModal: RecipeModal {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    backgroundColor = .red
     style()
     layout()
   }
@@ -71,7 +70,7 @@ extension DietsModal {
     glutenFreeLabel.text = info.glutenFree
     
     ketoLabel.translatesAutoresizingMaskIntoConstraints = false
-    ketoLabel.text = info.glutenFree
+    ketoLabel.text = info.keto
     
     lowFodmapLabel.translatesAutoresizingMaskIntoConstraints = false
     lowFodmapLabel.text = info.lowFodmap

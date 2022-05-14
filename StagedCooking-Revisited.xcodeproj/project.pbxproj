@@ -56,7 +56,7 @@
 		32761047282CB829005346D4 /* GenerateMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32761046282CB829005346D4 /* GenerateMacros.swift */; };
 		32761049282CB8D3005346D4 /* GenerateIngredientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32761048282CB8D3005346D4 /* GenerateIngredientsList.swift */; };
 		3276104B282CB94D005346D4 /* GenerateSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276104A282CB94D005346D4 /* GenerateSummary.swift */; };
-		3276104D282CB9ED005346D4 /* GenerateRestrictions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276104C282CB9ED005346D4 /* GenerateRestrictions.swift */; };
+		3276104D282CB9ED005346D4 /* GenerateDietsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276104C282CB9ED005346D4 /* GenerateDietsInfo.swift */; };
 		3276104F282CBC6B005346D4 /* DietsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276104E282CBC6B005346D4 /* DietsInfo.swift */; };
 		32761051282CBFD6005346D4 /* CardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32761050282CBFD6005346D4 /* CardBuilder.swift */; };
 		32761053282CC01B005346D4 /* GetInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32761052282CC01B005346D4 /* GetInstructions.swift */; };
@@ -124,7 +124,7 @@
 		32761046282CB829005346D4 /* GenerateMacros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMacros.swift; sourceTree = "<group>"; };
 		32761048282CB8D3005346D4 /* GenerateIngredientsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateIngredientsList.swift; sourceTree = "<group>"; };
 		3276104A282CB94D005346D4 /* GenerateSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateSummary.swift; sourceTree = "<group>"; };
-		3276104C282CB9ED005346D4 /* GenerateRestrictions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateRestrictions.swift; sourceTree = "<group>"; };
+		3276104C282CB9ED005346D4 /* GenerateDietsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateDietsInfo.swift; sourceTree = "<group>"; };
 		3276104E282CBC6B005346D4 /* DietsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietsInfo.swift; sourceTree = "<group>"; };
 		32761050282CBFD6005346D4 /* CardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBuilder.swift; sourceTree = "<group>"; };
 		32761052282CC01B005346D4 /* GetInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInstructions.swift; sourceTree = "<group>"; };
@@ -451,7 +451,7 @@
 				32761048282CB8D3005346D4 /* GenerateIngredientsList.swift */,
 				3276104A282CB94D005346D4 /* GenerateSummary.swift */,
 				32761046282CB829005346D4 /* GenerateMacros.swift */,
-				3276104C282CB9ED005346D4 /* GenerateRestrictions.swift */,
+				3276104C282CB9ED005346D4 /* GenerateDietsInfo.swift */,
 			);
 			name = DataGeneration;
 			sourceTree = "<group>";
@@ -591,7 +591,7 @@
 				32D70DC82808BEE1000328B9 /* GetCookingViewController.swift in Sources */,
 				3221998527FA5DB2003FD4F6 /* SearchViewController.swift in Sources */,
 				32A8C3852805A0E40091D785 /* Instructions.swift in Sources */,
-				3276104D282CB9ED005346D4 /* GenerateRestrictions.swift in Sources */,
+				3276104D282CB9ED005346D4 /* GenerateDietsInfo.swift in Sources */,
 				326F9F9D282216C60086BA53 /* NewRecipeView.swift in Sources */,
 				322199BD27FA6517003FD4F6 /* ActionButton.swift in Sources */,
 				32761049282CB8D3005346D4 /* GenerateIngredientsList.swift in Sources */,
@@ -774,6 +774,7 @@
 				INFOPLIST_FILE = "StagedCooking-Revisited/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -801,6 +802,7 @@
 				INFOPLIST_FILE = "StagedCooking-Revisited/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

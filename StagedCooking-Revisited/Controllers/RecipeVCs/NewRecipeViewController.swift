@@ -96,9 +96,7 @@ extension NewRecipeViewController: ModalDataSource {
         modal.labelText = "Diets"
         guard let diets = self.dietInfo else { return }
         let dietsModal = DietsModal(info: diets)
-        print(diets)
         modal.modalView = dietsModal
-        print("click")
         present(modal, animated: true)
 
       default:

@@ -12,7 +12,7 @@ import UIKit
 
 class SummaryModal: RecipeModal {
   
-  var summaryLabel = UILabel()
+  var summaryLabel = ModalLabel()
   var summary = String()
 
   override init(frame: CGRect) {
@@ -24,7 +24,6 @@ class SummaryModal: RecipeModal {
   convenience init(summary: String) {
     self.init()
     self.summary = summary
-//    print(summary)
     styleSummary()
     layoutSummary()
   }
@@ -39,17 +38,16 @@ extension SummaryModal {
     translatesAutoresizingMaskIntoConstraints = false
     
     summaryLabel.translatesAutoresizingMaskIntoConstraints = false
-    summaryLabel.font = .systemFont(ofSize: 18)
     summaryLabel.numberOfLines = 0
     summaryLabel.text = summary
   }
   
   func layoutSummary() {
-    contentView.addSubview(summaryLabel)
-    NSLayoutConstraint.activate([
-      summaryLabel.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 1),
-      summaryLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
-      trailingAnchor.constraint(equalToSystemSpacingAfter: summaryLabel.trailingAnchor, multiplier: 1)
-    ])
+    detailsStack.addArrangedSubview(summaryLabel)
+//    NSLayoutConstraint.activate([
+//      summaryLabel.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 1),
+//      summaryLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 1),
+//      trailingAnchor.constraint(equalToSystemSpacingAfter: summaryLabel.trailingAnchor, multiplier: 1)
+//    ])
   }
 }

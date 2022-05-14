@@ -56,8 +56,8 @@ class RecipeViewController: UIViewController {
   var recipeID = 0
   
   override func viewWillAppear(_ animated: Bool) {
-    loadRecipeByID(for: recipeID) // Gets the Data for the Recipe. Also generates data for ingredientList
-    getInstructions(for: recipeID) // Generates stepIngredients & stepInstructions
+//    loadRecipeByID(for: recipeID) // Gets the Data for the Recipe. Also generates data for ingredientList
+//    getInstructions(for: recipeID) // Generates stepIngredients & stepInstructions
     style()
     layout()
   }

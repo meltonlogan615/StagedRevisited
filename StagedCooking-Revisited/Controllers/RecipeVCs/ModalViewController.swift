@@ -19,30 +19,6 @@ class ModalViewController: UIViewController {
   var modalLabel = UILabel()
   var labelText = String()
   
-//  var dishType = [String]()
-//  var cuisines = [String]()
-//  var servings = Int()
-//  var readyInMinutes = Int()
-//  var veryPopular = Bool()
-//  var sustainable = Bool()
-//  var cheap = Bool()
-//  var pricePerServing = Double()
-
-  var veryHealthy = Bool()
-  var healthScore = Int()
-  var weightwatchersSmartPoints = Int()
-  
-  var allergens = [String]()
-  var diets = [String]()
-  var whole30 = Bool()
-  var vegan = Bool()
-  var vegetarian = Bool()
-  var dairyFree = Bool()
-  var glutenFree = Bool()
-  var ketogenic = Bool()
-  var lowFodmap = Bool()
-  
-
   override func viewWillAppear(_ animated: Bool) {
     style()
     layout()
