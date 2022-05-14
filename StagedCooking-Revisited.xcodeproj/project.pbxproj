@@ -38,7 +38,7 @@
 		32441EFB2827711E00DA426F /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32441EFA2827711E00DA426F /* Divider.swift */; };
 		326F9F8B281D099C0086BA53 /* IngredientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */; };
 		326F9F9D282216C60086BA53 /* NewRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F9C282216C60086BA53 /* NewRecipeView.swift */; };
-		326F9FA1282223EB0086BA53 /* NewRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9FA0282223EB0086BA53 /* NewRecipeViewController.swift */; };
+		326F9FA1282223EB0086BA53 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9FA0282223EB0086BA53 /* RecipeViewController.swift */; };
 		326F9FA32822298F0086BA53 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9FA22822298F0086BA53 /* ModalViewController.swift */; };
 		32761020282A12C7005346D4 /* MacrosModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276101F282A12C7005346D4 /* MacrosModal.swift */; };
 		32761022282A12D8005346D4 /* SummaryModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32761021282A12D8005346D4 /* SummaryModal.swift */; };
@@ -103,7 +103,7 @@
 		32441EFA2827711E00DA426F /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
 		326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListViewController.swift; sourceTree = "<group>"; };
 		326F9F9C282216C60086BA53 /* NewRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipeView.swift; sourceTree = "<group>"; };
-		326F9FA0282223EB0086BA53 /* NewRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipeViewController.swift; sourceTree = "<group>"; };
+		326F9FA0282223EB0086BA53 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		326F9FA22822298F0086BA53 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		3276101F282A12C7005346D4 /* MacrosModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosModal.swift; sourceTree = "<group>"; };
 		32761021282A12D8005346D4 /* SummaryModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryModal.swift; sourceTree = "<group>"; };
@@ -127,6 +127,7 @@
 		32AB724927FFEDA800AF0E2A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		32AB724B27FFEDCA00AF0E2A /* BasicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSearch.swift; sourceTree = "<group>"; };
 		32C99134282EF80800667F65 /* ModalLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalLabel.swift; sourceTree = "<group>"; };
+		32C99139282F84E500667F65 /* FlowAndArch.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = FlowAndArch.md; sourceTree = "<group>"; };
 		32D70DBC28073A80000328B9 /* StagedCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagedCardViewController.swift; sourceTree = "<group>"; };
 		32D70DC32807565B000328B9 /* CardContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContainerViewController.swift; sourceTree = "<group>"; };
 		32D70DC72808BEE1000328B9 /* GetCookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookingViewController.swift; sourceTree = "<group>"; };
@@ -301,6 +302,7 @@
 			children = (
 				322199B027FA618A003FD4F6 /* IgnoreFile.swift */,
 				32441EF92827660F00DA426F /* Notes.md */,
+				32C99139282F84E500667F65 /* FlowAndArch.md */,
 			);
 			path = IgnoreFiles;
 			sourceTree = "<group>";
@@ -389,7 +391,7 @@
 		322199D527FA9790003FD4F6 /* RecipeVCs */ = {
 			isa = PBXGroup;
 			children = (
-				326F9FA0282223EB0086BA53 /* NewRecipeViewController.swift */,
+				326F9FA0282223EB0086BA53 /* RecipeViewController.swift */,
 				326F9FA22822298F0086BA53 /* ModalViewController.swift */,
 			);
 			path = RecipeVCs;
@@ -589,7 +591,7 @@
 				3276102A282AE7FC005346D4 /* MacrosModel.swift in Sources */,
 				3276104F282CBC6B005346D4 /* DietsInfo.swift in Sources */,
 				32D70DC42807565B000328B9 /* CardContainerViewController.swift in Sources */,
-				326F9FA1282223EB0086BA53 /* NewRecipeViewController.swift in Sources */,
+				326F9FA1282223EB0086BA53 /* RecipeViewController.swift in Sources */,
 				32761026282A148D005346D4 /* GeneralModal.swift in Sources */,
 				322199C427FA6A55003FD4F6 /* SearchResult.swift in Sources */,
 				3276102C282B0B4C005346D4 /* RecipeModal.swift in Sources */,
