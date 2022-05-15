@@ -24,7 +24,11 @@ extension RecipeViewController {
     
     let servingsString: String = {
       var string = String()
-      string = "Makes \(servings) servings"
+      if servings == 1 {
+        string = "Makes \(servings) serving"
+      } else {
+        string = "Makes \(servings) servings"
+      }
       return string
     }()
     

@@ -26,7 +26,7 @@ final class RecipeCell: UICollectionViewCell {
   let labelBackground: UIView = {
     let labelBackground = UIView()
     labelBackground.translatesAutoresizingMaskIntoConstraints = false
-    labelBackground.backgroundColor = UIColor(named: "SC-Primary")
+    labelBackground.backgroundColor = UIColor(named: "LabelBackground")
     labelBackground.layer.zPosition = 10
     return labelBackground
   }()
@@ -73,7 +73,8 @@ extension RecipeCell {
     
     NSLayoutConstraint.activate([
       contentView.bottomAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 1),
-      titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 1)
+      titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 1),
+      titleLabel.trailingAnchor.constraint(equalTo: image.trailingAnchor)
     ])
     
     NSLayoutConstraint.activate([

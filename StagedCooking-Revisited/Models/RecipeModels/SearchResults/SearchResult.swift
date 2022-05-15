@@ -13,9 +13,10 @@ struct SearchResult: Decodable, Identifiable, Comparable, Hashable {
   var calories: Int?
   var carbs: String?
   var fat: String?
+  var protein: String?
+  
   var image: String?
   var imageType: String?
-  var protein: String?
   
   static func < (lhs: Self, rhs: Self) -> Bool {
     var result = false

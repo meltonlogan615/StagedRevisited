@@ -28,7 +28,7 @@ class ModalViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = UIColor(named: "SC-Modal")
+//    view.backgroundColor = UIColor(named: "SC-Modal")
     let spaced = [NSAttributedString.Key.kern: 1]
     let spacyString = NSMutableAttributedString(string: labelText.capitalized, attributes: spaced)
     modalLabel.attributedText = spacyString
@@ -37,14 +37,21 @@ class ModalViewController: UIViewController {
 
 extension ModalViewController {
   func style() {
+    let backgroundFilter = UIBlurEffect(style: .dark)
+    let blurredBackground = UIVisualEffectView(effect: backgroundFilter)
+    blurredBackground.frame = CGRect(x: 0, y: 0, width: view.frame.maxX, height: view.frame.maxY)
+    view.addSubview(blurredBackground)
+    
     modalLabel.translatesAutoresizingMaskIntoConstraints = false
     modalLabel.font = .systemFont(ofSize: 36, weight: .semibold)
-    modalLabel.textColor = UIColor(named: "SC-Primary")
+    modalLabel.textColor = .white
     modalLabel.textAlignment = .center
     
     modalView.translatesAutoresizingMaskIntoConstraints = false
     modalView.layer.cornerRadius = 8
     modalView.clipsToBounds = true
+    modalView.layer.borderColor = UIColor(named: "SC-Primary")?.cgColor
+    modalView.layer.borderWidth = 2
     
     closeButton.translatesAutoresizingMaskIntoConstraints = false
     closeButton.setTitle("Close", for: [])
@@ -53,6 +60,7 @@ extension ModalViewController {
   }
   
   func layout() {
+    
     view.addSubview(modalLabel)
     NSLayoutConstraint.activate([
       modalLabel.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 6),

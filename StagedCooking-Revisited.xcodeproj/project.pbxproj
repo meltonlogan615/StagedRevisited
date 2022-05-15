@@ -127,7 +127,7 @@
 		32AB724927FFEDA800AF0E2A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		32AB724B27FFEDCA00AF0E2A /* BasicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSearch.swift; sourceTree = "<group>"; };
 		32C99134282EF80800667F65 /* ModalLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalLabel.swift; sourceTree = "<group>"; };
-		32C99139282F84E500667F65 /* FlowAndArch.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = FlowAndArch.md; sourceTree = "<group>"; };
+		32C99139282F84E500667F65 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		32D70DBC28073A80000328B9 /* StagedCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagedCardViewController.swift; sourceTree = "<group>"; };
 		32D70DC32807565B000328B9 /* CardContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContainerViewController.swift; sourceTree = "<group>"; };
 		32D70DC72808BEE1000328B9 /* GetCookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookingViewController.swift; sourceTree = "<group>"; };
@@ -302,7 +302,7 @@
 			children = (
 				322199B027FA618A003FD4F6 /* IgnoreFile.swift */,
 				32441EF92827660F00DA426F /* Notes.md */,
-				32C99139282F84E500667F65 /* FlowAndArch.md */,
+				32C99139282F84E500667F65 /* README.md */,
 			);
 			path = IgnoreFiles;
 			sourceTree = "<group>";
@@ -757,21 +757,23 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VR7223ZYQY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "StagedCooking-Revisited/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Staged Cooking";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.meltonlogan.StagedCooking-Revisited";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -785,21 +787,23 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VR7223ZYQY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "StagedCooking-Revisited/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Staged Cooking";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.meltonlogan.StagedCooking-Revisited";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
