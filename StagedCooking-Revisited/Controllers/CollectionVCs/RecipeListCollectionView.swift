@@ -48,6 +48,7 @@ class RecipeListCollectionView: UIViewController {
     
     title = searchedRecipe.capitalized
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(dismissView))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filter Results", style: .plain, target: self, action: #selector(filterResults))
     
     style()
     layout()
@@ -169,6 +170,15 @@ extension RecipeListCollectionView {
       nothingAlert.addAction(dismissAction)
       present(nothingAlert, animated: true)
     }
+  }
+}
+
+// MARK: - Filter Results
+extension RecipeListCollectionView {
+  @objc func filterResults() {
+    let filterVC = AdvancedSearchViewController()
+//    show(filterVC, sender: self)
+    present(filterVC, animated: true)
   }
 }
 

@@ -57,6 +57,6 @@ extension IntolerancesViewController {
 
 extension IntolerancesViewController {
   @objc func saveButtonTapped() {
-    
+    self.dismiss(animated: false)
   }
 }

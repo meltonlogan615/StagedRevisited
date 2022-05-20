@@ -42,15 +42,14 @@ extension AdvancedSearchViewController {
   
   func style() {
     advancedCollection.translatesAutoresizingMaskIntoConstraints = false
-
   }
   
   func layout() {
     view.addSubview(advancedCollection)
     NSLayoutConstraint.activate([
       advancedCollection.topAnchor.constraint(equalTo: view.topAnchor),
-      advancedCollection.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-      view.trailingAnchor.constraint(equalToSystemSpacingAfter: advancedCollection.trailingAnchor, multiplier: 2),
+      advancedCollection.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
+      view.trailingAnchor.constraint(equalToSystemSpacingAfter: advancedCollection.trailingAnchor, multiplier: 4),
       advancedCollection.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
     ])
   }
@@ -89,13 +88,30 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
 
 extension AdvancedSearchViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    let recipeVC = RecipeViewController()
-    print("\(indexPath)")
-    
-    // MARK: - ChefDefaults Button Actions
-    // TODO: - Once it gets close to release time, bring these back into play
-    //    ChefDefault.requestedID = selectedID - Used later along with UserDefaults
-//    navigationController?.pushViewController(recipeVC, animated: true)
+    switch indexPath{
+      case [0, 0]:
+        print("Cuisines")
+        let vc = CuisinesViewController()
+        present(vc, animated: true)
+        
+      case [0, 1]:
+        print("Diets")
+
+      case [0, 2]:
+        print("Intolerances")
+        let vc = IntolerancesViewController()
+        present(vc, animated: true)
+
+      case [0, 3]:
+        print("Macros")
+
+      case [0, 4]:
+        print("Meal Types")
+      
+
+      default:
+        break
+    }
   }
 }
 
@@ -113,9 +129,9 @@ extension AdvancedSearchViewController: UICollectionViewDelegateFlowLayout {
   
   func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
     let itemsInRow = 2.0
-    let totalSpacing = CGFloat(1.0 * spacing + (itemsInRow - 1.0) * spacing)
+    let totalSpacing = CGFloat(1.0 * spacing + (itemsInRow - 1) * spacing)
     let finalWidth = (width - totalSpacing) / itemsInRow
-    return finalWidth - 20
+    return finalWidth - 40
   }
 }
 
