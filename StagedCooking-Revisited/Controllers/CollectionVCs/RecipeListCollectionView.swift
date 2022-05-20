@@ -12,6 +12,8 @@
 // If image is missing, remove from list
 // Format Title Labels
 
+// TODO: - Activity Indicator when loading information
+
 import Foundation
 import UIKit
 
@@ -30,13 +32,14 @@ class RecipeListCollectionView: UIViewController {
   private let recipeCollection: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     var recipeCollection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    recipeCollection.backgroundColor = K.primary
     recipeCollection.layer.zPosition = 10
     return recipeCollection
   }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = UIColor(named: "SC-Primary")
+    view.backgroundColor = K.primary
     
     loadRecipes(for: searchedRecipe)
     recipeCollection.register(RecipeCell.self, forCellWithReuseIdentifier: "recipeCell")

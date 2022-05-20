@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct Response: Decodable {
   var results: [SearchResult]?
   var baseUri: String?

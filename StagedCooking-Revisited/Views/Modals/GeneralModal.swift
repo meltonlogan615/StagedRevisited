@@ -8,9 +8,10 @@
 import Foundation
 import UIKit
 
-class GeneralModal: RecipeModal {
+class GeneralModal: UIView {
   
   var generalInfo: GeneralInfo?
+  var generalStac = UIStackView()
   
   var readyInMinutesLabel = ModalLabel()
   var servingsLabel = ModalLabel()
@@ -26,8 +27,6 @@ class GeneralModal: RecipeModal {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    style()
-    layout()
   }
   
   convenience init(info: GeneralInfo) {
@@ -67,11 +66,11 @@ extension GeneralModal {
   }
   
   func layoutGeneralLabels(with info: GeneralInfo) {
-    detailsStack.addArrangedSubview(readyInMinutesLabel)
-    detailsStack.addArrangedSubview(servingsLabel)
-    detailsStack.addArrangedSubview(dishTypeLabel)
-    detailsStack.addArrangedSubview(cuisinesLabel)
-    detailsStack.addArrangedSubview(veryPopularLabel)
-    detailsStack.addArrangedSubview(sustainableLabel)
+    generalStac.addArrangedSubview(readyInMinutesLabel)
+    generalStac.addArrangedSubview(servingsLabel)
+    generalStac.addArrangedSubview(dishTypeLabel)
+    generalStac.addArrangedSubview(cuisinesLabel)
+    generalStac.addArrangedSubview(veryPopularLabel)
+    generalStac.addArrangedSubview(sustainableLabel)
   }
 }

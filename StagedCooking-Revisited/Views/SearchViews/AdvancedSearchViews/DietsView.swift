@@ -1,17 +1,25 @@
 //
-//  ModalLabel.swift
+//  DietsView.swift
 //  StagedCooking-Revisited
 //
-//  Created by Logan Melton on 5/13/22.
+//  Created by Logan Melton on 5/17/22.
 //
 
 import Foundation
 import UIKit
 
-class ModalLabel: UILabel {
+class DietsView: AdvancedSearch {
+  
+  var diets = Diet(rawValue: "Omnivore")
+  
+  let dietLabel = UILabel()
+  
+  let addDietsButton = UIButton()
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     style()
+    layout()
   }
   
   required init?(coder: NSCoder) {
@@ -19,13 +27,13 @@ class ModalLabel: UILabel {
   }
 }
 
-extension ModalLabel {
+extension DietsView {
   
-  func style() {
+  func styleDietsView() {
     translatesAutoresizingMaskIntoConstraints = false
-    font = .systemFont(ofSize: 20)
-    numberOfLines = 0
-    tintColor = UIColor(named: "SC-Primary-Reversed")
   }
-
+  
+  func layoutDietsView() {
+    
+  }
 }

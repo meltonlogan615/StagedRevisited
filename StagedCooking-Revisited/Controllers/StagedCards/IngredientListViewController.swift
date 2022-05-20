@@ -13,7 +13,7 @@ class IngredientListViewController: UIViewController {
   
   var ingredientsView = UIView()
   var titleLabel = UILabel()
-  let dividerView = UIView()
+  let dividerView = Divider()
   var ingredientStack = UIStackView()
   
   var ingredients = [String]()
@@ -22,7 +22,7 @@ class IngredientListViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = UIColor(named: "SC-Primary")
+    view.backgroundColor = K.primary
 
     style()
     layout()
@@ -34,21 +34,20 @@ extension IngredientListViewController {
   func style() {
     ingredientsView.translatesAutoresizingMaskIntoConstraints = false
     ingredientsView.layer.borderWidth = 2
-    ingredientsView.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
+    ingredientsView.layer.borderColor = K.scAccent?.cgColor
     ingredientsView.layer.cornerRadius = 8
     ingredientsView.clipsToBounds = true
-    ingredientsView.backgroundColor = UIColor(named: "SC-Primary")
+    ingredientsView.backgroundColor = K.primary
 
 
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    titleLabel.textColor = UIColor(named: "SC-Primary-Reversed")
+    titleLabel.textColor = K.invertPrimary
     titleLabel.textAlignment = .center
-    titleLabel.font = .systemFont(ofSize: 20)
+    titleLabel.font = .systemFont(ofSize: 24, weight: .semibold)
     titleLabel.text = "For \(recipeName), you will need..."
     titleLabel.numberOfLines = 0
     
     dividerView.translatesAutoresizingMaskIntoConstraints = false
-    dividerView.backgroundColor = UIColor(named: "AccentColor")
 
     ingredientStack.translatesAutoresizingMaskIntoConstraints = false
     ingredientStack.axis = .vertical
@@ -86,7 +85,7 @@ extension IngredientListViewController {
       ingredientLine.translatesAutoresizingMaskIntoConstraints = false
       ingredientLine.numberOfLines = 0
       ingredientLine.text = ingredients[i].capitalized
-      ingredientLine.font = .systemFont(ofSize: 16)
+      ingredientLine.font = .systemFont(ofSize: 20)
     }
     
     ingredientsView.addSubview(ingredientStack)

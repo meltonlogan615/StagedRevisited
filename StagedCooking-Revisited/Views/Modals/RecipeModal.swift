@@ -16,7 +16,7 @@ class RecipeModal: UIView {
     
   override init(frame: CGRect) {
     super.init(frame: frame)
-    backgroundColor = UIColor(named: "SC-Primary")
+    backgroundColor = K.primary
     style()
     layout()
   }
@@ -28,7 +28,7 @@ class RecipeModal: UIView {
 
 extension RecipeModal {
   
-  func style() {
+  func style() { 
     translatesAutoresizingMaskIntoConstraints = false
     
     scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -45,26 +45,26 @@ extension RecipeModal {
     addSubview(scrollView)
     NSLayoutConstraint.activate([
       scrollView.topAnchor.constraint(equalTo: topAnchor),
+      scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
       scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
       scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
-      scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
     ])
     
     scrollView.addSubview(contentView)
     NSLayoutConstraint.activate([
       contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+      contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
       contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
       contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-      contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
       contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
     ])
     
     contentView.addSubview(detailsStack)
     NSLayoutConstraint.activate([
-      detailsStack.topAnchor.constraint(equalToSystemSpacingBelow: contentView.topAnchor, multiplier: 1),
-      contentView.trailingAnchor.constraint(equalToSystemSpacingAfter: detailsStack.trailingAnchor, multiplier: 2),
+      detailsStack.topAnchor.constraint(equalToSystemSpacingBelow: contentView.topAnchor, multiplier: 4),
+      detailsStack.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 4),
+      contentView.trailingAnchor.constraint(equalToSystemSpacingAfter: detailsStack.trailingAnchor, multiplier: 4),
       contentView.bottomAnchor.constraint(equalToSystemSpacingBelow: detailsStack.bottomAnchor, multiplier: 2),
-      detailsStack.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 2)
     ])
   }
 }

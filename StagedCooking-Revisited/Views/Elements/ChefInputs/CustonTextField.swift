@@ -28,6 +28,7 @@ extension CustomTextField {
     backgroundColor = .secondarySystemBackground
     layer.borderWidth = 1
     layer.borderColor = UIColor.secondaryLabel.cgColor
+    font = .systemFont(ofSize: 24, weight: .regular)
     heightAnchor.constraint(equalToConstant: 48).isActive = true
   }
 }

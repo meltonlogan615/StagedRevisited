@@ -2,11 +2,10 @@
 //  ActionButton.swift
 //  StagedCooking-Revisited
 //
-//  Created by Logan Melton on 4/3/22.
+//  Created by Logan Melton on 5/17/22.
 //
 
 import Foundation
-
 import UIKit
 
 class ActionButton: UIButton {
@@ -19,13 +18,17 @@ class ActionButton: UIButton {
     var config = UIButton.Configuration.filled()
     config.buttonSize = .medium
     config.imagePadding = 12
-    config.baseBackgroundColor = UIColor(named: "AccentColor")
-    config.baseForegroundColor = UIColor(named: "SC-Primary")
+    config.baseBackgroundColor = K.scGreen
+    config.baseForegroundColor = K.primary
     config.titleAlignment = .center
     config.cornerStyle = .fixed
+    config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
+      var outgoing = incoming
+      outgoing.font = .systemFont(ofSize: 20, weight: .semibold)
+      return outgoing
+    }
     configuration = config
     
-    titleLabel?.font = .systemFont(ofSize: 18)
     heightAnchor.constraint(equalToConstant: 48).isActive = true
   }
   
@@ -33,4 +36,3 @@ class ActionButton: UIButton {
     fatalError("init(coder:) has not been implemented")
   }
 }
-

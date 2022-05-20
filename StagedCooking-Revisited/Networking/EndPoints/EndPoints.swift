@@ -20,7 +20,7 @@ extension EndPoints {
   var endpointURL: URL {
     guard let query = query else { fatalError("Endpoint URL Failed") }
     let formattedQuery = query.replacingOccurrences(of: " ", with: "%20", options: .regularExpression, range: nil)
-    let completedURL = URL(string: "\(baseURL)\(searchType)?apiKey=\(apiKey)&query=\(formattedQuery)&number=100&instructionsRequired=true&addRecipeNutrition=true")
+    let completedURL = URL(string: "\(baseURL)\(searchType)?apiKey=\(apiKey)&query=\(formattedQuery)&number=1&instructionsRequired=true&addRecipeNutrition=true")
     guard let url = completedURL else {
       preconditionFailure("Invalid URL: \(String(describing: completedURL))")
     }

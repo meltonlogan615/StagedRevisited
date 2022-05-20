@@ -13,8 +13,14 @@ class SearchView: UIView {
   let stackView = UIStackView()
   let searchTextField = CustomTextField()
   let searchButton = ActionButton()
-  let errorLabel = UILabel()
+  let advancedSearchButton = DetailsButton()
   
+  let historyStack = UIStackView()
+  let searchHistoryButton = TextOnlyButton()
+  let viewedHistoryButton = TextOnlyButton()
+  
+  let errorLabel = UILabel()
+    
   override init(frame: CGRect) {
     super.init(frame: frame)
     backgroundColor = .clear
@@ -36,36 +42,47 @@ extension SearchView {
     
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.axis = .vertical
-    stackView.spacing = 16
+    stackView.spacing = 24
     stackView.distribution = .equalSpacing
     
     searchTextField.translatesAutoresizingMaskIntoConstraints = false
     searchTextField.placeholder = "Search"
-    searchTextField.font = .systemFont(ofSize: 16, weight: .semibold)
     
     searchButton.translatesAutoresizingMaskIntoConstraints = false
     searchButton.setTitle("Search", for: [])
     
     // MARK: - ChefDefaults Buttons
     // TODO: - Once it gets close to release time, bring these back into play
-//    advancedSearchButton.translatesAutoresizingMaskIntoConstraints = false
-//    advancedSearchButton.setTitle("Advanced Search", for: [])
+    advancedSearchButton.translatesAutoresizingMaskIntoConstraints = false
+    advancedSearchButton.setTitle("Advanced Search", for: [])
     
-//    historyStack.translatesAutoresizingMaskIntoConstraints = false
-//    historyStack.axis = .horizontal
-//    historyStack.distribution = .fillEqually
-//
-//    searchHistoryButton.translatesAutoresizingMaskIntoConstraints = false
-//    searchHistoryButton.setTitle("Show Search History", for: [])
-//
-//    viewedHistoryButton.translatesAutoresizingMaskIntoConstraints = false
-//    viewedHistoryButton.setTitle("Show Viewed History", for: [])
+    historyStack.translatesAutoresizingMaskIntoConstraints = false
+    historyStack.axis = .horizontal
+    historyStack.distribution = .fillEqually
+    historyStack.spacing = 16
+
+    searchHistoryButton.translatesAutoresizingMaskIntoConstraints = false
+    searchHistoryButton.setTitle("Search History", for: [])
+    searchHistoryButton.titleLabel?.adjustsFontSizeToFitWidth = true
+
+    viewedHistoryButton.translatesAutoresizingMaskIntoConstraints = false
+    viewedHistoryButton.setTitle("Viewed History", for: [])
+    viewedHistoryButton.titleLabel?.adjustsFontSizeToFitWidth = true
+
     
     errorLabel.translatesAutoresizingMaskIntoConstraints = false
     errorLabel.numberOfLines = 0
-    errorLabel.textColor = .systemRed
+    errorLabel.textColor = K.scAccent
     errorLabel.textAlignment = .center
-    errorLabel.isHidden = true
+    errorLabel.font = .systemFont(ofSize: 20, weight: .medium)
+    errorLabel.layer.opacity = 0.0
+    errorLabel.backgroundColor = K.primary
+    errorLabel.layer.zPosition = 10
+    errorLabel.layer.borderColor = K.scAccent?.cgColor
+    errorLabel.layer.borderWidth = 2
+
+    
+    
   }
   
   func layout() {
@@ -75,40 +92,39 @@ extension SearchView {
     // MARK: - ChefDefaults Added to view
     // TODO: - Once it gets close to release time, bring these back into play
     // TODO: - Will also neewd to apply constraints
-//    stackView.addArrangedSubview(advancedSearchButton)
-//    historyStack.addArrangedSubview(searchHistoryButton)
-//    historyStack.addArrangedSubview(viewedHistoryButton)
-//    stackView.addArrangedSubview(historyStack)
+    stackView.addArrangedSubview(advancedSearchButton)
+    historyStack.addArrangedSubview(searchHistoryButton)
+    historyStack.addArrangedSubview(viewedHistoryButton)
+    stackView.addArrangedSubview(historyStack)
     
     addSubview(stackView)
     NSLayoutConstraint.activate([
       stackView.topAnchor.constraint(equalTo: topAnchor),
       stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-      stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-      stackView.leadingAnchor.constraint(equalTo: leadingAnchor)
+      stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
     ])
     
     addSubview(errorLabel)
     NSLayoutConstraint.activate([
       errorLabel.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
       errorLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor),
-      errorLabel.topAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 1)
+      errorLabel.topAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 2)
     ])
   }
 }
 
 // MARK: - UITextFieldDelegate
-extension SearchView: UITextFieldDelegate {
-  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    searchTextField.endEditing(true)
-    return true
-  }
-
-  func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-    return true
-  }
-
-  func textFieldDidEndEditing(_ textField: UITextField) {
-  }
-}
+//extension SearchView: UITextFieldDelegate {
+//  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//    return true
+//  }
+//
+//  func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+//    return true
+//  }
+//
+//  func textFieldDidEndEditing(_ textField: UITextField) {
+//  }
+//}
 

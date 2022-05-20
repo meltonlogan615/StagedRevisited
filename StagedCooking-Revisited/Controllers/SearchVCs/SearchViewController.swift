@@ -16,13 +16,17 @@ class SearchViewController: UIViewController {
   let navigationBar = UINavigationController()
   let imageView = UIImageView()
   let searchView = SearchView()
+  
+  let acctButton = TextOnlyButton()
+
   var searched: String? {
     return searchView.searchTextField.text
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = UIColor(named: "SC-Primary")
+    view.backgroundColor = K.primary
+    navigationBar.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advanced", style: .plain, target: self, action: #selector(advancedButtonTapped))
     style()
     layout()
     configureButtonActions()
@@ -39,14 +43,20 @@ extension SearchViewController {
   private func style() {
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = UIImage(systemName: "fork.knife.circle")
+    imageView.tintColor = K.scAccent
     imageView.contentMode = .scaleAspectFit
+    
     searchView.translatesAutoresizingMaskIntoConstraints = false
+    
+    acctButton.translatesAutoresizingMaskIntoConstraints = false
+    acctButton.setTitle("Have an Account or Need One?", for: [])
+
   }
   
   private func layout() {
     view.addSubview(imageView)
     NSLayoutConstraint.activate([
-      imageView.heightAnchor.constraint(equalToConstant: 175),
+      imageView.heightAnchor.constraint(equalToConstant: 200),
       imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 8),
       imageView.widthAnchor.constraint(equalTo: view.widthAnchor)
     ])
@@ -58,26 +68,35 @@ extension SearchViewController {
       searchView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       searchView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
     ])
+    
+    view.addSubview(acctButton)
+    NSLayoutConstraint.activate([
+      acctButton.leadingAnchor.constraint(equalTo: searchView.leadingAnchor),
+      acctButton.trailingAnchor.constraint(equalTo: searchView.trailingAnchor),
+      view.bottomAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: acctButton.bottomAnchor, multiplier: 8)
+    ])
   }
 }
 
 extension SearchViewController {
   // if searchTextField is blank, show error
   private func configureLabel(withMessage message: String) {
-    searchView.errorLabel.isHidden = false
+    searchView.errorLabel.fadeIn(0.25, delay: 1.0)
     searchView.errorLabel.text = message
+    searchView.errorLabel.fadeOut(2.0, delay: 0.0)
   }
 }
 
 extension SearchViewController {
   @objc func configureButtonActions() {
     searchView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .primaryActionTriggered)
+    searchView.advancedSearchButton.addTarget(self, action: #selector(advancedButtonTapped), for: .primaryActionTriggered)
+    self.acctButton.addTarget(self, action: #selector(didTapAcctButton), for: .primaryActionTriggered)
     
     // MARK: - ChefDefaults Button Actions
     // TODO: - Once it gets close to release time, bring these back into play
 //    searchView.searchHistoryButton.addTarget(self, action: #selector(searchHistoryButtonTapped), for: .primaryActionTriggered)
 //    searchView.viewedHistoryButton.addTarget(self, action: #selector(viewedHistoryButtonTapped), for: .primaryActionTriggered)
-//    searchView.advancedSearchButton.addTarget(self, action: #selector(advancedSearchButtonTapped), for: .primaryActionTriggered)
     
 //    if ChefDefault.isLoggedIn == true {
 //      searchView.searchHistoryButton.isHidden = false
@@ -97,6 +116,7 @@ extension SearchViewController {
       return
     }
     if searched.isEmpty {
+      print("empty")
       configureLabel(withMessage: "Search Field Cannot Be Empty")
       return
     } else {
@@ -109,6 +129,8 @@ extension SearchViewController {
 //      if let query = searched.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
 //        ChefDefault.searched = query
 //      }
+      
+      
       let navigationController = UINavigationController(rootViewController: listVC)
       navigationController.modalTransitionStyle = .flipHorizontal
       navigationController.modalPresentationStyle = .fullScreen
@@ -116,6 +138,13 @@ extension SearchViewController {
     }
   }
   
+  @objc func advancedButtonTapped() {
+    let advancedVC = AdvancedSearchViewController()
+    let navigationController = UINavigationController(rootViewController: advancedVC)
+    navigationController.modalTransitionStyle = .flipHorizontal
+    navigationController.modalPresentationStyle = .fullScreen
+    present(navigationController, animated: true)
+  }
   // MARK: - ChefDefaults Button Methods
   // TODO: - Once it gets close to release time, bring these back into play
 
@@ -141,6 +170,16 @@ extension SearchViewController {
 //    navigationController.modalPresentationStyle = .formSheet
 //    present(navigationController, animated: true)
 //  }
+  
+  @objc func didTapAcctButton() {
+    let acctVC = AccountViewController()
+    let navigationController = UINavigationController(rootViewController: acctVC)
+    navigationController.modalTransitionStyle = .flipHorizontal
+    navigationController.modalPresentationStyle = .fullScreen
+    present(navigationController, animated: true)
+  }
 }
+
+
 
 

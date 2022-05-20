@@ -26,7 +26,7 @@ final class RecipeCell: UICollectionViewCell {
   let labelBackground: UIView = {
     let labelBackground = UIView()
     labelBackground.translatesAutoresizingMaskIntoConstraints = false
-    labelBackground.backgroundColor = UIColor(named: "LabelBackground")
+    labelBackground.backgroundColor = K.scLabelBG
     labelBackground.layer.zPosition = 10
     return labelBackground
   }()
@@ -34,8 +34,8 @@ final class RecipeCell: UICollectionViewCell {
   let titleLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = .preferredFont(forTextStyle: .title3)
-    label.textColor = UIColor(named: "SC-Primary-Reversed")
+    label.font = .systemFont(ofSize: 20, weight: .semibold)
+    label.textColor = K.invertPrimary
     label.textAlignment = .natural
     label.adjustsFontSizeToFitWidth = true
     label.layer.zPosition = 20
@@ -80,7 +80,7 @@ extension RecipeCell {
     NSLayoutConstraint.activate([
       labelBackground.bottomAnchor.constraint(equalTo: image.bottomAnchor),
       labelBackground.widthAnchor.constraint(equalTo: image.widthAnchor),
-      labelBackground.heightAnchor.constraint(equalTo: titleLabel.heightAnchor, multiplier: 1.5)
+      titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: labelBackground.topAnchor, multiplier: 1)
     ])
     
     

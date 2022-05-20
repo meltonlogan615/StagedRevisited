@@ -11,15 +11,17 @@ import UIKit
 class StagedCardViewController: UIViewController {
   
 // MARK: - Views
+  let scrollView = UIScrollView()
   let stepView = UIView()
   let cardStackView = UIStackView()
-  let dividerView = UIView()
-  let dividerViewSequel = UIView()
+  
+  let dividerView = Divider()
+  let dividerViewSequel = Divider()
   
 //  MARK: - Labels
   let cardNumberLabel = UILabel()
   var ingredientLabel = UILabel()
-  let directionsLabel = UILabel()
+  let directionsLabel = ModalLabel()
   
 //  MARK: = VC Data
   var recipeName = String()
@@ -29,6 +31,7 @@ class StagedCardViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = K.primary
     style()
     layout()
   }
@@ -50,103 +53,78 @@ class StagedCardViewController: UIViewController {
 extension StagedCardViewController {
   
   func style() {
-    view.backgroundColor = UIColor(named: "SC-Primary")
+    scrollView.translatesAutoresizingMaskIntoConstraints = false
+    scrollView.backgroundColor = K.primary
+    scrollView.layer.borderWidth = 2
+    scrollView.layer.borderColor = K.scAccent?.cgColor
+    scrollView.layer.cornerRadius = 8
+    scrollView.clipsToBounds = true
     
     stepView.translatesAutoresizingMaskIntoConstraints = false
-    stepView.backgroundColor = UIColor(named: "SC-Primary")
-    stepView.layer.borderWidth = 2
-    stepView.layer.borderColor = UIColor(named: "AccentColor")?.cgColor
-    stepView.layer.cornerRadius = 8
-    stepView.clipsToBounds = true
-    
-    cardNumberLabel.translatesAutoresizingMaskIntoConstraints = false
-    cardNumberLabel.font = .preferredFont(forTextStyle: .title1)
-    cardNumberLabel.textColor = UIColor(named: "SC-Primary-Reversed")
-    cardNumberLabel.textAlignment = .center
-    
-    dividerView.translatesAutoresizingMaskIntoConstraints = false
-    dividerView.backgroundColor = UIColor(named: "AccentColor")
     
     cardStackView.translatesAutoresizingMaskIntoConstraints = false
     cardStackView.axis = .vertical
     cardStackView.distribution = .fillProportionally
     cardStackView.spacing = 8
     
+    cardNumberLabel.translatesAutoresizingMaskIntoConstraints = false
+    cardNumberLabel.font = .systemFont(ofSize: 24, weight: .semibold)
+    cardNumberLabel.textColor = K.invertPrimary
+    cardNumberLabel.textAlignment = .center
+    
+    dividerView.translatesAutoresizingMaskIntoConstraints = false
+    // ingredients
     dividerViewSequel.translatesAutoresizingMaskIntoConstraints = false
-    dividerViewSequel.backgroundColor = UIColor(named: "AccentColor")
     
     directionsLabel.translatesAutoresizingMaskIntoConstraints = false
-    directionsLabel.textColor = UIColor(named: "SC-Primary-Reversed")
-    directionsLabel.numberOfLines = 0
-    directionsLabel.font = .systemFont(ofSize: 20)
-    directionsLabel.adjustsFontSizeToFitWidth = true
     
   }
   
   func layout() {
-    view.addSubview(stepView)
+    view.addSubview(scrollView)
     NSLayoutConstraint.activate([
-      stepView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 6),
-      stepView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-      view.trailingAnchor.constraint(equalToSystemSpacingAfter: stepView.trailingAnchor, multiplier: 4),
-      stepView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4)
+      scrollView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 6),
+      scrollView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 6),
+      view.trailingAnchor.constraint(equalToSystemSpacingAfter: scrollView.trailingAnchor, multiplier: 6),
+      view.bottomAnchor.constraint(equalToSystemSpacingBelow: scrollView.bottomAnchor, multiplier: 18),
     ])
     
-    stepView.addSubview(cardNumberLabel)
+    scrollView.addSubview(stepView)
     NSLayoutConstraint.activate([
-      cardNumberLabel.widthAnchor.constraint(equalTo: stepView.widthAnchor),
-      cardNumberLabel.topAnchor.constraint(equalToSystemSpacingBelow: stepView.topAnchor, multiplier: 1),
-      cardNumberLabel.heightAnchor.constraint(equalToConstant: 40)
+      stepView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+      stepView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+      stepView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+      stepView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+      stepView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
     ])
-    
-    stepView.addSubview(dividerView)
-    NSLayoutConstraint.activate([
-      dividerView.heightAnchor.constraint(equalToConstant: 2),
-      dividerView.topAnchor.constraint(equalToSystemSpacingBelow: cardNumberLabel.bottomAnchor, multiplier: 1),
-      stepView.trailingAnchor.constraint(equalToSystemSpacingAfter: dividerView.trailingAnchor, multiplier: 4),
-      dividerView.leadingAnchor.constraint(equalToSystemSpacingAfter: stepView.leadingAnchor, multiplier: 4)
-    ])
-    
-    if ingredients.isEmpty {
-      let ingredientLine = UILabel()
-      cardStackView.addArrangedSubview(ingredientLine)
-      ingredientLine.translatesAutoresizingMaskIntoConstraints = false
-      ingredientLine.numberOfLines = 0
-      ingredientLine.text = "No Ingredients Used"
-      ingredientLine.font = .systemFont(ofSize: 20)
-    } else {
-      for i in 0 ..< ingredients.count {
-        let ingredientLine = UILabel()
-        cardStackView.addArrangedSubview(ingredientLine)
-        ingredientLine.translatesAutoresizingMaskIntoConstraints = false
-        ingredientLine.numberOfLines = 0
-        ingredientLine.text = ingredients[i].capitalized
-        ingredientLine.font = .systemFont(ofSize: 20)
-      }
-    }
     
     stepView.addSubview(cardStackView)
     NSLayoutConstraint.activate([
-      cardStackView.topAnchor.constraint(equalToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 2),
+      cardStackView.topAnchor.constraint(equalToSystemSpacingBelow: stepView.topAnchor, multiplier: 2),
       stepView.trailingAnchor.constraint(equalToSystemSpacingAfter: cardStackView.trailingAnchor, multiplier: 2),
       cardStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: stepView.leadingAnchor, multiplier: 2),
-      cardStackView.centerXAnchor.constraint(equalTo: stepView.centerXAnchor),
     ])
     
-    stepView.addSubview(dividerViewSequel)
-    NSLayoutConstraint.activate([
-      dividerViewSequel.heightAnchor.constraint(equalToConstant: 2),
-      dividerViewSequel.topAnchor.constraint(equalToSystemSpacingBelow: cardStackView.bottomAnchor, multiplier: 2),
-      dividerViewSequel.widthAnchor.constraint(equalTo: dividerView.widthAnchor),
-      dividerViewSequel.centerXAnchor.constraint(equalTo: stepView.centerXAnchor)
-    ])
+    cardStackView.addArrangedSubview(cardNumberLabel)
+    cardStackView.addArrangedSubview(dividerView)
     
-    stepView.addSubview(directionsLabel)
-    NSLayoutConstraint.activate([
-      directionsLabel.topAnchor.constraint(equalToSystemSpacingBelow: dividerViewSequel.bottomAnchor, multiplier: 2),
-      directionsLabel.trailingAnchor.constraint(equalTo: cardStackView.trailingAnchor),
-      directionsLabel.leadingAnchor.constraint(equalTo: cardStackView.leadingAnchor),
-    ])
+    if ingredients.isEmpty {
+      let ingredientLine = ModalLabel()
+      cardStackView.addArrangedSubview(ingredientLine)
+      ingredientLine.translatesAutoresizingMaskIntoConstraints = false
+      ingredientLine.text = "No Ingredients Used"
+    } else {
+      for i in 0 ..< ingredients.count {
+        let ingredientLine = ModalLabel()
+        cardStackView.addArrangedSubview(ingredientLine)
+        ingredientLine.translatesAutoresizingMaskIntoConstraints = false
+        ingredientLine.text = ingredients[i].capitalized
+      }
+    }
+    
+    cardStackView.addArrangedSubview(dividerViewSequel)
+    cardStackView.addArrangedSubview(directionsLabel)
+
   }
 }
 

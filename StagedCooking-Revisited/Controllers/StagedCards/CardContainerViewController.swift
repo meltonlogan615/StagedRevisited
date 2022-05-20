@@ -30,8 +30,6 @@ class StagedCardContainerViewController: UIViewController {
   var recipe = Recipe()
   var ingredientList = [String]()
   
-  
-  
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
     cardVCs.append(getStarted)
@@ -46,7 +44,7 @@ class StagedCardContainerViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = UIColor(named: "AccentColor")
+    view.backgroundColor = K.scAccent
     getStarted.recipeLabel.text = recipe.title ?? ""
     getStarted.noOfSteps = cards.count
     getStarted.totalTime = recipe.readyInMinutes ?? 0
@@ -54,7 +52,6 @@ class StagedCardContainerViewController: UIViewController {
     listView.ingredients = ingredientList
     setUp()
   }
-
 }
 
 // MARK: - Setting Up/Styling View and LifeCylce

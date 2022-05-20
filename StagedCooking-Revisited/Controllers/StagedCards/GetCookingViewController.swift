@@ -24,7 +24,7 @@ class GetCookingViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = UIColor(named: "SC-Primary")
+    view.backgroundColor = K.primary
     style()
     layout()
   }
@@ -39,24 +39,24 @@ extension GetCookingViewController {
     
     recipeLabel.translatesAutoresizingMaskIntoConstraints = false
     recipeLabel.font = .boldSystemFont(ofSize: 36)
-    recipeLabel.textColor = UIColor(named: "SC-Primary-Reversed")
+    recipeLabel.textColor = K.invertPrimary
     recipeLabel.textAlignment = .center
     recipeLabel.numberOfLines = 0
 
     startLabel.translatesAutoresizingMaskIntoConstraints = false
     startLabel.font = .preferredFont(forTextStyle: .title1)
-    startLabel.textColor = UIColor(named: "SC-Primary-Reversed")
+    startLabel.textColor = K.invertPrimary
     startLabel.textAlignment = .center
     startLabel.text = "Swipe Left To Get Started"
     
     numberOfStepsLabel.translatesAutoresizingMaskIntoConstraints = false
     numberOfStepsLabel.font = .preferredFont(forTextStyle: .title3)
-    numberOfStepsLabel.textColor = UIColor(named: "SC-Primary-Reversed")
+    numberOfStepsLabel.textColor = K.invertPrimary
     numberOfStepsLabel.textAlignment = .center
     numberOfStepsLabel.text = "Number of Steps: \(noOfSteps)"
 
     totalTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-    totalTimeLabel.textColor = UIColor(named: "SC-Primary-Reversed")
+    totalTimeLabel.textColor = K.invertPrimary
     totalTimeLabel.textAlignment = .center
     totalTimeLabel.font = .preferredFont(forTextStyle: .title3)
     totalTimeLabel.text = "Total Time: \(totalTime) minutes"
