@@ -1,5 +1,5 @@
 ## Ignore folder
-/IgnoreFiles
+IgnoreFiles/
 
 ## Ignore UserState
 *.xcuserstate
