@@ -122,7 +122,6 @@ extension RecipeListCollectionView: UICollectionViewDelegateFlowLayout {
     return CGSize(width: width, height: LayoutConstant.itemHeight)
   }
   
-  
   func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
     let itemsInRow = 1.0
     let totalSpacing = CGFloat(2.0 * spacing + (itemsInRow - 1.0) * spacing)
@@ -140,6 +139,10 @@ extension RecipeListCollectionView {
         case .success(let model):
           self.model = model as Response
           guard let results = self.model.results else { return }
+          
+          // if there are no results for the searched phrase, display alert
+          self.noResults(for: recipe)
+          
           for result in results {
             // MARK: - Text Labels
             guard let receipe = result.title else { return }
@@ -149,6 +152,22 @@ extension RecipeListCollectionView {
           print(error)
       }
       self.recipeCollection.reloadData()
+    }
+  }
+}
+
+// MARK: - No Results Alert
+extension RecipeListCollectionView {
+  func noResults(for recipe: String) {
+    guard let results = self.model.results else { return }
+    if results.isEmpty {
+      print("No results found for \(recipe)")
+      let nothingAlert = UIAlertController(title: "No results found for \"\(recipe)\"", message: "Please check your spelling or try searching again.", preferredStyle: .alert)
+      let dismissAction = UIAlertAction(title: "Dismiss", style: .default) { _ in
+        self.dismiss(animated: true)
+      }
+      nothingAlert.addAction(dismissAction)
+      present(nothingAlert, animated: true)
     }
   }
 }
