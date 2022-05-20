@@ -24,52 +24,52 @@ class IntolerancesView: AdvancedSearch {
   
   var glutenRow = AdvancedSearchRow()
   var glutenLabel = ModalLabel()
-  var glutenSwitch = UISwitch()
+  var glutenSwitch = ToggleSwitch()
   var divThree = Divider()
 
   var grainRow = AdvancedSearchRow()
   var grainLabel = ModalLabel()
-  var grainSwitch = UISwitch()
+  var grainSwitch = ToggleSwitch()
   var divFour = Divider()
   
   var peanutRow = AdvancedSearchRow()
   var peanutLabel = ModalLabel()
-  var peanutSwitch = UISwitch()
+  var peanutSwitch = ToggleSwitch()
   var divFive = Divider()
 
   var seafoodRow = AdvancedSearchRow()
   var seafoodLabel = ModalLabel()
-  var seafoodSwitch = UISwitch()
+  var seafoodSwitch = ToggleSwitch()
   var divSix = Divider()
 
   var sesameRow = AdvancedSearchRow()
   var sesameLabel = ModalLabel()
-  var sesameSwitch = UISwitch()
+  var sesameSwitch = ToggleSwitch()
   var divSeven = Divider()
   
   var shellfishRow = AdvancedSearchRow()
   var shellfishLabel = ModalLabel()
-  var shellfishSwitch = UISwitch()
+  var shellfishSwitch = ToggleSwitch()
   var divEight = Divider()
 
   var soyRow = AdvancedSearchRow()
   var soyLabel = ModalLabel()
-  var soySwitch = UISwitch()
+  var soySwitch = ToggleSwitch()
   var divNine = Divider()
 
   var sulfiteRow = AdvancedSearchRow()
   var sulfiteLabel = ModalLabel()
-  var sulfiteSwitch = UISwitch()
+  var sulfiteSwitch = ToggleSwitch()
   var divTen = Divider()
 
   var treeNutRow = AdvancedSearchRow()
   var treeNutLabel = ModalLabel()
-  var treeNutSwitch = UISwitch()
+  var treeNutSwitch = ToggleSwitch()
   var divEleven = Divider()
   
   var wheatRow = AdvancedSearchRow()
   var wheatLabel = ModalLabel()
-  var wheatSwitch = UISwitch()
+  var wheatSwitch = ToggleSwitch()
     
   override init(frame: CGRect) {
     super.init(frame: frame)
