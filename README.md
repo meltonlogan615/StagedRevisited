@@ -74,8 +74,15 @@ Displays a Collection List of Results (`loadRecipes(for: searchedRecipe`)
 <img src="readmeImages/SC-DietsButton.png" width="300px">
 <img src="readmeImages/SC-CornBreadDiets.png" width="200px">
 
-### 3.6 Start Cooking Button (tapped)
+### 3.6 RecipeViewController In Action
+
+<img src="readmeImages/RecipeViewInAction.gif" width="300px">
+
+### 3.7 Start Cooking Button (tapped)
 - Loads StagedCardContainerViewController (`~/Controllers/StagedCards/CardContainerViewController`)
 - Calls Method `buildCards(ingredients: [String], instructionsDictionary: [Int: String], ingredientDictionary: [Int: [String]]) -> [Card]` (`~/Controllers/VCMethods/CardRelated/CardBuilder`)
 
 <img src="readmeImages/SC-StartCookingButton.png" width="300px">
+
+
+
