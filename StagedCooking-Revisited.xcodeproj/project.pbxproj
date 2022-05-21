@@ -51,9 +51,9 @@
 		3221EF872835CC4500A6FCCD /* AdvancedMacrosMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF862835CC4500A6FCCD /* AdvancedMacrosMethod.swift */; };
 		3221EF892835E89500A6FCCD /* AdvancedSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF882835E89400A6FCCD /* AdvancedSearchViewController.swift */; };
 		3221EF8B2835F01600A6FCCD /* AdvancedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF8A2835F01600A6FCCD /* AdvancedCell.swift */; };
+		3231885B28398632007B73DF /* StringFolding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3231885A28398632007B73DF /* StringFolding.swift */; };
+		3231885E2839867A007B73DF /* IgnoreFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3231885D2839867A007B73DF /* IgnoreFile.swift */; };
 		32441EFB2827711E00DA426F /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32441EFA2827711E00DA426F /* Divider.swift */; };
-		3264D359283847A800C06555 /* IgnoreFiles in Resources */ = {isa = PBXBuildFile; fileRef = 3264D358283847A800C06555 /* IgnoreFiles */; };
-		3264D35C28386A3A00C06555 /* IgnoreFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3264D35B28386A3A00C06555 /* IgnoreFile.swift */; };
 		326F9F8B281D099C0086BA53 /* IngredientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */; };
 		326F9F9D282216C60086BA53 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F9C282216C60086BA53 /* RecipeView.swift */; };
 		326F9FA1282223EB0086BA53 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9FA0282223EB0086BA53 /* RecipeViewController.swift */; };
@@ -151,10 +151,9 @@
 		3221EF862835CC4500A6FCCD /* AdvancedMacrosMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedMacrosMethod.swift; sourceTree = "<group>"; };
 		3221EF882835E89400A6FCCD /* AdvancedSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSearchViewController.swift; sourceTree = "<group>"; };
 		3221EF8A2835F01600A6FCCD /* AdvancedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedCell.swift; sourceTree = "<group>"; };
+		3231885A28398632007B73DF /* StringFolding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFolding.swift; sourceTree = "<group>"; };
+		3231885D2839867A007B73DF /* IgnoreFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IgnoreFile.swift; sourceTree = "<group>"; };
 		32441EFA2827711E00DA426F /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
-		3264D358283847A800C06555 /* IgnoreFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = IgnoreFiles; sourceTree = "<group>"; };
-		3264D35B28386A3A00C06555 /* IgnoreFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IgnoreFile.swift; sourceTree = "<group>"; };
-		3264D35D28386A3C00C06555 /* Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Notes.md; sourceTree = "<group>"; };
 		3264D35E28386A3F00C06555 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = "StagedCooking-Revisited/New Group/README.md"; sourceTree = "<group>"; };
 		326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListViewController.swift; sourceTree = "<group>"; };
 		326F9F9C282216C60086BA53 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
@@ -249,8 +248,7 @@
 		3221997F27FA5DB2003FD4F6 /* StagedCooking-Revisited */ = {
 			isa = PBXGroup;
 			children = (
-				3264D35A28386A3100C06555 /* New Group */,
-				3264D358283847A800C06555 /* IgnoreFiles */,
+				3231885C28398671007B73DF /* IgnoreFiles */,
 				3221999427FA5DB9003FD4F6 /* SupportFiles */,
 				3221999727FA5DF9003FD4F6 /* Models */,
 				3221999627FA5DF1003FD4F6 /* Views */,
@@ -421,6 +419,7 @@
 				322199CB27FA84CD003FD4F6 /* ViewController-Extensions.swift */,
 				32C9913A2830BCBF00667F65 /* FadeAnimation.swift */,
 				329C09752837432B00CECE6C /* TextFieldDelegate.swift */,
+				3231885A28398632007B73DF /* StringFolding.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -550,13 +549,12 @@
 			path = AdvancedSearchMethods;
 			sourceTree = "<group>";
 		};
-		3264D35A28386A3100C06555 /* New Group */ = {
+		3231885C28398671007B73DF /* IgnoreFiles */ = {
 			isa = PBXGroup;
 			children = (
-				3264D35B28386A3A00C06555 /* IgnoreFile.swift */,
-				3264D35D28386A3C00C06555 /* Notes.md */,
+				3231885D2839867A007B73DF /* IgnoreFile.swift */,
 			);
-			path = "New Group";
+			path = IgnoreFiles;
 			sourceTree = "<group>";
 		};
 		3276101E282A12A8005346D4 /* Modals */ = {
@@ -756,7 +754,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3264D359283847A800C06555 /* IgnoreFiles in Resources */,
 				3221998D27FA5DB3003FD4F6 /* LaunchScreen.storyboard in Resources */,
 				3221998A27FA5DB3003FD4F6 /* Assets.xcassets in Resources */,
 			);
@@ -777,6 +774,7 @@
 				3221999E27FA5E77003FD4F6 /* NetworkAccess.swift in Sources */,
 				329C097328373CCC00CECE6C /* SettingsView.swift in Sources */,
 				32761051282CBFD6005346D4 /* CardBuilder.swift in Sources */,
+				3231885B28398632007B73DF /* StringFolding.swift in Sources */,
 				3221EF6928344A9800A6FCCD /* AdvancedMacros.swift in Sources */,
 				32ED32C62837CF650045F41A /* CuisinesViewController.swift in Sources */,
 				32C9913B2830BCBF00667F65 /* FadeAnimation.swift in Sources */,
@@ -820,7 +818,6 @@
 				3276102C282B0B4C005346D4 /* RecipeModal.swift in Sources */,
 				322199A027FA5E99003FD4F6 /* EndPoints.swift in Sources */,
 				3221998127FA5DB2003FD4F6 /* AppDelegate.swift in Sources */,
-				3264D35C28386A3A00C06555 /* IgnoreFile.swift in Sources */,
 				322199AC27FA5F75003FD4F6 /* Recipe.swift in Sources */,
 				32761022282A12D8005346D4 /* SummaryModal.swift in Sources */,
 				322199CA27FA6C2F003FD4F6 /* UIImage-Extension.swift in Sources */,
@@ -832,6 +829,7 @@
 				3276103B282CA643005346D4 /* MacrosLabelView.swift in Sources */,
 				322199C727FA6BB3003FD4F6 /* ImageURLProtocol.swift in Sources */,
 				3221EF67283449E400A6FCCD /* MealType.swift in Sources */,
+				3231885E2839867A007B73DF /* IgnoreFile.swift in Sources */,
 				3221EF65283448FC00A6FCCD /* Diet.swift in Sources */,
 				32AB724A27FFEDA800AF0E2A /* Response.swift in Sources */,
 				32761047282CB829005346D4 /* GenerateMacros.swift in Sources */,
