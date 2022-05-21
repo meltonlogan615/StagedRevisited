@@ -155,7 +155,7 @@
 		3264D358283847A800C06555 /* IgnoreFiles */ = {isa = PBXFileReference; lastKnownFileType = folder; path = IgnoreFiles; sourceTree = "<group>"; };
 		3264D35B28386A3A00C06555 /* IgnoreFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IgnoreFile.swift; sourceTree = "<group>"; };
 		3264D35D28386A3C00C06555 /* Notes.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Notes.md; sourceTree = "<group>"; };
-		3264D35E28386A3F00C06555 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3264D35E28386A3F00C06555 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = "StagedCooking-Revisited/New Group/README.md"; sourceTree = "<group>"; };
 		326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListViewController.swift; sourceTree = "<group>"; };
 		326F9F9C282216C60086BA53 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		326F9FA0282223EB0086BA53 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +232,7 @@
 		3221997427FA5DB2003FD4F6 = {
 			isa = PBXGroup;
 			children = (
+				3264D35E28386A3F00C06555 /* README.md */,
 				3221997F27FA5DB2003FD4F6 /* StagedCooking-Revisited */,
 				3221997E27FA5DB2003FD4F6 /* Products */,
 			);
@@ -554,7 +555,6 @@
 			children = (
 				3264D35B28386A3A00C06555 /* IgnoreFile.swift */,
 				3264D35D28386A3C00C06555 /* Notes.md */,
-				3264D35E28386A3F00C06555 /* README.md */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";

@@ -69,6 +69,7 @@ extension CuisinesViewController {
       
       let toggle = ToggleSwitch()
       toggle.translatesAutoresizingMaskIntoConstraints = false
+      toggle.addTarget(self, action: #selector(didToggleSwitch), for: .valueChanged)
       
       let divider = Divider()
       divider.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +84,17 @@ extension CuisinesViewController {
       cuisinesView.detailsStack.addArrangedSubview(divider)
     }
     print(String(describing: cuisinesView.detailsStack.frame))
-
   }
-  
+}
+
+extension CuisinesViewController {
+  @objc func didToggleSwitch(_ sender: UIControl) {
+    var cuisineArray = [String]()
+    print(String(describing: sender.tag))
+    for name in Cuisine.allCases {
+      cuisineArray.append(name.rawValue)
+    }
+//    cuisineSelection(to: <#T##Option#>, from: cuisines)
+    print(String(describing: cuisineArray[sender.tag]))
+  }
 }
