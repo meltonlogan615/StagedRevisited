@@ -3,3 +3,4 @@ IgnoreFiles/
 
 ## Ignore UserState
 *.xcuserstate
+UserInterfaceState.xcuserstate
