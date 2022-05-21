@@ -38,7 +38,7 @@ class StagedCardViewController: UIViewController {
   
   init(recipeName: String, cardCounter: Int, ingredients: [String], instructions: String) {
     self.cardNumberLabel.text = "Stage \(cardCounter)"
-    self.directionsLabel.text = "\(instructions)"
+    self.directionsLabel.text = "\(instructions)\n \n\(instructions)\n\n \(instructions)\n\n\(instructions)"
     self.cardCounter = cardCounter
     self.ingredients = ingredients
     self.directions = instructions

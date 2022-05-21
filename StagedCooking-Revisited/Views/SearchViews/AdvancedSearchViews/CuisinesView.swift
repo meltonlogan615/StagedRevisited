@@ -14,9 +14,8 @@ class CuisinesView: AdvancedSearch {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    backgroundColor = .blue
     styleCuisines()
-    layoutCuisines()
+//    layoutCuisines()
   }
   
   convenience init(cuisine: [Cuisine]) {
@@ -35,33 +34,32 @@ extension CuisinesView {
     translatesAutoresizingMaskIntoConstraints = false
   }
   
-  func layoutCuisines() {
-    for option in Cuisine.allCases {
-      
-      print("---")
-      let row = AdvancedSearchRow()
-//      row.backgroundColor = .red
-      row.translatesAutoresizingMaskIntoConstraints = false
-      
-      let rowTitle = ModalLabel()
-      rowTitle.translatesAutoresizingMaskIntoConstraints = false
-      
-      let toggle = UISwitch()
-      toggle.translatesAutoresizingMaskIntoConstraints = false
-      
-      let divider = Divider()
-      divider.translatesAutoresizingMaskIntoConstraints = false
-      
-      rowTitle.text = option.rawValue.localizedCapitalized
-      print(String(describing: option.rawValue.localizedCapitalized))
-      
-      row.addArrangedSubview(rowTitle)
-      row.addArrangedSubview(toggle)
-      
-      detailsStack.addArrangedSubview(row)
-      detailsStack.addArrangedSubview(divider)
-    }
-    print(String(describing: detailsStack.frame))
-
-  }
+//  func layoutCuisines() {
+//    for option in Cuisine.allCases {
+//
+//      print("---")
+//      let row = AdvancedSearchRow()
+////      row.backgroundColor = .red
+//      row.translatesAutoresizingMaskIntoConstraints = false
+//
+//      let rowTitle = ModalLabel()
+//      rowTitle.translatesAutoresizingMaskIntoConstraints = false
+//
+//      let toggle = UISwitch()
+//      toggle.translatesAutoresizingMaskIntoConstraints = false
+//
+//      let divider = Divider()
+//      divider.translatesAutoresizingMaskIntoConstraints = false
+//
+//      rowTitle.text = option.rawValue.localizedCapitalized
+//      print(String(describing: option.rawValue.localizedCapitalized))
+//
+//      row.addArrangedSubview(rowTitle)
+//      row.addArrangedSubview(toggle)
+//
+//      detailsStack.addArrangedSubview(row)
+//      detailsStack.addArrangedSubview(divider)
+//    }
+//    print(String(describing: detailsStack.frame))
+//  }
 }

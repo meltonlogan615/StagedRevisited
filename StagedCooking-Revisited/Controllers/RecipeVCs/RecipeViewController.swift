@@ -130,16 +130,16 @@ extension RecipeViewController {
     view.addSubview(recipeView)
     NSLayoutConstraint.activate([
       recipeView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 2),
-      view.trailingAnchor.constraint(equalToSystemSpacingAfter: recipeView.trailingAnchor, multiplier: 4),
+      view.trailingAnchor.constraint(equalToSystemSpacingAfter: recipeView.trailingAnchor, multiplier: 2),
+      recipeView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
       view.bottomAnchor.constraint(equalToSystemSpacingBelow: recipeView.safeAreaLayoutGuide.bottomAnchor, multiplier: 12),
-      recipeView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
     ])
     
     view.addSubview(startCookingButton)
     NSLayoutConstraint.activate([
       startCookingButton.heightAnchor.constraint(equalToConstant: 48),
-      startCookingButton.leadingAnchor.constraint(equalTo: recipeView.leadingAnchor),
-      startCookingButton.trailingAnchor.constraint(equalTo: recipeView.trailingAnchor),
+      startCookingButton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
+      view.trailingAnchor.constraint(equalToSystemSpacingAfter: startCookingButton.trailingAnchor, multiplier: 4),
       view.bottomAnchor.constraint(equalToSystemSpacingBelow: startCookingButton.safeAreaLayoutGuide.bottomAnchor, multiplier: 6)
     ])
   }

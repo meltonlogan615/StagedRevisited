@@ -17,8 +17,8 @@ class IntolerancesViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = K.primary
+    title = "Pew-Pew"
     navigationController?.navigationBar.prefersLargeTitles = true
-    print("loaded")
     styleIntoerances()
     layoutIntoerances()
   }
