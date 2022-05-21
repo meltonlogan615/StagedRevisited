@@ -44,13 +44,15 @@ class RecipeViewController: UIViewController {
     navigationController?.navigationBar.prefersLargeTitles = false
     style()
     layout()
+    print("List", ingredientList)
+    print("Extended", extendedIngredients)
   }
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = K.primary
-    self.ingredientList = [String]()
+//    self.ingredientList = [String]()
     
 //    recipeView.showGeneralButton.addTarget(self, action: #selector(showModal), for: .primaryActionTriggered)
     recipeView.showIngredientsButton.addTarget(self, action: #selector(showModal), for: .primaryActionTriggered)

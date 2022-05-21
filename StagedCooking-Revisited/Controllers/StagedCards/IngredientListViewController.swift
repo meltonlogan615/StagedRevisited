@@ -17,13 +17,14 @@ class IngredientListViewController: UIViewController {
   var ingredientStack = UIStackView()
   
   var ingredients = [String]()
+  
   var recipeName = String()
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = K.primary
-
+    
     style()
     layout()
   }

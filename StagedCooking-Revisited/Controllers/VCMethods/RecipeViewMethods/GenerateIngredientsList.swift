@@ -9,10 +9,13 @@ import Foundation
 
 extension RecipeViewController {
   func generateIngredientsList(for selectedRecipe: Recipe) {
-    guard let extendedIngredients = selectedRecipe.extendedIngredients as [ExtendedIngredient]? else { return }
-    for i in 0 ..< extendedIngredients.count {
-      guard let original = extendedIngredients[i].original?.replacingOccurrences(of: "-", with: " ") else { return }
-      self.ingredientList.append(original)
+    if self.ingredientList.isEmpty {
+      guard let extendedIngredients = selectedRecipe.extendedIngredients as [ExtendedIngredient]? else { return }
+      for i in 0 ..< extendedIngredients.count {
+        guard let original = extendedIngredients[i].original?.replacingOccurrences(of: "-", with: " ") else { return }
+        self.ingredientList.append(original)
+      }
+      
     }
   }
 }
