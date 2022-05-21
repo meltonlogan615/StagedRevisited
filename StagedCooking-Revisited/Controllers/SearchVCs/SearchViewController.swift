@@ -120,7 +120,8 @@ extension SearchViewController {
       configureLabel(withMessage: "Search Field Cannot Be Empty")
       return
     } else {
-      listVC.searchedRecipe = searched
+
+      listVC.searchedRecipe = searched.unaccent()
       
       // MARK: - ChefDefaults Adds Searched Phrase to ChefDefault.searchHistory Array
       // TODO: - Once it gets close to release time, bring these back into play
