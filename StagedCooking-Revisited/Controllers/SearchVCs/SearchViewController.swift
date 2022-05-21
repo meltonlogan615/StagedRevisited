@@ -120,7 +120,6 @@ extension SearchViewController {
       configureLabel(withMessage: "Search Field Cannot Be Empty")
       return
     } else {
-
       listVC.searchedRecipe = searched.unaccent()
       
       // MARK: - ChefDefaults Adds Searched Phrase to ChefDefault.searchHistory Array
@@ -132,7 +131,7 @@ extension SearchViewController {
 //      }
       
       
-      let navigationController = UINavigationController(rootViewController: listVC)
+      let navigationController = NavController(rootViewController: listVC)
       navigationController.modalTransitionStyle = .flipHorizontal
       navigationController.modalPresentationStyle = .fullScreen
       present(navigationController, animated: true)
@@ -174,7 +173,7 @@ extension SearchViewController {
   
   @objc func didTapAcctButton() {
     let acctVC = AccountViewController()
-    let navigationController = UINavigationController(rootViewController: acctVC)
+    let navigationController = NavController(rootViewController: acctVC)
     navigationController.modalTransitionStyle = .flipHorizontal
     navigationController.modalPresentationStyle = .fullScreen
     present(navigationController, animated: true)

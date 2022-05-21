@@ -1,5 +1,5 @@
 //
-//  StringFolding.swift
+//  String-Folding.swift
 //  StagedCooking-Revisited
 //
 //  Created by Logan Melton on 5/21/22.
@@ -12,3 +12,4 @@ extension String {
     return self.folding(options: .diacriticInsensitive, locale: .current)
   }
 }
+

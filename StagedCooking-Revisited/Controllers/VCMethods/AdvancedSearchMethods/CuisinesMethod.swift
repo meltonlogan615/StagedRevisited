@@ -19,7 +19,6 @@ extension UIViewController {
         let cuisines = compileString(from: choices)
         returnString = "exculde=\(cuisines)"
     }
-    print(returnString)
     return returnString
   }
   

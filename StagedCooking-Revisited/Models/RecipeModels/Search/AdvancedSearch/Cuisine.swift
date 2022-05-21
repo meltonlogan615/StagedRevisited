@@ -10,12 +10,13 @@
 
 import Foundation
 
-enum Cuisine: String, CaseIterable {  
+enum Cuisine: String, CaseIterable {
+  case caribbean, mediterranean, nordic, southern
+  
   case african = "African 🌍"
   case american = "American 🇺🇸"
   case british = "British 🇬🇧"
   case cajun = "Cajun 🐊"
-  case caribbean
   case chinese = "Chinese 🇨🇳"
   case european = "European 🇪🇺"
   case french = "French 🇫🇷"
@@ -27,7 +28,6 @@ enum Cuisine: String, CaseIterable {
   case japanese = "Japanese 🇯🇵"
   case jewish = "Jewish 🇮🇱"
   case korean = "Korean 🇰🇷"
-  case mediterranean, nordic, southern
   case spanish = "Spanish 🇪🇸"
   case thai = "Thai 🇹🇭"
   case vietnamese = "Vietnamese 🇻🇳"

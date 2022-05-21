@@ -12,8 +12,7 @@
 
 import Foundation
 
-enum Intolerances: String, CaseIterable {
-  case dairy, egg, gluten, grain, peanut, seafood, sesame, shellfish, soy, sulfite
+enum Intolerances: String {
+  case dairy, egg, gluten, grain, peanut, seafood, sesame, shellfish, soy, sulfite, wheat
   case treeNut = "Tree Nut"
-  case wheat
 }
