@@ -1,5 +1,6 @@
 ## Ignore folder
 IgnoreFiles/
+APIKeys.swift
 
 ## Ignore UserState
 *.xcuserstate
