@@ -41,6 +41,7 @@ class RecipeViewController: UIViewController {
     loadRecipeByID(for: recipeID) // Gets the Data for the Recipe. Also generates data for ingredientList
     getInstructions(for: recipeID) // Generates stepIngredients &
 //    testIdeas()
+    navigationController?.navigationBar.prefersLargeTitles = false
     style()
     layout()
   }
@@ -129,10 +130,10 @@ extension RecipeViewController {
     
     view.addSubview(recipeView)
     NSLayoutConstraint.activate([
-      recipeView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 2),
-      view.trailingAnchor.constraint(equalToSystemSpacingAfter: recipeView.trailingAnchor, multiplier: 2),
-      recipeView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
-      view.bottomAnchor.constraint(equalToSystemSpacingBelow: recipeView.safeAreaLayoutGuide.bottomAnchor, multiplier: 12),
+      recipeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      recipeView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
+      view.trailingAnchor.constraint(equalToSystemSpacingAfter: recipeView.trailingAnchor, multiplier: 4),
+      view.bottomAnchor.constraint(equalToSystemSpacingBelow: recipeView.safeAreaLayoutGuide.bottomAnchor, multiplier: 13),
     ])
     
     view.addSubview(startCookingButton)

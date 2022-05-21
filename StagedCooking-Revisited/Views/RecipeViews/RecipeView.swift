@@ -16,6 +16,7 @@ class RecipeView: UIView {
   var stackView = UIStackView()
 
   var mainImage = UIImageView()
+  var imageSize = CGSize.zero
   var titleLabel = UILabel()
   var dividerA = Divider()
   var infoStack = UIStackView()
@@ -45,6 +46,7 @@ class RecipeView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    imageSize = CGSize(width: frame.width / 3, height: frame.width / 6)
     style()
     layout()
   }
@@ -72,6 +74,7 @@ extension RecipeView {
     mainImage.contentMode = .center
     mainImage.layer.cornerRadius = 8
     mainImage.clipsToBounds = true
+    mainImage.frame.size = imageSize
     
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.font = .systemFont(ofSize: 24, weight: .semibold)
@@ -136,28 +139,21 @@ extension RecipeView {
 
     contentView.addSubview(stackView)
     NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalToSystemSpacingBelow: contentView.topAnchor, multiplier: 1),
-      contentView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
-      contentView.bottomAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 2),
-      stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
+      stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+      stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+      stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+      stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
     ])
 
-    
     stackView.addArrangedSubview(mainImage)
-    NSLayoutConstraint.activate([
-      mainImage.heightAnchor.constraint(equalToConstant: 168),
-    ])
+    mainImage.heightAnchor.constraint(equalToConstant: 168).isActive = true
     
     stackView.addArrangedSubview(titleLabel)
-    titleLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor).isActive = true
-    
     stackView.addArrangedSubview(dividerA)
     
     stackView.addArrangedSubview(infoStack)
-    NSLayoutConstraint.activate([
-      infoStack.leadingAnchor.constraint(equalToSystemSpacingAfter: stackView.leadingAnchor, multiplier: 2),
-      stackView.trailingAnchor.constraint(equalToSystemSpacingAfter: infoStack.trailingAnchor, multiplier: 2)
-    ])
+
+    
     infoStack.addArrangedSubview(readyInMinutesLabel)
     infoStack.addArrangedSubview(servingsLabel)
     infoStack.addArrangedSubview(dishTypeLabel)
@@ -166,32 +162,11 @@ extension RecipeView {
     infoStack.addArrangedSubview(sustainableLabel)
     infoStack.addArrangedSubview(cheapLabel)
     infoStack.addArrangedSubview(pricePerServingLabel)
-    
     stackView.addArrangedSubview(dividerB)
-    
     stackView.addArrangedSubview(showIngredientsButton)
-    NSLayoutConstraint.activate([
-      showIngredientsButton.widthAnchor.constraint(equalTo: stackView.widthAnchor),
-      showIngredientsButton.heightAnchor.constraint(equalToConstant: 48)
-    ])
-    
     stackView.addArrangedSubview(showSummaryButton)
-    NSLayoutConstraint.activate([
-      showSummaryButton.widthAnchor.constraint(equalTo: showIngredientsButton.widthAnchor),
-      showSummaryButton.heightAnchor.constraint(equalTo: showIngredientsButton.heightAnchor)
-    ])
-    
     stackView.addArrangedSubview(showNutritionButton)
-    NSLayoutConstraint.activate([
-      showNutritionButton.widthAnchor.constraint(equalTo: showIngredientsButton.widthAnchor),
-      showNutritionButton.heightAnchor.constraint(equalTo: showIngredientsButton.heightAnchor)
-    ])
-    
     stackView.addArrangedSubview(showRestrictionsButton)
-    NSLayoutConstraint.activate([
-      showRestrictionsButton.widthAnchor.constraint(equalTo: showIngredientsButton.widthAnchor),
-      showRestrictionsButton.heightAnchor.constraint(equalTo: showIngredientsButton.heightAnchor)
-    ])
   }
 }
 
