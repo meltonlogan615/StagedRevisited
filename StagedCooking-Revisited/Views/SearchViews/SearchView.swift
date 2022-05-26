@@ -43,7 +43,8 @@ extension SearchView {
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.axis = .vertical
     stackView.spacing = 24
-    stackView.distribution = .equalSpacing
+    stackView.distribution = .fillEqually
+    
     
     searchTextField.translatesAutoresizingMaskIntoConstraints = false
     searchTextField.placeholder = "Search"
@@ -59,7 +60,7 @@ extension SearchView {
     historyStack.translatesAutoresizingMaskIntoConstraints = false
     historyStack.axis = .horizontal
     historyStack.distribution = .fillEqually
-    historyStack.spacing = 16
+    historyStack.spacing = 8
 
     searchHistoryButton.translatesAutoresizingMaskIntoConstraints = false
     searchHistoryButton.setTitle("Search History", for: [])
@@ -74,15 +75,10 @@ extension SearchView {
     errorLabel.numberOfLines = 0
     errorLabel.textColor = K.scAccent
     errorLabel.textAlignment = .center
-    errorLabel.font = .systemFont(ofSize: 20, weight: .medium)
+    errorLabel.font = .systemFont(ofSize: 20, weight: .semibold)
     errorLabel.layer.opacity = 0.0
     errorLabel.backgroundColor = K.primary
     errorLabel.layer.zPosition = 10
-    errorLabel.layer.borderColor = K.scAccent?.cgColor
-    errorLabel.layer.borderWidth = 2
-
-    
-    
   }
   
   func layout() {
@@ -91,11 +87,12 @@ extension SearchView {
     
     // MARK: - ChefDefaults Added to view
     // TODO: - Once it gets close to release time, bring these back into play
-    // TODO: - Will also neewd to apply constraints
-    stackView.addArrangedSubview(advancedSearchButton)
-    historyStack.addArrangedSubview(searchHistoryButton)
-    historyStack.addArrangedSubview(viewedHistoryButton)
-    stackView.addArrangedSubview(historyStack)
+    // TODO: - Will also neewd to apply constraints as needed
+    // TODO: - Same for AdvancedSearch
+//    stackView.addArrangedSubview(advancedSearchButton)
+//    historyStack.addArrangedSubview(searchHistoryButton)
+//    historyStack.addArrangedSubview(viewedHistoryButton)
+//    stackView.addArrangedSubview(historyStack)
     
     addSubview(stackView)
     NSLayoutConstraint.activate([
@@ -113,18 +110,4 @@ extension SearchView {
     ])
   }
 }
-
-// MARK: - UITextFieldDelegate
-//extension SearchView: UITextFieldDelegate {
-//  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//    return true
-//  }
-//
-//  func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//    return true
-//  }
-//
-//  func textFieldDidEndEditing(_ textField: UITextField) {
-//  }
-//}
 

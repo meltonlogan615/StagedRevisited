@@ -56,8 +56,8 @@ extension LogInView {
   func layout() {
     addSubview(stackView)
     NSLayoutConstraint.activate([
-      stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2),
-      trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 2)
+      stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
     ])
     stackView.addArrangedSubview(emailTextField)
     stackView.addArrangedSubview(passwordTextField)

@@ -12,17 +12,17 @@ class DietsModal: RecipeModal {
   
   var dietInfo: DietInfo?
   
-  var dietsLabel = ModalLabel()
-  var whole30Label = ModalLabel()
-  var veganLabel = ModalLabel()
-  var vegetarianLabel = ModalLabel()
-  var dairyFreeLabel = ModalLabel()
-  var glutenFreeLabel = ModalLabel()
-  var ketoLabel = ModalLabel()
-  var lowFodmapLabel = ModalLabel()
-  var veryHealthyLabel = ModalLabel()
-  var healthScoreLabel = ModalLabel()
-  var wwSmartPointsLabel = ModalLabel()
+  var dietsLabel = SCLabel()
+  var whole30Label = SCLabel()
+  var veganLabel = SCLabel()
+  var vegetarianLabel = SCLabel()
+  var dairyFreeLabel = SCLabel()
+  var glutenFreeLabel = SCLabel()
+  var ketoLabel = SCLabel()
+  var lowFodmapLabel = SCLabel()
+  var veryHealthyLabel = SCLabel()
+  var healthScoreLabel = SCLabel()
+  var wwSmartPointsLabel = SCLabel()
   
   override init(frame: CGRect) {
     super.init(frame: frame)

@@ -16,8 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.makeKeyAndVisible()
-    window?.backgroundColor = .systemBackground
-    window?.rootViewController = SearchViewController()
+    window?.backgroundColor = K.primary
+    
+//    let layout = UICollectionViewFlowLayout()
+//    layout.scrollDirection = .horizontal
+//    let root = CardCollectionTwo(collectionViewLayout: layout)
+//    let root = CardCollectionContainer()
+//    let root = CardCollectionTwo()
+    let root = SearchViewController()
+//    let root = LoadingViewController()
+    window?.rootViewController = root
     
     return true
   }

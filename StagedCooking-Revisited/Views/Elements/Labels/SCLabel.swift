@@ -1,5 +1,5 @@
 //
-//  ModalLabel.swift
+//  SCLabel.swift
 //  StagedCooking-Revisited
 //
 //  Created by Logan Melton on 5/13/22.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ModalLabel: UILabel {
+class SCLabel: UILabel {
   override init(frame: CGRect) {
     super.init(frame: frame)
     style()
@@ -19,11 +19,10 @@ class ModalLabel: UILabel {
   }
 }
 
-extension ModalLabel {
+extension SCLabel {
   
   func style() {
     translatesAutoresizingMaskIntoConstraints = false
-    font = .systemFont(ofSize: 20)
     numberOfLines = 0
     tintColor = K.invertPrimary
   }

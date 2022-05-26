@@ -34,12 +34,7 @@ extension IngredientListViewController {
   
   func style() {
     ingredientsView.translatesAutoresizingMaskIntoConstraints = false
-    ingredientsView.layer.borderWidth = 2
-    ingredientsView.layer.borderColor = K.scAccent?.cgColor
-    ingredientsView.layer.cornerRadius = 8
-    ingredientsView.clipsToBounds = true
     ingredientsView.backgroundColor = K.primary
-
 
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.textColor = K.invertPrimary
@@ -57,28 +52,29 @@ extension IngredientListViewController {
   }
   
   func layout() {
-    view.addSubview(ingredientsView)
+    view.addSubview(titleLabel)
     NSLayoutConstraint.activate([
-      ingredientsView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 6),
-      ingredientsView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-      view.trailingAnchor.constraint(equalToSystemSpacingAfter: ingredientsView.trailingAnchor, multiplier: 4),
-      ingredientsView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4)
+      titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 1),
+      view.trailingAnchor.constraint(equalToSystemSpacingAfter: titleLabel.trailingAnchor, multiplier: 4),
+      titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
     ])
-
-    ingredientsView.addSubview(titleLabel)
+    view.addSubview(dividerView)
     NSLayoutConstraint.activate([
-      titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: ingredientsView.topAnchor, multiplier: 1),
-      ingredientsView.trailingAnchor.constraint(equalToSystemSpacingAfter: titleLabel.trailingAnchor, multiplier: 2),
-      titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: ingredientsView.leadingAnchor, multiplier: 2),
+      dividerView.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 1),
+      view.trailingAnchor.constraint(equalToSystemSpacingAfter: dividerView.trailingAnchor, multiplier: 4),
+      dividerView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4)
     ])
     
-    ingredientsView.addSubview(dividerView)
+    view.addSubview(ingredientsView)
     NSLayoutConstraint.activate([
-      dividerView.heightAnchor.constraint(equalToConstant: 2),
-      dividerView.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 1),
-      ingredientsView.trailingAnchor.constraint(equalToSystemSpacingAfter: dividerView.trailingAnchor, multiplier: 4),
-      dividerView.leadingAnchor.constraint(equalToSystemSpacingAfter: ingredientsView.leadingAnchor, multiplier: 4)
+//      ingredientsView.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 6),
+      ingredientsView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+      ingredientsView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+      ingredientsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      ingredientsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
     ])
+
+    
     
     for i in 0 ..< ingredients.count {
       let ingredientLine = UILabel()
@@ -91,10 +87,11 @@ extension IngredientListViewController {
     
     ingredientsView.addSubview(ingredientStack)
     NSLayoutConstraint.activate([
-      ingredientStack.topAnchor.constraint(equalToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 2),
-      ingredientsView.trailingAnchor.constraint(equalToSystemSpacingAfter: ingredientStack.trailingAnchor, multiplier: 2),
-      ingredientStack.leadingAnchor.constraint(equalToSystemSpacingAfter: ingredientsView.leadingAnchor, multiplier: 2),
+//      ingredientStack.topAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 1),
+      ingredientsView.trailingAnchor.constraint(equalToSystemSpacingAfter: ingredientStack.trailingAnchor, multiplier: 4),
+      ingredientStack.leadingAnchor.constraint(equalToSystemSpacingAfter: ingredientsView.leadingAnchor, multiplier: 4),
       ingredientStack.centerXAnchor.constraint(equalTo: ingredientsView.centerXAnchor),
+      ingredientStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
     ])
     
   }

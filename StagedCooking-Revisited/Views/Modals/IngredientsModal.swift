@@ -35,7 +35,7 @@ class IngredientsModal: RecipeModal {
 extension IngredientsModal {
   func generateIngredientLabels() {
     for i in 0 ..< ingredients.count {
-      let ingredientLine = ModalLabel()
+      let ingredientLine = LargeLabel()
       ingredientLine.translatesAutoresizingMaskIntoConstraints = false
       ingredientLine.text = ingredients[i].capitalized
       detailsStack.addArrangedSubview(ingredientLine)

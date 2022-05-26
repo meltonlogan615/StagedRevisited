@@ -42,6 +42,10 @@ class RecipeViewController: UIViewController {
     getInstructions(for: recipeID) // Generates stepIngredients &
 //    testIdeas()
     navigationController?.navigationBar.prefersLargeTitles = false
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Search Again",
+                                                        style: .plain,
+                                                        target: self,
+                                                        action: #selector(showModal))
     style()
     layout()
     print("List", ingredientList)
@@ -104,8 +108,11 @@ extension RecipeViewController: ModalDataSource {
   
   // MARK: - Start Cooking Button Pressed
   @objc func startCookingButtonTapped(_ sender: UIButton) {
-    let stagesVC = StagedCardContainerViewController()
+//    let layout = UICollectionViewFlowLayout()
+//    layout.scrollDirection = .horizontal
+//    let stagesVC = CardCollectionTwo(collectionViewLayout: layout)
     let cards = buildCards(ingredients: ingredientList, instructionsDictionary: stepInstructions, ingredientDictionary: stepIngredients)
+    let stagesVC = StagedCardContainerViewController()
     stagesVC.recipe = recipe
     stagesVC.cards = cards
     stagesVC.ingredientList = self.ingredientList

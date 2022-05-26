@@ -27,7 +27,6 @@ class RecipeListCollectionView: UIViewController {
   var model = Response()
   
   var searchedRecipe = String()
-  var leftBarButtonText = String()
   
   private let recipeCollection: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -37,6 +36,10 @@ class RecipeListCollectionView: UIViewController {
     return recipeCollection
   }()
   
+  override func viewWillAppear(_ animated: Bool) {
+
+  }
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = K.primary
@@ -134,6 +137,7 @@ extension RecipeListCollectionView: UICollectionViewDelegateFlowLayout {
 // MARK: - Networking, Spoonacular ComplexSearch
 extension RecipeListCollectionView {
   func loadRecipes(for recipe: String) {
+
     dataprovider.getRecipes(for: recipe) { [weak self] (foodResult: Result<Response, Error>) in
       guard let self = self else { return }
       switch foodResult {
@@ -180,6 +184,26 @@ extension RecipeListCollectionView {
 //    show(filterVC, sender: self)
     present(filterVC, animated: true)
   }
+}
+
+extension RecipeListCollectionView {
+  private func activityIndicator(style: UIActivityIndicatorView.Style = .large,
+                                 frame: CGRect? = nil,
+                                 center: CGPoint? = nil) -> UIActivityIndicatorView {
+    let spinner = UIActivityIndicatorView(style: style)
+    
+    if let frame = frame {
+      spinner.frame = frame
+    }
+    if let center = center {
+      spinner.center = center
+    }
+    return spinner
+  }
+  
+//  let spinner = self.activityIndicator(style: .large, center: self.view.center)
+//  self.view.addSubview(spinner)
+//  spinner.startAnimating()
 }
 
 

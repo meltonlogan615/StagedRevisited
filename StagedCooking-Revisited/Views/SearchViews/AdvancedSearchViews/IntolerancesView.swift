@@ -13,62 +13,62 @@ class IntolerancesView: AdvancedSearch {
   var viewTitle = "Intolerances"
   
   var dairyRow = AdvancedSearchRow()
-  var dairyLabel = ModalLabel()
+  var dairyLabel = SCLabel()
   var dairySwitch = ToggleSwitch()
   var divOne = Divider()
   
   var eggRow = AdvancedSearchRow()
-  var eggLabel = ModalLabel()
+  var eggLabel = SCLabel()
   var eggSwitch = ToggleSwitch()
   var divTwo = Divider()
   
   var glutenRow = AdvancedSearchRow()
-  var glutenLabel = ModalLabel()
+  var glutenLabel = SCLabel()
   var glutenSwitch = ToggleSwitch()
   var divThree = Divider()
 
   var grainRow = AdvancedSearchRow()
-  var grainLabel = ModalLabel()
+  var grainLabel = SCLabel()
   var grainSwitch = ToggleSwitch()
   var divFour = Divider()
   
   var peanutRow = AdvancedSearchRow()
-  var peanutLabel = ModalLabel()
+  var peanutLabel = SCLabel()
   var peanutSwitch = ToggleSwitch()
   var divFive = Divider()
 
   var seafoodRow = AdvancedSearchRow()
-  var seafoodLabel = ModalLabel()
+  var seafoodLabel = SCLabel()
   var seafoodSwitch = ToggleSwitch()
   var divSix = Divider()
 
   var sesameRow = AdvancedSearchRow()
-  var sesameLabel = ModalLabel()
+  var sesameLabel = SCLabel()
   var sesameSwitch = ToggleSwitch()
   var divSeven = Divider()
   
   var shellfishRow = AdvancedSearchRow()
-  var shellfishLabel = ModalLabel()
+  var shellfishLabel = SCLabel()
   var shellfishSwitch = ToggleSwitch()
   var divEight = Divider()
 
   var soyRow = AdvancedSearchRow()
-  var soyLabel = ModalLabel()
+  var soyLabel = SCLabel()
   var soySwitch = ToggleSwitch()
   var divNine = Divider()
 
   var sulfiteRow = AdvancedSearchRow()
-  var sulfiteLabel = ModalLabel()
+  var sulfiteLabel = SCLabel()
   var sulfiteSwitch = ToggleSwitch()
   var divTen = Divider()
 
   var treeNutRow = AdvancedSearchRow()
-  var treeNutLabel = ModalLabel()
+  var treeNutLabel = SCLabel()
   var treeNutSwitch = ToggleSwitch()
   var divEleven = Divider()
   
   var wheatRow = AdvancedSearchRow()
-  var wheatLabel = ModalLabel()
+  var wheatLabel = SCLabel()
   var wheatSwitch = ToggleSwitch()
     
   override init(frame: CGRect) {

@@ -36,10 +36,11 @@ class ModalViewController: UIViewController {
 
 extension ModalViewController {
   func style() {
-    let backgroundFilter = UIBlurEffect(style: .dark)
-    let blurredBackground = UIVisualEffectView(effect: backgroundFilter)
-    blurredBackground.frame = CGRect(x: 0, y: 0, width: view.frame.maxX, height: view.frame.maxY)
-    view.addSubview(blurredBackground)
+//    let backgroundFilter = UIBlurEffect(style: .dark)
+//    let blurredBackground = UIVisualEffectView(effect: backgroundFilter)
+//    blurredBackground.frame = CGRect(x: 0, y: 0, width: view.frame.maxX, height: view.frame.maxY)
+//    view.addSubview(blurredBackground)
+    view.addSubview(self.blur())
     
     modalLabel.translatesAutoresizingMaskIntoConstraints = false
     modalLabel.font = .systemFont(ofSize: 36, weight: .semibold)

@@ -40,6 +40,11 @@ final class AdvancedCell: UICollectionViewCell {
     return label
   }()
   
+  var recipeName = String()
+  var cardCounter = Int()
+  var ingredients = [String]()
+  var directions = String()
+  
   override init(frame: CGRect) {
     super.init(frame: .zero)
     layout()

@@ -16,7 +16,6 @@ class SearchViewController: UIViewController {
   let navigationBar = UINavigationController()
   let imageView = UIImageView()
   let searchView = SearchView()
-  
   let acctButton = TextOnlyButton()
 
   var searched: String? {
@@ -27,9 +26,13 @@ class SearchViewController: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = K.primary
     navigationBar.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advanced", style: .plain, target: self, action: #selector(advancedButtonTapped))
+    
     style()
     layout()
     configureButtonActions()
+//    let spinner = self.activityIndicator(style: .large, center: self.view.center)
+//    self.view.addSubview(spinner)
+//    spinner.startAnimating()
   }
   
   override func viewDidDisappear(_ animated: Bool) {
@@ -44,8 +47,8 @@ extension SearchViewController {
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = UIImage(systemName: "fork.knife.circle")
     imageView.tintColor = K.scAccent
-    imageView.contentMode = .scaleAspectFit
-    
+    imageView.contentMode = .scaleAspectFill
+
     searchView.translatesAutoresizingMaskIntoConstraints = false
     
     acctButton.translatesAutoresizingMaskIntoConstraints = false
@@ -54,27 +57,26 @@ extension SearchViewController {
   }
   
   private func layout() {
+    let imageHeight = (view.frame.height / 3 - 48)
     view.addSubview(imageView)
     NSLayoutConstraint.activate([
-      imageView.heightAnchor.constraint(equalToConstant: 200),
-      imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 8),
-      imageView.widthAnchor.constraint(equalTo: view.widthAnchor)
+      imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 4),
+      imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      imageView.heightAnchor.constraint(equalToConstant: imageHeight)
     ])
-    
     view.addSubview(searchView)
     NSLayoutConstraint.activate([
+      searchView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 4),
       view.trailingAnchor.constraint(equalToSystemSpacingAfter: searchView.trailingAnchor, multiplier: 4),
       searchView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
-      searchView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      searchView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
     ])
     
-    view.addSubview(acctButton)
-    NSLayoutConstraint.activate([
-      acctButton.leadingAnchor.constraint(equalTo: searchView.leadingAnchor),
-      acctButton.trailingAnchor.constraint(equalTo: searchView.trailingAnchor),
-      view.bottomAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: acctButton.bottomAnchor, multiplier: 8)
-    ])
+//    view.addSubview(acctButton)
+//    NSLayoutConstraint.activate([
+//      acctButton.leadingAnchor.constraint(equalTo: searchView.leadingAnchor),
+//      acctButton.trailingAnchor.constraint(equalTo: searchView.trailingAnchor),
+//      view.bottomAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: acctButton.bottomAnchor, multiplier: 8)
+//    ])
   }
 }
 
@@ -179,6 +181,22 @@ extension SearchViewController {
     present(navigationController, animated: true)
   }
 }
+
+//extension SearchViewController {
+//  private func activityIndicator(style: UIActivityIndicatorView.Style = .large,
+//                                 frame: CGRect? = nil,
+//                                 center: CGPoint? = nil) -> UIActivityIndicatorView {
+//    let spinner = UIActivityIndicatorView(style: style)
+//
+//    if let frame = frame {
+//      spinner.frame = frame
+//    }
+//    if let center = center {
+//      spinner.center = center
+//    }
+//    return spinner
+//  }
+//}
 
 
 

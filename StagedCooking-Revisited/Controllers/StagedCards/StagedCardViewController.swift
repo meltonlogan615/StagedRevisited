@@ -12,8 +12,9 @@ class StagedCardViewController: UIViewController {
   
 // MARK: - Views
   let scrollView = UIScrollView()
-  let stepView = UIView()
-  let cardStackView = UIStackView()
+  let cardView = UIView()
+  let containter = UIView()
+  let ingredientsStack = UIStackView()
   
   let dividerView = Divider()
   let dividerViewSequel = Divider()
@@ -21,7 +22,7 @@ class StagedCardViewController: UIViewController {
 //  MARK: - Labels
   let cardNumberLabel = UILabel()
   var ingredientLabel = UILabel()
-  let directionsLabel = ModalLabel()
+  let directionsLabel = SCLabel()
   
 //  MARK: = VC Data
   var recipeName = String()
@@ -37,8 +38,8 @@ class StagedCardViewController: UIViewController {
   }
   
   init(recipeName: String, cardCounter: Int, ingredients: [String], instructions: String) {
-    self.cardNumberLabel.text = "Stage \(cardCounter)"
-    self.directionsLabel.text = "\(instructions)\n \n\(instructions)\n\n \(instructions)\n\n\(instructions)"
+    self.cardNumberLabel.text = "\(recipeName.capitalized)\nStage \(cardCounter)"
+    self.directionsLabel.text = "\(instructions)"
     self.cardCounter = cardCounter
     self.ingredients = ingredients
     self.directions = instructions
@@ -55,25 +56,23 @@ extension StagedCardViewController {
   func style() {
     scrollView.translatesAutoresizingMaskIntoConstraints = false
     scrollView.backgroundColor = K.primary
-    scrollView.layer.borderWidth = 2
-    scrollView.layer.borderColor = K.scAccent?.cgColor
-    scrollView.layer.cornerRadius = 8
-    scrollView.clipsToBounds = true
     
-    stepView.translatesAutoresizingMaskIntoConstraints = false
-    
-    cardStackView.translatesAutoresizingMaskIntoConstraints = false
-    cardStackView.axis = .vertical
-    cardStackView.distribution = .fillProportionally
-    cardStackView.spacing = 8
+    cardView.translatesAutoresizingMaskIntoConstraints = false
+    containter.translatesAutoresizingMaskIntoConstraints = false
     
     cardNumberLabel.translatesAutoresizingMaskIntoConstraints = false
     cardNumberLabel.font = .systemFont(ofSize: 24, weight: .semibold)
     cardNumberLabel.textColor = K.invertPrimary
+    cardNumberLabel.numberOfLines = 0
     cardNumberLabel.textAlignment = .center
     
     dividerView.translatesAutoresizingMaskIntoConstraints = false
-    // ingredients
+    
+    ingredientsStack.translatesAutoresizingMaskIntoConstraints = false
+    ingredientsStack.axis = .vertical
+    ingredientsStack.distribution = .fillProportionally
+    ingredientsStack.spacing = 8
+    
     dividerViewSequel.translatesAutoresizingMaskIntoConstraints = false
     
     directionsLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -83,47 +82,82 @@ extension StagedCardViewController {
   func layout() {
     view.addSubview(scrollView)
     NSLayoutConstraint.activate([
-      scrollView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 6),
-      scrollView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 6),
-      view.trailingAnchor.constraint(equalToSystemSpacingAfter: scrollView.trailingAnchor, multiplier: 6),
-      view.bottomAnchor.constraint(equalToSystemSpacingBelow: scrollView.bottomAnchor, multiplier: 18),
+      scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
     ])
     
-    scrollView.addSubview(stepView)
+    
+    scrollView.addSubview(cardView)
     NSLayoutConstraint.activate([
-      stepView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-      stepView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-      stepView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-      stepView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-      stepView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+      cardView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+      cardView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+      scrollView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor),
+      cardView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+      cardView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
     ])
     
-    stepView.addSubview(cardStackView)
+    cardView.addSubview(containter)
     NSLayoutConstraint.activate([
-      cardStackView.topAnchor.constraint(equalToSystemSpacingBelow: stepView.topAnchor, multiplier: 2),
-      stepView.trailingAnchor.constraint(equalToSystemSpacingAfter: cardStackView.trailingAnchor, multiplier: 2),
-      cardStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: stepView.leadingAnchor, multiplier: 2),
+      containter.topAnchor.constraint(equalTo: cardView.topAnchor),
+      containter.leadingAnchor.constraint(equalToSystemSpacingAfter: cardView.leadingAnchor, multiplier: 2),
+      cardView.trailingAnchor.constraint(equalToSystemSpacingAfter: containter.trailingAnchor, multiplier: 2),
+      containter.bottomAnchor.constraint(equalTo: cardView.bottomAnchor),
     ])
     
-    cardStackView.addArrangedSubview(cardNumberLabel)
-    cardStackView.addArrangedSubview(dividerView)
+    // top label
+    containter.addSubview(cardNumberLabel)
+    NSLayoutConstraint.activate([
+      cardNumberLabel.topAnchor.constraint(equalToSystemSpacingBelow: containter.topAnchor, multiplier: 1),
+      cardNumberLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: containter.leadingAnchor, multiplier: 4),
+      containter.trailingAnchor.constraint(equalToSystemSpacingAfter: cardNumberLabel.trailingAnchor, multiplier: 4)
+    ])
     
+    // first divider
+    containter.addSubview(dividerView)
+    NSLayoutConstraint.activate([
+      dividerView.topAnchor.constraint(equalToSystemSpacingBelow: cardNumberLabel.bottomAnchor, multiplier: 1),
+      dividerView.leadingAnchor.constraint(equalToSystemSpacingAfter: containter.leadingAnchor, multiplier: 4),
+      containter.trailingAnchor.constraint(equalToSystemSpacingAfter: dividerView.trailingAnchor, multiplier: 4)
+    ])
+    
+    // ingredients
+    containter.addSubview(ingredientsStack)
+    NSLayoutConstraint.activate([
+      ingredientsStack.topAnchor.constraint(equalToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 2),
+      ingredientsStack.leadingAnchor.constraint(equalToSystemSpacingAfter: containter.leadingAnchor, multiplier: 4),
+      containter.trailingAnchor.constraint(equalToSystemSpacingAfter: ingredientsStack.trailingAnchor, multiplier: 4),
+    ])
+
     if ingredients.isEmpty {
-      let ingredientLine = ModalLabel()
-      cardStackView.addArrangedSubview(ingredientLine)
+      let ingredientLine = LargeLabel()
+      ingredientsStack.addArrangedSubview(ingredientLine)
       ingredientLine.translatesAutoresizingMaskIntoConstraints = false
       ingredientLine.text = "No Ingredients Used"
     } else {
       for i in 0 ..< ingredients.count {
-        let ingredientLine = ModalLabel()
-        cardStackView.addArrangedSubview(ingredientLine)
+        let ingredientLine = LargeLabel()
+        ingredientsStack.addArrangedSubview(ingredientLine)
         ingredientLine.translatesAutoresizingMaskIntoConstraints = false
         ingredientLine.text = ingredients[i].capitalized
       }
     }
+    // second divider
+    containter.addSubview(dividerViewSequel)
+    NSLayoutConstraint.activate([
+      dividerViewSequel.topAnchor.constraint(equalToSystemSpacingBelow: ingredientsStack.bottomAnchor, multiplier: 2),
+      dividerViewSequel.leadingAnchor.constraint(equalToSystemSpacingAfter: containter.leadingAnchor, multiplier: 4),
+      containter.trailingAnchor.constraint(equalToSystemSpacingAfter: dividerViewSequel.trailingAnchor, multiplier: 4)
+    ])
     
-    cardStackView.addArrangedSubview(dividerViewSequel)
-    cardStackView.addArrangedSubview(directionsLabel)
+    //directions
+    containter.addSubview(directionsLabel)
+    NSLayoutConstraint.activate([
+      directionsLabel.topAnchor.constraint(equalToSystemSpacingBelow: dividerViewSequel.bottomAnchor, multiplier: 2),
+      directionsLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: containter.leadingAnchor, multiplier: 4),
+      containter.trailingAnchor.constraint(equalToSystemSpacingAfter: directionsLabel.trailingAnchor, multiplier: 4),
+    ])
 
   }
 }

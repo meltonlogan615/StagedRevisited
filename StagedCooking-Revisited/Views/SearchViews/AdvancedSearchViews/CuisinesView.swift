@@ -42,7 +42,7 @@ extension CuisinesView {
 ////      row.backgroundColor = .red
 //      row.translatesAutoresizingMaskIntoConstraints = false
 //
-//      let rowTitle = ModalLabel()
+//      let rowTitle = SCLabel()
 //      rowTitle.translatesAutoresizingMaskIntoConstraints = false
 //
 //      let toggle = UISwitch()

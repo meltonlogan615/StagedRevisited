@@ -10,7 +10,7 @@ import UIKit
 
 class SummaryModal: RecipeModal {
   
-  var summaryLabel = ModalLabel()
+  var summaryLabel = SCLabel()
   var summary = String()
 
   override init(frame: CGRect) {

@@ -13,17 +13,17 @@ class GeneralModal: UIView {
   var generalInfo: GeneralInfo?
   var generalStac = UIStackView()
   
-  var readyInMinutesLabel = ModalLabel()
-  var servingsLabel = ModalLabel()
+  var readyInMinutesLabel = SCLabel()
+  var servingsLabel = SCLabel()
   
-  var dishTypeLabel = ModalLabel()
-  var cuisinesLabel = ModalLabel()
+  var dishTypeLabel = SCLabel()
+  var cuisinesLabel = SCLabel()
   
-  var veryPopularLabel = ModalLabel()
-  var sustainableLabel = ModalLabel()
+  var veryPopularLabel = SCLabel()
+  var sustainableLabel = SCLabel()
   
-  var cheapLabel = ModalLabel()
-  var pricePerServingLabel = ModalLabel()
+  var cheapLabel = SCLabel()
+  var pricePerServingLabel = SCLabel()
 
   override init(frame: CGRect) {
     super.init(frame: frame)
