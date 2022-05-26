@@ -4,4 +4,5 @@ APIKeys.swift
 
 ## Ignore UserState
 *.xcuserstate
-UserInterfaceState.xcuserstate
+*UserInterfaceState.xcuserstate
+StagedCooking-Revisited.xcodeproj/project.xcworkspace/xcuserdata/fartmaster.xcuserdatad/UserInterfaceState.xcuserstate
