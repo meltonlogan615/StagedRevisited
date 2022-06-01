@@ -6,21 +6,40 @@
 //
 
 import Foundation
+
+/// struct EndPoints
+/// For this purpose, has three basic properties: - baseURL, - searchType, - apiKey
 struct EndPoints {
   private let baseURL = "https://api.spoonacular.com/recipes/"
   private var searchType = "complexSearch/"
   private let apiKey = APIKey.apiKey
   var recipeID: Int?
   var query: String?
+  var filter: String?
 }
 
-// Extension to build URL for Recipe Search
-// TODO: - Currently, can only search for single word, need to resolve how to deal with strings containing an empty space
+/// Extension to build URL for Recipe Search. T
 extension EndPoints {
   var endpointURL: URL {
     guard let query = query else { fatalError("Endpoint URL Failed") }
     let formattedQuery = query.replacingOccurrences(of: " ", with: "%20", options: .regularExpression, range: nil)
     let completedURL = URL(string: "\(baseURL)\(searchType)?apiKey=\(apiKey)&query=\(formattedQuery)&number=1&instructionsRequired=true&addRecipeNutrition=true")
+    guard let url = completedURL else {
+      preconditionFailure("Invalid URL: \(String(describing: completedURL))")
+    }
+    return url
+  }
+}
+
+// Extension to build URL for Recipe Search with Advanced Search Filters Applied
+extension EndPoints {
+  var endpointForFilter: URL {
+    guard let query = query else { fatalError("Query Endpoint Failed") }
+    guard let filter = filter else { fatalError("Filter Endpoint URL Failed")}
+    
+    let formattedQuery = query.replacingOccurrences(of: " ", with: "%20", options: .regularExpression, range: nil)
+    
+    let completedURL = URL(string: "\(baseURL)\(searchType)?apiKey=\(apiKey)&query=\(formattedQuery)&number=1&instructionsRequired=true&addRecipeNutrition=true\(filter)")
     guard let url = completedURL else {
       preconditionFailure("Invalid URL: \(String(describing: completedURL))")
     }
@@ -39,6 +58,7 @@ extension EndPoints {
     return idURL
   }
 }
+
 // Extension to build URL for Anylized Instructions
 extension EndPoints {
   var endpointForInstructions: URL {
@@ -51,10 +71,16 @@ extension EndPoints {
   }
 }
 
+
 extension EndPoints {
 // Search
   func getFood(for searched: String) -> EndPoints {
     return EndPoints(query: searched)
+  }
+  
+// Filtered Search
+  func getFilteredFood(for searched: String, with filter: String) -> EndPoints {
+    return EndPoints(query: searched, filter: filter)
   }
   
 // Recipe Details by ID

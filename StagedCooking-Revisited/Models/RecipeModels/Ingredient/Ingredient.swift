@@ -6,7 +6,11 @@
 //
 
 import Foundation
-
+/**
+ DataType for `Ingredient`..
+ 
+ Not currently in use..
+ */
 struct Ingredient: Codable, Identifiable, Comparable, Hashable {
   var id: Int?
   var aisle: String?

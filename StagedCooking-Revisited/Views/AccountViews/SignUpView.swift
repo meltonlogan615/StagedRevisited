@@ -12,9 +12,9 @@ class SignUpView: UIView {
   
   // MARK: - Subviews
   let stackView = UIStackView()
-  let nameTextField = CustomTextField()
-  let emailTextField = CustomTextField()
-  let passwordTextField = CustomTextField()
+  let nameTextField = LargeTextField()
+  let emailTextField = LargeTextField()
+  let passwordTextField = LargeTextField()
   let submitButton = ActionButton()
     
   override init(frame: CGRect) {

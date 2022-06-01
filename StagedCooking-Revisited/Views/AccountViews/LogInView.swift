@@ -5,20 +5,27 @@
 //  Created by Logan Melton on 5/19/22.
 //
 
-/*
+import Foundation
+import UIKit
+
+// TODO: - #23 - Set Up Firebase to handle account creation and logging in.
+
+/**
+ View to present options for Logging In.
+ 
+ 
+ 
+ General Flow:
  - Log In
  - email / password text fields
  - submit button
  - Goes to SearchViewController
  */
-import Foundation
-import UIKit
-
 class LogInView: UIView {
   
   let stackView = UIStackView()
-  let emailTextField = CustomTextField()
-  let passwordTextField = CustomTextField()
+  let emailTextField = LargeTextField()
+  let passwordTextField = LargeTextField()
   let submitButton = ActionButton()
   
   override init(frame: CGRect) {

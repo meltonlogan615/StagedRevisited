@@ -1,5 +1,5 @@
 //
-//  CustonTextField.swift
+//  LargeTextField.swift
 //  StagedCooking-Revisited
 //
 //  Created by Logan Melton on 4/3/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomTextField: UITextField {
+class LargeTextField: UITextField {
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.isAccessibilityElement = true
@@ -18,7 +18,7 @@ class CustomTextField: UITextField {
   }
 }
 
-extension CustomTextField {
+extension LargeTextField {
   func style() {
     translatesAutoresizingMaskIntoConstraints = false
     becomeFirstResponder()

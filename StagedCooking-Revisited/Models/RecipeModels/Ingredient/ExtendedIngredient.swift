@@ -6,7 +6,15 @@
 //
 
 import Foundation
-
+/**
+ 
+ DataType for `ExtendedIngredient`..
+ 
+ Is currently used as:
+  - value for `extendedIngredients` property in `Recipe`.
+  - value for `extendedIngredients` property in `RecipeViewController`.
+  - value in `generateIngredientsList(for selectedRecipe: Recipe)` to create `ingredientsList`.
+ */
 struct ExtendedIngredient: Codable, Hashable, Identifiable {
   var id: Int? 
   var name: String?

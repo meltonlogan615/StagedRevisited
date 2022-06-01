@@ -7,6 +7,13 @@
 
 import Foundation
 
+/**
+ Struct for SearchResult.
+ 
+ Will be passed into the `Response` as an array.
+ 
+ Each `SearchResult` contains basic recipe information.
+ */
 struct SearchResult: Decodable, Identifiable, Comparable, Hashable {
   var id: Int?
   var title: String?

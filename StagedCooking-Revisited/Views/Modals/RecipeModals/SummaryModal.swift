@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SummaryModal: RecipeModal {
+class SummaryModal: SCModal {
   
   var summaryLabel = SCLabel()
   var summary = String()

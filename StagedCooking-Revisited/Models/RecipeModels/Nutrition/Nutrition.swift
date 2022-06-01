@@ -8,6 +8,10 @@
 import Foundation
 
 // MARK: - Nutrition
+
+/**
+ Holder for additional DataTypes (Each property of `Nutrition` is itself a custom DataType).
+ */
 struct Nutrition: Decodable {
   var nutrients, properties, flavonoids: [Flavonoid]?
   var caloricBreakdown: CaloricBreakdown?

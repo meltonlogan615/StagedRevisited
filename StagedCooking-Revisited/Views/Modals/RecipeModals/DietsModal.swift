@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class DietsModal: RecipeModal {
+class DietsModal: SCModal {
   
   var dietInfo: DietInfo?
   

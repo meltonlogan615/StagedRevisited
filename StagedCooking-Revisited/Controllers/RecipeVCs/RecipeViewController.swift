@@ -48,17 +48,12 @@ class RecipeViewController: UIViewController {
                                                         action: #selector(showModal))
     style()
     layout()
-    print("List", ingredientList)
-    print("Extended", extendedIngredients)
   }
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = K.primary
-//    self.ingredientList = [String]()
-    
-//    recipeView.showGeneralButton.addTarget(self, action: #selector(showModal), for: .primaryActionTriggered)
     recipeView.showIngredientsButton.addTarget(self, action: #selector(showModal), for: .primaryActionTriggered)
     recipeView.showSummaryButton.addTarget(self, action: #selector(showModal), for: .primaryActionTriggered)
     recipeView.showNutritionButton.addTarget(self, action: #selector(showModal), for: .primaryActionTriggered)
@@ -112,6 +107,7 @@ extension RecipeViewController: ModalDataSource {
 //    layout.scrollDirection = .horizontal
 //    let stagesVC = CardCollectionTwo(collectionViewLayout: layout)
     let cards = buildCards(ingredients: ingredientList, instructionsDictionary: stepInstructions, ingredientDictionary: stepIngredients)
+    print(ingredientList, stepInstructions, stepIngredients)
     let stagesVC = StagedCardContainerViewController()
     stagesVC.recipe = recipe
     stagesVC.cards = cards
@@ -175,7 +171,7 @@ extension RecipeViewController: RecipeByID {
 
 // MARK: - setProperties Method, receives data, unwraps and sends to the view to display
 extension RecipeViewController {
-  func setProperties(for selectedRecipe: Recipe) {
+  private func setProperties(for selectedRecipe: Recipe) {
     self.recipe = selectedRecipe
     
     guard let image = selectedRecipe.image else { return }

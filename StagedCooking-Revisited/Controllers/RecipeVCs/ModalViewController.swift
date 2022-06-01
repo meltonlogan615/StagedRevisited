@@ -15,7 +15,7 @@ protocol ModalDataSource: AnyObject {
 
 class ModalViewController: UIViewController {
   
-  var modalView = RecipeModal()
+  var modalView = SCModal()
   var closeButton = DetailsButton()
   
   var modalLabel = UILabel()
@@ -44,7 +44,7 @@ extension ModalViewController {
     
     modalLabel.translatesAutoresizingMaskIntoConstraints = false
     modalLabel.font = .systemFont(ofSize: 36, weight: .semibold)
-    modalLabel.textColor = .white
+    modalLabel.textColor = K.invertPrimary
     modalLabel.textAlignment = .center
     
     modalView.translatesAutoresizingMaskIntoConstraints = false

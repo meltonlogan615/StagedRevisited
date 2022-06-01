@@ -8,6 +8,15 @@
 import Foundation
 
 // MARK: - Flavonoid
+
+/**
+ Is generically defined and used for maximum flexibility.
+ 
+ Is currently used for the following `Nutrition` properties:
+ - `Nutrition.nutrients`
+ - `Nutrition.properties`
+ - `Nutrition.flavonoids` (which I'm not entirely sure is being used in any current context at this time.
+ */
 struct Flavonoid: Decodable {
   var name: String?
   var amount: Double?

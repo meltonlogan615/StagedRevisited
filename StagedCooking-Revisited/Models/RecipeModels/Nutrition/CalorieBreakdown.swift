@@ -8,6 +8,13 @@
 import Foundation
 
 // MARK: - CaloricBreakdown
+/**
+ Struct for `CaloricBreakdown`.
+
+Each property is a `Double` that will be passed into `Nutrition` as a subset of its `Nutrition.caloricBreakdown` property.
+ 
+ - Is currently not in use.
+ */
 struct CaloricBreakdown: Decodable {
   var percentProtein, percentFat, percentCarbs: Double?
 }

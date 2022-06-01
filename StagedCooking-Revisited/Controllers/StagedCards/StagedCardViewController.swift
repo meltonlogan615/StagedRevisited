@@ -131,6 +131,9 @@ extension StagedCardViewController {
     ])
 
     if ingredients.isEmpty {
+//      directionsLabel.font = .systemFont(ofSize: 24, weight: .semibold)
+//      directionsLabel.textAlignment = .center
+//      dividerViewSequel.isHidden = true
       let ingredientLine = LargeLabel()
       ingredientsStack.addArrangedSubview(ingredientLine)
       ingredientLine.translatesAutoresizingMaskIntoConstraints = false

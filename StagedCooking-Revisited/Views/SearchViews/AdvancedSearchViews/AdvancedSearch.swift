@@ -14,6 +14,10 @@ class AdvancedSearch: UIView {
   var contentView = UIView()
   var detailsStack = UIStackView()
   
+  var allOptions = [String]()
+  var switches = [Int: Bool]()
+  
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     style()
@@ -22,6 +26,15 @@ class AdvancedSearch: UIView {
 
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  deinit {
+    print(switches)
+    for (key, value) in switches {
+      if value {
+        print(allOptions[key])
+      }
+    }
   }
 }
 
@@ -58,7 +71,6 @@ extension AdvancedSearch {
     ])
     
     contentView.addSubview(detailsStack)
-    print(String(describing: detailsStack.frame))
     NSLayoutConstraint.activate([
       detailsStack.topAnchor.constraint(equalToSystemSpacingBelow: contentView.topAnchor, multiplier: 4),
       detailsStack.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 4),

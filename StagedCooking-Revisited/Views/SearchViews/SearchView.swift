@@ -11,7 +11,7 @@ import UIKit
 class SearchView: UIView {
   
   let stackView = UIStackView()
-  let searchTextField = CustomTextField()
+  let searchTextField = LargeTextField()
   let searchButton = ActionButton()
   let advancedSearchButton = DetailsButton()
   

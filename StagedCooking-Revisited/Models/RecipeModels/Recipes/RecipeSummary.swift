@@ -6,6 +6,11 @@
 //
 
 import Foundation
+/**
+ Simplified form of `Recipe` with only `id`, `title`, and `summary` properties.
+ 
+ Currently not in use.
+ */
 
 struct RecipeSummary: Decodable, Identifiable, Comparable, Hashable {
   var id: Int?

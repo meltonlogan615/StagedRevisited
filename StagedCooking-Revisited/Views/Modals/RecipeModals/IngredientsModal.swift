@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class IngredientsModal: RecipeModal {
+class IngredientsModal: SCModal {
   
   // MARK: - Ingredient Properties
   var ingredientsLabel = UILabel()

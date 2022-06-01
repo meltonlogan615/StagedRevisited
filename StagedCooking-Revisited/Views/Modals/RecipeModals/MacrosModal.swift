@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MacrosModal: RecipeModal {
+class MacrosModal: SCModal {
   
   var macros = [Macros]()
   

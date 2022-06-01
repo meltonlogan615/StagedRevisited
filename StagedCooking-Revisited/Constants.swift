@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+/**
+ Struct for Singletons.
+ 
+ Only real usage is as simplifications for UIColors & for testing data.
+ 
+ */
 struct K {
   static let scAccent = UIColor(named: "AccentColor")
   static let scLabelBG = UIColor(named: "LabelBackground")

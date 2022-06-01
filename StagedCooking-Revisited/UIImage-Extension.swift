@@ -8,8 +8,20 @@
 import Foundation
 import UIKit
 
+
 extension UIImageView {
-  
+  /**
+   Extension of a UIImageView to use a URL(string:) as it's image.
+   
+   ExampleUsage:
+   
+   Before: imageView.image = *Result of method to unwrap and assign the image to the imageView*.
+   
+   After: imageView.loadImage(url: "https...").
+   
+   Very useful when receiving a URL to an image as part of a network response.
+   */
+
   func loadImage(url: String) {
     guard let url = URL(string: url) else { return }
     DispatchQueue.global().async { [weak self] in

@@ -1,5 +1,5 @@
 //
-//  RecipeModal.swift
+//  SCModal.swift
 //  StagedCooking-Revisited
 //
 //  Created by Logan Melton on 5/10/22.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class RecipeModal: UIView {
+class SCModal: UIView {
   
   var scrollView = UIScrollView()
   var contentView = UIView()
@@ -26,7 +26,7 @@ class RecipeModal: UIView {
   }
 }
 
-extension RecipeModal {
+extension SCModal {
   
   func style() { 
     translatesAutoresizingMaskIntoConstraints = false

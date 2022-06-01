@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
+
 extension UIViewController {
+  /// Simple Dismiss View method available to any UIViewControllers for a button's #selector(argument)
   @objc func dismissView(_ sender: UIBarButtonItem) {
     self.dismiss(animated: true)
   }

@@ -9,17 +9,13 @@ import Foundation
 import UIKit
 
 class DietsView: AdvancedSearch {
-  
-  var diets = Diet(rawValue: "Omnivore")
-  
-  let dietLabel = UILabel()
-  
-  let addDietsButton = UIButton()
-  
+    
   override init(frame: CGRect) {
     super.init(frame: frame)
-    style()
-    layout()
+    for option in Diet.allCases {
+      allOptions.append(option.rawValue)
+    }
+    layoutDiets()
   }
   
   required init?(coder: NSCoder) {
@@ -28,12 +24,32 @@ class DietsView: AdvancedSearch {
 }
 
 extension DietsView {
-  
-  func styleDietsView() {
-    translatesAutoresizingMaskIntoConstraints = false
-  }
-  
-  func layoutDietsView() {
-    
+
+  func layoutDiets() {
+    var rowTag = 0
+    for option in Diet.allCases {
+      let row = AdvancedSearchRow()
+      row.translatesAutoresizingMaskIntoConstraints = false
+      
+      let rowLabel = LargeLabel()
+      rowLabel.translatesAutoresizingMaskIntoConstraints = false
+      rowLabel.text = option.rawValue.localizedCapitalized
+      
+      let excludeToggle = ToggleSwitch()
+      excludeToggle.translatesAutoresizingMaskIntoConstraints = false
+      excludeToggle.tag = rowTag
+      excludeToggle.addTarget(self, action: #selector(didToggle), for: .valueChanged)
+
+      let divider = Divider()
+      divider.translatesAutoresizingMaskIntoConstraints = false
+      
+      row.excludeStack.addArrangedSubview(rowLabel)
+      row.excludeStack.addArrangedSubview(excludeToggle)
+      
+      detailsStack.addArrangedSubview(row)
+      detailsStack.addArrangedSubview(divider)
+      
+      rowTag += 1
+    }
   }
 }

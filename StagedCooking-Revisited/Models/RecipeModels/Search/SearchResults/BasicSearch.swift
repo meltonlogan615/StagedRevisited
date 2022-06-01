@@ -7,6 +7,12 @@
 
 import Foundation
 
+/**
+ struct for `BasicSearch`.
+ 
+ Not particularly used at this point. May end up being depreciated and removed
+ */
+
 struct BasicSearch: Decodable, Identifiable, Comparable, Hashable {
   var id: Int?
   var title: String?

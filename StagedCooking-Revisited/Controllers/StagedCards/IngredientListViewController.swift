@@ -67,9 +67,7 @@ extension IngredientListViewController {
     
     view.addSubview(ingredientsView)
     NSLayoutConstraint.activate([
-//      ingredientsView.topAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 6),
-      ingredientsView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-      ingredientsView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+      ingredientsView.topAnchor.constraint(equalToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 2),
       ingredientsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       ingredientsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
     ])
@@ -90,8 +88,6 @@ extension IngredientListViewController {
 //      ingredientStack.topAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 1),
       ingredientsView.trailingAnchor.constraint(equalToSystemSpacingAfter: ingredientStack.trailingAnchor, multiplier: 4),
       ingredientStack.leadingAnchor.constraint(equalToSystemSpacingAfter: ingredientsView.leadingAnchor, multiplier: 4),
-      ingredientStack.centerXAnchor.constraint(equalTo: ingredientsView.centerXAnchor),
-      ingredientStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
     ])
     
   }

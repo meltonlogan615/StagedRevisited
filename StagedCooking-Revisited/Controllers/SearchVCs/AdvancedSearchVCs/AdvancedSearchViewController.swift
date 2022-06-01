@@ -13,20 +13,21 @@ class AdvancedSearchViewController: UIViewController {
   
   var titleString = String()
   
-  
   private let advancedCollection: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     var advancedCollection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    advancedCollection.backgroundColor = K.primary
     advancedCollection.layer.zPosition = 10
+    advancedCollection.backgroundColor = .clear
     return advancedCollection
   }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = K.primary
+    
+    title = "Advanced Search"
+    navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(dismissView))
-    title = titleString
+    
     advancedCollection.register(AdvancedCell.self, forCellWithReuseIdentifier: "advancedCell")
     advancedCollection.dataSource = self
     advancedCollection.delegate = self
@@ -42,12 +43,14 @@ extension AdvancedSearchViewController {
   
   func style() {
     advancedCollection.translatesAutoresizingMaskIntoConstraints = false
+    advancedCollection.layer.zPosition = 10
+    
   }
   
   func layout() {
     view.addSubview(advancedCollection)
     NSLayoutConstraint.activate([
-      advancedCollection.topAnchor.constraint(equalTo: view.topAnchor),
+      advancedCollection.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       advancedCollection.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
       view.trailingAnchor.constraint(equalToSystemSpacingAfter: advancedCollection.trailingAnchor, multiplier: 4),
       advancedCollection.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -88,27 +91,37 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
 
 extension AdvancedSearchViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    switch indexPath{
-      case [0, 0]:
-        print("Cuisines")
-        let vc = CuisinesViewController()
-        present(vc, animated: true)
+//    let modal = ModalViewController()
+    let selectedVC = OptionViewController()
+//    modal.modalPresentationStyle = .overFullScreen
+
+    switch indexPath.item {
+      case 0:
+        selectedVC.optionView = CuisinesView()
+        selectedVC.viewTitle = "Cuisines"
+        present(selectedVC, animated: true)
         
-      case [0, 1]:
-        print("Diets")
+      case 1:
+        selectedVC.optionView = DietsView()
+        selectedVC.viewTitle = "Diets"
+        present(selectedVC, animated: true)
 
-      case [0, 2]:
-        print("Intolerances")
-        let vc = IntolerancesViewController()
-        present(vc, animated: true)
 
-      case [0, 3]:
+      case 2:
+        selectedVC.optionView = IntolerancesView()
+        selectedVC.viewTitle = "Intolerances"
+        present(selectedVC, animated: true)
+
+      case 3:
+//        let vc = AdvancedMacrosViewController()
+//        present(vc, animated: true)
         print("Macros")
 
-      case [0, 4]:
-        print("Meal Types")
+      case 4:
+        selectedVC.optionView = MealTypesView()
+        selectedVC.viewTitle = "Meal Types"
+        present(selectedVC, animated: true)
       
-
       default:
         break
     }
@@ -134,5 +147,7 @@ extension AdvancedSearchViewController: UICollectionViewDelegateFlowLayout {
     return finalWidth - 40
   }
 }
+
+
 
 

@@ -7,6 +7,15 @@
 
 import Foundation
 
+/**
+ struct for the `Response` received from a successful  network call
+ 
+`Number`
+ - the total number of responses. Can be constrained either by was is available or by us.
+ 
+ `Offset`
+ - if pagination or infinite scroll are used, `offset` will be the value to update along with number to implement either
+ */
 
 struct Response: Decodable {
   var results: [SearchResult]?

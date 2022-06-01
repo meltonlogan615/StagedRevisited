@@ -33,10 +33,11 @@ extension RecipeViewController {
               var shortIngredients = [String]()
               for i in 0 ..< analyzedIngredients.count {
                 guard let shortName = analyzedIngredients[i].name else { return }
-                if analyzedIngredients.isEmpty {
-                  continue
-                } else {
-                  shortIngredients.append(shortName)
+                switch analyzedIngredients.count {
+                  case 0:
+                    continue
+                  default:
+                    shortIngredients.append(shortName)
                 }
               }
               self.stepIngredients[number] = shortIngredients

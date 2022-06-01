@@ -6,7 +6,13 @@
 //
 
 import Foundation
-
+/**
+ Struct for information relating to `Diet` enum.
+ 
+ Data is generated in `RecipeViewController` and it's extension `GenerateDietsInfo`.
+ 
+ Passed into `DietsModal` and used to populate the `.text` properties of the  `SCLabel`.
+ */
 struct DietInfo: Codable {
   var diets: String
   var whole30: String
@@ -19,5 +25,4 @@ struct DietInfo: Codable {
   var veryHealthy: String
   var healthScore: String
   var wwSmartPoints: String
-
 }

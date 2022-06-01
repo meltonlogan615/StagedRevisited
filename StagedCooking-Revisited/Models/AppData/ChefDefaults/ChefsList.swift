@@ -6,7 +6,9 @@
 //
 
 import Foundation
-
+/**
+ Previous iteration of ChefDefault
+ */
 struct ChefsList {
   static var defaults = UserDefaults.standard
   static var favoriteRecipes = [Recipe]()

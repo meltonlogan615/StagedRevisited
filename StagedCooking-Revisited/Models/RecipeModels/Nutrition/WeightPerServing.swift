@@ -8,6 +8,11 @@
 import Foundation
 
 // MARK: - WeightPerServing
+/**
+ Will be passed into `Nutrition` as a subset of `Nutrition.weightPerServing` property.
+ 
+ - Is not  being used in any current context at this time.
+ */
 struct WeightPerServing: Decodable {
   var amount: Int?
   var unit: String?
