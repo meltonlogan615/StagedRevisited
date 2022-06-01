@@ -6,7 +6,12 @@
 //
 
 import UIKit
-
+/*
+  Large height & width UITextField
+  
+  - Will be used for manual input of lengthy values.
+  - Used in `SearchView`, `LogInView`, and other things.
+ */
 class LargeTextField: UITextField {
   override init(frame: CGRect) {
     super.init(frame: frame)

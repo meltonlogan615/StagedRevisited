@@ -8,13 +8,17 @@
 import Foundation
 import UIKit
 
+/**
+ Custom `UICollectionViewCell`
+ 
+ - Currently used in `AdvancedSearchViewController`
+ */
 final class AdvancedCell: UICollectionViewCell {
   
   let image: UIImageView = {
     let image = UIImageView(frame: .zero)
     image.translatesAutoresizingMaskIntoConstraints = false
     image.contentMode = .scaleAspectFit
-    image.image = UIImage(named: "hotchiken")
     image.layer.zPosition = 1
     return image
   }()

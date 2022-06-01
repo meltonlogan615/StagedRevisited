@@ -6,7 +6,11 @@
 //
 
 import UIKit
-
+/**
+ Custom implamentation of a UINavigationController.
+ 
+ Really only used in `SearchViewController` in the buttonTapped methods.
+ */
 class NavController: UINavigationController {
   
   override func viewDidLoad() {

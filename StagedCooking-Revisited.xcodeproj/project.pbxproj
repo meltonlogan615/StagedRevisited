@@ -116,7 +116,6 @@
 		32D70DC42807565B000328B9 /* CardContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D70DC32807565B000328B9 /* CardContainerViewController.swift */; };
 		32D70DC82808BEE1000328B9 /* GetCookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D70DC72808BEE1000328B9 /* GetCookingViewController.swift */; };
 		32ED32C42837C5840045F41A /* CuisinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ED32C32837C5840045F41A /* CuisinesView.swift */; };
-		32ED32C82837FD200045F41A /* TestSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ED32C72837FD200045F41A /* TestSwitch.swift */; };
 		32F15C6927FD58700031A724 /* ChefsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F15C6827FD58700031A724 /* ChefsList.swift */; };
 /* End PBXBuildFile section */
 
@@ -230,7 +229,6 @@
 		32D70DC32807565B000328B9 /* CardContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContainerViewController.swift; sourceTree = "<group>"; };
 		32D70DC72808BEE1000328B9 /* GetCookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookingViewController.swift; sourceTree = "<group>"; };
 		32ED32C32837C5840045F41A /* CuisinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinesView.swift; sourceTree = "<group>"; };
-		32ED32C72837FD200045F41A /* TestSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSwitch.swift; sourceTree = "<group>"; };
 		32F15C6827FD58700031A724 /* ChefsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefsList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -557,7 +555,6 @@
 			children = (
 				329F37872833C39F004A758D /* ToggleSwitch.swift */,
 				3221EF6E28349D1700A6FCCD /* MacrosTextField.swift */,
-				32ED32C72837FD200045F41A /* TestSwitch.swift */,
 				322199BE27FA6567003FD4F6 /* LargeTextField.swift */,
 				321E29F32842059C003BCC47 /* MediumTextField.swift */,
 			);
@@ -704,10 +701,10 @@
 		329C096B2836962F00CECE6C /* AccountViews */ = {
 			isa = PBXGroup;
 			children = (
+				329C0977283744F600CECE6C /* LandingView.swift */,
 				329C096C2836964100CECE6C /* LogInView.swift */,
 				329C096E2836966C00CECE6C /* SignUpView.swift */,
 				329C097228373CCC00CECE6C /* SettingsView.swift */,
-				329C0977283744F600CECE6C /* LandingView.swift */,
 			);
 			path = AccountViews;
 			sourceTree = "<group>";
@@ -952,7 +949,6 @@
 				32AB724C27FFEDCA00AF0E2A /* BasicSearch.swift in Sources */,
 				329C0978283744F600CECE6C /* LandingView.swift in Sources */,
 				321E29F42842059C003BCC47 /* MediumTextField.swift in Sources */,
-				32ED32C82837FD200045F41A /* TestSwitch.swift in Sources */,
 				322199CC27FA84CD003FD4F6 /* ViewController-Extensions.swift in Sources */,
 				3221EF6F28349D1700A6FCCD /* MacrosTextField.swift in Sources */,
 				32BD7A3F28398C230055B9CF /* String-Folding.swift in Sources */,

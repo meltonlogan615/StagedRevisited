@@ -8,6 +8,25 @@
 import Foundation
 import UIKit
 
+// TODO: - #23 - Set Up Firebase to handle account creation and logging in.
+// Packages have been added, but not configured.
+// https://console.firebase.google.com/project/stagedcooking/authentication
+
+
+// TODO: - #25 - Sign In With Apple (also covers Signing Up)
+// https://developer.apple.com/sign-in-with-apple/get-started/
+
+
+/**
+ View for Account Creation.
+ 
+ Minimal personal information required.
+ 
+ All we need:
+ - First Name
+ - Email
+ - Nothing else
+ */
 class SignUpView: UIView {
   
   // MARK: - Subviews

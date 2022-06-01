@@ -7,7 +7,9 @@
 
 import Foundation
 import UIKit
-
+/**
+ Horizontal `AccentColored` bar to act as a seperator between elements.
+ */
 class Divider: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)

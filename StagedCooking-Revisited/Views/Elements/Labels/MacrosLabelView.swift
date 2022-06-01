@@ -7,7 +7,9 @@
 
 import Foundation
 import UIKit
-
+/**
+ Custom `UIView` holding several `UILabels` used to display Macronutrients in a consistent way while minimizing code duplication.
+ */
 class MacrosLabelView: UIView {
   
   var titleLabel = UILabel()

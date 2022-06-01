@@ -8,6 +8,13 @@
 import Foundation
 import UIKit
 
+/**
+ Custom `UISwitch`
+ 
+ 
+ Uses `UISwitch`'s superClass of `UIControl` to allow for greater flexibility.
+ */
+
 class ToggleSwitch: UIControl {
   var onTint = K.scGreen {
     didSet {

@@ -6,6 +6,11 @@
 //
 
 import UIKit
+/**
+ Medium height & width UITextField
+ 
+ - Cannot recall where this is being used.
+ */
 
 class MediumTextField: UITextField {
   override init(frame: CGRect) {

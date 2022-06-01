@@ -7,7 +7,9 @@
 
 import Foundation
 import UIKit
-
+/**
+ Custom UILabel with a larger than default font size to ensure consistent styling throughout the app.
+ */
 class LargeLabel: UILabel {
   override init(frame: CGRect) {
     super.init(frame: frame)

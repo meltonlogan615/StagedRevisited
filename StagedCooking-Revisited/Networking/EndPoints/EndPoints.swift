@@ -6,6 +6,7 @@
 //
 
 import Foundation
+// TODO: - #27 - Change to Infinite Scrolling
 
 /// struct EndPoints
 /// For this purpose, has three basic properties: - baseURL, - searchType, - apiKey
@@ -33,7 +34,7 @@ extension EndPoints {
 
 // Extension to build URL for Recipe Search with Advanced Search Filters Applied
 extension EndPoints {
-  var endpointForFilter: URL {
+  var endpointForFiltered: URL {
     guard let query = query else { fatalError("Query Endpoint Failed") }
     guard let filter = filter else { fatalError("Filter Endpoint URL Failed")}
     

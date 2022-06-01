@@ -7,7 +7,9 @@
 
 import Foundation
 import UIKit
-
+/*
+ Primary Starting Point for the app.
+ */
 class SearchView: UIView {
   
   let stackView = UIStackView()
@@ -15,6 +17,7 @@ class SearchView: UIView {
   let searchButton = ActionButton()
   let advancedSearchButton = DetailsButton()
   
+  /// Holder for `TextOnlyButtons`
   let historyStack = UIStackView()
   let searchHistoryButton = TextOnlyButton()
   let viewedHistoryButton = TextOnlyButton()
@@ -52,11 +55,11 @@ extension SearchView {
     searchButton.translatesAutoresizingMaskIntoConstraints = false
     searchButton.setTitle("Search", for: [])
     
-    // MARK: - ChefDefaults Buttons
     // TODO: - Once it gets close to release time, bring these back into play
     advancedSearchButton.translatesAutoresizingMaskIntoConstraints = false
     advancedSearchButton.setTitle("Advanced Search", for: [])
     
+    // MARK: - ChefDefaults Buttons
     historyStack.translatesAutoresizingMaskIntoConstraints = false
     historyStack.axis = .horizontal
     historyStack.distribution = .fillEqually

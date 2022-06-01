@@ -13,6 +13,7 @@
 // Format Title Labels
 
 // TODO: - Activity Indicator when loading information
+// TODO: - #27 - Change to Infinite Scrolling
 
 import Foundation
 import UIKit

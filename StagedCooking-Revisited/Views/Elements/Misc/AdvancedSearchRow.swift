@@ -7,7 +7,13 @@
 
 import Foundation
 import UIKit
-
+/**
+ View to show `|label      toggle|`
+ 
+ - Vertical stack of two rows.
+ 
+ - If either does not have values assigned, they are not rendered.
+ */
 class AdvancedSearchRow: UIStackView {
   let includeStack = UIStackView()
   let excludeStack = UIStackView()

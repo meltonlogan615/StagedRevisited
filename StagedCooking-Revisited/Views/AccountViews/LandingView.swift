@@ -7,7 +7,11 @@
 
 import Foundation
 import UIKit
-
+/**
+ Acts as a Splash while authentication is in process.
+ 
+ No ideas on what it should be at this time
+ */
 class LandingView: UIView {
   
   let stack = UIStackView()

@@ -7,7 +7,9 @@
 
 import Foundation
 import UIKit
-
+/**
+ Custom UILabel to ensure consistent styling throughout the app.
+ */
 class SCLabel: UILabel {
   override init(frame: CGRect) {
     super.init(frame: frame)

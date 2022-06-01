@@ -132,7 +132,7 @@ extension SearchViewController {
 //        ChefDefault.searched = query
 //      }
       
-      
+//      let navigationController = GitGuardian(rootViewController: listVC)
       let navigationController = NavController(rootViewController: listVC)
       navigationController.modalTransitionStyle = .flipHorizontal
       navigationController.modalPresentationStyle = .fullScreen

@@ -12,8 +12,14 @@ protocol ReusableCell: Any {
   static var idenetifier: String { get }
 }
 
+/**
+ Custom `UICollectionViewCell` used to display `recipe.image` & `recipe.title`
+ 
+ - Current only used in `RecipeListCollectionView`
+ */
 final class RecipeCell: UICollectionViewCell {
   
+  /// Fills the entire cell
   let image: UIImageView = {
     let image = UIImageView(frame: .zero)
     image.translatesAutoresizingMaskIntoConstraints = false
@@ -23,6 +29,7 @@ final class RecipeCell: UICollectionViewCell {
     return image
   }()
   
+  /// The background of the `UILabel`. Neede to provide adequate contrast.
   let labelBackground: UIView = {
     let labelBackground = UIView()
     labelBackground.translatesAutoresizingMaskIntoConstraints = false
@@ -30,7 +37,7 @@ final class RecipeCell: UICollectionViewCell {
     labelBackground.layer.zPosition = 10
     return labelBackground
   }()
-    
+  
   let titleLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false

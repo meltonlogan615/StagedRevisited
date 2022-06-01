@@ -7,7 +7,14 @@
 
 import Foundation
 import UIKit
+/**
+ Custom `UICollectionViewCell` to display `Card` data.
 
+ The idea behind this is to use a swipeable UICollectionView with this occupying the whole screen.
+ 
+ - Would Use the snap into place method to as it progressed through.
+ - Not currently in use.
+ */
 class CardCell: UICollectionViewCell {
     
   let cardView: UIView = {

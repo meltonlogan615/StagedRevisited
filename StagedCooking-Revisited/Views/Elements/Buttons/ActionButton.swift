@@ -7,7 +7,9 @@
 
 import Foundation
 import UIKit
-
+/**
+ Custom `UIButton` that when primary action triggered, advances to the next context.
+ */
 class ActionButton: UIButton {
   override init(frame: CGRect) {
     super.init(frame: frame)
