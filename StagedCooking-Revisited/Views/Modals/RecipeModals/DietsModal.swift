@@ -8,6 +8,13 @@
 import Foundation
 import UIKit
 
+/**
+ Basic view to display a list  of `macros`.
+ 
+ `dietInfo` property value is received from and assigned via `convenience init` called in `RecipeViewController`
+ 
+  Could be better implamented via looping through `Diets.allCases` to generate content.
+ */
 class DietsModal: SCModal {
   
   var dietInfo: DietInfo?

@@ -7,7 +7,9 @@
 
 import Foundation
 import UIKit
-
+/**
+ View to show a list of available `Cuisine`s to filter for and `toggleSwitch`es to either add or exclude them from the search parameters.
+ */
 class CuisinesView: AdvancedSearch {
   
   var includeArray = [Cuisine]()

@@ -8,6 +8,13 @@
 import Foundation
 import UIKit
 
+/**
+ Super class for virtually all Advanced Options for Filters views.
+ 
+ `allOptions` is an array of all of the associated enum.rawValue
+ 
+ `switches` is a dictionary of it's index in list `Enum.allCases` and if it `isOn` or not
+ */
 class AdvancedSearch: UIView {
   
   var scrollView = UIScrollView()

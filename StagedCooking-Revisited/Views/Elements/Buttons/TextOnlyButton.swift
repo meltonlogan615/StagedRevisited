@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+/// Custom `UIButton` that when primary action triggered, displays additional information within the same context.
 class TextOnlyButton: UIButton {
   override init(frame: CGRect) {
     super.init(frame: frame)

@@ -7,9 +7,19 @@
 
 import Foundation
 import UIKit
-/*
+
+// TODO: - Need to find best option for SavedRecipes & FavoriteRecipes
+
+/**
  Primary Starting Point for the app.
+ 
+ Buttons:
+ - `searchButton` triggers the networking call to generate data for `RecipeListCollectionView`
+ - `advancedSearchButton` opens to `AdvancedSearchViewController`
+ - `searchHistoryButton` opens to a view displaying all of the strings that have been searched.
+ - `viewedHistoryButton` opens to a view displaying all of the recipes that have been viewed.
  */
+
 class SearchView: UIView {
   
   let stackView = UIStackView()

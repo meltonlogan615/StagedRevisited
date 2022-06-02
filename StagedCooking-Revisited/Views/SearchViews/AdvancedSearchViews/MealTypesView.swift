@@ -8,6 +8,9 @@
 import Foundation
 import UIKit
 
+/**
+ View to show a list of available `MealTypes`s to filter for and `toggleSwitch`es, which, if are on, will only show recipes that conform to the assocaited selection.
+ */
 class MealTypesView: AdvancedSearch {
     
   override init(frame: CGRect) {

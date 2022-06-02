@@ -8,11 +8,15 @@
 import Foundation
 import UIKit
 
+/**
+ Basic view to display a list of `ingredients`.
+ 
+ `ingredients` property value is received from and assigned via `convenience init` called in `RecipeViewController`
+ */
 class IngredientsModal: SCModal {
   
   // MARK: - Ingredient Properties
-  var ingredientsLabel = UILabel()
-  var ingredients = [String]() 
+  var ingredients = [String]()
   
   override init(frame: CGRect) {
     super.init(frame: frame)

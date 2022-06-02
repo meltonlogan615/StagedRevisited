@@ -10,6 +10,21 @@ import UIKit
 
 // TODO: - #22 - Add a means to add Recipe to Favorites or Saved
 
+/**
+ View to display recipe information.
+ 
+ Modals are used to help reduce the amount of visual clutter that is presented.
+ 
+ Buttons:
+ - `showIngredientsButton` displays a list of all ingredients and their amounts.
+ - `showSummaryButton` displays text information about the recipe.
+ - `showNutritionButton` displays the nutritional information about the recipe.
+ - `showRestrictionsButton` (aka Intolerances) displays whether or not the recipe can be classified as any of the default Intolerances.
+ 
+ Also includes labels to display the most important informaton for a Chef considering if they should move forward with the recipe or not.
+ 
+ If labels do not have a value, nothing will be displayed.
+ */
 class RecipeView: UIView {
 
   var scrollView = UIScrollView()

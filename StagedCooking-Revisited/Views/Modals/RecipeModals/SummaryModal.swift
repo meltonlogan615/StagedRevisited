@@ -8,6 +8,11 @@
 import Foundation
 import UIKit
 
+/**
+ Basic view to display a seperated string  of `summary`.
+ 
+ `summary` property value is received from and assigned via `convenience init` called in `RecipeViewController`
+ */
 class SummaryModal: SCModal {
   
   var summaryLabel = SCLabel()

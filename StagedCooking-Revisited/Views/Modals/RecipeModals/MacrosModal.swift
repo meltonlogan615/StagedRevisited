@@ -8,6 +8,13 @@
 import Foundation
 import UIKit
 
+/**
+ Basic view to display a list  of `macros`.
+ 
+ `macros` property value is received from and assigned via `convenience init` called in `RecipeViewController`
+ 
+  `MacrosLabelView` is used to provide consistent formatting and additional flexibility if needed.
+ */
 class MacrosModal: SCModal {
   
   var macros = [Macros]()
