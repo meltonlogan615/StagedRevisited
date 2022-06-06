@@ -71,4 +71,10 @@ extension RecipeViewController: ModalDataSource {
     stagesVC.ingredientList = self.ingredientList
     navigationController?.pushViewController(stagesVC, animated: true)
   }
+  
+// MARK: - Save Recipe for Later
+  @objc func saveRecipe() {
+    print("Saved")
+    ChefDefault.addToSaved(recipe: self.recipe)
+  }
 }

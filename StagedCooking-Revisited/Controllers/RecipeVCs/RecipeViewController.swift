@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 /**
  Main `ViewController` for the `Recipe`
  
@@ -51,7 +52,8 @@ class RecipeViewController: UIViewController {
     // Generates stepIngredients & stepIngredients
     getInstructions(for: recipeID)
     navigationController?.navigationBar.prefersLargeTitles = false
-    // TODO: - #29 - ADD RightBarButtonItem to dismiss views back to SearchVC
+    // TODO: - #29 - ADD option to dismiss views back to SearchVC?
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save For Later", style: .plain, target: self, action: #selector(saveRecipe))
     style()
     layout()
   }
@@ -117,4 +119,5 @@ extension RecipeViewController: RecipeByID {
     }
   }
 } // END of Extension
+
 
