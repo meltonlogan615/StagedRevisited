@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
+/**
+ Second View after Start Cooking Button has been tapped.
 
+ Displays a list of all ingredients and their measures when available.
+ */
 class IngredientListViewController: UIViewController {
   
   var ingredientsView = UIView()

@@ -6,8 +6,13 @@
 //
 
 import Foundation
-
 import UIKit
+
+/**
+ Collection VC for `AdvancedSearch` Options.
+ 
+ Currently using a static count for the number of cells.
+ */
 
 class AdvancedSearchViewController: UIViewController {
   
@@ -35,16 +40,12 @@ class AdvancedSearchViewController: UIViewController {
     style()
     layout()
   }
-  
-  
 }
 
 extension AdvancedSearchViewController {
-  
   func style() {
     advancedCollection.translatesAutoresizingMaskIntoConstraints = false
     advancedCollection.layer.zPosition = 10
-    
   }
   
   func layout() {
@@ -58,28 +59,31 @@ extension AdvancedSearchViewController {
   }
 }
 
+// MARK: - UICollectionViewDataSource
 extension AdvancedSearchViewController: UICollectionViewDataSource {
+  /// static `cellCount`
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     let cellCount = 5
     return cellCount
   }
   
+  /// `switch-case` though `indexPath.item` to set images and values.
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "advancedCell", for: indexPath) as! AdvancedCell
-    switch indexPath{
-      case [0, 0]:
+    switch indexPath.item {
+      case 0:
         cell.titleLabel.text = "Cuisines"
         cell.image.image = UIImage(systemName: "globe")
-      case [0, 1]:
+      case 1:
         cell.titleLabel.text = "Diets"
         cell.image.image = UIImage(systemName: "scalemass")
-      case [0, 2]:
+      case 2:
         cell.titleLabel.text = "Intolerances"
         cell.image.image = UIImage(systemName: "nosign")
-      case [0, 3]:
+      case 3:
         cell.titleLabel.text = "Macros"
         cell.image.image = UIImage(systemName: "atom")
-      case [0, 4]:
+      case 4:
         cell.titleLabel.text = "Meal Types"
         cell.image.image = UIImage(systemName: "checklist")
       default:
@@ -89,12 +93,12 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
   }
 }
 
+// MARK: - UICollectionViewDelegate
 extension AdvancedSearchViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    let modal = ModalViewController()
     let selectedVC = OptionViewController()
-//    modal.modalPresentationStyle = .overFullScreen
 
+    /// `switch-case` though `indexPath.item` to set the `OptionViewController.optionView`'s correct view & `title`.
     switch indexPath.item {
       case 0:
         selectedVC.optionView = CuisinesView()
@@ -105,7 +109,6 @@ extension AdvancedSearchViewController: UICollectionViewDelegate {
         selectedVC.optionView = DietsView()
         selectedVC.viewTitle = "Diets"
         present(selectedVC, animated: true)
-
 
       case 2:
         selectedVC.optionView = IntolerancesView()
@@ -128,6 +131,7 @@ extension AdvancedSearchViewController: UICollectionViewDelegate {
   }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension AdvancedSearchViewController: UICollectionViewDelegateFlowLayout {
   private enum LayoutConstant {
     static let spacing = CGFloat(4)

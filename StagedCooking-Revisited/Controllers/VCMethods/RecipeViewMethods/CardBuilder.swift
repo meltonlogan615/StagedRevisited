@@ -10,6 +10,21 @@ import UIKit
 
 // MARK: - Build Cards
 extension RecipeViewController: CardBuilder {
+  /**
+   The main driving method. Is the main algorithm that drives the purpose of this app.
+   
+   Takes the following parameters:
+   - `ingredients: [String]`
+   - `instructionsDictionary: [Int: String]`
+   - `ingredientDictionary: [Int: [String]]`
+   
+   `Ingredients` comes from the `generateIngredientsList(for selectedRecipe: Recipe)` method that is an extension of `RecipeViewController`
+   - ~/VCMethods/RecipeViewMethods/DataGeneration/GenerateIngredientsList
+   
+   `InstructionsDictionary` &  `ingredientDictionary` both come from the `getInstructions(for selectedsRecipe: Int)` method that is an extension of `RecipeViewController`
+   - ~/VCMethods/RecipeViewMethods/DataGeneration/GetInstructions
+   
+   */
   func buildCards(ingredients: [String], instructionsDictionary: [Int: String], ingredientDictionary: [Int: [String]]) -> [Card]{
     var cards = [Card]()
     // Sort Dictionaries bu their IDs
@@ -50,7 +65,6 @@ extension RecipeViewController: CardBuilder {
         }
       }
     }
-    //    cards = cards.sorted() // sorts by id, aka card number, aka step number
     return cards.sorted()  // sorts by id, aka card number, aka step number
   }
 }

@@ -24,6 +24,12 @@ struct K {
   static let primary = UIColor(named: "SC-Primary")
   static let scYellow = UIColor(named: "SC-Yellow")
   
+  static let dBrown = UIColor(named: "DinerBrown")
+  static let dBlue = UIColor(named: "DinerBlue")
+  static let dGray = UIColor(named: "DinerGray")
+  static let dRed = UIColor(named: "DinerRed")
+  static let dWhite = UIColor(named: "DinerWhite")
+    
   static let testText = """
 Bacon ipsum dolor amet porchetta bresaola ball tip, kielbasa sirloin strip steak drumstick chicken pastrami. Picanha andouille sausage bresaola chuck shankle brisket burgdoggen landjaeger short ribs. Ribeye turducken burgdoggen kielbasa jerky, t-bone doner pig shankle pork loin meatloaf. Sirloin swine cow tongue picanha.
 

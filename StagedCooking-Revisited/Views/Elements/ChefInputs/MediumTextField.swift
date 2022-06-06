@@ -28,11 +28,7 @@ extension MediumTextField {
     translatesAutoresizingMaskIntoConstraints = false
     becomeFirstResponder()
     textAlignment = .center
-    layer.cornerRadius = 8
-    clipsToBounds = true
-    backgroundColor = .secondarySystemBackground
-    layer.borderWidth = 1
-    layer.borderColor = UIColor.secondaryLabel.cgColor
+    backgroundColor = K.primary
     font = .systemFont(ofSize: 24, weight: .regular)
     heightAnchor.constraint(equalToConstant: 28).isActive = true
   }

@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let root = SearchViewController()
 //    let root = LoadingViewController()
 //    let root = AdvancedSearchViewController()
+//    let root = LandingViewController()
+//    let root = SignUpViewController()
+//    let root = LogInViewController()
     let navVC = UINavigationController(rootViewController: root)
     window?.rootViewController = navVC
     

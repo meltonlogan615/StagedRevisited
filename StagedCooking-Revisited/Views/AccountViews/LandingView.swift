@@ -20,6 +20,7 @@ class LandingView: UIView {
   let signUpButton = DetailsButton()
   let forgotPassword = TextOnlyButton()
   
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     
@@ -36,8 +37,6 @@ extension LandingView {
   
   func style() {
     translatesAutoresizingMaskIntoConstraints = false
-    layer.borderWidth = 2
-    layer.borderColor = K.scGreen?.cgColor
     
     stack.translatesAutoresizingMaskIntoConstraints = false
     stack.axis = .vertical
@@ -50,6 +49,7 @@ extension LandingView {
     signUpButton.setTitle("Sign Up", for: [])
     
     forgotPassword.translatesAutoresizingMaskIntoConstraints = false
+    forgotPassword.setTitle("Forgot Password", for: [])
   }
   
   func layout() {
@@ -62,7 +62,7 @@ extension LandingView {
     stack.addArrangedSubview(logInButton)
     stack.addArrangedSubview(signUpButton)
     
-//    addSubview(forgotPassword)
+    stack.addArrangedSubview(forgotPassword)
   }
 }
 

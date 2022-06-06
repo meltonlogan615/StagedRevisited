@@ -11,6 +11,7 @@ protocol PassingRequest: AnyObject {
   func loadRecipes(for: String)
 }
 
+
 class SearchViewController: UIViewController {
   
   let navigationBar = UINavigationController()
@@ -25,7 +26,7 @@ class SearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = K.primary
-    navigationBar.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advanced", style: .plain, target: self, action: #selector(advancedButtonTapped))
+//    navigationBar.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advanced", style: .plain, target: self, action: #selector(advancedButtonTapped))
     
     style()
     layout()
@@ -174,7 +175,7 @@ extension SearchViewController {
 //  }
   
   @objc func didTapAcctButton() {
-    let acctVC = AccountViewController()
+    let acctVC = LandingViewController()
     let navigationController = NavController(rootViewController: acctVC)
     navigationController.modalTransitionStyle = .flipHorizontal
     navigationController.modalPresentationStyle = .fullScreen

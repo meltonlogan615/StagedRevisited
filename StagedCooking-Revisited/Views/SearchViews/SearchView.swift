@@ -16,10 +16,9 @@ import UIKit
  Buttons:
  - `searchButton` triggers the networking call to generate data for `RecipeListCollectionView`
  - `advancedSearchButton` opens to `AdvancedSearchViewController`
- - `searchHistoryButton` opens to a view displaying all of the strings that have been searched.
- - `viewedHistoryButton` opens to a view displaying all of the recipes that have been viewed.
+ - Disabled  `searchHistoryButton` opens to a view displaying all of the strings that have been searched.
+ - Disabled  `viewedHistoryButton` opens to a view displaying all of the recipes that have been viewed.
  */
-
 class SearchView: UIView {
   
   let stackView = UIStackView()

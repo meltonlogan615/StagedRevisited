@@ -6,9 +6,9 @@
 //
 
 // MARK: - Notes From Daniel:
-// Ability to add filters
+// Ability to add filters within this VC
 // Add Time to Cook Label
-// Add Difficulty Level Label
+// Add Difficulty Level Label ...?
 // If image is missing, remove from list
 // Format Title Labels
 
@@ -21,7 +21,9 @@ import UIKit
 protocol RecipeByID: AnyObject {
   func loadRecipeByID(for chosenID: Int)
 }
-
+/**
+ Basic `CollectionView` do display `[Response]`s from network call
+ */
 class RecipeListCollectionView: UIViewController {
   
   var dataprovider = DataProvider()
@@ -52,7 +54,7 @@ class RecipeListCollectionView: UIViewController {
     
     title = searchedRecipe.capitalized
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(dismissView))
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease.circle"), style: .plain, target: self, action: #selector(filterResults))
+//    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease.circle"), style: .plain, target: self, action: #selector(filterResults))
     
     style()
     layout()
@@ -85,10 +87,10 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCell
     if let recipeItems = model.results {
-      if let receipeTitle = recipeItems[indexPath.row].title {
+      if let receipeTitle = recipeItems[indexPath.item].title {
         cell.titleLabel.text = receipeTitle.capitalized
       }
-      if let recipeImage = recipeItems[indexPath.row].image {
+      if let recipeImage = recipeItems[indexPath.item].image {
         cell.image.loadImage(url: recipeImage)
         cell.image.layer.cornerRadius = 8
         cell.image.clipsToBounds = true
@@ -102,8 +104,8 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
 extension RecipeListCollectionView: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let recipeVC = RecipeViewController()
-    guard let selectedID = model.results?[indexPath.row].id else { return }
-    guard let selectedTitle = model.results?[indexPath.row].title else { return }
+    guard let selectedID = model.results?[indexPath.item].id else { return }
+    guard let selectedTitle = model.results?[indexPath.item].title else { return }
     recipeVC.recipeID = selectedID
     recipeVC.recipeTitle = selectedTitle.capitalized
 
@@ -179,15 +181,17 @@ extension RecipeListCollectionView {
 }
 
 // MARK: - Filter Results
-extension RecipeListCollectionView {
-  @objc func filterResults() {
-    let filterVC = AdvancedSearchViewController()
-//    show(filterVC, sender: self)
-    present(filterVC, animated: true)
-  }
-}
+// TODO: - #14 - This ⬇️
+//extension RecipeListCollectionView {
+//  @objc func filterResults() {
+//    let filterVC = AdvancedSearchViewController()
+////    show(filterVC, sender: self)
+//    present(filterVC, animated: true)
+//  }
+//}
 
 extension RecipeListCollectionView {
+  // TODO: - #28 - Get this fully operational.
   private func activityIndicator(style: UIActivityIndicatorView.Style = .large,
                                  frame: CGRect? = nil,
                                  center: CGPoint? = nil) -> UIActivityIndicatorView {

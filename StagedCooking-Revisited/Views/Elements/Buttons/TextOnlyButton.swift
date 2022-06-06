@@ -19,7 +19,8 @@ class TextOnlyButton: UIButton {
     var config = UIButton.Configuration.borderless()
     config.buttonSize = .medium
     config.imagePadding = 12
-    config.baseForegroundColor = K.scAccent
+//    config.baseForegroundColor = K.scAccent
+    config.baseForegroundColor = K.dRed
     config.titleAlignment = .center
     config.cornerStyle = .fixed
     config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in

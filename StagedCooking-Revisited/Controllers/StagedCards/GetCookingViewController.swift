@@ -8,12 +8,17 @@
 import Foundation
 import UIKit
 
+/**
+ Initial View after Start Cooking Button has been tapped.
+ 
+ Displays very basic information.
+ */
 class GetCookingViewController: UIViewController {
   
   let getCookingStack = UIStackView()
   
   var recipeLabel = UILabel()
-
+  
   let numberOfStepsLabel = UILabel()
   var noOfSteps = Int()
   
@@ -30,8 +35,10 @@ class GetCookingViewController: UIViewController {
   }
 }
 
+
+
+
 extension GetCookingViewController {
-  
   func style() {
     getCookingStack.translatesAutoresizingMaskIntoConstraints = false
     getCookingStack.axis = .vertical
@@ -42,7 +49,7 @@ extension GetCookingViewController {
     recipeLabel.textColor = K.invertPrimary
     recipeLabel.textAlignment = .center
     recipeLabel.numberOfLines = 0
-
+    
     startLabel.translatesAutoresizingMaskIntoConstraints = false
     startLabel.font = .preferredFont(forTextStyle: .title1)
     startLabel.textColor = K.invertPrimary
@@ -54,13 +61,13 @@ extension GetCookingViewController {
     numberOfStepsLabel.textColor = K.invertPrimary
     numberOfStepsLabel.textAlignment = .center
     numberOfStepsLabel.text = "Number of Steps: \(noOfSteps)"
-
+    
     totalTimeLabel.translatesAutoresizingMaskIntoConstraints = false
     totalTimeLabel.textColor = K.invertPrimary
     totalTimeLabel.textAlignment = .center
     totalTimeLabel.font = .preferredFont(forTextStyle: .title3)
     totalTimeLabel.text = "Total Time: \(totalTime) minutes"
-
+    
   }
   
   func layout() {
@@ -82,3 +89,4 @@ extension GetCookingViewController {
     ])
   }
 }
+

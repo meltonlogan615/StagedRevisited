@@ -8,28 +8,35 @@
 import Foundation
 import UIKit
 
+/*
+ This is the bulk of the `StagedCardContainerViewController`.
+ 
+ The Container takes an array of `Card`s and creates as many as are needed for the recipe.
+ */
 class StagedCardViewController: UIViewController {
   
-// MARK: - Views
+  // MARK: - Views
   let scrollView = UIScrollView()
   let cardView = UIView()
   let containter = UIView()
-  let ingredientsStack = UIStackView()
   
-  let dividerView = Divider()
+  //  MARK: - Name and Counter
+  var recipeName = String()
+  let nameAndStepNumberLabel = UILabel()
+  var cardCounter = Int()
+
   let dividerViewSequel = Divider()
   
-//  MARK: - Labels
-  let cardNumberLabel = UILabel()
-  var ingredientLabel = UILabel()
-  let directionsLabel = SCLabel()
-  
-//  MARK: = VC Data
-  var recipeName = String()
-  var cardCounter = Int()
+  // MARK: - Ingredients
+  let ingredientsStack = UIStackView()
   var ingredients = [String]()
-  var directions = String()
+
+  let dividerView = Divider()
   
+  // MARK: - Directions
+  let directionsLabel = SCLabel()
+  var directions = String()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = K.primary
@@ -37,8 +44,9 @@ class StagedCardViewController: UIViewController {
     layout()
   }
   
+  /// intializer used inorder to create an array of VCs.
   init(recipeName: String, cardCounter: Int, ingredients: [String], instructions: String) {
-    self.cardNumberLabel.text = "\(recipeName.capitalized)\nStage \(cardCounter)"
+    self.nameAndStepNumberLabel.text = "\(recipeName.capitalized)\nStage \(cardCounter)"
     self.directionsLabel.text = "\(instructions)"
     self.cardCounter = cardCounter
     self.ingredients = ingredients
@@ -52,19 +60,16 @@ class StagedCardViewController: UIViewController {
 }
 
 extension StagedCardViewController {
-  
   func style() {
     scrollView.translatesAutoresizingMaskIntoConstraints = false
-    scrollView.backgroundColor = K.primary
-    
     cardView.translatesAutoresizingMaskIntoConstraints = false
     containter.translatesAutoresizingMaskIntoConstraints = false
     
-    cardNumberLabel.translatesAutoresizingMaskIntoConstraints = false
-    cardNumberLabel.font = .systemFont(ofSize: 24, weight: .semibold)
-    cardNumberLabel.textColor = K.invertPrimary
-    cardNumberLabel.numberOfLines = 0
-    cardNumberLabel.textAlignment = .center
+    nameAndStepNumberLabel.translatesAutoresizingMaskIntoConstraints = false
+    nameAndStepNumberLabel.font = .systemFont(ofSize: 24, weight: .semibold)
+    nameAndStepNumberLabel.textColor = K.invertPrimary
+    nameAndStepNumberLabel.numberOfLines = 0
+    nameAndStepNumberLabel.textAlignment = .center
     
     dividerView.translatesAutoresizingMaskIntoConstraints = false
     
@@ -106,23 +111,23 @@ extension StagedCardViewController {
       containter.bottomAnchor.constraint(equalTo: cardView.bottomAnchor),
     ])
     
-    // top label
-    containter.addSubview(cardNumberLabel)
+    // Top label
+    containter.addSubview(nameAndStepNumberLabel)
     NSLayoutConstraint.activate([
-      cardNumberLabel.topAnchor.constraint(equalToSystemSpacingBelow: containter.topAnchor, multiplier: 1),
-      cardNumberLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: containter.leadingAnchor, multiplier: 4),
-      containter.trailingAnchor.constraint(equalToSystemSpacingAfter: cardNumberLabel.trailingAnchor, multiplier: 4)
+      nameAndStepNumberLabel.topAnchor.constraint(equalToSystemSpacingBelow: containter.topAnchor, multiplier: 1),
+      nameAndStepNumberLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: containter.leadingAnchor, multiplier: 4),
+      containter.trailingAnchor.constraint(equalToSystemSpacingAfter: nameAndStepNumberLabel.trailingAnchor, multiplier: 4)
     ])
     
-    // first divider
+    // First divider
     containter.addSubview(dividerView)
     NSLayoutConstraint.activate([
-      dividerView.topAnchor.constraint(equalToSystemSpacingBelow: cardNumberLabel.bottomAnchor, multiplier: 1),
+      dividerView.topAnchor.constraint(equalToSystemSpacingBelow: nameAndStepNumberLabel.bottomAnchor, multiplier: 1),
       dividerView.leadingAnchor.constraint(equalToSystemSpacingAfter: containter.leadingAnchor, multiplier: 4),
       containter.trailingAnchor.constraint(equalToSystemSpacingAfter: dividerView.trailingAnchor, multiplier: 4)
     ])
     
-    // ingredients
+    // Ingredients Stack
     containter.addSubview(ingredientsStack)
     NSLayoutConstraint.activate([
       ingredientsStack.topAnchor.constraint(equalToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 2),
@@ -130,10 +135,8 @@ extension StagedCardViewController {
       containter.trailingAnchor.constraint(equalToSystemSpacingAfter: ingredientsStack.trailingAnchor, multiplier: 4),
     ])
 
+    // Looping through [ingredients] to generate LargeLabels and place them into ingredientsStack
     if ingredients.isEmpty {
-//      directionsLabel.font = .systemFont(ofSize: 24, weight: .semibold)
-//      directionsLabel.textAlignment = .center
-//      dividerViewSequel.isHidden = true
       let ingredientLine = LargeLabel()
       ingredientsStack.addArrangedSubview(ingredientLine)
       ingredientLine.translatesAutoresizingMaskIntoConstraints = false
@@ -146,6 +149,7 @@ extension StagedCardViewController {
         ingredientLine.text = ingredients[i].capitalized
       }
     }
+    
     // second divider
     containter.addSubview(dividerViewSequel)
     NSLayoutConstraint.activate([

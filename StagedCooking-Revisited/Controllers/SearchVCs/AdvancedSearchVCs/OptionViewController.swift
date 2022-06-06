@@ -7,11 +7,16 @@
 
 import UIKit
 
+/**
+ Generic `OptionViewController`. Will recieve the view based on the `didSelectItemAt` method in `AdvancedSearchViewController`.
+ 
+ 
+ */
 class OptionViewController: UIViewController {
   
   let optionLabel = UILabel()
-  let saveButton = ActionButton()
   var optionView = AdvancedSearch()
+  let saveButton = ActionButton()
   
   var viewTitle = String()
   var viewOptions = [FilterViews.RawValue]()
@@ -19,9 +24,7 @@ class OptionViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    let spaced = [NSAttributedString.Key.kern: 1]
-    let spacyString = NSMutableAttributedString(string: viewTitle.capitalized, attributes: spaced)
-    optionLabel.attributedText = spacyString
+    optionLabel.addKerning(to: viewTitle.capitalized)
     view.backgroundColor = K.primary
     self.activateSwitches(optionView)
     style()
@@ -30,7 +33,6 @@ class OptionViewController: UIViewController {
 }
 
 extension OptionViewController {
-  
   func style() {
     optionLabel.translatesAutoresizingMaskIntoConstraints = false
     optionLabel.font = .systemFont(ofSize: 36, weight: .semibold)
@@ -77,6 +79,7 @@ extension OptionViewController {
 }
 
 extension OptionViewController {
+  ///   `switch-case`  based on the information sent  from `AdvancesSearchViewController`
   func activateSwitches(_ view: AdvancedSearch) {
     switch view {
         
@@ -84,7 +87,6 @@ extension OptionViewController {
         for option in Cuisine.allCases {
           viewOptions.append(option.rawValue)
         }
-        print(optionView.switches)
         
       case is DietsView:
         for option in Diet.allCases {
@@ -96,8 +98,10 @@ extension OptionViewController {
           viewOptions.append(option.rawValue)
         }
         
-//      case is AdvancedMacrosView:
-//        print("intol")
+      // MARK: - Still not entirely sure how to handle this one...
+      case is AdvancedMacrosView:
+        print("intol")
+        
       case is MealTypesView:
         for option in MealType.allCases {
           viewOptions.append(option.rawValue)
@@ -106,12 +110,6 @@ extension OptionViewController {
       default:
         break
     }
-//    print(viewOptions)
   }
 }
 
-extension OptionViewController {
-  func switchDidToggle() {
-    
-  }
-}

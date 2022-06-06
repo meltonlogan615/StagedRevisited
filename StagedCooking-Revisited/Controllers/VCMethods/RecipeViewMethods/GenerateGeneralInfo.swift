@@ -5,93 +5,84 @@
 //  Created by Logan Melton on 5/11/22.
 //
 
-// MARK: - NO LONGER IN USE. ALL OF THIS IS NOW IN THE RecipeViewController
-/*
- Once tested and verified, this file can be removed.
- */
 import Foundation
+import UIKit
 
+// MARK: - setProperties Method, receives data, unwraps and sends to the view to display
 extension RecipeViewController {
-  func generateGeneralInfo(for selectedRecipe: Recipe) -> GeneralInfo {
-    let totalTimeString: String = {
-      var string = String()
-      if let totalTime = selectedRecipe.readyInMinutes {
-        string = "Ready to eat in \(totalTime) minutes"
-      } else {
-        string = "Nah, son."
-      }
-      return string
-    }()
+  /// Simplifying setting VC properties into a single function rather than creatibng a massive `loadRecipeNew` method of each of the necessary properties.
+  func setProperties(for selectedRecipe: Recipe) {
+    self.recipe = selectedRecipe
     
-    let servingsString: String = {
-      var string = String()
-      if let servings = selectedRecipe.servings {
-        if servings == 1 {
-          string = "Makes \(servings) serving"
-        } else {
-          string = "Makes \(servings) servings"
-        }
-      }
-      return string
-    }()
+    guard let image = selectedRecipe.image else { return }
+    self.recipeView.mainImage.loadImage(url: image)
     
-    let dishTypeString: String = {
-      var string = String()
-      if let dishType = selectedRecipe.dishTypes {
+    guard let title = selectedRecipe.title else { return }
+    self.recipeTitle = title
+    
+    guard let totalTime = selectedRecipe.readyInMinutes else { return }
+    self.recipeView.readyInMinutesLabel.text = "⏲ 🟰 \(totalTime) minutes"
+    
+    guard let servings = selectedRecipe.servings else { return }
+    self.recipeView.servingsLabel.text = "👤 🟰 \(servings)"
+    
+    
+    if let dishType = selectedRecipe.dishTypes {
+      var dishText = String()
+      // Formatting the string to be passed as the label text
+      if !dishType.isEmpty {
         for i in 0 ..< dishType.count {
           if dishType.count == 1 {
-            string += dishType[i].capitalized
+            dishText = dishType[i].capitalized
           } else if dishType[i] == dishType.last {
-            string += "and \(dishType[i].capitalized)"
+            dishText += "or \(dishType[i].capitalized)"
           } else {
-            string += "\(dishType[i].capitalized), "
+            dishText += "\(dishType[i].capitalized), "
           }
         }
+        self.recipeView.dishTypeLabel.text = "👍 🟰 \(dishText)"
       }
-      return string
-    }()
+    }
     
-    let cuisinesString: String = {
+    if let cuisines = selectedRecipe.cuisines {
       var string = String()
-      if let cuisines = selectedRecipe.cuisines {
-        if cuisines.count < 0 {
-          for i in 0 ..< cuisines.count {
-            if cuisines[i] == cuisines.last {
-              string += cuisines[i]
-            } else {
-              string += "\(cuisines[i]), "
-            }
-          }
+      // Formatting the string to be passed as the label text
+      for i in 0 ..< cuisines.count {
+        if cuisines[i] == cuisines.last {
+          string += cuisines[i]
+        } else {
+          string += "\(cuisines[i]), "
         }
       }
-      return string
-    }()
-    
-    let popularString: String = {
-      var string = String()
-      if let popular = selectedRecipe.veryPopular {
-        string = (popular ?  "Very Popular" : "Not too popular")
+      switch cuisines.count {
+        case 0:
+          break
+        case 1:
+          self.recipeView.cuisinesLabel.text = "Cuisine: \(string)"
+        default:
+          self.recipeView.cuisinesLabel.text = "Cuisines: \(string)"
       }
-      return string
-    }()
+    }
     
-    let sustainableString: String = {
-      var string = String()
-      if let sustainable = selectedRecipe.sustainable {
-        string = (sustainable ?  "Sustainable Recipe" : "Not Made from Sustainable Ingredients")
+    if let popular = selectedRecipe.veryPopular {
+      if popular {
+        self.recipeView.veryPopularLabel.text = "Very Popular"
       }
-      return string
-    }()
+      // if not, do not include
+    }
     
-    let info = GeneralInfo(
-      readyInMnutes: totalTimeString,
-      servings: servingsString,
-      dishType: dishTypeString,
-      cuisines: cuisinesString,
-      veryPopular: popularString,
-      sustainable: sustainableString
-    )
+    if let sustainable = selectedRecipe.sustainable {
+      if sustainable {
+        self.recipeView.sustainableLabel.text = "🌱 Sustainable Recipe 🌱"
+        self.recipeView.sustainableLabel.tintColor = .green
+      }
+      // if not, do not include
+    }
     
-    return info
+    ///  Additional methods that were extracted out further to reduce code-bload inside the VC. Used to generate data for the `modalViews`.
+    generateIngredientsList(for: selectedRecipe)
+    generateSummary(for: selectedRecipe)
+    generateMacrosModel(for: selectedRecipe)
+    generateDietsInfo(for: selectedRecipe)
   }
 }

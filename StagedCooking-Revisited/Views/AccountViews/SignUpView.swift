@@ -29,16 +29,19 @@ import UIKit
  */
 class SignUpView: UIView {
   
-  // MARK: - Subviews
-  let stackView = UIStackView()
+  let textFieldStack = UIStackView()
   let nameTextField = LargeTextField()
   let emailTextField = LargeTextField()
   let passwordTextField = LargeTextField()
+  let passwordConfirmationTextField = LargeTextField()
+  
+  let buttonStack = UIStackView()
   let submitButton = ActionButton()
+  let cancleButton = DetailsButton()
+  let signUpWithAppleButton = SignWithAppleButton()
     
   override init(frame: CGRect) {
     super.init(frame: frame)
-    backgroundColor = K.primary
     style()
     layout()
   }
@@ -53,37 +56,62 @@ extension SignUpView {
   // MARK: - Style & Layout
   func style() {
     translatesAutoresizingMaskIntoConstraints = false
-    
-    stackView.translatesAutoresizingMaskIntoConstraints = false
-    stackView.axis = .vertical
-    stackView.spacing = 12
+    // MARK: - TextFields
+    textFieldStack.translatesAutoresizingMaskIntoConstraints = false
+    textFieldStack.axis = .vertical
+    textFieldStack.spacing = 16
     
     nameTextField.translatesAutoresizingMaskIntoConstraints = false
     nameTextField.placeholder = "Name"
+    nameTextField.becomeFirstResponder()
     
     emailTextField.translatesAutoresizingMaskIntoConstraints = false
     emailTextField.placeholder = "Email Address"
     
+    passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+    passwordTextField.placeholder = "Password"
+    passwordTextField.isSecureTextEntry = true
+    
+    passwordConfirmationTextField.translatesAutoresizingMaskIntoConstraints = false
+    passwordConfirmationTextField.placeholder = "Confirm Password"
+    passwordConfirmationTextField.isSecureTextEntry = true
+    
+    // MARK: - Buttons
+    buttonStack.translatesAutoresizingMaskIntoConstraints = false
+    buttonStack.axis = .vertical
+    buttonStack.spacing = 16
+    
     submitButton.translatesAutoresizingMaskIntoConstraints = false
-    submitButton.setTitle("Get Cookin'", for: [])
+    submitButton.setTitle("Sign Up", for: [])
+    
+    signUpWithAppleButton.translatesAutoresizingMaskIntoConstraints = false
+    signUpWithAppleButton.setTitle("Sign Up With Apple", for: [])
+    
+    cancleButton.translatesAutoresizingMaskIntoConstraints = false
+    cancleButton.setTitle("Cancel", for: [])
   }
   
   func layout() {
-    addSubview(stackView)
+    textFieldStack.addArrangedSubview(nameTextField)
+    textFieldStack.addArrangedSubview(emailTextField)
+    textFieldStack.addArrangedSubview(passwordTextField)
+    textFieldStack.addArrangedSubview(passwordConfirmationTextField)
+    addSubview(textFieldStack)
     NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalTo: topAnchor),
-      stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2),
-      trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.leadingAnchor, multiplier: 2)
+      textFieldStack.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 2),
+      textFieldStack.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 4),
+      trailingAnchor.constraint(equalToSystemSpacingAfter: textFieldStack.trailingAnchor, multiplier: 4)
     ])
-    stackView.addArrangedSubview(nameTextField)
-    stackView.addArrangedSubview(emailTextField)
-    stackView.addArrangedSubview(passwordTextField)
     
-    addSubview(submitButton)
+    buttonStack.addArrangedSubview(submitButton)
+    buttonStack.addArrangedSubview(signUpWithAppleButton)
+    buttonStack.addArrangedSubview(cancleButton)
+    addSubview(buttonStack)
     NSLayoutConstraint.activate([
-      submitButton.topAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 2),
-      submitButton.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-      submitButton.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
+      buttonStack.topAnchor.constraint(equalToSystemSpacingBelow: textFieldStack.bottomAnchor, multiplier: 4),
+      buttonStack.leadingAnchor.constraint(equalTo: textFieldStack.leadingAnchor),
+      buttonStack.trailingAnchor.constraint(equalTo: textFieldStack.trailingAnchor)
     ])
+    
   }
 }

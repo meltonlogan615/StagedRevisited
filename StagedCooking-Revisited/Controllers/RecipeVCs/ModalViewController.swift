@@ -5,7 +5,6 @@
 //  Created by Logan Melton on 5/3/22.
 //
 
-// Acts as a holder for the Modal Views
 
 import UIKit
 
@@ -13,6 +12,9 @@ protocol ModalDataSource: AnyObject {
   func showModal(_ sender: UIButton)
 }
 
+/*
+ Acts as a holder for the Modal Views
+*/
 class ModalViewController: UIViewController {
   
   var modalView = SCModal()
@@ -28,23 +30,17 @@ class ModalViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    let spaced = [NSAttributedString.Key.kern: 1]
-    let spacyString = NSMutableAttributedString(string: labelText.capitalized, attributes: spaced)
-    modalLabel.attributedText = spacyString
+    modalLabel.addKerning(to: labelText.capitalized)
   }
 }
 
 extension ModalViewController {
   func style() {
-//    let backgroundFilter = UIBlurEffect(style: .dark)
-//    let blurredBackground = UIVisualEffectView(effect: backgroundFilter)
-//    blurredBackground.frame = CGRect(x: 0, y: 0, width: view.frame.maxX, height: view.frame.maxY)
-//    view.addSubview(blurredBackground)
     view.addSubview(self.blur())
     
     modalLabel.translatesAutoresizingMaskIntoConstraints = false
     modalLabel.font = .systemFont(ofSize: 36, weight: .semibold)
-    modalLabel.textColor = K.invertPrimary
+    modalLabel.textColor = K.primary
     modalLabel.textAlignment = .center
     
     modalView.translatesAutoresizingMaskIntoConstraints = false
