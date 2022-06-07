@@ -26,7 +26,7 @@ extension LandingViewController {
   
   func style() {
     imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.image = UIImage(systemName: "fork.knife.circle")
+    imageView.image = UIImage(named: "StagedLogo")
     imageView.tintColor = K.scAccent
     imageView.contentMode = .scaleAspectFill
 
@@ -36,11 +36,13 @@ extension LandingViewController {
   
   func layout() {
     let imageHeight = (view.frame.height / 3 - 48)
+    let imageWidth = (view.frame.width / 1.25)
     view.addSubview(imageView)
     NSLayoutConstraint.activate([
       imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 1),
       imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      imageView.heightAnchor.constraint(equalToConstant: imageHeight)
+      imageView.heightAnchor.constraint(equalToConstant: imageHeight),
+      imageView.widthAnchor.constraint(equalToConstant: imageWidth)
     ])
     
     view.addSubview(landing)

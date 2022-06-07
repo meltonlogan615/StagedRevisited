@@ -447,7 +447,6 @@
 				3272D3CE28452CF500D168BB /* UITextField-Extensions */,
 				3272D3CD28452CDF00D168BB /* UIViewController-Extensions */,
 				3272D3CC28452CC500D168BB /* UIView-Extensions */,
-				32BD7A3E28398C230055B9CF /* String-Folding.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -627,6 +626,7 @@
 		3272D3CE28452CF500D168BB /* UITextField-Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				32BD7A3E28398C230055B9CF /* String-Folding.swift */,
 				329C09752837432B00CECE6C /* TextFieldDelegate.swift */,
 			);
 			name = "UITextField-Extensions";
