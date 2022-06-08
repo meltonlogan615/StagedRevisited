@@ -37,7 +37,7 @@ class SignUpView: UIView {
   
   let buttonStack = UIStackView()
   let submitButton = ActionButton()
-  let cancleButton = DetailsButton()
+  let cancelButton = DetailsButton()
   let signUpWithAppleButton = SignWithAppleButton()
     
   override init(frame: CGRect) {
@@ -87,8 +87,8 @@ extension SignUpView {
     signUpWithAppleButton.translatesAutoresizingMaskIntoConstraints = false
     signUpWithAppleButton.setTitle("Sign Up With Apple", for: [])
     
-    cancleButton.translatesAutoresizingMaskIntoConstraints = false
-    cancleButton.setTitle("Cancel", for: [])
+    cancelButton.translatesAutoresizingMaskIntoConstraints = false
+    cancelButton.setTitle("Cancel", for: [])
   }
   
   func layout() {
@@ -105,7 +105,7 @@ extension SignUpView {
     
     buttonStack.addArrangedSubview(submitButton)
     buttonStack.addArrangedSubview(signUpWithAppleButton)
-    buttonStack.addArrangedSubview(cancleButton)
+    buttonStack.addArrangedSubview(cancelButton)
     addSubview(buttonStack)
     NSLayoutConstraint.activate([
       buttonStack.topAnchor.constraint(equalToSystemSpacingBelow: textFieldStack.bottomAnchor, multiplier: 4),

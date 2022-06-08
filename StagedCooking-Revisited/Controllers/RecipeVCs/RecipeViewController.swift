@@ -64,6 +64,10 @@ class RecipeViewController: UIViewController {
     view.backgroundColor = K.primary
     activateButtons()
   }
+  
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+  }
 }
 
 // MARK: - Style & Layout

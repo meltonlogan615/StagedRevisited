@@ -20,9 +20,12 @@ import Foundation
 struct Response: Decodable {
   var results: [SearchResult]?
   var baseUri: String?
+  
+  // these three props for pagination/scrolling
   var number: Int?
   var offset: Int?
   var totalResults: Int?
+  
   var processingTimeMs: Int?
   var expires: Int?
   var isStale: Bool?

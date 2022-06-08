@@ -15,9 +15,11 @@ class SignUpViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = K.primary
     title = "Sign Up"
     style()
     layout()
+    activateButtons()
   }
 }
 
@@ -26,7 +28,6 @@ extension SignUpViewController {
   func style() {
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = UIImage(named: "StagedLogo")
-    imageView.tintColor = K.scAccent
     imageView.contentMode = .scaleAspectFill
 
     signupView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +36,7 @@ extension SignUpViewController {
   func layout() {
     let imageHeight = (view.frame.height / 5 - 48)
     let imageWidth = (view.frame.width / 1.25)
-
+    
     view.addSubview(imageView)
     NSLayoutConstraint.activate([
       imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 1),
@@ -55,7 +56,27 @@ extension SignUpViewController {
 }
 
 extension SignUpViewController {
+  func activateButtons() {
+    self.signupView.submitButton.addTarget(self, action: #selector(signUpButtonTapped), for: .primaryActionTriggered)
+    
+    self.signupView.signUpWithAppleButton.addTarget(self, action: #selector(signUpWithAppleTapped), for: .primaryActionTriggered)
+    
+    self.signupView.cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .primaryActionTriggered)
+  }
+}
+
+extension SignUpViewController {
   @objc func signUpButtonTapped() {
     print("poop")
+  }
+  
+  @objc func signUpWithAppleTapped() {
+    let main = SearchViewController()
+    main.modalPresentationStyle = .fullScreen
+    present(main, animated: true)
+  }
+  
+  @objc func cancelButtonTapped() {
+    self.dismiss(animated: true)
   }
 }

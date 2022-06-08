@@ -17,7 +17,8 @@ struct EndPoints {
   var recipeID: Int?
   var query: String?
   var filter: String?
-  var returnCount: Int = 10
+  var returnCount: Int = 20
+  var offset: Int = 0
 }
 
 /// Extension to build URL for Recipe Search. T
@@ -25,7 +26,7 @@ extension EndPoints {
   var endpointURL: URL {
     guard let query = query else { fatalError("Endpoint URL Failed") }
     let formattedQuery = query.replacingOccurrences(of: " ", with: "%20", options: .regularExpression, range: nil)
-    let completedURL = URL(string: "\(baseURL)\(searchType)?apiKey=\(apiKey)&query=\(formattedQuery)&number=\(returnCount)&instructionsRequired=true&addRecipeNutrition=true")
+    let completedURL = URL(string: "\(baseURL)\(searchType)?apiKey=\(apiKey)&offset=\(offset)&query=\(formattedQuery)&number=\(returnCount)&instructionsRequired=true&addRecipeNutrition=true")
     guard let url = completedURL else {
       preconditionFailure("Invalid URL: \(String(describing: completedURL))")
     }
@@ -41,7 +42,7 @@ extension EndPoints {
     
     let formattedQuery = query.replacingOccurrences(of: " ", with: "%20", options: .regularExpression, range: nil)
     
-    let completedURL = URL(string: "\(baseURL)\(searchType)?apiKey=\(apiKey)&query=\(formattedQuery)&number=1&instructionsRequired=true&addRecipeNutrition=true\(filter)")
+    let completedURL = URL(string: "\(baseURL)\(searchType)?apiKey=\(apiKey)&offset=\(offset)&query=\(formattedQuery)&number=1&instructionsRequired=true&addRecipeNutrition=true\(filter)")
     guard let url = completedURL else {
       preconditionFailure("Invalid URL: \(String(describing: completedURL))")
     }
@@ -78,6 +79,10 @@ extension EndPoints {
 // Search
   func getFood(for searched: String) -> EndPoints {
     return EndPoints(query: searched)
+  }
+  
+  func getMore(for searched: String, by offset: Int) -> EndPoints {
+    return EndPoints(query: searched, offset: offset)
   }
   
 // Filtered Search

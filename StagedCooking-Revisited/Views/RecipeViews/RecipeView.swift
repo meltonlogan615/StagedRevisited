@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-// TODO: - #22 - Add a means to add Recipe to Favorites or Saved
+// TODO: - #22 - Add a means to add Recipe to Favorites, use heart for not favorite & heart.fill for favorited
 
 /**
  View to display recipe information.
@@ -45,17 +45,17 @@ class RecipeView: UIView {
   
   var generalInfo: GeneralInfo?
   
-  var readyInMinutesLabel = SCLabel()
-  var servingsLabel = SCLabel()
+  var readyInMinutesLabel = RecipeRowView()
+  var servingsLabel = RecipeRowView()
   
-  var dishTypeLabel = SCLabel()
-  var cuisinesLabel = SCLabel()
+  var dishTypeLabel = RecipeRowView()
+  var cuisinesLabel = RecipeRowView()
   
-  var veryPopularLabel = SCLabel()
-  var sustainableLabel = SCLabel()
+  var veryPopularLabel = RecipeRowView()
+  var sustainableLabel = RecipeRowView()
   
-  var cheapLabel = SCLabel()
-  var pricePerServingLabel = SCLabel()
+  var cheapLabel = RecipeRowView()
+  var pricePerServingLabel = RecipeRowView()
   
   // Holders for Modal Property Values
   var summary = String()
@@ -112,10 +112,6 @@ extension RecipeView {
     sustainableLabel.translatesAutoresizingMaskIntoConstraints = false
     cheapLabel.translatesAutoresizingMaskIntoConstraints = false
     pricePerServingLabel.translatesAutoresizingMaskIntoConstraints = false
-    
-    //    showGeneralButton.translatesAutoresizingMaskIntoConstraints = false
-    //    showGeneralButton.setTitle("General", for: [])
-    //    showGeneralButton.setImage(UIImage(systemName: "info.circle"), for: [])
     
     showIngredientsButton.translatesAutoresizingMaskIntoConstraints = false
     showIngredientsButton.setTitle("Ingredients", for: [])

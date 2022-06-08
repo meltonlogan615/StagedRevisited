@@ -35,8 +35,9 @@ extension LandingViewController {
   }
   
   func layout() {
-    let imageHeight = (view.frame.height / 3 - 48)
+    let imageHeight = (view.frame.height / 5 - 48)
     let imageWidth = (view.frame.width / 1.25)
+    
     view.addSubview(imageView)
     NSLayoutConstraint.activate([
       imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 1),
@@ -66,11 +67,15 @@ extension LandingViewController {
 
 extension LandingViewController {
   @objc func logInTapped() {
-    print("in")
+    let loginVC = LogInViewController()
+    loginVC.modalPresentationStyle = .formSheet
+    present(loginVC, animated: true)
   }
   
   @objc func signUpTapped() {
-    print("up")
+    let signUpVC = SignUpViewController()
+    signUpVC.modalPresentationStyle = .formSheet
+    present(signUpVC, animated: true)
   }
   
   @objc func forgotTapped() {

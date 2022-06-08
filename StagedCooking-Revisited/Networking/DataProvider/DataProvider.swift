@@ -24,6 +24,16 @@ class DataProvider  {
     }
   }
   
+// MARK: - Infinite Scrolling
+  func getMoreRecipes<T: Decodable>(for query: String?, by offset: Int, completion: @escaping (Result<T, Error>) -> Void) {
+    if let query = query {
+      let recipeEndpoint = endpoints.getMore(for: query, by: offset)
+      networkDataFlow.getData(for: recipeEndpoint.endpointURL) { (result: Result<T, Error>) in
+        completion(result)
+      }
+    }
+  }
+  
 // MARK: - Filtered Search
   func getFilteredRecipes<T: Decodable>(for query: String?, with filter: String?, completion: @escaping (Result<T, Error>) -> Void) {
     if let query = query {

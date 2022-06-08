@@ -14,6 +14,7 @@ class LogInViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = K.primary
     title = "Log In"
     style()
     layout()
@@ -25,15 +26,14 @@ extension LogInViewController {
   func style() {
     
     imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.image = UIImage(systemName: "fork.knife.circle")
-    imageView.tintColor = K.scAccent
+    imageView.image = UIImage(named: "StagedLogo")
     imageView.contentMode = .scaleAspectFill
 
     loginView.translatesAutoresizingMaskIntoConstraints = false
   }
   
   func layout() {
-    let imageHeight = (view.frame.height / 3 - 48)
+    let imageHeight = (view.frame.height / 5 - 48)
     let imageWidth = (view.frame.width / 1.25)
 
     view.addSubview(imageView)
@@ -46,10 +46,20 @@ extension LogInViewController {
     
     view.addSubview(loginView)
     NSLayoutConstraint.activate([
-      loginView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 1),
+      loginView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 2),
       loginView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       loginView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       loginView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
     ])
+  }
+}
+
+extension LogInViewController {
+  @objc func loginButtonTapped() {
+    
+  }
+  
+  @objc func cancelButtonTapped() {
+    self.dismiss(animated: true)
   }
 }

@@ -88,6 +88,7 @@
 		3276104F282CBC6B005346D4 /* DietsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276104E282CBC6B005346D4 /* DietsInfo.swift */; };
 		32761051282CBFD6005346D4 /* CardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32761050282CBFD6005346D4 /* CardBuilder.swift */; };
 		32761053282CC01B005346D4 /* GetInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32761052282CC01B005346D4 /* GetInstructions.swift */; };
+		327B59FB284FFCE3007495AA /* RecipeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B59FA284FFCE3007495AA /* RecipeRowView.swift */; };
 		329C096D2836964100CECE6C /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C096C2836964100CECE6C /* LogInView.swift */; };
 		329C096F2836966C00CECE6C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C096E2836966C00CECE6C /* SignUpView.swift */; };
 		329C097328373CCC00CECE6C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C097228373CCC00CECE6C /* SettingsView.swift */; };
@@ -201,6 +202,7 @@
 		3276104E282CBC6B005346D4 /* DietsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietsInfo.swift; sourceTree = "<group>"; };
 		32761050282CBFD6005346D4 /* CardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBuilder.swift; sourceTree = "<group>"; };
 		32761052282CC01B005346D4 /* GetInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInstructions.swift; sourceTree = "<group>"; };
+		327B59FA284FFCE3007495AA /* RecipeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRowView.swift; sourceTree = "<group>"; };
 		329C096C2836964100CECE6C /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		329C096E2836966C00CECE6C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		329C097228373CCC00CECE6C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -291,7 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				322199C827FA6C1C003FD4F6 /* Extensions */,
-				322199C527FA6B9B003FD4F6 /* Protocols */,
+				322199C527FA6B9B003FD4F6 /* Protocols-Delegates */,
 				3221998027FA5DB2003FD4F6 /* AppDelegate.swift */,
 				3221998E27FA5DB3003FD4F6 /* Info.plist */,
 				322A73E6284726C000A0C7D2 /* GoogleService-Info.plist */,
@@ -433,12 +435,12 @@
 			path = SearchResults;
 			sourceTree = "<group>";
 		};
-		322199C527FA6B9B003FD4F6 /* Protocols */ = {
+		322199C527FA6B9B003FD4F6 /* Protocols-Delegates */ = {
 			isa = PBXGroup;
 			children = (
 				322199C627FA6BB3003FD4F6 /* ImageURLProtocol.swift */,
 			);
-			name = Protocols;
+			name = "Protocols-Delegates";
 			sourceTree = "<group>";
 		};
 		322199C827FA6C1C003FD4F6 /* Extensions */ = {
@@ -533,6 +535,7 @@
 			children = (
 				3276103A282CA643005346D4 /* MacrosLabelView.swift */,
 				32C99134282EF80800667F65 /* SCLabel.swift */,
+				327B59FA284FFCE3007495AA /* RecipeRowView.swift */,
 				325678F3283F2FDE00D32646 /* LargeLabel.swift */,
 			);
 			path = Labels;
@@ -849,6 +852,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				327B59FB284FFCE3007495AA /* RecipeRowView.swift in Sources */,
 				322199BB27FA6407003FD4F6 /* RecipeCell.swift in Sources */,
 				322199A627FA5EE3003FD4F6 /* NetworkDataFlow.swift in Sources */,
 				32027D4C2829F6D900F0F167 /* Nutrition.swift in Sources */,
