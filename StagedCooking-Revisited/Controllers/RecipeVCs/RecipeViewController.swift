@@ -116,6 +116,10 @@ extension RecipeViewController: RecipeByID {
           DispatchQueue.main.async { [self] in
             guard let selectedRecipe = model as Recipe? else { return }
             self.setProperties(for: selectedRecipe)
+            self.generateIngredientsList(for: selectedRecipe)
+            self.generateSummary(for: selectedRecipe)
+            self.generateMacrosModel(for: selectedRecipe)
+            self.generateDietsInfo(for: selectedRecipe)
           }
         case .failure(let error):
           print("recipe error:", error)

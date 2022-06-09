@@ -17,7 +17,7 @@ struct EndPoints {
   var recipeID: Int?
   var query: String?
   var filter: String?
-  var returnCount: Int = 20
+  var returnCount: Int = 999
   var offset: Int = 0
 }
 
