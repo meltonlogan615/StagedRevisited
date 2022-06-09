@@ -30,11 +30,6 @@ class RecipeListCollectionView: UIViewController {
   var model = Response()
   var additionalModel = Response()
   
-  var cellIndex = Int()
-  var currentResults = 0
-  var totalResults = 0
-  var offset = 0
-  
   var searchedRecipe = String()
   
   let recipeCollection: UICollectionView = {
@@ -92,18 +87,16 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCell
-    cellIndex = indexPath.item
     if let recipeResults = model.results {
-      if let receipeTitle = recipeResults[cellIndex].title {
+      if let receipeTitle = recipeResults[indexPath.item].title {
         cell.titleLabel.text = receipeTitle.capitalized
       }
-      if let recipeImage = recipeResults[cellIndex].image {
+      if let recipeImage = recipeResults[indexPath.item].image {
         cell.image.loadImage(url: recipeImage)
         cell.image.layer.cornerRadius = 8
         cell.image.clipsToBounds = true
       }
     }
-    //    print(cellIndex)
     return cell
   }
 }
@@ -159,20 +152,18 @@ extension RecipeListCollectionView {
         case .success(let model):
           self.model = model as Response
           guard let results = self.model.results else { return }
-          self.currentResults = results.count
 
           // if there are no results for the searched phrase, display alert
           self.noResults(for: recipe)
 
           // total number of results
           guard let totalCount = self.model.totalResults else { return }
-          self.totalResults = totalCount
-          
-          for result in results {
-            // MARK: - Text Labels
-            guard let receipe = result.title else { return }
-            self.searchedRecipe = receipe
-          }
+          self.title = "\(self.searchedRecipe), \(totalCount) Results"
+//          for result in results {
+//            // MARK: - Text Labels
+//            guard let receipe = result.title else { return }
+//            self.searchedRecipe = receipe
+//          }
           
         case .failure(let error):
           print(error)
@@ -181,32 +172,6 @@ extension RecipeListCollectionView {
     }
   }
 }
-
-// MARK: - Networking, Infinite Scroll Method
-//extension RecipeListCollectionView {
-//  func loadMoreResults(for recipe: String, by offset: Int) {
-//    dataprovider.getMoreRecipes(for: recipe, by: offset) { [weak self] (foodResult: Result<Response, Error>) in
-//      guard let self = self else { return }
-//      switch foodResult {
-//        case .success(let model):
-//
-//          self.additionalModel = model as Response
-//
-//          guard let additionalResults = self.additionalModel.results else { return }
-//          for result in additionalResults {
-//            // MARK: - Text Labels
-//            self.model.results?.append(result)
-//            guard let receipe = result.title else { return }
-//            self.searchedRecipe = receipe
-//          }
-//
-//        case .failure(let error):
-//          print(error)
-//      }
-////            self.recipeCollection.reloadData()
-//    }
-//  }
-//}
 
 // MARK: - No Results Alert
 extension RecipeListCollectionView {
@@ -234,26 +199,7 @@ extension RecipeListCollectionView {
 //  }
 //}
 
-extension RecipeListCollectionView {
-  // TODO: - #28 - Get this fully operational.
-  private func activityIndicator(style: UIActivityIndicatorView.Style = .large,
-                                 frame: CGRect? = nil,
-                                 center: CGPoint? = nil) -> UIActivityIndicatorView {
-    let spinner = UIActivityIndicatorView(style: style)
-    
-    if let frame = frame {
-      spinner.frame = frame
-    }
-    if let center = center {
-      spinner.center = center
-    }
-    return spinner
-  }
-  
-  //  let spinner = self.activityIndicator(style: .large, center: self.view.center)
-  //  self.view.addSubview(spinner)
-  //  spinner.startAnimating()
-}
+
 
 
 

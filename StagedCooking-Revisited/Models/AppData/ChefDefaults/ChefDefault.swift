@@ -41,15 +41,13 @@ import Foundation
  - An  array of `Diet`'s that will be applied to all recipe searches.
  */
 struct ChefDefault {
-//  static var searched = ""
-//  static var requestedID = 0
-//  static var selectedRecipe: Recipe?
   static var defaults = UserDefaults.standard
   
   static var favoriteRecipes = [Recipe]()
   static var savedRecipes = [Recipe]() // Saved, but not an explicit favorite. But can still be both
   static var viewedRecipes = [[String: String]]()
   static var searchHistory = [String]() // perhaps used later as part of an autocomplete in search
+  static var hateListe = [Recipe]() // Never see a recipe again.
   
   static var isLoggedIn = true
   static var hasOnboarded = false
