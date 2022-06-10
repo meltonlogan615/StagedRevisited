@@ -17,7 +17,7 @@ protocol ReusableCell: Any {
  
  - Current only used in `RecipeListCollectionView`
  */
-final class RecipeCell: UICollectionViewCell {
+final class RecipeCell: UICollectionViewListCell {
   
   /// Fills the entire cell
   let image: UIImageView = {

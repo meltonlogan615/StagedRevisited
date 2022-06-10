@@ -91,6 +91,8 @@
 		327B5A0B28515750007495AA /* GenerateSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A0A28515750007495AA /* GenerateSummary.swift */; };
 		327B5A132851B2EA007495AA /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A122851B2EA007495AA /* SpinnerViewController.swift */; };
 		327B5A1A2852245E007495AA /* ShowHideSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A192852245E007495AA /* ShowHideSpinner.swift */; };
+		327B5A1D2852F557007495AA /* SortActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A1C2852F557007495AA /* SortActions.swift */; };
+		327B5A1F2852F630007495AA /* SwipeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A1E2852F630007495AA /* SwipeActions.swift */; };
 		329C096D2836964100CECE6C /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C096C2836964100CECE6C /* LogInView.swift */; };
 		329C096F2836966C00CECE6C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C096E2836966C00CECE6C /* SignUpView.swift */; };
 		329C097328373CCC00CECE6C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C097228373CCC00CECE6C /* SettingsView.swift */; };
@@ -207,6 +209,8 @@
 		327B5A0A28515750007495AA /* GenerateSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateSummary.swift; sourceTree = "<group>"; };
 		327B5A122851B2EA007495AA /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		327B5A192852245E007495AA /* ShowHideSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideSpinner.swift; sourceTree = "<group>"; };
+		327B5A1C2852F557007495AA /* SortActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortActions.swift; sourceTree = "<group>"; };
+		327B5A1E2852F630007495AA /* SwipeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActions.swift; sourceTree = "<group>"; };
 		329C096C2836964100CECE6C /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		329C096E2836966C00CECE6C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		329C097228373CCC00CECE6C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -487,6 +491,7 @@
 			isa = PBXGroup;
 			children = (
 				322199C027FA6608003FD4F6 /* RecipeListCollectionView.swift */,
+				327B5A1B2852F52A007495AA /* RecipeCollectionExtension */,
 			);
 			path = CollectionVCs;
 			sourceTree = "<group>";
@@ -691,6 +696,15 @@
 			path = SystemVCs;
 			sourceTree = "<group>";
 		};
+		327B5A1B2852F52A007495AA /* RecipeCollectionExtension */ = {
+			isa = PBXGroup;
+			children = (
+				327B5A1C2852F557007495AA /* SortActions.swift */,
+				327B5A1E2852F630007495AA /* SwipeActions.swift */,
+			);
+			path = RecipeCollectionExtension;
+			sourceTree = "<group>";
+		};
 		329C096B2836962F00CECE6C /* AccountViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -861,6 +875,7 @@
 				32761051282CBFD6005346D4 /* CardBuilder.swift in Sources */,
 				327B5A0B28515750007495AA /* GenerateSummary.swift in Sources */,
 				3221EF6928344A9800A6FCCD /* AdvancedMacros.swift in Sources */,
+				327B5A1F2852F630007495AA /* SwipeActions.swift in Sources */,
 				32BD7A4128398DA80055B9CF /* NavController.swift in Sources */,
 				3214AC14284BE78600474068 /* LogInViewController.swift in Sources */,
 				32BD7A54283E55210055B9CF /* UIView-Blurry.swift in Sources */,
@@ -932,6 +947,7 @@
 				32D70DBD28073A80000328B9 /* StagedCardViewController.swift in Sources */,
 				322199BF27FA6567003FD4F6 /* LargeTextField.swift in Sources */,
 				329F37882833C39F004A758D /* ToggleSwitch.swift in Sources */,
+				327B5A1D2852F557007495AA /* SortActions.swift in Sources */,
 				3221EF612834474300A6FCCD /* Cuisine.swift in Sources */,
 				327B5A1A2852245E007495AA /* ShowHideSpinner.swift in Sources */,
 				327B5A032851568E007495AA /* GenerateDietsInfo.swift in Sources */,
@@ -1110,7 +1126,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.meltonlogan.StagedCooking-Revisited";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1140,7 +1156,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.meltonlogan.StagedCooking-Revisited";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
