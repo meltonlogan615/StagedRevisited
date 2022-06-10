@@ -17,20 +17,22 @@
 
 import Foundation
 import UIKit
+import CoreMIDI
 
 protocol RecipeByID: AnyObject {
   func loadRecipeByID(for chosenID: Int)
 }
 /**
- Basic `CollectionView` do display `[Response]`s from network call
+ Basic `CollectionView`  displays `[Response]`s from network call
  */
 class RecipeListCollectionView: UIViewController {
   
+  let spinner = SpinnerViewController()
   var dataprovider = DataProvider()
   var model = Response()
-  var additionalModel = Response()
   
   var searchedRecipe = String()
+//  var menu = UIMenu()
   
   let recipeCollection: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -40,26 +42,28 @@ class RecipeListCollectionView: UIViewController {
     return recipeCollection
   }()
   
-  override func viewWillAppear(_ animated: Bool) {
-    
-  }
+//  override func viewWillAppear(_ animated: Bool) {
+//    menu = self.generateMenu()
+//  }
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = K.primary
-    
     loadRecipes(for: searchedRecipe)
+    
+    view.backgroundColor = K.primary
+    title = searchedRecipe.capitalized
+    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(dismissView))
+    sortMenu()
+    
     recipeCollection.register(RecipeCell.self, forCellWithReuseIdentifier: "recipeCell")
     recipeCollection.dataSource = self
     recipeCollection.delegate = self
-    
-    title = searchedRecipe.capitalized
-    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(dismissView))
-    //    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease.circle"), style: .plain, target: self, action: #selector(filterResults))
-    
+
     style()
     layout()
   }
+  
 }
 // MARK: - Styling & Layout
 extension RecipeListCollectionView {
@@ -116,9 +120,6 @@ extension RecipeListCollectionView: UICollectionViewDelegate {
     //    ChefDefault.requestedID = selectedID - Used later along with UserDefaults
     navigationController?.pushViewController(recipeVC, animated: true)
   }
-  
-//  func
-  
 }
 
 // MARK: - CollectionView - Flow Layout & Cell Sizing
@@ -145,25 +146,20 @@ extension RecipeListCollectionView: UICollectionViewDelegateFlowLayout {
 
 extension RecipeListCollectionView {
   func loadRecipes(for recipe: String) {
-    
+    showActivity()
     dataprovider.getRecipes(for: recipe) { [weak self] (foodResult: Result<Response, Error>) in
       guard let self = self else { return }
+      self.removeActivity()
       switch foodResult {
         case .success(let model):
           self.model = model as Response
-          guard let results = self.model.results else { return }
-
+          
           // if there are no results for the searched phrase, display alert
           self.noResults(for: recipe)
-
+          
           // total number of results
           guard let totalCount = self.model.totalResults else { return }
-          self.title = "\(self.searchedRecipe), \(totalCount) Results"
-//          for result in results {
-//            // MARK: - Text Labels
-//            guard let receipe = result.title else { return }
-//            self.searchedRecipe = receipe
-//          }
+          self.title = "\(self.searchedRecipe) (\(totalCount))"
           
         case .failure(let error):
           print(error)
@@ -189,15 +185,199 @@ extension RecipeListCollectionView {
   }
 }
 
+extension RecipeListCollectionView {
+  func showActivity() {
+    addChild(spinner)
+    recipeCollection.isHidden = true
+    spinner.view.frame = view.frame
+    view.addSubview(spinner.view)
+  }
+  
+  func removeActivity() {
+    spinner.willMove(toParent: nil)
+    recipeCollection.isHidden = false
+    spinner.view.removeFromSuperview()
+    spinner.removeFromParent()
+  }
+}
+
 // MARK: - Filter Results
 // TODO: - #14 - This ⬇️
-//extension RecipeListCollectionView {
-//  @objc func filterResults() {
-//    let filterVC = AdvancedSearchViewController()
-////    show(filterVC, sender: self)
-//    present(filterVC, animated: true)
-//  }
-//}
+extension RecipeListCollectionView {
+  @objc func sortResultsBy() {
+    
+  }
+  
+  @objc func filterResults() {
+    let filterVC = AdvancedSearchViewController()
+    //    show(filterVC, sender: self)
+    present(filterVC, animated: true)
+  }
+}
+
+extension RecipeListCollectionView {
+  private enum SortOptions: String {
+    case nameAscending = "Name: A → Z"
+    case nameDecending = "Name: Z → A"
+    case totalTimeUp = "Cook Time: Low → High"
+    case totalTimeDown = "Cook Time: Hight → Low"
+    case calsUp = "Calories: Low → High"
+    case calsDown = "Calories: High → Low"
+    case fatUp = "Fat: Low → High"
+    case fatDown = "Fat: High → Low"
+    case proteinUp = "Protein: Low → High"
+    case proteinDown = "Protein: High → Low"
+  }
+  
+  func sortMenu() {
+    // MARK: - Alphabetically Ascending from A to Z
+    let menu = UIMenu(title: "Sort By:", image: nil, identifier: nil, options: .singleSelection, children: [
+      UIAction(title: SortOptions.nameAscending.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) { (_) in
+        self.model.results = self.model.results?.sorted(by: <)
+        self.recipeCollection.reloadData()
+      },
+      
+      // MARK: - Alphabetically Descending from Z to A
+      UIAction(title: SortOptions.nameDecending.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) { (_) in
+        self.model.results = self.model.results?.sorted(by: >)
+        self.recipeCollection.reloadData()
+      },
+      
+      // MARK: - Time Descending from Lowest to Highest
+      UIAction(title: SortOptions.totalTimeUp.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) { (_) in
+        guard let timeSorter = self.model.results else { return }
+        let sorted = timeSorter.sorted { (lhs, rhs) -> Bool in
+          var returnBool = Bool()
+          if let lefty = lhs.readyInMinutes {
+            if let righty = rhs.readyInMinutes {
+              returnBool = lefty < righty
+            }
+          }
+          return returnBool
+        }
+        self.model.results = sorted
+        self.recipeCollection.reloadData()
+      },
+      
+      // MARK: - Time Descending from Highest to Lowest
+      UIAction(title: SortOptions.totalTimeDown.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) { (_) in
+        guard let timeSorter = self.model.results else { return }
+        let sorted = timeSorter.sorted { (lhs, rhs) -> Bool in
+          var returnBool = Bool()
+          if let lefty = lhs.readyInMinutes {
+            if let righty = rhs.readyInMinutes {
+              returnBool = lefty > righty
+            }
+          }
+          return returnBool
+        }
+        self.model.results = sorted
+        self.recipeCollection.reloadData()
+      },
+      
+      UIAction(title: SortOptions.calsUp.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) { _ in
+        guard let calSorter = self.model.results else { return }
+        let sorted = calSorter.sorted { (lhs, rhs) -> Bool in
+          var returnBool = Bool()
+          if let leftFlavs = lhs.nutrition?.nutrients {
+            if let rightFlavs = rhs.nutrition?.nutrients {
+              for lefty in leftFlavs {
+                for righty in rightFlavs {
+                  if lefty.unit == "kcal" && righty.unit == "kcal" {
+                    if let left = lefty.amount, let right = righty.amount {
+                      returnBool = left < right
+                    }
+                  }
+                }
+              }
+            }
+          }
+          return returnBool
+        }
+        self.model.results = sorted
+        self.recipeCollection.reloadData()
+      },
+      
+      UIAction(title: SortOptions.calsDown.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) { (_) in
+        guard let calSorter = self.model.results else { return }
+        let sorted = calSorter.sorted { (lhs, rhs) -> Bool in
+          var returnBool = Bool()
+          if let leftFlavs = lhs.nutrition?.nutrients {
+            if let rightFlavs = rhs.nutrition?.nutrients {
+              for lefty in leftFlavs {
+                for righty in rightFlavs {
+                  if lefty.unit == "kcal" && righty.unit == "kcal" {
+                    if let left = lefty.amount, let right = righty.amount {
+                      returnBool = left > right
+                    }
+                  }
+                }
+              }
+            }
+          }
+          return returnBool
+        }
+        self.model.results = sorted
+        self.recipeCollection.reloadData()
+      },
+
+      UIAction(title: SortOptions.fatUp.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) { (_) in
+        guard let calSorter = self.model.results else { return }
+        let sorted = calSorter.sorted { (lhs, rhs) -> Bool in
+          var returnBool = Bool()
+          if let leftFlavs = lhs.nutrition?.nutrients {
+            if let rightFlavs = rhs.nutrition?.nutrients {
+              for lefty in leftFlavs {
+                for righty in rightFlavs {
+                  if lefty.name?.lowercased() == "fat" && righty.name?.lowercased() == "fat" {
+                    if let left = lefty.amount, let right = righty.amount {
+                      returnBool = left < right
+                    }
+                  }
+                }
+              }
+            }
+          }
+          return returnBool
+        }
+        self.model.results = sorted
+        self.recipeCollection.reloadData()
+      },
+      UIAction(title: SortOptions.fatDown.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) { (_) in
+        guard let calSorter = self.model.results else { return }
+        let sorted = calSorter.sorted { (lhs, rhs) -> Bool in
+          var returnBool = Bool()
+          if let leftFlavs = lhs.nutrition?.nutrients {
+            if let rightFlavs = rhs.nutrition?.nutrients {
+              for lefty in leftFlavs {
+                for righty in rightFlavs {
+                  if lefty.name?.lowercased() == "fat" && righty.name?.lowercased() == "fat" {
+                    if let left = lefty.amount, let right = righty.amount {
+                      returnBool = left > right
+                    }
+                  }
+                }
+              }
+            }
+          }
+          return returnBool
+        }
+        self.model.results = sorted
+        self.recipeCollection.reloadData()
+
+      },
+//      UIAction(title: SortOptions.proteinUp.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) { (_) in
+//        print("poop")
+//      },
+//      UIAction(title: SortOptions.proteinDown.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) { (_) in
+//        print("poop")
+//      },
+      
+    ])
+    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sort", image: nil, primaryAction: .none, menu: menu)
+  }
+  
+}
 
 
 

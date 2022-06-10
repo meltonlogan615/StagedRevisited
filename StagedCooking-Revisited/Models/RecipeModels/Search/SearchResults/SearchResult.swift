@@ -34,6 +34,17 @@ struct SearchResult: Decodable, Identifiable, Comparable, Hashable {
     }
     return result
   }
+  
+  static func calSort(lhs: Self, rhs: Self) -> Bool {
+    var result = false
+    if let left = lhs.calories {
+      if let right = rhs.calories {
+        result = left < right
+      }
+    }
+    return result
+  }
+  
 }
 
 

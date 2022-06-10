@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    let root = LandingViewController()
 //    let root = LogInViewController()
 //    let root = SignUpViewController()
+//    let root = SpinnerVCTest()
+//    let root = RecipeListCollectionView()
     let navVC = UINavigationController(rootViewController: root)
     window?.rootViewController = navVC
     

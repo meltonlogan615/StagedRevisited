@@ -16,6 +16,7 @@ import SwiftUI
  */
 class RecipeViewController: UIViewController {
   
+  let spinner = SpinnerViewController()
   let dataprovider = DataProvider()
   var recipeView = RecipeView()
   
@@ -51,6 +52,7 @@ class RecipeViewController: UIViewController {
     loadRecipeByID(for: recipeID)
     // Generates stepIngredients & stepIngredients
     getInstructions(for: recipeID)
+    showActivity()
     navigationController?.navigationBar.prefersLargeTitles = false
     // TODO: - #29 - ADD option to dismiss views back to SearchVC?
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save For Later", style: .plain, target: self, action: #selector(saveRecipe))
@@ -124,8 +126,23 @@ extension RecipeViewController: RecipeByID {
         case .failure(let error):
           print("recipe error:", error)
       } // End of Switch
+      self.removeActivity()
     }
   }
 } // END of Extension
 
-
+extension RecipeViewController {
+  func showActivity() {
+    addChild(spinner)
+    recipeView.isHidden = true
+    spinner.view.frame = view.frame
+    view.addSubview(spinner.view)
+  }
+  
+  func removeActivity() {
+    spinner.willMove(toParent: nil)
+    recipeView.isHidden = false
+    spinner.view.removeFromSuperview()
+    spinner.removeFromParent()
+  }
+}

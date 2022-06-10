@@ -89,7 +89,8 @@
 		327B5A0728515703007495AA /* GenerateIngredientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A0628515703007495AA /* GenerateIngredientsList.swift */; };
 		327B5A0928515722007495AA /* GenerateMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A0828515722007495AA /* GenerateMacros.swift */; };
 		327B5A0B28515750007495AA /* GenerateSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A0A28515750007495AA /* GenerateSummary.swift */; };
-		327B5A112851675C007495AA /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A102851675C007495AA /* ActivityIndicatorView.swift */; };
+		327B5A132851B2EA007495AA /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A122851B2EA007495AA /* SpinnerViewController.swift */; };
+		327B5A1A2852245E007495AA /* ShowHideSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A192852245E007495AA /* ShowHideSpinner.swift */; };
 		329C096D2836964100CECE6C /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C096C2836964100CECE6C /* LogInView.swift */; };
 		329C096F2836966C00CECE6C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C096E2836966C00CECE6C /* SignUpView.swift */; };
 		329C097328373CCC00CECE6C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C097228373CCC00CECE6C /* SettingsView.swift */; };
@@ -204,7 +205,8 @@
 		327B5A0628515703007495AA /* GenerateIngredientsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateIngredientsList.swift; sourceTree = "<group>"; };
 		327B5A0828515722007495AA /* GenerateMacros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMacros.swift; sourceTree = "<group>"; };
 		327B5A0A28515750007495AA /* GenerateSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateSummary.swift; sourceTree = "<group>"; };
-		327B5A102851675C007495AA /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		327B5A122851B2EA007495AA /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
+		327B5A192852245E007495AA /* ShowHideSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideSpinner.swift; sourceTree = "<group>"; };
 		329C096C2836964100CECE6C /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		329C096E2836966C00CECE6C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		329C097228373CCC00CECE6C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 		3221999527FA5DE2003FD4F6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				327B5A142851B40D007495AA /* SystemVCs */,
 				322199D327FA975E003FD4F6 /* SearchVCs */,
 				322199D427FA9771003FD4F6 /* CollectionVCs */,
 				322199D527FA9790003FD4F6 /* RecipeVCs */,
@@ -573,7 +576,6 @@
 				329F3782283368E8004A758D /* AdvancedSearchRow.swift */,
 				32441EFA2827711E00DA426F /* Divider.swift */,
 				32BD7A4028398DA80055B9CF /* NavController.swift */,
-				327B5A102851675C007495AA /* ActivityIndicatorView.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -626,6 +628,7 @@
 			isa = PBXGroup;
 			children = (
 				322199CB27FA84CD003FD4F6 /* ViewController-Extensions.swift */,
+				327B5A192852245E007495AA /* ShowHideSpinner.swift */,
 			);
 			name = "UIViewController-Extensions";
 			sourceTree = "<group>";
@@ -678,6 +681,14 @@
 				327B5A0A28515750007495AA /* GenerateSummary.swift */,
 			);
 			path = RecipeViewMethods;
+			sourceTree = "<group>";
+		};
+		327B5A142851B40D007495AA /* SystemVCs */ = {
+			isa = PBXGroup;
+			children = (
+				327B5A122851B2EA007495AA /* SpinnerViewController.swift */,
+			);
+			path = SystemVCs;
 			sourceTree = "<group>";
 		};
 		329C096B2836962F00CECE6C /* AccountViews */ = {
@@ -880,6 +891,7 @@
 				32BD7A482839BC650055B9CF /* CardCell.swift in Sources */,
 				3221EF7D28352F5700A6FCCD /* IntolerantMethod.swift in Sources */,
 				326F9F9D282216C60086BA53 /* RecipeView.swift in Sources */,
+				327B5A132851B2EA007495AA /* SpinnerViewController.swift in Sources */,
 				322199BD27FA6517003FD4F6 /* DetailsButton.swift in Sources */,
 				3214AC16284BED3100474068 /* SignWithAppleButton.swift in Sources */,
 				321E29F02841F86D003BCC47 /* AdvancedMicrosCell.swift in Sources */,
@@ -905,7 +917,6 @@
 				322199AC27FA5F75003FD4F6 /* Recipe.swift in Sources */,
 				32761022282A12D8005346D4 /* SummaryModal.swift in Sources */,
 				322199CA27FA6C2F003FD4F6 /* UIImage-Extension.swift in Sources */,
-				327B5A112851675C007495AA /* ActivityIndicatorView.swift in Sources */,
 				329F378A2833C404004A758D /* Constants.swift in Sources */,
 				32761020282A12C7005346D4 /* MacrosModal.swift in Sources */,
 				3214AC12284B344100474068 /* AccountTextField.swift in Sources */,
@@ -922,6 +933,7 @@
 				322199BF27FA6567003FD4F6 /* LargeTextField.swift in Sources */,
 				329F37882833C39F004A758D /* ToggleSwitch.swift in Sources */,
 				3221EF612834474300A6FCCD /* Cuisine.swift in Sources */,
+				327B5A1A2852245E007495AA /* ShowHideSpinner.swift in Sources */,
 				327B5A032851568E007495AA /* GenerateDietsInfo.swift in Sources */,
 				322199B427FA627A003FD4F6 /* Ingredient.swift in Sources */,
 				3221EF8B2835F01600A6FCCD /* AdvancedCell.swift in Sources */,

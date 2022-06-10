@@ -18,7 +18,7 @@ import Foundation
  */
 
 struct Response: Decodable {
-  var results: [SearchResult]?
+  var results: [Recipe]?
   var baseUri: String?
   
   // these three props for pagination/scrolling

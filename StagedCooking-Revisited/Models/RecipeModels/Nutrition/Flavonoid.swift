@@ -17,9 +17,19 @@ import Foundation
  - `Nutrition.properties`
  - `Nutrition.flavonoids` (which I'm not entirely sure is being used in any current context at this time.
  */
-struct Flavonoid: Decodable {
+struct Flavonoid: Decodable, Comparable {
   var name: String?
   var amount: Double?
   var unit: String?
   var percentOfDailyNeeds: Double?
+  
+  static func <(lhs: Self, rhs: Self) -> Bool {
+    var returnedBool = false
+    if let leftSide = lhs.amount {
+      if let rightSide = rhs.amount {
+        returnedBool = leftSide < rightSide
+      }
+    }
+    return returnedBool
+  }
 }

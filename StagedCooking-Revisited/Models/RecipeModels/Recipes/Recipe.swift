@@ -22,7 +22,7 @@ import Foundation
  
  Is again passed from `RecipeViewController` as a property within `StagedCardContainerViewController`
  */
-struct Recipe: Decodable, Identifiable {
+struct Recipe: Decodable, Identifiable, Comparable {
   
   // Basics
   var id: Int?
@@ -73,4 +73,24 @@ struct Recipe: Decodable, Identifiable {
 //  var gaps: String?
     //    var occasions: [JSONAnyQ]?
 //  var winePairing: WinePairing?
+  
+  static func <(lhs: Self, rhs: Self) -> Bool {
+    var returnedBool = false
+    if let leftSide = lhs.title {
+      if let rightSide = rhs.title {
+        returnedBool = leftSide < rightSide
+      }
+    }
+    return returnedBool
+  }
+  
+  static func == (lhs: Self, rhs: Self) -> Bool {
+    var returnedBool = false
+    if let leftSide = lhs.title {
+      if let rightSide = rhs.title {
+        returnedBool = leftSide < rightSide
+      }
+    }
+    return returnedBool
+  }
 }
