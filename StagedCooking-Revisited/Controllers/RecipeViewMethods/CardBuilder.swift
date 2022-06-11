@@ -52,7 +52,7 @@ extension RecipeViewController: CardBuilder {
             for j in 0 ..< cabinet.count {
               
               // if value from ingredientDictionary is found in the ingredient string
-              if cabinet[j].contains(ingredientValue[i]) {
+              if cabinet[j].lowercased().contains(ingredientValue[i].lowercased()) {
                 mixingBowl.append(cabinet[j])
                 cabinet[j] = ""
               }

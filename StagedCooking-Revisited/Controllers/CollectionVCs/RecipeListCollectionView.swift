@@ -32,7 +32,8 @@ class RecipeListCollectionView: UIViewController {
   var model = Response()
   
   var searchedRecipe = String()
-//  var menu = UIMenu()
+  var cellTitle = String()
+  
   
   let recipeCollection: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -41,10 +42,6 @@ class RecipeListCollectionView: UIViewController {
     recipeCollection.layer.zPosition = 10
     return recipeCollection
   }()
-  
-//  override func viewWillAppear(_ animated: Bool) {
-//    menu = self.generateMenu()
-//  }
   
   
   override func viewDidLoad() {
@@ -93,7 +90,8 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "recipeCell", for: indexPath) as! RecipeCell
     if let recipeResults = model.results {
       if let receipeTitle = recipeResults[indexPath.item].title {
-        cell.titleLabel.text = receipeTitle.capitalized
+        cellTitle = receipeTitle.capitalized
+        cell.titleLabel.text = cellTitle
       }
       if let recipeImage = recipeResults[indexPath.item].image {
         cell.image.loadImage(url: recipeImage)

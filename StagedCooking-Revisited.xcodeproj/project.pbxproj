@@ -57,10 +57,6 @@
 		3221EF872835CC4500A6FCCD /* AdvancedMacrosMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF862835CC4500A6FCCD /* AdvancedMacrosMethod.swift */; };
 		3221EF892835E89500A6FCCD /* AdvancedSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF882835E89400A6FCCD /* AdvancedSearchViewController.swift */; };
 		3221EF8B2835F01600A6FCCD /* AdvancedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF8A2835F01600A6FCCD /* AdvancedCell.swift */; };
-		322A73E12847269900A0C7D2 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 322A73E02847269900A0C7D2 /* FirebaseAnalyticsWithoutAdIdSupport */; };
-		322A73E32847269900A0C7D2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 322A73E22847269900A0C7D2 /* FirebaseAuth */; };
-		322A73E52847269900A0C7D2 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 322A73E42847269900A0C7D2 /* FirebaseCrashlytics */; };
-		322A73E7284726C000A0C7D2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 322A73E6284726C000A0C7D2 /* GoogleService-Info.plist */; };
 		32441EFB2827711E00DA426F /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32441EFA2827711E00DA426F /* Divider.swift */; };
 		325678F4283F2FDE00D32646 /* LargeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325678F3283F2FDE00D32646 /* LargeLabel.swift */; };
 		326F9F8B281D099C0086BA53 /* IngredientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */; };
@@ -93,6 +89,8 @@
 		327B5A1A2852245E007495AA /* ShowHideSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A192852245E007495AA /* ShowHideSpinner.swift */; };
 		327B5A1D2852F557007495AA /* SortActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A1C2852F557007495AA /* SortActions.swift */; };
 		327B5A1F2852F630007495AA /* SwipeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A1E2852F630007495AA /* SwipeActions.swift */; };
+		327B5A2328541417007495AA /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A2228541417007495AA /* TabViewController.swift */; };
+		327B5A2528541AD1007495AA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A2428541AD1007495AA /* SettingsViewController.swift */; };
 		329C096D2836964100CECE6C /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C096C2836964100CECE6C /* LogInView.swift */; };
 		329C096F2836966C00CECE6C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C096E2836966C00CECE6C /* SignUpView.swift */; };
 		329C097328373CCC00CECE6C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C097228373CCC00CECE6C /* SettingsView.swift */; };
@@ -177,7 +175,6 @@
 		3221EF862835CC4500A6FCCD /* AdvancedMacrosMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedMacrosMethod.swift; sourceTree = "<group>"; };
 		3221EF882835E89400A6FCCD /* AdvancedSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSearchViewController.swift; sourceTree = "<group>"; };
 		3221EF8A2835F01600A6FCCD /* AdvancedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedCell.swift; sourceTree = "<group>"; };
-		322A73E6284726C000A0C7D2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		32441EFA2827711E00DA426F /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
 		325678F3283F2FDE00D32646 /* LargeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeLabel.swift; sourceTree = "<group>"; };
 		3264D35E28386A3F00C06555 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -211,6 +208,8 @@
 		327B5A192852245E007495AA /* ShowHideSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideSpinner.swift; sourceTree = "<group>"; };
 		327B5A1C2852F557007495AA /* SortActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortActions.swift; sourceTree = "<group>"; };
 		327B5A1E2852F630007495AA /* SwipeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActions.swift; sourceTree = "<group>"; };
+		327B5A2228541417007495AA /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		327B5A2428541AD1007495AA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		329C096C2836964100CECE6C /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		329C096E2836966C00CECE6C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		329C097228373CCC00CECE6C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -247,9 +246,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				322A73E52847269900A0C7D2 /* FirebaseCrashlytics in Frameworks */,
-				322A73E12847269900A0C7D2 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
-				322A73E32847269900A0C7D2 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,11 +299,10 @@
 				322199C827FA6C1C003FD4F6 /* Extensions */,
 				322199C527FA6B9B003FD4F6 /* Protocols-Delegates */,
 				3221998027FA5DB2003FD4F6 /* AppDelegate.swift */,
-				3221998E27FA5DB3003FD4F6 /* Info.plist */,
-				322A73E6284726C000A0C7D2 /* GoogleService-Info.plist */,
-				3221998B27FA5DB3003FD4F6 /* LaunchScreen.storyboard */,
-				3221998927FA5DB3003FD4F6 /* Assets.xcassets */,
 				329F37892833C404004A758D /* Constants.swift */,
+				3221998927FA5DB3003FD4F6 /* Assets.xcassets */,
+				3221998E27FA5DB3003FD4F6 /* Info.plist */,
+				3221998B27FA5DB3003FD4F6 /* LaunchScreen.storyboard */,
 			);
 			name = SupportFiles;
 			sourceTree = "<group>";
@@ -500,8 +495,8 @@
 			isa = PBXGroup;
 			children = (
 				326F9FA0282223EB0086BA53 /* RecipeViewController.swift */,
-				327B5A0F28516464007495AA /* RecipeViewMethods */,
 				326F9FA22822298F0086BA53 /* ModalViewController.swift */,
+				327B5A0F28516464007495AA /* RecipeViewMethods */,
 				32761055282CC0F6005346D4 /* CardMethods */,
 			);
 			path = RecipeVCs;
@@ -692,6 +687,7 @@
 			isa = PBXGroup;
 			children = (
 				327B5A122851B2EA007495AA /* SpinnerViewController.swift */,
+				327B5A2228541417007495AA /* TabViewController.swift */,
 			);
 			path = SystemVCs;
 			sourceTree = "<group>";
@@ -722,6 +718,7 @@
 				329C097928374CED00CECE6C /* LandingViewController.swift */,
 				3214AC13284BE78600474068 /* LogInViewController.swift */,
 				3214AC0F284B312D00474068 /* SignUpViewController.swift */,
+				327B5A2428541AD1007495AA /* SettingsViewController.swift */,
 			);
 			path = AccountVCs;
 			sourceTree = "<group>";
@@ -803,9 +800,6 @@
 			);
 			name = "StagedCooking-Revisited";
 			packageProductDependencies = (
-				322A73E02847269900A0C7D2 /* FirebaseAnalyticsWithoutAdIdSupport */,
-				322A73E22847269900A0C7D2 /* FirebaseAuth */,
-				322A73E42847269900A0C7D2 /* FirebaseCrashlytics */,
 			);
 			productName = "StagedCooking-Revisited";
 			productReference = 3221997D27FA5DB2003FD4F6 /* StagedCooking-Revisited.app */;
@@ -836,7 +830,6 @@
 			);
 			mainGroup = 3221997427FA5DB2003FD4F6;
 			packageReferences = (
-				322A73DF2847269900A0C7D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 3221997E27FA5DB2003FD4F6 /* Products */;
 			projectDirPath = "";
@@ -854,7 +847,6 @@
 			files = (
 				3221998D27FA5DB3003FD4F6 /* LaunchScreen.storyboard in Resources */,
 				3221998A27FA5DB3003FD4F6 /* Assets.xcassets in Resources */,
-				322A73E7284726C000A0C7D2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,6 +885,7 @@
 				322199B627FA62C4003FD4F6 /* ExtendedIngredient.swift in Sources */,
 				3221EF712834A19D00A6FCCD /* DietsView.swift in Sources */,
 				32761040282CB2AC005346D4 /* GeneralInfo.swift in Sources */,
+				327B5A2328541417007495AA /* TabViewController.swift in Sources */,
 				329C097A28374CED00CECE6C /* LandingViewController.swift in Sources */,
 				32027D4A2829F68100F0F167 /* CalorieBreakdown.swift in Sources */,
 				322199C127FA6608003FD4F6 /* RecipeListCollectionView.swift in Sources */,
@@ -926,6 +919,7 @@
 				327B5A0928515722007495AA /* GenerateMacros.swift in Sources */,
 				329F378128336432004A758D /* IntolerancesView.swift in Sources */,
 				3276102C282B0B4C005346D4 /* SCModal.swift in Sources */,
+				327B5A2528541AD1007495AA /* SettingsViewController.swift in Sources */,
 				322199A027FA5E99003FD4F6 /* EndPoints.swift in Sources */,
 				3272D3C52844823600D168BB /* OptionViewController.swift in Sources */,
 				3221998127FA5DB2003FD4F6 /* AppDelegate.swift in Sources */,
@@ -1112,7 +1106,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VR7223ZYQY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "StagedCooking-Revisited/Info.plist";
@@ -1142,7 +1136,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VR7223ZYQY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "StagedCooking-Revisited/Info.plist";
@@ -1187,35 +1181,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		322A73DF2847269900A0C7D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		322A73E02847269900A0C7D2 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 322A73DF2847269900A0C7D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalyticsWithoutAdIdSupport;
-		};
-		322A73E22847269900A0C7D2 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 322A73DF2847269900A0C7D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		322A73E42847269900A0C7D2 /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 322A73DF2847269900A0C7D2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3221997527FA5DB2003FD4F6 /* Project object */;
 }

@@ -26,14 +26,10 @@ class SearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = K.primary
-//    navigationBar.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Advanced", style: .plain, target: self, action: #selector(advancedButtonTapped))
     
     style()
     layout()
     configureButtonActions()
-//    let spinner = self.activityIndicator(style: .large, center: self.view.center)
-//    self.view.addSubview(spinner)
-//    spinner.startAnimating()
   }
   
   override func viewDidDisappear(_ animated: Bool) {

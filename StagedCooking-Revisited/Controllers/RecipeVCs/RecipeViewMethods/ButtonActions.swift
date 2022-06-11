@@ -65,6 +65,10 @@ extension RecipeViewController: ModalDataSource {
   @objc func startCookingButtonTapped(_ sender: UIButton) {
     let cards = buildCards(ingredients: ingredientList, instructionsDictionary: stepInstructions, ingredientDictionary: stepIngredients)
     let stagesVC = StagedCardContainerViewController()
+    print("Ingredients, \n", ingredientList)
+    print("\n Instructions: \n", stepInstructions)
+    print("\n Step Ingredients: \n", stepIngredients)
+    print(cards)
     stagesVC.recipe = recipe
     stagesVC.cards = cards
     stagesVC.ingredientList = self.ingredientList
