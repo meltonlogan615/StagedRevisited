@@ -57,6 +57,9 @@
 		3221EF872835CC4500A6FCCD /* AdvancedMacrosMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF862835CC4500A6FCCD /* AdvancedMacrosMethod.swift */; };
 		3221EF892835E89500A6FCCD /* AdvancedSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF882835E89400A6FCCD /* AdvancedSearchViewController.swift */; };
 		3221EF8B2835F01600A6FCCD /* AdvancedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF8A2835F01600A6FCCD /* AdvancedCell.swift */; };
+		32289FF9285842C100D0BE1D /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32289FF8285842C100D0BE1D /* SavedViewController.swift */; };
+		32289FFB285843AD00D0BE1D /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32289FFA285843AD00D0BE1D /* HistoryViewController.swift */; };
+		32289FFD285843CD00D0BE1D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32289FFC285843CD00D0BE1D /* FavoritesViewController.swift */; };
 		32441EFB2827711E00DA426F /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32441EFA2827711E00DA426F /* Divider.swift */; };
 		325678F4283F2FDE00D32646 /* LargeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325678F3283F2FDE00D32646 /* LargeLabel.swift */; };
 		326F9F8B281D099C0086BA53 /* IngredientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */; };
@@ -175,6 +178,9 @@
 		3221EF862835CC4500A6FCCD /* AdvancedMacrosMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedMacrosMethod.swift; sourceTree = "<group>"; };
 		3221EF882835E89400A6FCCD /* AdvancedSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSearchViewController.swift; sourceTree = "<group>"; };
 		3221EF8A2835F01600A6FCCD /* AdvancedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedCell.swift; sourceTree = "<group>"; };
+		32289FF8285842C100D0BE1D /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
+		32289FFA285843AD00D0BE1D /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		32289FFC285843CD00D0BE1D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		32441EFA2827711E00DA426F /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
 		325678F3283F2FDE00D32646 /* LargeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeLabel.swift; sourceTree = "<group>"; };
 		3264D35E28386A3F00C06555 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -592,6 +598,16 @@
 			path = AdvancedSearchViewModels;
 			sourceTree = "<group>";
 		};
+		32289FF7285842A900D0BE1D /* ChefDefaultViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				32289FF8285842C100D0BE1D /* SavedViewController.swift */,
+				32289FFA285843AD00D0BE1D /* HistoryViewController.swift */,
+				32289FFC285843CD00D0BE1D /* FavoritesViewController.swift */,
+			);
+			path = ChefDefaultViewControllers;
+			sourceTree = "<group>";
+		};
 		3264D35A28386A3100C06555 /* IgnoreFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -686,6 +702,7 @@
 		327B5A142851B40D007495AA /* SystemVCs */ = {
 			isa = PBXGroup;
 			children = (
+				32289FF7285842A900D0BE1D /* ChefDefaultViewControllers */,
 				327B5A122851B2EA007495AA /* SpinnerViewController.swift */,
 				327B5A2228541417007495AA /* TabViewController.swift */,
 			);
@@ -867,6 +884,8 @@
 				32761051282CBFD6005346D4 /* CardBuilder.swift in Sources */,
 				327B5A0B28515750007495AA /* GenerateSummary.swift in Sources */,
 				3221EF6928344A9800A6FCCD /* AdvancedMacros.swift in Sources */,
+				32289FFD285843CD00D0BE1D /* FavoritesViewController.swift in Sources */,
+				32289FFB285843AD00D0BE1D /* HistoryViewController.swift in Sources */,
 				327B5A1F2852F630007495AA /* SwipeActions.swift in Sources */,
 				32BD7A4128398DA80055B9CF /* NavController.swift in Sources */,
 				3214AC14284BE78600474068 /* LogInViewController.swift in Sources */,
@@ -943,6 +962,7 @@
 				329F37882833C39F004A758D /* ToggleSwitch.swift in Sources */,
 				327B5A1D2852F557007495AA /* SortActions.swift in Sources */,
 				3221EF612834474300A6FCCD /* Cuisine.swift in Sources */,
+				32289FF9285842C100D0BE1D /* SavedViewController.swift in Sources */,
 				327B5A1A2852245E007495AA /* ShowHideSpinner.swift in Sources */,
 				327B5A032851568E007495AA /* GenerateDietsInfo.swift in Sources */,
 				322199B427FA627A003FD4F6 /* Ingredient.swift in Sources */,

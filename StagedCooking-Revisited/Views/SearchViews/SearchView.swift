@@ -16,8 +16,6 @@ import UIKit
  Buttons:
  - `searchButton` triggers the networking call to generate data for `RecipeListCollectionView`
  - `advancedSearchButton` opens to `AdvancedSearchViewController`
- - Disabled  `searchHistoryButton` opens to a view displaying all of the strings that have been searched.
- - Disabled  `viewedHistoryButton` opens to a view displaying all of the recipes that have been viewed.
  */
 class SearchView: UIView {
   
@@ -25,11 +23,6 @@ class SearchView: UIView {
   let searchTextField = LargeTextField()
   let searchButton = ActionButton()
   let advancedSearchButton = DetailsButton()
-  
-  /// Holder for `TextOnlyButtons`
-  let historyStack = UIStackView()
-  let searchHistoryButton = TextOnlyButton()
-  let viewedHistoryButton = TextOnlyButton()
   
   let errorLabel = UILabel()
     
@@ -68,21 +61,6 @@ extension SearchView {
     advancedSearchButton.translatesAutoresizingMaskIntoConstraints = false
     advancedSearchButton.setTitle("Advanced Search", for: [])
     
-    // MARK: - ChefDefaults Buttons
-    historyStack.translatesAutoresizingMaskIntoConstraints = false
-    historyStack.axis = .horizontal
-    historyStack.distribution = .fillEqually
-    historyStack.spacing = 8
-
-    searchHistoryButton.translatesAutoresizingMaskIntoConstraints = false
-    searchHistoryButton.setTitle("Search History", for: [])
-    searchHistoryButton.titleLabel?.adjustsFontSizeToFitWidth = true
-
-    viewedHistoryButton.translatesAutoresizingMaskIntoConstraints = false
-    viewedHistoryButton.setTitle("Viewed History", for: [])
-    viewedHistoryButton.titleLabel?.adjustsFontSizeToFitWidth = true
-
-    
     errorLabel.translatesAutoresizingMaskIntoConstraints = false
     errorLabel.numberOfLines = 0
     errorLabel.textColor = K.scAccent
@@ -96,15 +74,7 @@ extension SearchView {
   func layout() {
     stackView.addArrangedSubview(searchTextField)
     stackView.addArrangedSubview(searchButton)
-    
-    // MARK: - ChefDefaults Added to view
-    // TODO: - Once it gets close to release time, bring these back into play
-    // TODO: - Will also neewd to apply constraints as needed
-    // TODO: - Same for AdvancedSearch
-//    stackView.addArrangedSubview(advancedSearchButton)
-//    historyStack.addArrangedSubview(searchHistoryButton)
-//    historyStack.addArrangedSubview(viewedHistoryButton)
-//    stackView.addArrangedSubview(historyStack)
+    stackView.addArrangedSubview(advancedSearchButton)
     
     addSubview(stackView)
     NSLayoutConstraint.activate([

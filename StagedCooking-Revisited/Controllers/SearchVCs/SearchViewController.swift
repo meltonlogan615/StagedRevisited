@@ -26,7 +26,6 @@ class SearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = K.primary
-    
     style()
     layout()
     configureButtonActions()
@@ -69,13 +68,6 @@ extension SearchViewController {
       view.trailingAnchor.constraint(equalToSystemSpacingAfter: searchView.trailingAnchor, multiplier: 4),
       searchView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
     ])
-    
-//    view.addSubview(acctButton)
-//    NSLayoutConstraint.activate([
-//      acctButton.leadingAnchor.constraint(equalTo: searchView.leadingAnchor),
-//      acctButton.trailingAnchor.constraint(equalTo: searchView.trailingAnchor),
-//      view.bottomAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: acctButton.bottomAnchor, multiplier: 8)
-//    ])
   }
 }
 
@@ -92,20 +84,6 @@ extension SearchViewController {
   @objc func configureButtonActions() {
     searchView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .primaryActionTriggered)
     searchView.advancedSearchButton.addTarget(self, action: #selector(advancedButtonTapped), for: .primaryActionTriggered)
-    self.acctButton.addTarget(self, action: #selector(didTapAcctButton), for: .primaryActionTriggered)
-    
-    // MARK: - ChefDefaults Button Actions
-    // TODO: - Once it gets close to release time, bring these back into play
-//    searchView.searchHistoryButton.addTarget(self, action: #selector(searchHistoryButtonTapped), for: .primaryActionTriggered)
-//    searchView.viewedHistoryButton.addTarget(self, action: #selector(viewedHistoryButtonTapped), for: .primaryActionTriggered)
-    
-//    if ChefDefault.isLoggedIn == true {
-//      searchView.searchHistoryButton.isHidden = false
-//      searchView.viewedHistoryButton.isHidden = false
-//    } else {
-//      searchView.searchHistoryButton.isHidden = true
-//      searchView.viewedHistoryButton.isHidden = true
-//    }
   }
 }
 
@@ -117,21 +95,14 @@ extension SearchViewController {
       return
     }
     if searched.isEmpty {
-      print("empty")
       configureLabel(withMessage: "Search Field Cannot Be Empty")
       return
     } else {
       listVC.searchedRecipe = searched.unaccent()
       
-      // MARK: - ChefDefaults Adds Searched Phrase to ChefDefault.searchHistory Array
-      // TODO: - Once it gets close to release time, bring these back into play
-//      ChefDefault.searchHistory.insert(searched, at: 0)
-//      ChefDefault.defaults.set(ChefDefault.searchHistory, forKey: "history")
-//      if let query = searched.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-//        ChefDefault.searched = query
-//      }
+      ChefDefault.searchHistory.insert(searched, at: 0)
+      ChefDefault.defaults.set(ChefDefault.searchHistory, forKey: "history")
       
-//      let navigationController = GitGuardian(rootViewController: listVC)
       let navigationController = NavController(rootViewController: listVC)
       navigationController.modalTransitionStyle = .flipHorizontal
       navigationController.modalPresentationStyle = .fullScreen
@@ -146,56 +117,8 @@ extension SearchViewController {
     navigationController.modalPresentationStyle = .fullScreen
     present(navigationController, animated: true)
   }
-  // MARK: - ChefDefaults Button Methods
-  // TODO: - Once it gets close to release time, bring these back into play
-
-//  @objc func searchHistoryButtonTapped(_ sender: UIButton) {
-//    let searchHistoryVC = SearchHistoryViewController()
-//    let navigationController = UINavigationController(rootViewController: searchHistoryVC)
-//    navigationController.modalPresentationStyle = .fullScreen
-//    navigationController.modalTransitionStyle = .flipHorizontal
-//    present(navigationController, animated: true)
-//  }
-  
-//  @objc func viewedHistoryButtonTapped(_ sender: UIButton) {
-//    let viewedHistory = ViewedHistoryViewController()
-//    let navigationController = UINavigationController(rootViewController: viewedHistory)
-//    navigationController.modalTransitionStyle = .flipHorizontal
-//    navigationController.modalPresentationStyle = .fullScreen
-//    present(navigationController, animated: true)
-//  }
-  
-//  @objc func advancedSearchButtonTapped(_ sender: UIButton) {
-//    let advancedSearch = AdvancedSearchViewController()
-//    let navigationController = UINavigationController(rootViewController: advancedSearch)
-//    navigationController.modalPresentationStyle = .formSheet
-//    present(navigationController, animated: true)
-//  }
-  
-  @objc func didTapAcctButton() {
-    let acctVC = LandingViewController()
-    let navigationController = NavController(rootViewController: acctVC)
-    navigationController.modalTransitionStyle = .flipHorizontal
-    navigationController.modalPresentationStyle = .fullScreen
-    present(navigationController, animated: true)
-  }
 }
 
-//extension SearchViewController {
-//  private func activityIndicator(style: UIActivityIndicatorView.Style = .large,
-//                                 frame: CGRect? = nil,
-//                                 center: CGPoint? = nil) -> UIActivityIndicatorView {
-//    let spinner = UIActivityIndicatorView(style: style)
-//
-//    if let frame = frame {
-//      spinner.frame = frame
-//    }
-//    if let center = center {
-//      spinner.center = center
-//    }
-//    return spinner
-//  }
-//}
 
 
 

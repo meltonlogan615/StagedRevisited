@@ -23,6 +23,7 @@ class RecipeViewController: UIViewController {
   // Recipe
   var recipe = Recipe()
   var recipeID = 0
+  var recipeImage = UIImage()
     
   // General Info
   var recipeTitle = String()

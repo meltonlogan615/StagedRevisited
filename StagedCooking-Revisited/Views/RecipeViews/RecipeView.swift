@@ -33,6 +33,8 @@ class RecipeView: UIView {
 
   var mainImage = UIImageView()
   var imageSize = CGSize.zero
+  var saveButton = UIButton()
+  var favoriteButton = UIButton()
   var titleLabel = UILabel()
   var dividerA = Divider()
   var infoStack = UIStackView()
@@ -91,6 +93,16 @@ extension RecipeView {
     mainImage.layer.cornerRadius = 8
     mainImage.clipsToBounds = true
     mainImage.frame.size = imageSize
+    
+    saveButton.translatesAutoresizingMaskIntoConstraints = false
+    saveButton.tintColor = K.scYellow
+    saveButton.setImage(UIImage(systemName: "star"), for: .normal)
+    saveButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
+    
+    favoriteButton.translatesAutoresizingMaskIntoConstraints = false
+    favoriteButton.tintColor = K.scGreen
+    favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+    favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .selected)
     
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.font = .systemFont(ofSize: 24, weight: .semibold)

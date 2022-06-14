@@ -109,13 +109,13 @@ extension RecipeListCollectionView: UICollectionViewDelegate {
     let recipeVC = RecipeViewController()
     guard let selectedID = model.results?[indexPath.item].id else { return }
     guard let selectedTitle = model.results?[indexPath.item].title else { return }
+    guard let recipeImage = model.results?[indexPath.item].image else { return }
+    let img = UIImageView()
     recipeVC.recipeID = selectedID
     recipeVC.recipeTitle = selectedTitle.capitalized
+    recipeVC.recipeImage = img.loadImageToPass(url: recipeImage)
+
     
-    
-    // MARK: - ChefDefaults Button Actions
-    // TODO: - Once it gets close to release time, bring these back into play
-    //    ChefDefault.requestedID = selectedID - Used later along with UserDefaults
     navigationController?.pushViewController(recipeVC, animated: true)
   }
   

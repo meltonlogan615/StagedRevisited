@@ -21,8 +21,8 @@ extension UIImageView {
    
    Very useful when receiving a URL to an image as part of a network response.
    */
-
-  func loadImage(url: String) {
+  
+  func loadImage(url: String)  {
     guard let url = URL(string: url) else { return }
     DispatchQueue.global().async { [weak self] in
       if let data = try? Data(contentsOf: url) {
@@ -34,7 +34,25 @@ extension UIImageView {
       }
     }
   }
+  
+  func loadImageToPass(url: String) -> UIImage  {
+    //  guard let url = URL(string: url) else { return }
+    var recipeImg = UIImage()
+    if let url = URL(string: url) {
+      DispatchQueue.global().async {
+        if let data = try? Data(contentsOf: url) {
+          if let image = UIImage(data: data) {
+            DispatchQueue.main.async {
+              recipeImg = image
+              
+            }
+          }
+        }
+      }
+    }
+    return recipeImg
+  }
 }
-
-// Source:
-// https://www.hackingwithswift.com/quick-start/swiftui/how-to-load-a-remote-image-from-a-url
+  
+  // Source:
+  // https://www.hackingwithswift.com/quick-start/swiftui/how-to-load-a-remote-image-from-a-url

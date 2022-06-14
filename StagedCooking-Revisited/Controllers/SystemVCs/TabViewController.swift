@@ -27,15 +27,15 @@ extension TabViewController {
     let searchTabItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass.circle"), selectedImage: UIImage(named: "magnifyingglass.circle.fill"))
     searchTab.tabBarItem = searchTabItem
     
-    let historyTab = UIViewController()
+    let historyTab = HistoryViewController()
     let historyTabItem = UITabBarItem(title: "History", image: UIImage(systemName: "clock"), selectedImage: UIImage(named: "clock.fill"))
     historyTab.tabBarItem = historyTabItem
     
-    let savedTab = UIViewController()
+    let savedTab = SavedViewController()
     let savedTabItem = UITabBarItem(title: "Saved", image: UIImage(systemName: "star.circle"), selectedImage: UIImage(named: "star.circle.fill"))
     savedTab.tabBarItem = savedTabItem
     
-    let favoritesTab = UIViewController()
+    let favoritesTab = FavoritesViewController()
     let favoritesTabItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "heart.circle"), selectedImage: UIImage(named: "heart.circle.fill"))
     favoritesTab.tabBarItem = favoritesTabItem
     

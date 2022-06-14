@@ -18,13 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window?.makeKeyAndVisible()
     window?.backgroundColor = K.primary
     
-    let root = SearchViewController()
+//    let root = SearchViewController()
 //    let root = LoadingViewController()
 //    let root = AdvancedSearchViewController()
 //    let root = LandingViewController()
 //    let root = LogInViewController()
 //    let root = SignUpViewController()
-//    let root = TabViewController()
+    let root = TabViewController()
     let navVC = UINavigationController(rootViewController: root)
     window?.rootViewController = navVC
     
