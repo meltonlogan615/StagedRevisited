@@ -15,7 +15,7 @@ class SavedViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = K.primary
-    title = "Saved Recipes"
+    self.title = "Saved Recipes"
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
   }
   
@@ -24,13 +24,29 @@ class SavedViewController: UITableViewController {
 
 extension SavedViewController {
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return ChefDefault.savedRecipes.count
+    var count = 1
+    if ChefDefault.savedRecipes.count == 0 {
+      count = 1
+    } else {
+      count = ChefDefault.savedRecipes.count
+    }
+    return count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     var config = cell.defaultContentConfiguration()
-    config.text = ChefDefault.savedRecipes[indexPath.row].title
+    cell.accessoryType = .disclosureIndicator
+    cell.backgroundColor = K.primary
+    
+    switch ChefDefault.savedRecipes.count {
+      case 0:
+        config.text = "No Search History"
+        cell.isUserInteractionEnabled = false
+      default:
+        config.text = ChefDefault.savedRecipes[indexPath.row].title
+    }
+    
     cell.contentConfiguration = config
     return cell
   }
@@ -38,6 +54,21 @@ extension SavedViewController {
 
 extension SavedViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print("\(indexPath.row)")
+    switch ChefDefault.savedRecipes.count {
+      case 0:
+        break
+      default:
+        print(ChefDefault.savedRecipes[indexPath.row])
+        let recipeVC = RecipeViewController()
+        guard let selectedID = ChefDefault.savedRecipes[indexPath.row].id else { return }
+        guard let selectedTitle = ChefDefault.savedRecipes[indexPath.item].title else { return }
+        guard let recipeImage = ChefDefault.savedRecipes[indexPath.item].image else { return }
+        let img = UIImageView()
+        recipeVC.recipeID = selectedID
+        recipeVC.recipeTitle = selectedTitle.capitalized
+        recipeVC.recipeImage = img.loadImageToPass(url: recipeImage)
+        navigationController?.pushViewController(recipeVC, animated: true)
+    }
   }
 }
+

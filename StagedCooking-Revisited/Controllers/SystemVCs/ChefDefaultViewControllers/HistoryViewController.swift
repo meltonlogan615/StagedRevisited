@@ -20,15 +20,29 @@ class HistoryViewController: UITableViewController {
 
 extension HistoryViewController {
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return ChefDefault.searchHistory.count
+    var count = 1
+    if ChefDefault.searchHistory.count == 0 {
+      count = 1
+    } else {
+      count = ChefDefault.searchHistory.count
+    }
+    return count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     var config = cell.defaultContentConfiguration()
-    config.text = ChefDefault.searchHistory[indexPath.row]
     cell.accessoryType = .disclosureIndicator
     cell.backgroundColor = K.primary
+    
+    switch ChefDefault.searchHistory.count {
+      case 0:
+        config.text = "No Saved Recipes"
+        cell.isUserInteractionEnabled = false
+      default:
+        config.text = ChefDefault.searchHistory[indexPath.row]
+    }
+    
     cell.contentConfiguration = config
     return cell
   }
@@ -36,7 +50,12 @@ extension HistoryViewController {
 
 extension HistoryViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    searchFromHistoryList(searched: ChefDefault.searchHistory[indexPath.row])
+    switch ChefDefault.searchHistory.count {
+      case 0:
+        break
+      default:
+        searchFromHistoryList(searched: ChefDefault.searchHistory[indexPath.row])
+    }
   }
 }
 

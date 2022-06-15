@@ -60,6 +60,7 @@
 		32289FF9285842C100D0BE1D /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32289FF8285842C100D0BE1D /* SavedViewController.swift */; };
 		32289FFB285843AD00D0BE1D /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32289FFA285843AD00D0BE1D /* HistoryViewController.swift */; };
 		32289FFD285843CD00D0BE1D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32289FFC285843CD00D0BE1D /* FavoritesViewController.swift */; };
+		32289FFF2858EEF700D0BE1D /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32289FFE2858EEF700D0BE1D /* APIKeys.swift */; };
 		32441EFB2827711E00DA426F /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32441EFA2827711E00DA426F /* Divider.swift */; };
 		325678F4283F2FDE00D32646 /* LargeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325678F3283F2FDE00D32646 /* LargeLabel.swift */; };
 		326F9F8B281D099C0086BA53 /* IngredientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */; };
@@ -110,7 +111,6 @@
 		32AB724227FFE2CF00AF0E2A /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724127FFE2CF00AF0E2A /* CardModel.swift */; };
 		32AB724A27FFEDA800AF0E2A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724927FFEDA800AF0E2A /* Response.swift */; };
 		32AB724C27FFEDCA00AF0E2A /* BasicSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724B27FFEDCA00AF0E2A /* BasicSearch.swift */; };
-		32BD7A3D28398BB80055B9CF /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BD7A3C28398BB80055B9CF /* APIKeys.swift */; };
 		32BD7A3F28398C230055B9CF /* String-Folding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BD7A3E28398C230055B9CF /* String-Folding.swift */; };
 		32BD7A4128398DA80055B9CF /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BD7A4028398DA80055B9CF /* NavController.swift */; };
 		32BD7A482839BC650055B9CF /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BD7A472839BC650055B9CF /* CardCell.swift */; };
@@ -181,6 +181,7 @@
 		32289FF8285842C100D0BE1D /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		32289FFA285843AD00D0BE1D /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		32289FFC285843CD00D0BE1D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		32289FFE2858EEF700D0BE1D /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		32441EFA2827711E00DA426F /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
 		325678F3283F2FDE00D32646 /* LargeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeLabel.swift; sourceTree = "<group>"; };
 		3264D35E28386A3F00C06555 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -232,7 +233,6 @@
 		32AB724127FFE2CF00AF0E2A /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		32AB724927FFEDA800AF0E2A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		32AB724B27FFEDCA00AF0E2A /* BasicSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSearch.swift; sourceTree = "<group>"; };
-		32BD7A3C28398BB80055B9CF /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		32BD7A3E28398C230055B9CF /* String-Folding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Folding.swift"; sourceTree = "<group>"; };
 		32BD7A4028398DA80055B9CF /* NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		32BD7A472839BC650055B9CF /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
@@ -612,7 +612,7 @@
 			isa = PBXGroup;
 			children = (
 				3264D35E28386A3F00C06555 /* README.md */,
-				32BD7A3C28398BB80055B9CF /* APIKeys.swift */,
+				32289FFE2858EEF700D0BE1D /* APIKeys.swift */,
 			);
 			path = IgnoreFiles;
 			sourceTree = "<group>";
@@ -940,6 +940,7 @@
 				3276102C282B0B4C005346D4 /* SCModal.swift in Sources */,
 				327B5A2528541AD1007495AA /* SettingsViewController.swift in Sources */,
 				322199A027FA5E99003FD4F6 /* EndPoints.swift in Sources */,
+				32289FFF2858EEF700D0BE1D /* APIKeys.swift in Sources */,
 				3272D3C52844823600D168BB /* OptionViewController.swift in Sources */,
 				3221998127FA5DB2003FD4F6 /* AppDelegate.swift in Sources */,
 				322199AC27FA5F75003FD4F6 /* Recipe.swift in Sources */,
@@ -953,7 +954,6 @@
 				3276103B282CA643005346D4 /* MacrosLabelView.swift in Sources */,
 				322199C727FA6BB3003FD4F6 /* ImageURLProtocol.swift in Sources */,
 				3221EF67283449E400A6FCCD /* MealType.swift in Sources */,
-				32BD7A3D28398BB80055B9CF /* APIKeys.swift in Sources */,
 				3221EF65283448FC00A6FCCD /* Diet.swift in Sources */,
 				32AB724A27FFEDA800AF0E2A /* Response.swift in Sources */,
 				32761024282A12EF005346D4 /* IngredientsModal.swift in Sources */,

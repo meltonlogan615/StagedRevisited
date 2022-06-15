@@ -47,6 +47,6 @@ extension TabViewController {
   }
   
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-    print("Tappy-Tappy")
+    
   }
 }

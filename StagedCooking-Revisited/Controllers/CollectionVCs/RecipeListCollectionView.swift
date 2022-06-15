@@ -118,8 +118,6 @@ extension RecipeListCollectionView: UICollectionViewDelegate {
     
     navigationController?.pushViewController(recipeVC, animated: true)
   }
-  
-  
 }
 
 // MARK: - CollectionView - Flow Layout & Cell Sizing

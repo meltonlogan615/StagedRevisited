@@ -98,7 +98,9 @@ extension SearchViewController {
       configureLabel(withMessage: "Search Field Cannot Be Empty")
       return
     } else {
-      listVC.searchedRecipe = searched.unaccent()
+      let cleansedSearch = searched.unaccent().lowercased()
+      listVC.searchedRecipe = cleansedSearch
+      
       
       ChefDefault.searchHistory.insert(searched, at: 0)
       ChefDefault.defaults.set(ChefDefault.searchHistory, forKey: "history")
