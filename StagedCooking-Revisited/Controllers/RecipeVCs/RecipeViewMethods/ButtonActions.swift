@@ -79,7 +79,14 @@ extension RecipeViewController: ModalDataSource {
   
   // MARK: - Save Recipe for Later
   @objc func saveRecipe() {
-    print("Saved")
-    ChefDefault.addToSaved(recipe: self.recipe)
+    // need to show to chef that recipe has been saved
+    ChefDefault.savedRecipes[String(recipeID)] = recipeTitle
+    ChefDefault.saveChanges()
+    self.setRightBarButtons()
+  }
+  
+  @objc func favRecipe() {
+    ChefDefault.favoriteRecipes[String(recipeID)] = recipeTitle
+    self.setRightBarButtons()
   }
 }

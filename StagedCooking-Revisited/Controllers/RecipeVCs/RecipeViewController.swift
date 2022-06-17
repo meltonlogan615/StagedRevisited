@@ -7,6 +7,10 @@
 
 import UIKit
 import SwiftUI
+
+enum ListVCs: String {
+  case collection, history, saved, favs
+}
 /**
  Main `ViewController` for the `Recipe`
  
@@ -56,7 +60,7 @@ class RecipeViewController: UIViewController {
     showActivity()
     navigationController?.navigationBar.prefersLargeTitles = false
     // TODO: - #29 - ADD option to dismiss views back to SearchVC?
-    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save For Later", style: .plain, target: self, action: #selector(saveRecipe))
+    setRightBarButtons()
     style()
     layout()
   }
@@ -145,5 +149,47 @@ extension RecipeViewController {
     recipeView.isHidden = false
     spinner.view.removeFromSuperview()
     spinner.removeFromParent()
+  }
+}
+
+//extension RecipeViewController {
+//  func addToViewed(vieweId: Int, viewedTitle: String) {
+//    ChefDefault.viewedRecipes[vieweId] = viewedTitle
+//    ChefDefault.saveChanges()
+//  }
+//}
+
+extension RecipeViewController {
+  func setLeftBarButton(_ sender: ListVCs) {
+    switch sender {
+      case .collection:
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(dismissView))
+      case .history:
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Search History", style: .plain, target: self, action: #selector(dismissView))
+      case .saved:
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Saved", style: .plain, target: self, action: #selector(dismissView))
+      case .favs:
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Favorites", style: .plain, target: self, action: #selector(dismissView))
+    }
+  }
+}
+
+extension RecipeViewController {
+  func setRightBarButtons() {
+    var saved = UIBarButtonItem()
+    var faved = UIBarButtonItem()
+    if ChefDefault.savedRecipes[String(recipeID)] == nil {
+      saved = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(saveRecipe))
+    } else {
+      saved = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .plain, target: self, action: #selector(saveRecipe))
+    }
+    
+    if ChefDefault.favoriteRecipes[String(recipeID)] == nil {
+      faved = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(favRecipe))
+    } else {
+      faved = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .plain, target: self, action: #selector(favRecipe))
+    }
+    
+    navigationItem.rightBarButtonItems = [saved, faved]
   }
 }

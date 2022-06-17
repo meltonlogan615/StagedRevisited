@@ -17,8 +17,10 @@
 
 import Foundation
 import UIKit
-import CoreMIDI
 
+enum SourceVCs: String {
+  case search, searchHistory
+}
 protocol RecipeByID: AnyObject {
   func loadRecipeByID(for chosenID: Int)
 }
@@ -30,7 +32,7 @@ class RecipeListCollectionView: UIViewController {
   let spinner = SpinnerViewController()
   var dataprovider = DataProvider()
   var model = Response()
-  
+
   var searchedRecipe = String()
   var cellTitle = String()
   
@@ -50,13 +52,10 @@ class RecipeListCollectionView: UIViewController {
     
     view.backgroundColor = K.primary
     title = searchedRecipe.capitalized
-    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(dismissView))
     sortMenu()
-    
     recipeCollection.register(RecipeCell.self, forCellWithReuseIdentifier: "recipeCell")
     recipeCollection.dataSource = self
     recipeCollection.delegate = self
-
     style()
     layout()
   }
@@ -111,10 +110,16 @@ extension RecipeListCollectionView: UICollectionViewDelegate {
     guard let selectedTitle = model.results?[indexPath.item].title else { return }
     guard let recipeImage = model.results?[indexPath.item].image else { return }
     let img = UIImageView()
+    
     recipeVC.recipeID = selectedID
     recipeVC.recipeTitle = selectedTitle.capitalized
     recipeVC.recipeImage = img.loadImageToPass(url: recipeImage)
-
+    
+    ChefDefault.addToViewed(recipeID: String(selectedID), recipeTitle: selectedTitle)
+//    ChefDefault.viewedRecipes[selectedID] = selectedTitle
+//    ChefDefault.viewedRecipes = [selectedID: selectedTitle]
+//    ChefDefault.defaults.object(forKey: <#T##String#>)
+//    ChefDefault.saveChanges()
     
     navigationController?.pushViewController(recipeVC, animated: true)
   }
@@ -157,7 +162,7 @@ extension RecipeListCollectionView {
           
           // total number of results
           guard let totalCount = self.model.totalResults else { return }
-          self.title = "\(self.searchedRecipe) (\(totalCount))"
+          self.title = "\(self.searchedRecipe.capitalized) (\(totalCount))"
           
         case .failure(let error):
           print(error)
@@ -183,6 +188,7 @@ extension RecipeListCollectionView {
   }
 }
 
+// MARK: - Activity Indicator - Show & Remove
 extension RecipeListCollectionView {
   func showActivity() {
     addChild(spinner)
@@ -196,6 +202,18 @@ extension RecipeListCollectionView {
     recipeCollection.isHidden = false
     spinner.view.removeFromSuperview()
     spinner.removeFromParent()
+  }
+}
+
+// MARK: - LeftBarButton Setup
+extension RecipeListCollectionView {
+  func setLeftBarButton(_ sender: SourceVCs) {
+    switch sender {
+      case .search:
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(dismissView))
+      case .searchHistory:
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Search History", style: .plain, target: self, action: #selector(dismissView))
+    }
   }
 }
 

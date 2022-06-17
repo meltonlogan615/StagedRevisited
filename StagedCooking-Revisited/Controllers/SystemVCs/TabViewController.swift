@@ -9,6 +9,7 @@ import UIKit
 
 class TabViewController: UITabBarController, UITabBarControllerDelegate {
   
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     delegate = self
@@ -24,26 +25,38 @@ extension TabViewController {
   
   func layout() {
     let searchTab = SearchViewController()
-    let searchTabItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass.circle"), selectedImage: UIImage(named: "magnifyingglass.circle.fill"))
+    let searchTabItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass.circle"), selectedImage: UIImage(systemName: "magnifyingglass.circle.fill"))
     searchTab.tabBarItem = searchTabItem
     
     let historyTab = HistoryViewController()
-    let historyTabItem = UITabBarItem(title: "History", image: UIImage(systemName: "clock"), selectedImage: UIImage(named: "clock.fill"))
+    let historyTabItem = UITabBarItem(title: "History", image: UIImage(systemName: "clock"), selectedImage: UIImage(systemName: "clock.fill"))
     historyTab.tabBarItem = historyTabItem
+    let historyNav = UINavigationController(rootViewController: historyTab)
+    historyNav.navigationBar.prefersLargeTitles = true
     
     let savedTab = SavedViewController()
-    let savedTabItem = UITabBarItem(title: "Saved", image: UIImage(systemName: "star.circle"), selectedImage: UIImage(named: "star.circle.fill"))
+    let savedTabItem = UITabBarItem(title: "Saved", image: UIImage(systemName: "star.circle"), selectedImage: UIImage(systemName: "star.circle.fill"))
     savedTab.tabBarItem = savedTabItem
+    let savedNav = UINavigationController(rootViewController: savedTab)
+    savedNav.navigationBar.prefersLargeTitles = true
+
     
     let favoritesTab = FavoritesViewController()
-    let favoritesTabItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "heart.circle"), selectedImage: UIImage(named: "heart.circle.fill"))
+    let favoritesTabItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "heart.circle"), selectedImage: UIImage(systemName: "heart.circle.fill"))
     favoritesTab.tabBarItem = favoritesTabItem
-    
-    let settingsTab = UIViewController()
-    let settingsTabItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear.circle"), selectedImage: UIImage(named: "gear.circle.fill"))
-    settingsTab.tabBarItem = settingsTabItem
+    let favoriteNav = UINavigationController(rootViewController: favoritesTab)
+    favoriteNav.navigationBar.prefersLargeTitles = true
 
-    self.viewControllers = [searchTab, historyTab, savedTab, favoritesTab, settingsTab]
+
+//    let preferencesTab = UIViewController()
+//    let preferencesTabItem = UITabBarItem(title: "Preferences", image: UIImage(systemName: "gear.circle"), selectedImage: UIImage(named: "gear.circle.fill"))
+//    preferencesTab.tabBarItem = preferencesTabItem
+//    let preferencesNav = UINavigationController(rootViewController: preferencesTab)
+//    preferencesNav.navigationBar.prefersLargeTitles = true
+
+
+
+    self.viewControllers = [searchTab, historyNav, savedNav, favoriteNav]
   }
   
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

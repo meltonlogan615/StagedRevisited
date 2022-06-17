@@ -43,11 +43,11 @@ import Foundation
 struct ChefDefault {
   static var defaults = UserDefaults.standard
   
-  static var favoriteRecipes = [Recipe]()
-  static var savedRecipes = [Recipe]() // Saved, but not an explicit favorite. But can still be both
-  static var viewedRecipes = [[String: String]]()
+  static var favoriteRecipes = [String: String]()
+  static var savedRecipes = [String: String]() // Saved, but not an explicit favorite. But can still be both
+  static var viewedRecipes = [String: String]()
   static var searchHistory = [String]() // perhaps used later as part of an autocomplete in search
-  static var hateListe = [Recipe]() // Never see a recipe again.
+  static var hateListe = [String: String]() // Never see a recipe again.
   
   static var isLoggedIn = true
   static var hasOnboarded = false
@@ -64,28 +64,29 @@ struct ChefDefault {
     }
   }
   
-  static func addToFavorites(recipe: Recipe) {
-    ChefDefault.favoriteRecipes.insert(recipe, at: 0)
+  static func addToFavorites(recipeID: String, recipeTitle: String) {
+    self.favoriteRecipes[recipeID] = recipeTitle
   }
   
-  static func addToSaved(recipe: Recipe) {
-    ChefDefault.savedRecipes.append(recipe)
+  static func addToSaved(recipeID: String, recipeTitle: String) {
+    self.savedRecipes[recipeID] = recipeTitle
   }
   
-  static func addToViewed(recipeDictionary: [String: String]) {
-    ChefDefault.viewedRecipes.insert(recipeDictionary, at: 0)
+  static func addToViewed(recipeID: String, recipeTitle: String) {
+    viewedRecipes[recipeID] = recipeTitle
+    self.defaults.set(viewedRecipes, forKey: "Viewed")
   }
   
   static func addToSearchHistory(searchTerm: String) {
-    ChefDefault.searchHistory.insert(searchTerm, at: 0)
+    self.searchHistory.insert(searchTerm, at: 0)
   }
   
   static func addToDietPreferences(diet: Diet) {
-    ChefDefault.dietPreferences.insert(diet, at: 0)
+    self.dietPreferences.insert(diet, at: 0)
   }
   
   static func addToIntolerances(intolerance: Intolerances) {
-    ChefDefault.intolerances.insert(intolerance, at: 0)
+    self.intolerances.insert(intolerance, at: 0)
   }
   
   static func saveChanges() {
@@ -93,21 +94,20 @@ struct ChefDefault {
     ChefDefault.defaults.set(ChefDefault.savedRecipes, forKey: "saved")
     ChefDefault.defaults.set(ChefDefault.viewedRecipes, forKey: "viewed")
     ChefDefault.defaults.set(ChefDefault.searchHistory, forKey: "history")
-    ChefDefault.defaults.set(ChefDefault.intolerances, forKey: "intolerances")
-    ChefDefault.defaults.set(ChefDefault.dietPreferences, forKey: "diets")
+//    ChefDefault.defaults.set(ChefDefault.intolerances, forKey: "intolerances")
+//    ChefDefault.defaults.set(ChefDefault.dietPreferences, forKey: "diets")
   }
   
-  
   static func loadData() {
-    if let favorites = ChefDefault.defaults.object(forKey: "favorites") as? [Recipe] {
+    if let favorites = ChefDefault.defaults.object(forKey: "favorites") as? [String: String] {
       ChefDefault.favoriteRecipes = favorites
     }
 
-    if let saved = ChefDefault.defaults.object(forKey: "saved") as? [Recipe] {
+    if let saved = ChefDefault.defaults.object(forKey: "saved") as? [String: String] {
       ChefDefault.savedRecipes = saved
     }
     
-    if let viewed = ChefDefault.defaults.object(forKey: "viewed") as? [[String: String]] {
+    if let viewed = ChefDefault.defaults.object(forKey: "viewed") as? [String: String] {
       ChefDefault.viewedRecipes = viewed
     }
     

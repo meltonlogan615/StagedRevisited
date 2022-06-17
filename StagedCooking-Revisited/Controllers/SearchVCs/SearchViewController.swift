@@ -100,11 +100,11 @@ extension SearchViewController {
     } else {
       let cleansedSearch = searched.unaccent().lowercased()
       listVC.searchedRecipe = cleansedSearch
-      
-      
+      listVC.setLeftBarButton(SourceVCs.search)
+
       ChefDefault.searchHistory.insert(searched, at: 0)
-      ChefDefault.defaults.set(ChefDefault.searchHistory, forKey: "history")
-      
+      ChefDefault.saveChanges()
+
       let navigationController = NavController(rootViewController: listVC)
       navigationController.modalTransitionStyle = .flipHorizontal
       navigationController.modalPresentationStyle = .fullScreen

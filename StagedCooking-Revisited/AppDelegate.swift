@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.makeKeyAndVisible()
     window?.backgroundColor = K.primary
+    ChefDefault.loadData()
     
 //    let root = SearchViewController()
 //    let root = LoadingViewController()
