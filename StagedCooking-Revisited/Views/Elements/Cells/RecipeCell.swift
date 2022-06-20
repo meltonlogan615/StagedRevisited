@@ -89,7 +89,12 @@ extension RecipeCell {
       labelBackground.widthAnchor.constraint(equalTo: image.widthAnchor),
       titleLabel.topAnchor.constraint(equalToSystemSpacingBelow: labelBackground.topAnchor, multiplier: 1)
     ])
-    
-    
+  }
+}
+
+extension RecipeCell {
+  override func prepareForReuse() {
+    self.image.image = UIImage()
+    self.titleLabel.text = ""
   }
 }

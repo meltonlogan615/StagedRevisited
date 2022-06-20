@@ -40,9 +40,11 @@ extension IngredientsModal {
   func generateIngredientLabels() {
     for i in 0 ..< ingredients.count {
       let ingredientLine = LargeLabel()
+      let divder = Divider()
       ingredientLine.translatesAutoresizingMaskIntoConstraints = false
       ingredientLine.text = ingredients[i].capitalized
       detailsStack.addArrangedSubview(ingredientLine)
+      detailsStack.addArrangedSubview(divder)
     }
   }
 }

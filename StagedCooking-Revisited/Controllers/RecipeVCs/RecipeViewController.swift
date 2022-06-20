@@ -50,17 +50,19 @@ class RecipeViewController: UIViewController {
   var dietInfo: DietInfo?
   
   // Start Cooking
-  var startCookingButton = UIButton()
+  var startCookingButton = ActionButton()
   
   override func viewWillAppear(_ animated: Bool) {
     // Gets the Data for the Recipe. Also generates data for ingredientList
-    loadRecipeByID(for: recipeID)
+//    loadRecipeByID(for: recipeID)
+    
     // Generates stepIngredients & stepIngredients
-    getInstructions(for: recipeID)
-    showActivity()
+//    getInstructions(for: recipeID)
+    
+//    showActivity()
     navigationController?.navigationBar.prefersLargeTitles = false
     // TODO: - #29 - ADD option to dismiss views back to SearchVC?
-    setRightBarButtons()
+//    setRightBarButtons()
     style()
     layout()
   }
@@ -87,10 +89,7 @@ extension RecipeViewController {
     
     startCookingButton.translatesAutoresizingMaskIntoConstraints = false
     startCookingButton.setTitle("Start Cooking", for: .normal)
-    startCookingButton.backgroundColor = K.scGreen
     startCookingButton.layer.zPosition = 10
-    startCookingButton.layer.cornerRadius = 8
-    startCookingButton.clipsToBounds = true
   }
   
   func layout() {

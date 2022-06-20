@@ -13,7 +13,7 @@ extension RecipeListCollectionView {
     case nameAscending = "Name: A → Z"
     case nameDecending = "Name: Z → A"
     case totalTimeUp = "Cook Time: Low → High"
-    case totalTimeDown = "Cook Time: Hight → Low"
+    case totalTimeDown = "Cook Time: High → Low"
     case calsUp = "Calories: Low → High"
     case calsDown = "Calories: High → Low"
     case fatUp = "Fat: Low → High"

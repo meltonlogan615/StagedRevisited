@@ -18,21 +18,18 @@ class DetailsButton: UIButton {
     
     translatesAutoresizingMaskIntoConstraints = false
     self.isAccessibilityElement = true
-    
     var config = UIButton.Configuration.filled()
-    config.buttonSize = .medium
-    config.imagePadding = 12
-    config.baseBackgroundColor = K.scAccent
     config.baseForegroundColor = K.primary
-    config.titleAlignment = .center
+    config.imagePadding = 16
     config.cornerStyle = .fixed
+    config.titleAlignment = .leading
+//    config.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10)
     config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
       var outgoing = incoming
-      outgoing.font = .systemFont(ofSize: 20, weight: .semibold)
+      outgoing.font = .preferredFont(forTextStyle: .title2)
       return outgoing
     }
     configuration = config
-    
     heightAnchor.constraint(equalToConstant: 48).isActive = true
   }
   

@@ -11,8 +11,9 @@ import UIKit
 
 /// Generic implamentation of a UITextFieldDelegate as an extension of a UIView.
 /// This will allow for any UIView with a UITextField to quickly implament self.delegate = self in and of its `load` methods.
-extension UIView: UITextFieldDelegate {
+extension UIViewController: UITextFieldDelegate {
   public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
     
     return true
   }
@@ -22,5 +23,24 @@ extension UIView: UITextFieldDelegate {
   }
   
   public func textFieldDidEndEditing(_ textField: UITextField) {
+    
   }
+  
+//  public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//    if onlyValidCharacters(string) {
+//      return true
+//    }
+//    return false
+//  }
+//  
+//  private func onlyValidCharacters(_ text: String) -> Bool {
+//    let validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\\/()-.,:;'\""
+//    let invalidSet = CharacterSet(charactersIn: validChars).inverted
+//    return text.rangeOfCharacter(from: invalidSet) == nil
+//  }
+  
+  
+
+  
 }
+

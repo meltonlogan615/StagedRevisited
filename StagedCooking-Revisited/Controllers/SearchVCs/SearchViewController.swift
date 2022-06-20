@@ -11,7 +11,6 @@ protocol PassingRequest: AnyObject {
   func loadRecipes(for: String)
 }
 
-
 class SearchViewController: UIViewController {
   
   let navigationBar = UINavigationController()
@@ -29,11 +28,11 @@ class SearchViewController: UIViewController {
     style()
     layout()
     configureButtonActions()
+    setupToolbar()
   }
   
   override func viewDidDisappear(_ animated: Bool) {
     searchView.searchTextField.text = ""
-    searchView.searchTextField.becomeFirstResponder()
     searchView.errorLabel.isHidden = true
   }
 }
@@ -46,6 +45,7 @@ extension SearchViewController {
     imageView.contentMode = .scaleAspectFit
 
     searchView.translatesAutoresizingMaskIntoConstraints = false
+    searchView.searchTextField.delegate = self
     
     acctButton.translatesAutoresizingMaskIntoConstraints = false
     acctButton.setTitle("Have an Account or Need One?", for: [])
@@ -64,10 +64,12 @@ extension SearchViewController {
     ])
     view.addSubview(searchView)
     NSLayoutConstraint.activate([
-      searchView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 4),
+      searchView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 2),
       view.trailingAnchor.constraint(equalToSystemSpacingAfter: searchView.trailingAnchor, multiplier: 4),
       searchView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
     ])
+    
+//    view.keyboardLayoutGuide.topAnchor.constraint(equalTo: searchView.searchTextField.bottomAnchor).isActive = true
   }
 }
 
@@ -81,14 +83,15 @@ extension SearchViewController {
 }
 
 extension SearchViewController {
-  @objc func configureButtonActions() {
+  func configureButtonActions() {
     searchView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .primaryActionTriggered)
     searchView.advancedSearchButton.addTarget(self, action: #selector(advancedButtonTapped), for: .primaryActionTriggered)
+    
   }
 }
 
 extension SearchViewController {
-  @objc func searchButtonTapped(sender: UIButton) {
+  @objc func searchButtonTapped() {
     let listVC = RecipeListCollectionView()
     guard let searched = searched else {
       assertionFailure("searched shouldn't be nil!")
@@ -102,8 +105,7 @@ extension SearchViewController {
       listVC.searchedRecipe = cleansedSearch
       listVC.setLeftBarButton(SourceVCs.search)
 
-      ChefDefault.searchHistory.insert(searched, at: 0)
-      ChefDefault.saveChanges()
+      ChefDefault.addToSearchHistory(searchTerm: searched)
 
       let navigationController = NavController(rootViewController: listVC)
       navigationController.modalTransitionStyle = .flipHorizontal
@@ -121,7 +123,39 @@ extension SearchViewController {
   }
 }
 
+extension SearchViewController {
+  func setupToolbar() {
 
+    let bar = UIToolbar()
 
+    //Create a done button with an action to trigger our function to dismiss the keyboard
+    let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissMyKeyboard))
+
+    //Create a felxible space item so that we can add it around in toolbar to position our done button
+    let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+
+    //Add the created button items in the toobar
+    bar.items = [flexSpace, flexSpace, doneButton]
+    bar.sizeToFit()
+
+    //Add the toolbar to our textfield
+    searchView.searchTextField.inputAccessoryView = bar
+  }
+
+  @objc func dismissMyKeyboard(){
+    view.endEditing(true)
+  }
+}
+
+extension SearchViewController {
+  override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    if searchView.searchTextField.text != nil {
+      textField.resignFirstResponder()
+      searchButtonTapped()
+      return true
+    }
+    return false
+  }
+}
 
 

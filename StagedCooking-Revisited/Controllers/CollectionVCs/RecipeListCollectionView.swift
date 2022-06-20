@@ -100,6 +100,7 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
     }
     return cell
   }
+  
 }
 
 // MARK: - CollectionView - Delegate

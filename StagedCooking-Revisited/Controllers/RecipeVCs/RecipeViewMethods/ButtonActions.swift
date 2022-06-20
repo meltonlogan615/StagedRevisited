@@ -80,8 +80,7 @@ extension RecipeViewController: ModalDataSource {
   // MARK: - Save Recipe for Later
   @objc func saveRecipe() {
     // need to show to chef that recipe has been saved
-    ChefDefault.savedRecipes[String(recipeID)] = recipeTitle
-    ChefDefault.saveChanges()
+    ChefDefault.addToSaved(recipeID: String(recipeID), recipeTitle: recipeTitle)
     self.setRightBarButtons()
   }
   

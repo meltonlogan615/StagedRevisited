@@ -70,7 +70,7 @@ extension HistoryViewController {
       tableView.topAnchor.constraint(equalToSystemSpacingBelow: segController.bottomAnchor, multiplier: 2),
       tableView.leadingAnchor.constraint(equalTo: segController.leadingAnchor),
       tableView.trailingAnchor.constraint(equalTo: segController.trailingAnchor),
-      tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+      tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
     ])
   }
 }

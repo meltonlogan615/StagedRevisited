@@ -25,7 +25,7 @@ extension LargeLabel {
   
   func style() {
     translatesAutoresizingMaskIntoConstraints = false
-    font = .systemFont(ofSize: 20)
+    font = .preferredFont(forTextStyle: .title3)
     numberOfLines = 0
     tintColor = K.invertPrimary
   }

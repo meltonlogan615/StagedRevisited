@@ -13,6 +13,7 @@ import UIKit
   - Used in `SearchView`, `LogInView`, and other things.
  */
 class LargeTextField: UITextField {
+  
   var textPadding = UIEdgeInsets(
     top: 12,
     left: 8,
@@ -29,7 +30,7 @@ class LargeTextField: UITextField {
     fatalError("init(coder:) has not been implemented")
   }
   
-  
+  // Gives breathing room around the text within the TextField
   override func textRect(forBounds bounds: CGRect) -> CGRect {
     let rect = super.textRect(forBounds: bounds)
     return rect.inset(by: textPadding)
@@ -44,14 +45,15 @@ class LargeTextField: UITextField {
 extension LargeTextField {
   func style() {
     translatesAutoresizingMaskIntoConstraints = false
-    becomeFirstResponder()
     textAlignment = .natural
     layer.cornerRadius = 8
     clipsToBounds = true
+    returnKeyType = .search
+    keyboardType = .asciiCapable
+    autocorrectionType = .no
     backgroundColor = K.modalBG
     font = .systemFont(ofSize: 24, weight: .regular)
-    heightAnchor.constraint(equalToConstant: 48).isActive = true
+    heightAnchor.constraint(equalToConstant: 48).isActive = true    
   }
-  
 }
 

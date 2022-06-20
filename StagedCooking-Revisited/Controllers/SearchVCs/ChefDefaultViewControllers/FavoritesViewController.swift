@@ -84,7 +84,7 @@ extension FavoritesViewController: UITableViewDataSource {
 extension FavoritesViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     // create an array of all of the keys
-    let keysArray = Array(ChefDefault.viewedRecipes.keys)
+    let keysArray = Array(ChefDefault.favoriteRecipes.keys)
     // get the indexPath of the key
     let currentIndex = keysArray[indexPath.row]
     showSelectedRecipe(for: Int(currentIndex)!)
@@ -95,7 +95,7 @@ extension FavoritesViewController: UITableViewDelegate {
     let navigationController = UINavigationController(rootViewController: recipeVC)
     recipeVC.recipeID = recipeID
     recipeVC.setLeftBarButton(ListVCs.history)
-    guard let recipeTitle = ChefDefault.viewedRecipes[String(recipeID)] else { return }
+    guard let recipeTitle = ChefDefault.favoriteRecipes[String(recipeID)] else { return }
     recipeVC.recipeTitle = recipeTitle.capitalized
     navigationController.modalPresentationStyle = .fullScreen
     navigationController.modalTransitionStyle = .flipHorizontal

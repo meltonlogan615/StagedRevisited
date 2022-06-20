@@ -136,7 +136,7 @@ extension RecipeView {
     showNutritionButton.translatesAutoresizingMaskIntoConstraints = false
     showNutritionButton.setTitle("Nutrition", for: [])
     showNutritionButton.setImage(UIImage(systemName: "heart.circle"), for: [])
-    
+
     showRestrictionsButton.translatesAutoresizingMaskIntoConstraints = false
     showRestrictionsButton.setTitle("Diets", for: [])
     showRestrictionsButton.setImage(UIImage(systemName: "exclamationmark.octagon"), for: [])

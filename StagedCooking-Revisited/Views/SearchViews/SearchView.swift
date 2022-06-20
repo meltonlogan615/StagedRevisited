@@ -72,24 +72,25 @@ extension SearchView {
   }
   
   func layout() {
+    addSubview(errorLabel)
+    NSLayoutConstraint.activate([
+      errorLabel.topAnchor.constraint(equalTo: topAnchor),
+      errorLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+      errorLabel.widthAnchor.constraint(equalTo: widthAnchor),
+    ])
+
     stackView.addArrangedSubview(searchTextField)
     stackView.addArrangedSubview(searchButton)
-    stackView.addArrangedSubview(advancedSearchButton)
+//    stackView.addArrangedSubview(advancedSearchButton)
     
     addSubview(stackView)
     NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalTo: topAnchor),
+      stackView.topAnchor.constraint(equalToSystemSpacingBelow: errorLabel.bottomAnchor, multiplier: 2),
       stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
       stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
       stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
     ])
     
-    addSubview(errorLabel)
-    NSLayoutConstraint.activate([
-      errorLabel.centerXAnchor.constraint(equalTo: stackView.centerXAnchor),
-      errorLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor),
-      errorLabel.topAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 2)
-    ])
   }
 }
 

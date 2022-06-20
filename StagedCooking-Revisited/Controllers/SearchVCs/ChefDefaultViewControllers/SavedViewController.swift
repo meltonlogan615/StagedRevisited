@@ -27,6 +27,7 @@ class SavedViewController: UIViewController {
     self.title = "Saved Recipes"
     tableView.dataSource = self
     tableView.delegate = self
+    
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     layout()
   }
@@ -83,7 +84,7 @@ extension SavedViewController: UITableViewDataSource {
 extension SavedViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     // create an array of all of the keys
-    let keysArray = Array(ChefDefault.viewedRecipes.keys)
+    let keysArray = Array(ChefDefault.savedRecipes.keys)
     // get the indexPath of the key
     let currentIndex = keysArray[indexPath.row]
     showSelectedRecipe(for: Int(currentIndex)!)
@@ -94,7 +95,7 @@ extension SavedViewController: UITableViewDelegate {
     let navigationController = UINavigationController(rootViewController: recipeVC)
     recipeVC.recipeID = recipeID
     recipeVC.setLeftBarButton(ListVCs.history)
-    guard let recipeTitle = ChefDefault.viewedRecipes[String(recipeID)] else { return }
+    guard let recipeTitle = ChefDefault.savedRecipes[String(recipeID)] else { return }
     recipeVC.recipeTitle = recipeTitle.capitalized
     navigationController.modalPresentationStyle = .fullScreen
     navigationController.modalTransitionStyle = .flipHorizontal

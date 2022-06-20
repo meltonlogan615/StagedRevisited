@@ -62,6 +62,7 @@
 		32289FFD285843CD00D0BE1D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32289FFC285843CD00D0BE1D /* FavoritesViewController.swift */; };
 		32289FFF2858EEF700D0BE1D /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32289FFE2858EEF700D0BE1D /* APIKeys.swift */; };
 		32441EFB2827711E00DA426F /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32441EFA2827711E00DA426F /* Divider.swift */; };
+		324C61F0285D02ED007226D2 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C61EF285D02ED007226D2 /* MessageView.swift */; };
 		325678F4283F2FDE00D32646 /* LargeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325678F3283F2FDE00D32646 /* LargeLabel.swift */; };
 		326F9F8B281D099C0086BA53 /* IngredientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */; };
 		326F9F9D282216C60086BA53 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F9C282216C60086BA53 /* RecipeView.swift */; };
@@ -121,6 +122,8 @@
 		32D70DC42807565B000328B9 /* CardContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D70DC32807565B000328B9 /* CardContainerViewController.swift */; };
 		32D70DC82808BEE1000328B9 /* GetCookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D70DC72808BEE1000328B9 /* GetCookingViewController.swift */; };
 		32E0F40C2849AD2A008CA294 /* UILableKerning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E0F40B2849AD2A008CA294 /* UILableKerning.swift */; };
+		32E1916E285EEB5A00743E36 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E1916D285EEB5A00743E36 /* TestVC.swift */; };
+		32E19170285EED4B00743E36 /* SlideAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E1916F285EED4B00743E36 /* SlideAnimation.swift */; };
 		32ED32C42837C5840045F41A /* CuisinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ED32C32837C5840045F41A /* CuisinesView.swift */; };
 /* End PBXBuildFile section */
 
@@ -182,6 +185,7 @@
 		32289FFC285843CD00D0BE1D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		32289FFE2858EEF700D0BE1D /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		32441EFA2827711E00DA426F /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
+		324C61EF285D02ED007226D2 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		325678F3283F2FDE00D32646 /* LargeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeLabel.swift; sourceTree = "<group>"; };
 		3264D35E28386A3F00C06555 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListViewController.swift; sourceTree = "<group>"; };
@@ -242,6 +246,8 @@
 		32D70DC32807565B000328B9 /* CardContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardContainerViewController.swift; sourceTree = "<group>"; };
 		32D70DC72808BEE1000328B9 /* GetCookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCookingViewController.swift; sourceTree = "<group>"; };
 		32E0F40B2849AD2A008CA294 /* UILableKerning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILableKerning.swift; sourceTree = "<group>"; };
+		32E1916D285EEB5A00743E36 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
+		32E1916F285EED4B00743E36 /* SlideAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideAnimation.swift; sourceTree = "<group>"; };
 		32ED32C32837C5840045F41A /* CuisinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -320,6 +326,7 @@
 				322199D527FA9790003FD4F6 /* RecipeVCs */,
 				32D70DBB28073A53000328B9 /* StagedCards */,
 				329C097428373D0600CECE6C /* AccountVCs */,
+				32E1916D285EEB5A00743E36 /* TestVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -463,7 +470,6 @@
 		322199CF27FA96FD003FD4F6 /* SearchViews */ = {
 			isa = PBXGroup;
 			children = (
-				3228A000285B702100D0BE1D /* HistoryViews */,
 				329F377F283363D8004A758D /* AdvancedSearchViews */,
 				322199B727FA6328003FD4F6 /* SearchView.swift */,
 			);
@@ -579,6 +585,7 @@
 		3221EF782834A53800A6FCCD /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				324C61EF285D02ED007226D2 /* MessageView.swift */,
 				329F3782283368E8004A758D /* AdvancedSearchRow.swift */,
 				32441EFA2827711E00DA426F /* Divider.swift */,
 				32BD7A4028398DA80055B9CF /* NavController.swift */,
@@ -606,13 +613,6 @@
 				32289FFC285843CD00D0BE1D /* FavoritesViewController.swift */,
 			);
 			path = ChefDefaultViewControllers;
-			sourceTree = "<group>";
-		};
-		3228A000285B702100D0BE1D /* HistoryViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HistoryViews;
 			sourceTree = "<group>";
 		};
 		3264D35A28386A3100C06555 /* IgnoreFiles */ = {
@@ -643,6 +643,7 @@
 				32BD7A53283E55210055B9CF /* UIView-Blurry.swift */,
 				3272D3CA28452C9900D168BB /* UIView-DidToggle.swift */,
 				32E0F40B2849AD2A008CA294 /* UILableKerning.swift */,
+				32E1916F285EED4B00743E36 /* SlideAnimation.swift */,
 			);
 			name = "UIView-Extensions";
 			sourceTree = "<group>";
@@ -876,6 +877,7 @@
 				322199A627FA5EE3003FD4F6 /* NetworkDataFlow.swift in Sources */,
 				32027D4C2829F6D900F0F167 /* Nutrition.swift in Sources */,
 				322199A427FA5ED8003FD4F6 /* DataProvider.swift in Sources */,
+				32E1916E285EEB5A00743E36 /* TestVC.swift in Sources */,
 				3221999E27FA5E77003FD4F6 /* NetworkAccess.swift in Sources */,
 				329C097328373CCC00CECE6C /* SettingsView.swift in Sources */,
 				32761051282CBFD6005346D4 /* CardBuilder.swift in Sources */,
@@ -901,6 +903,7 @@
 				322199B627FA62C4003FD4F6 /* ExtendedIngredient.swift in Sources */,
 				3221EF712834A19D00A6FCCD /* DietsView.swift in Sources */,
 				32761040282CB2AC005346D4 /* GeneralInfo.swift in Sources */,
+				324C61F0285D02ED007226D2 /* MessageView.swift in Sources */,
 				327B5A2328541417007495AA /* TabViewController.swift in Sources */,
 				329C097A28374CED00CECE6C /* LandingViewController.swift in Sources */,
 				32027D4A2829F68100F0F167 /* CalorieBreakdown.swift in Sources */,
@@ -917,6 +920,7 @@
 				326F9F9D282216C60086BA53 /* RecipeView.swift in Sources */,
 				327B5A132851B2EA007495AA /* SpinnerViewController.swift in Sources */,
 				322199BD27FA6517003FD4F6 /* DetailsButton.swift in Sources */,
+				32E19170285EED4B00743E36 /* SlideAnimation.swift in Sources */,
 				3214AC16284BED3100474068 /* SignWithAppleButton.swift in Sources */,
 				321E29F02841F86D003BCC47 /* AdvancedMicrosCell.swift in Sources */,
 				3272D3CB28452C9900D168BB /* UIView-DidToggle.swift in Sources */,
@@ -1122,7 +1126,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VR7223ZYQY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "StagedCooking-Revisited/Info.plist";
@@ -1152,7 +1156,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VR7223ZYQY;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "StagedCooking-Revisited/Info.plist";
