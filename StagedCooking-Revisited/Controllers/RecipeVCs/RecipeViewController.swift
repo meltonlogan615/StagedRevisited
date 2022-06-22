@@ -54,15 +54,15 @@ class RecipeViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     // Gets the Data for the Recipe. Also generates data for ingredientList
-//    loadRecipeByID(for: recipeID)
+    loadRecipeByID(for: recipeID)
     
     // Generates stepIngredients & stepIngredients
-//    getInstructions(for: recipeID)
+    getInstructions(for: recipeID)
     
-//    showActivity()
+    showActivity()
     navigationController?.navigationBar.prefersLargeTitles = false
     // TODO: - #29 - ADD option to dismiss views back to SearchVC?
-//    setRightBarButtons()
+    setRightBarButtons()
     style()
     layout()
   }

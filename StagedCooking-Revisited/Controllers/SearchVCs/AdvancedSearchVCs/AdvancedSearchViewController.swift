@@ -116,9 +116,9 @@ extension AdvancedSearchViewController: UICollectionViewDelegate {
         present(selectedVC, animated: true)
 
       case 3:
-//        let vc = AdvancedMacrosViewController()
-//        present(vc, animated: true)
-        print("Macros")
+        let selected = MacrosViewController()
+
+        present(selected, animated: true)
 
       case 4:
         selectedVC.optionView = MealTypesView()

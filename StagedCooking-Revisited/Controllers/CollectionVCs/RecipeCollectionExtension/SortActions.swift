@@ -21,6 +21,10 @@ extension RecipeListCollectionView {
     case proteinUp = "Protein: Low → High"
     case proteinDown = "Protein: High → Low"
   }
+  private enum FilterOptions: String {
+    case cuisines, diets, intolerances, macros
+    case mealTypes = "Meal Types"
+  }
   
   func sortMenu() {
     // MARK: - Alphabetically Ascending from A to Z
@@ -164,18 +168,50 @@ extension RecipeListCollectionView {
         self.recipeCollection.reloadData()
         
       },
-      
-       // May be too many options...
-      
-      //      UIAction(title: SortOptions.proteinUp.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) { (_) in
-      //        print("poop")
-      //      },
-      //      UIAction(title: SortOptions.proteinDown.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) { (_) in
-      //        print("poop")
-      //      },
-      
     ])
-    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sort", image: nil, primaryAction: .none, menu: menu)
+    let filter = UIMenu(title: "Filter By:", image: nil, identifier: nil, options: .singleSelection, children: [
+      UIAction(title: FilterOptions.cuisines.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) {_ in
+        let filterView = OptionViewController()
+        filterView.optionView = CuisinesView()
+        filterView.viewTitle = "Cuisines"
+        filterView.sourceVC = self
+        self.present(filterView, animated: true)
+      },
+      UIAction(title: FilterOptions.diets.rawValue.localizedCapitalized, image: UIImage(systemName: "chevron.right"), identifier: nil, discoverabilityTitle: nil) {_ in
+        let filterView = OptionViewController()
+        filterView.optionView = DietsView()
+        filterView.viewTitle = "Diets"
+        filterView.sourceVC = self
+        self.present(filterView, animated: true)
+      },
+      UIAction(title: FilterOptions.intolerances.rawValue.localizedCapitalized, image: UIImage(systemName: "chevron.right"), identifier: nil, discoverabilityTitle: nil) {_ in
+        let filterView = OptionViewController()
+        filterView.optionView = IntolerancesView()
+        filterView.viewTitle = "Diets"
+        filterView.sourceVC = self
+        self.present(filterView, animated: true)
+      },
+      UIAction(title: FilterOptions.macros.rawValue.localizedCapitalized, image: UIImage(systemName: "chevron.right"), identifier: nil, discoverabilityTitle: nil) {_ in
+        let filterView = MacrosViewController()
+        filterView.viewTitle = "Macronutrients"
+        self.present(filterView, animated: true)
+      },
+      
+      UIAction(title: FilterOptions.mealTypes.rawValue.localizedCapitalized, image: UIImage(systemName: "chevron.right"), identifier: nil, discoverabilityTitle: nil) {_ in
+        let filterView = OptionViewController()
+        filterView.optionView = MealTypesView()
+        filterView.viewTitle = "Diets"
+        filterView.sourceVC = self
+        self.present(filterView, animated: true)
+      }
+    ])
+    
+    
+    
+    self.navigationItem.rightBarButtonItems = [
+      UIBarButtonItem(title: "Filter", image: nil, primaryAction: .none, menu: filter),
+      UIBarButtonItem(title: "Sort", image: nil, primaryAction: .none, menu: menu)
+    ]
   }
   
 }

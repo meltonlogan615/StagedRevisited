@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window?.backgroundColor = K.primary
     ChefDefault.loadData()
     
-//    let root = SearchViewController()
+    let root = SearchViewController()
 //    let root = LoadingViewController()
 //    let root = AdvancedSearchViewController()
 //    let root = LandingViewController()
@@ -27,7 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    let root = SignUpViewController()
 //    let root = TestVC()
 //    let root = RecipeViewController()
-    let root = TabViewController()
+//    let root = TabViewController()
+//    let root = MacrosViewController()
+//    let root = RecipeListCollectionView()
     let navVC = UINavigationController(rootViewController: root)
     window?.rootViewController = navVC
     

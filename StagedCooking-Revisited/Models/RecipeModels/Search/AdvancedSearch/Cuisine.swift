@@ -24,29 +24,31 @@ import Foundation
  */
 
 enum Cuisine: String, CaseIterable {
-  case caribbean, mediterranean, nordic, southern
-  
-  case african = "African 🌍"
-  case american = "American 🇺🇸"
-  case british = "British 🇬🇧"
-  case cajun = "Cajun 🐊"
-  case chinese = "Chinese 🇨🇳"
-  case european = "European 🇪🇺"
-  case french = "French 🇫🇷"
-  case german = "German 🇩🇪"
-  case greek = "Greek 🇬🇷"
-  case indian = "Indian 🇮🇳"
-  case irish = "Irish 🇮🇪"
-  case italian = "Italian 🇮🇹"
-  case japanese = "Japanese 🇯🇵"
-  case jewish = "Jewish 🇮🇱"
-  case korean = "Korean 🇰🇷"
-  case spanish = "Spanish 🇪🇸"
-  case thai = "Thai 🇹🇭"
-  case vietnamese = "Vietnamese 🇻🇳"
+  case african,
+       american,
+       british,
+       cajun,
+       caribbean,
+       chinese
   case easternEuropean = "Eastern European"
+  case european,
+       french,
+       german,
+       greek,
+       indian,
+       irish,
+       italian,
+       japanese,
+       jewish,
+       korean
   case latinAmerican = "Latin American"
+  case mediterranean
   case middleEastern = "Middle Eastern"
+  case nordic,
+       southern,
+       spanish,
+       thai,
+       vietnamese
 }
 
 /*

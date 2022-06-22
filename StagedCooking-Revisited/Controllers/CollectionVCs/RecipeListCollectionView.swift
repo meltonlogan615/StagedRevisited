@@ -21,6 +21,7 @@ import UIKit
 enum SourceVCs: String {
   case search, searchHistory
 }
+
 protocol RecipeByID: AnyObject {
   func loadRecipeByID(for chosenID: Int)
 }
@@ -36,6 +37,7 @@ class RecipeListCollectionView: UIViewController {
   var searchedRecipe = String()
   var cellTitle = String()
   
+  var additionalFilters = String()
   
   let recipeCollection: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -148,7 +150,8 @@ extension RecipeListCollectionView: UICollectionViewDelegateFlowLayout {
 
 // MARK: - Networking, Spoonacular ComplexSearch
 
-extension RecipeListCollectionView {
+extension RecipeListCollectionView: FilteredSearch {
+  // MARK: - Regular Search
   func loadRecipes(for recipe: String) {
     showActivity()
     dataprovider.getRecipes(for: recipe) { [weak self] (foodResult: Result<Response, Error>) in
@@ -170,6 +173,32 @@ extension RecipeListCollectionView {
       }
       self.recipeCollection.reloadData()
     }
+  }
+  
+  // MARK: - Filtered Search
+  func filterRecipes(for recipe: String, with options: String) {
+    showActivity()
+    print("1")
+    dataprovider.getFilteredRecipes(for: recipe, with: additionalFilters) { [weak self] (foodResult: Result<Response, Error>) in
+      guard let self = self else { return }
+      print("2")
+      self.removeActivity()
+      switch foodResult {
+        case .success(let model):
+          self.model = model as Response
+          print("3")
+          // if there are no results for the searched phrase, display alert
+          self.noResults(for: recipe)
+          
+          // total number of results
+          guard let totalCount = self.model.totalResults else { return }
+          self.title = "\(self.searchedRecipe.capitalized) (\(totalCount))"
+          
+        case .failure(let error):
+          print(error)
+      }
+    }
+    self.recipeCollection.reloadData()
   }
 }
 

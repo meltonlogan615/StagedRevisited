@@ -8,21 +8,24 @@
 import Foundation
 import UIKit
 
+enum AdvancedOptions: String, CaseIterable {
+  case Cuisines, Diets, Intolerances, Macros, MealType
+}
+
 extension UIViewController {
-  func cuisineSelection(to method: Option, from choices: [Cuisine]) -> String {
+  func makeSelection(to method: Option, from choices: AdvancedOptions.AllCases) -> String {
     var returnString = String()
+    let option = compileString(from: choices)
     switch method {
       case .include:
-        let cuisines = compileString(from: choices)
-        returnString = "include=\(cuisines)"
+        returnString = "include=\(option)"
       case .exclude:
-        let cuisines = compileString(from: choices)
-        returnString = "exculde=\(cuisines)"
+        returnString = "exculde=\(option)"
     }
     return returnString
   }
   
-  fileprivate func compileString(from choices: [Cuisine]) -> String {
+  fileprivate func compileString(from choices: AdvancedOptions.AllCases) -> String {
     var allCuisines = String()
     
     // Loop through selection

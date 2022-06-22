@@ -31,21 +31,17 @@ class CuisinesView: AdvancedSearch {
 
 extension CuisinesView {
   func layoutCuisines() {
-    var includeRowTag = 0
-    var excludeRowTag = 1
     for option in Cuisine.allCases {
       let row = AdvancedSearchRow()
       row.translatesAutoresizingMaskIntoConstraints = false
       
-      let includeTitle = LargeLabel()
-      includeTitle.translatesAutoresizingMaskIntoConstraints = false
-      includeTitle.text = "Include \(option.rawValue.localizedCapitalized)"
-      includeTitle.tag = includeRowTag
+      let label = LargeLabel()
+      label.translatesAutoresizingMaskIntoConstraints = false
+      label.text = "\(option.rawValue.localizedCapitalized)"
       
-      let includeToggle = ToggleSwitch()
-      includeToggle.translatesAutoresizingMaskIntoConstraints = false
-      includeToggle.tag = includeRowTag
-      includeToggle.addTarget(self, action: #selector(didToggle), for: .valueChanged)
+      let toggle = IncludeExcludeSeg()
+      toggle.translatesAutoresizingMaskIntoConstraints = false
+//      toggle.addTarget(self, action: #selector(didToggle), for: .valueChanged)
       
       // maybe?
       let dividerOne = Divider()
@@ -57,22 +53,19 @@ extension CuisinesView {
       
       let excludeToggle = ToggleSwitch()
       excludeToggle.translatesAutoresizingMaskIntoConstraints = false
-      excludeToggle.tag = excludeRowTag
       excludeToggle.addTarget(self, action: #selector(didToggle), for: .valueChanged)
       
       let dividerTwo = Divider()
       dividerTwo.translatesAutoresizingMaskIntoConstraints = false
       
-      row.includeStack.addArrangedSubview(includeTitle)
-      row.includeStack.addArrangedSubview(includeToggle)
+      row.includeStack.addArrangedSubview(label)
+      row.includeStack.addArrangedSubview(toggle)
       
-      row.excludeStack.addArrangedSubview(excludetitle)
-      row.excludeStack.addArrangedSubview(excludeToggle)
+//      row.excludeStack.addArrangedSubview(excludetitle)
+//      row.excludeStack.addArrangedSubview(excludeToggle)
       
       detailsStack.addArrangedSubview(row)
       detailsStack.addArrangedSubview(dividerTwo)
-      includeRowTag += 2
-      excludeRowTag += 2
     }
   }
 }

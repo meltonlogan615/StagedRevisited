@@ -14,6 +14,8 @@ import UIKit
  */
 class OptionViewController: UIViewController {
   
+  var sourceVC = UIViewController()
+  
   let optionLabel = UILabel()
   var optionView = AdvancedSearch()
   let saveButton = ActionButton()
@@ -35,7 +37,7 @@ class OptionViewController: UIViewController {
 extension OptionViewController {
   func style() {
     optionLabel.translatesAutoresizingMaskIntoConstraints = false
-    optionLabel.font = .systemFont(ofSize: 36, weight: .semibold)
+    optionLabel.font = .preferredFont(forTextStyle: .largeTitle)
     optionLabel.textColor = K.invertPrimary
     optionLabel.textAlignment = .center
     optionLabel.text = viewTitle
@@ -73,7 +75,22 @@ extension OptionViewController {
 }
 
 extension OptionViewController {
-  @objc func saveButtonTapped() {
+  @objc func saveButtonTapped(_ view: AdvancedSearch) {
+    switch view {
+      case is CuisinesView:
+        break
+      case is DietsView:
+        break
+      case is IntolerancesView:
+        break
+//      case is AdvancedMacrosView:
+//        let view = AdvancedMacrosView()
+//        break
+      case is MealTypesView:
+        break
+      default:
+        break
+    }
     self.dismiss(animated: true)
   }
 }
@@ -99,8 +116,9 @@ extension OptionViewController {
         }
         
       // MARK: - Still not entirely sure how to handle this one...
-      case is AdvancedMacrosView:
-        print("intol")
+//      case is AdvancedMacrosView:
+        
+//        activateButtons()
         
       case is MealTypesView:
         for option in MealType.allCases {
@@ -110,6 +128,12 @@ extension OptionViewController {
       default:
         break
     }
+  }
+}
+
+extension OptionViewController {
+  private func activateButtons() {
+    print("loaded")
   }
 }
 

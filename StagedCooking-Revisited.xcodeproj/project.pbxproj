@@ -124,6 +124,9 @@
 		32E0F40C2849AD2A008CA294 /* UILableKerning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E0F40B2849AD2A008CA294 /* UILableKerning.swift */; };
 		32E1916E285EEB5A00743E36 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E1916D285EEB5A00743E36 /* TestVC.swift */; };
 		32E19170285EED4B00743E36 /* SlideAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E1916F285EED4B00743E36 /* SlideAnimation.swift */; };
+		32E191722860E62700743E36 /* MacrosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E191712860E62700743E36 /* MacrosViewController.swift */; };
+		32E191762862048900743E36 /* MacroPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E191752862048900743E36 /* MacroPickerView.swift */; };
+		32E1917828635BB100743E36 /* IncludeExcludeSeg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E1917728635BB100743E36 /* IncludeExcludeSeg.swift */; };
 		32ED32C42837C5840045F41A /* CuisinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ED32C32837C5840045F41A /* CuisinesView.swift */; };
 /* End PBXBuildFile section */
 
@@ -248,6 +251,9 @@
 		32E0F40B2849AD2A008CA294 /* UILableKerning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILableKerning.swift; sourceTree = "<group>"; };
 		32E1916D285EEB5A00743E36 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		32E1916F285EED4B00743E36 /* SlideAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideAnimation.swift; sourceTree = "<group>"; };
+		32E191712860E62700743E36 /* MacrosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosViewController.swift; sourceTree = "<group>"; };
+		32E191752862048900743E36 /* MacroPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroPickerView.swift; sourceTree = "<group>"; };
+		32E1917728635BB100743E36 /* IncludeExcludeSeg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncludeExcludeSeg.swift; sourceTree = "<group>"; };
 		32ED32C32837C5840045F41A /* CuisinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -578,6 +584,8 @@
 				322199BE27FA6567003FD4F6 /* LargeTextField.swift */,
 				321E29F32842059C003BCC47 /* MediumTextField.swift */,
 				3214AC11284B344100474068 /* AccountTextField.swift */,
+				32E191752862048900743E36 /* MacroPickerView.swift */,
+				32E1917728635BB100743E36 /* IncludeExcludeSeg.swift */,
 			);
 			path = ChefInputs;
 			sourceTree = "<group>";
@@ -765,6 +773,7 @@
 			children = (
 				3221EF882835E89400A6FCCD /* AdvancedSearchViewController.swift */,
 				3272D3C42844823600D168BB /* OptionViewController.swift */,
+				32E191712860E62700743E36 /* MacrosViewController.swift */,
 				3221EF7B28352F4300A6FCCD /* AdvancedSearchViewModels */,
 			);
 			path = AdvancedSearchVCs;
@@ -883,6 +892,7 @@
 				32761051282CBFD6005346D4 /* CardBuilder.swift in Sources */,
 				327B5A0B28515750007495AA /* GenerateSummary.swift in Sources */,
 				3221EF6928344A9800A6FCCD /* AdvancedMacros.swift in Sources */,
+				32E191722860E62700743E36 /* MacrosViewController.swift in Sources */,
 				32289FFD285843CD00D0BE1D /* FavoritesViewController.swift in Sources */,
 				32289FFB285843AD00D0BE1D /* HistoryViewController.swift in Sources */,
 				327B5A1F2852F630007495AA /* SwipeActions.swift in Sources */,
@@ -969,9 +979,11 @@
 				322199B427FA627A003FD4F6 /* Ingredient.swift in Sources */,
 				3221EF8B2835F01600A6FCCD /* AdvancedCell.swift in Sources */,
 				322199B827FA6328003FD4F6 /* SearchView.swift in Sources */,
+				32E1917828635BB100743E36 /* IncludeExcludeSeg.swift in Sources */,
 				32E0F40C2849AD2A008CA294 /* UILableKerning.swift in Sources */,
 				3276103D282CB1C6005346D4 /* DietsModal.swift in Sources */,
 				32441EFB2827711E00DA426F /* Divider.swift in Sources */,
+				32E191762862048900743E36 /* MacroPickerView.swift in Sources */,
 				329F377E28336357004A758D /* AdvancedSearch.swift in Sources */,
 				3221EF6B28344E9900A6FCCD /* IntolerancesSearch.swift in Sources */,
 				322199AE27FA5FAA003FD4F6 /* RecipeSummary.swift in Sources */,

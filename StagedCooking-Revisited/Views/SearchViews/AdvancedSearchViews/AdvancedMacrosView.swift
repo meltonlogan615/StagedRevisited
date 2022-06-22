@@ -8,13 +8,22 @@
 import Foundation
 import UIKit
 
-class AdvancedMacrosView: AdvancedSearch {
+class AdvancedMacrosView: UIView {
   
+  let segController = UISegmentedControl(items: ["Minimum", "Maximum"])
+  let pickerView = UIPickerView()
+  
+  let textField = LargeTextField()
+  let confrimButton = ActionButton()
+  
+  let options = MacrosForSpin.allCases
+  var selection = String()
+  var addedOptions = [String]()
+  let table = UITableView()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
-    layoutMacros()
+    table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
   }
   
   required init?(coder: NSCoder) {
@@ -24,8 +33,11 @@ class AdvancedMacrosView: AdvancedSearch {
 
 extension AdvancedMacrosView {
   
+  func styleMacros() {
+
+  }
+  
   func layoutMacros() {
-//    var rowTag = 0
-    
+
   }
 }
