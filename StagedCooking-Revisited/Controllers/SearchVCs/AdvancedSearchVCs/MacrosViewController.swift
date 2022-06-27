@@ -14,6 +14,8 @@ protocol FilteredSearch: AnyObject {
 
 class MacrosViewController: UIViewController {
   
+  let dataprovider = DataProvider()
+  
   var viewTitle = String()
 
   let optionLabel = UILabel()
@@ -28,6 +30,7 @@ class MacrosViewController: UIViewController {
   var addedOptionsForTable = [String]()
   var addedOptionsForSearch = [String]()
   let table = UITableView()
+  var searchedRecipe = String()
   
   let saveButton = ActionButton()
   
@@ -81,6 +84,7 @@ extension MacrosViewController {
     table.translatesAutoresizingMaskIntoConstraints = false
     table.dataSource = self
     table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    table.backgroundColor = .clear
     
     saveButton.translatesAutoresizingMaskIntoConstraints = false
     saveButton.setTitle("Save", for: [])
@@ -172,6 +176,7 @@ extension MacrosViewController: UITableViewDataSource {
     var config = cell.defaultContentConfiguration()
     config.text = addedOptionsForTable[indexPath.row]
     cell.contentConfiguration = config
+    cell.backgroundColor = .clear
     return cell
   }
 }
@@ -203,9 +208,34 @@ extension MacrosViewController {
     for option in addedOptionsForSearch {
       additionalFilters += "&\(option)"
     }
-//    filteredList.additionalFilters = self.additionalFilters
-    filteredList.filterRecipes(for: filteredList.searchedRecipe, with: additionalFilters)
-    print(additionalFilters)
+    filteredList.additionalFilters = self.additionalFilters
+    filteredList.filterRecipes(for: searchedRecipe, with: additionalFilters)
     self.dismiss(animated: true)
   }
 }
+
+//extension MacrosViewController {
+//  // MARK: - Filtered Search
+//  func filterRecipes(for recipe: String, with options: String) {
+//    print(self.additionalFilters)
+//    let listVC = RecipeListCollectionView()
+//    dataprovider.getFilteredRecipes(for: recipe, with: options) { [weak self] (foodResult: Result<Response, Error>) in
+//      guard let self = self else { return }
+//      switch foodResult {
+//        case .success(let model):
+//          listVC.model = model as Response
+//          // if there are no results for the searched phrase, display alert
+//          listVC.noResults(for: recipe)
+//          
+//          // total number of results
+//          guard let totalCount = listVC.model.totalResults else { return }
+//          self.title = "\(self.searchedRecipe.capitalized) (\(totalCount))"
+//          
+//        case .failure(let error):
+//          print(error)
+//      }
+//      print("CollectionVC - Self.AdditionalFilters", self.additionalFilters)
+//      listVC.recipeCollection.reloadData()
+//    }
+//  }
+//}

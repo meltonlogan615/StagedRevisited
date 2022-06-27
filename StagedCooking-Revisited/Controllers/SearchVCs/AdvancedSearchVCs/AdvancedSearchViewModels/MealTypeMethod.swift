@@ -19,5 +19,5 @@ extension UIViewController {
       typeString += "\(meal.rawValue)"
     }
     return typeString
-  }
+  } 
 }

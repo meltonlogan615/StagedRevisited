@@ -25,6 +25,10 @@ enum SourceVCs: String {
 protocol RecipeByID: AnyObject {
   func loadRecipeByID(for chosenID: Int)
 }
+
+//protocol FilteredSearch: AnyObject {
+//  func filterRecipes(for recipe: String, with options: String)
+//}
 /**
  Basic `CollectionView`  displays `[Response]`s from network call
  */
@@ -47,7 +51,9 @@ class RecipeListCollectionView: UIViewController {
     return recipeCollection
   }()
   
-  
+  override func viewWillAppear(_ animated: Bool) {
+    recipeCollection.reloadData()
+  }
   override func viewDidLoad() {
     super.viewDidLoad()
     loadRecipes(for: searchedRecipe)
@@ -102,7 +108,7 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
     }
     return cell
   }
-  
+
 }
 
 // MARK: - CollectionView - Delegate
@@ -160,7 +166,6 @@ extension RecipeListCollectionView: FilteredSearch {
       switch foodResult {
         case .success(let model):
           self.model = model as Response
-          
           // if there are no results for the searched phrase, display alert
           self.noResults(for: recipe)
           
@@ -177,16 +182,11 @@ extension RecipeListCollectionView: FilteredSearch {
   
   // MARK: - Filtered Search
   func filterRecipes(for recipe: String, with options: String) {
-    showActivity()
-    print("1")
-    dataprovider.getFilteredRecipes(for: recipe, with: additionalFilters) { [weak self] (foodResult: Result<Response, Error>) in
-      guard let self = self else { return }
-      print("2")
-      self.removeActivity()
+    dataprovider.getFilteredRecipes(for: recipe, with: options) { (foodResult: Result<Response, Error>) in
+//      guard let self = self else { return }
       switch foodResult {
         case .success(let model):
           self.model = model as Response
-          print("3")
           // if there are no results for the searched phrase, display alert
           self.noResults(for: recipe)
           
@@ -197,6 +197,9 @@ extension RecipeListCollectionView: FilteredSearch {
         case .failure(let error):
           print(error)
       }
+      print("Self:", self)
+      print("TotalResults:", String(describing: (self.model.totalResults)))
+      print("Model:", String(describing: (self.model.results?.count)))
     }
     self.recipeCollection.reloadData()
   }

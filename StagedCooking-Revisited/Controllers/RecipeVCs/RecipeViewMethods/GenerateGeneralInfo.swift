@@ -39,11 +39,11 @@ extension RecipeViewController {
       if !dishType.isEmpty {
         for i in 0 ..< dishType.count {
           if dishType.count == 1 {
-            dishText = dishType[i].capitalized
+            dishText = dishType[i].rawValue.localizedCapitalized
           } else if dishType[i] == dishType.last {
-            dishText += "or \(dishType[i].capitalized)"
+            dishText += "or \(dishType[i].rawValue.localizedCapitalized)"
           } else {
-            dishText += "\(dishType[i].capitalized), "
+            dishText += "\(dishType[i].rawValue.localizedCapitalized), "
           }
         }
         self.recipeView.dishTypeLabel.icon.image = UIImage(systemName: "fork.knife")

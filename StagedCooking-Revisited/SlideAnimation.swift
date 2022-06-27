@@ -17,7 +17,6 @@ extension UIView {
   func slideIn(from: Direction, duration: TimeInterval, delay: TimeInterval, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
     // set the start position outside of bounds
   
-    print("here")
     switch from {
       case .top:
         self.widthAnchor.constraint(equalTo: (self.superview?.widthAnchor)!).isActive = true

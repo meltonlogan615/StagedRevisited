@@ -22,11 +22,14 @@ import Foundation
  - `CaseIterable` to allow for the AdvanceSearch views to iterate over Cuisine.allCases and access the RawValue for use as `UILabel.text`.
  */
 
-enum MealType: String, CaseIterable {
-  case  appetizer, beverage, bread, breakfast, dessert, drink
-  case fingerfood = "Finger Food"
-  case mainCourse = "Main Course"
+enum MealType: String, Codable, CaseIterable {
+  case antipasti, antipasto, appetizer, beverage, bread, breakfast, dessert, dinner, drink
+  case fingerfood // = "Finger Food"
+  case hordoeuvre = "hor d'oeuvre"
+  case lunch
+  case mainCourse = "main course"
+  case mainDish = "main dish"
   case marinade, salad, sauce
-  case sideDish = "Side Dish"
-  case snack, soup
+  case sideDish = "side dish"
+  case snack, soup, starter
 }

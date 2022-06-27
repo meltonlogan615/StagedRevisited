@@ -36,7 +36,7 @@ struct Recipe: Decodable, Identifiable, Comparable {
   var summary: String?
   
 //  RecipeModal Health Values
-  var dishTypes: [String]?
+  var dishTypes: [MealType]?
   var cuisines: [String]?
   var servings: Int?
   var readyInMinutes: Int?
@@ -53,7 +53,7 @@ struct Recipe: Decodable, Identifiable, Comparable {
   var whole30: Bool?
 
   // Allergens Missing??
-//  var allergens: [String]?
+  var intolerances: [Intolerances]?
   var diets: [String]? // May need to be updated to dedicated type
   var vegan: Bool?
   var vegetarian: Bool?

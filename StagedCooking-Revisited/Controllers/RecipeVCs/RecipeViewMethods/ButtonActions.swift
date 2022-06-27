@@ -66,11 +66,6 @@ extension RecipeViewController: ModalDataSource {
     let cards = buildCards(ingredients: ingredientList, instructionsDictionary: stepInstructions, ingredientDictionary: stepIngredients)
     let stagesVC = StagedCardContainerViewController()
 
-//    For Debugging purposes if cards are not generated correctly:
-//    print("Ingredients, \n", ingredientList)
-//    print("\n Instructions: \n", stepInstructions)
-//    print("\n Step Ingredients: \n", stepIngredients)
-    print(cards)
     stagesVC.recipe = recipe
     stagesVC.cards = cards
     stagesVC.ingredientList = self.ingredientList

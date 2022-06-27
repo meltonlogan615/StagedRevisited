@@ -1,5 +1,5 @@
 //
-//  SortActions.swift
+//  SortAndFilterActions.swift
 //  StagedCooking-Revisited
 //
 //  Created by Logan Melton on 6/9/22.
@@ -171,47 +171,121 @@ extension RecipeListCollectionView {
     ])
     let filter = UIMenu(title: "Filter By:", image: nil, identifier: nil, options: .singleSelection, children: [
       UIAction(title: FilterOptions.cuisines.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) {_ in
-        let filterView = OptionViewController()
-        filterView.optionView = CuisinesView()
-        filterView.viewTitle = "Cuisines"
-        filterView.sourceVC = self
+        let filterView = FilterViewController()
+//        filterView.optionView = CuisinesView()
+        filterView.viewTitle = FilterOptions.cuisines.rawValue.localizedCapitalized
+        filterView.optionView.layoutCuisines()
         self.present(filterView, animated: true)
       },
-      UIAction(title: FilterOptions.diets.rawValue.localizedCapitalized, image: UIImage(systemName: "chevron.right"), identifier: nil, discoverabilityTitle: nil) {_ in
-        let filterView = OptionViewController()
-        filterView.optionView = DietsView()
-        filterView.viewTitle = "Diets"
-        filterView.sourceVC = self
+      UIAction(title: FilterOptions.diets.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) {_ in
+        let filterView = FilterViewController()
+//        filterView.optionView = DietsView()
+        filterView.viewTitle = FilterOptions.diets.rawValue.localizedCapitalized
+        filterView.optionView.layoutDiets()
         self.present(filterView, animated: true)
       },
-      UIAction(title: FilterOptions.intolerances.rawValue.localizedCapitalized, image: UIImage(systemName: "chevron.right"), identifier: nil, discoverabilityTitle: nil) {_ in
-        let filterView = OptionViewController()
-        filterView.optionView = IntolerancesView()
-        filterView.viewTitle = "Diets"
-        filterView.sourceVC = self
+      UIAction(title: FilterOptions.intolerances.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) {_ in
+        let filterView = FilterViewController()
+//        filterView.optionView = IntolerancesView()
+        filterView.viewTitle = FilterOptions.intolerances.rawValue.localizedCapitalized
+        filterView.optionView.layoutIntolerances()
         self.present(filterView, animated: true)
       },
-      UIAction(title: FilterOptions.macros.rawValue.localizedCapitalized, image: UIImage(systemName: "chevron.right"), identifier: nil, discoverabilityTitle: nil) {_ in
-        let filterView = MacrosViewController()
-        filterView.viewTitle = "Macronutrients"
-        self.present(filterView, animated: true)
+      UIAction(title: FilterOptions.macros.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) {_ in
+//        let filterView = MacrosViewController()
+//        filterView.viewTitle = FilterOptions.macros.rawValue.localizedCapitalized
+//        filterView.searchedRecipe = self.searchedRecipe
+//        self.present(filterView, animated: true)
       },
       
-      UIAction(title: FilterOptions.mealTypes.rawValue.localizedCapitalized, image: UIImage(systemName: "chevron.right"), identifier: nil, discoverabilityTitle: nil) {_ in
-        let filterView = OptionViewController()
-        filterView.optionView = MealTypesView()
-        filterView.viewTitle = "Diets"
-        filterView.sourceVC = self
+      UIAction(title: FilterOptions.mealTypes.rawValue.localizedCapitalized, image: nil, identifier: nil, discoverabilityTitle: nil) {_ in
+        let filterView = FilterViewController()
+//        filterView.optionView = MealTypesView()
+        filterView.viewTitle = FilterOptions.mealTypes.rawValue.localizedCapitalized
         self.present(filterView, animated: true)
       }
     ])
-    
-    
     
     self.navigationItem.rightBarButtonItems = [
       UIBarButtonItem(title: "Filter", image: nil, primaryAction: .none, menu: filter),
       UIBarButtonItem(title: "Sort", image: nil, primaryAction: .none, menu: menu)
     ]
   }
-  
 }
+
+extension RecipeListCollectionView {
+  func filterCuisines(for options: [String]) {
+    var newModel = Response()
+    var newResults = [Recipe]()
+    guard let recipes = model.results else { return }
+    for recipe in recipes {
+      guard let cuisines = recipe.cuisines else { return }
+      for cuisine in cuisines {
+        if options.contains(cuisine) {
+          newResults.append(recipe)
+          newModel.results = newResults
+          self.model = newModel
+        }
+      }
+    }
+  }
+  
+  func filterDiets(for options: [String]) {
+    guard let recipes = model.results else { return }
+    var newModel = Response()
+    var newResults = [Recipe]()
+    for recipe in recipes {
+      guard let diets = recipe.diets else { return }
+      for diet in diets {
+        if options.contains(diet) {
+          newResults.append(recipe)
+          newModel.results = newResults
+          self.model = newModel
+        }
+      }
+    }
+    self.recipeCollection.reloadData()
+  }
+  
+  func filterIntolerances(for options: [String]) {
+    var newModel = Response()
+    var newResults = [Recipe]()
+    guard let recipes = model.results else { return }
+    for recipe in recipes {
+      guard let allergens = recipe.intolerances else { return }
+      for allergen in allergens {
+        if options.contains(allergen.rawValue) {
+          newResults.append(recipe)
+          newModel.results = newResults
+          self.model = newModel
+
+        }
+      }
+    }
+  }
+  
+  func filterMacros(_ options: [String: Int], by: String) {
+    guard let recipes = model.results else { return }
+    for recipe in recipes {
+      print(recipe)
+    }
+  }
+  
+  func filterMealTypes(for options: [String]) {
+    var newModel = Response()
+    var newResults = [Recipe]()
+    guard let recipes = model.results else { return }
+    for recipe in recipes {
+      guard let dishTypes = recipe.dishTypes else { return }
+      for dishType in dishTypes {
+        if options.contains(dishType.rawValue) {
+          newResults.append(recipe)
+          newModel.results = newResults
+          self.model = newModel
+        }
+      }
+    }
+    self.recipeCollection.reloadData()
+  }
+  
+}// End of Extension

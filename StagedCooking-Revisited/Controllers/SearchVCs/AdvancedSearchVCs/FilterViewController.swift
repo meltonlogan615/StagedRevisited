@@ -6,35 +6,42 @@
 //
 
 import UIKit
+import SwiftUI
+
 
 /**
  Generic `OptionViewController`. Will recieve the view based on the `didSelectItemAt` method in `AdvancedSearchViewController`.
  
  
  */
-class OptionViewController: UIViewController {
+class FilterViewController: UIViewController {
   
-  var sourceVC = UIViewController()
   
   let optionLabel = UILabel()
   var optionView = AdvancedSearch()
   let saveButton = ActionButton()
   
   var viewTitle = String()
-  var viewOptions = [FilterViews.RawValue]()
-  var optionViewSwitches = [ToggleSwitch: Bool]()
+  var switches = [ToggleSwitch]()
+//  var viewOptions = [FilterViews.RawValue]()
+//  var optionViewSwitches = [ToggleSwitch: Bool]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     optionLabel.addKerning(to: viewTitle.capitalized)
     view.backgroundColor = K.primary
-    self.activateSwitches(optionView)
     style()
     layout()
+    activateSwitches()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    // something
   }
 }
 
-extension OptionViewController {
+
+extension FilterViewController {
   func style() {
     optionLabel.translatesAutoresizingMaskIntoConstraints = false
     optionLabel.font = .preferredFont(forTextStyle: .largeTitle)
@@ -74,66 +81,31 @@ extension OptionViewController {
   }
 }
 
-extension OptionViewController {
-  @objc func saveButtonTapped(_ view: AdvancedSearch) {
-    switch view {
-      case is CuisinesView:
-        break
-      case is DietsView:
-        break
-      case is IntolerancesView:
-        break
-//      case is AdvancedMacrosView:
-//        let view = AdvancedMacrosView()
-//        break
-      case is MealTypesView:
-        break
-      default:
-        break
-    }
+extension FilterViewController {
+  @objc func saveButtonTapped() {
     self.dismiss(animated: true)
   }
 }
 
-extension OptionViewController {
-  ///   `switch-case`  based on the information sent  from `AdvancesSearchViewController`
-  func activateSwitches(_ view: AdvancedSearch) {
-    switch view {
-        
-      case is CuisinesView:
-        for option in Cuisine.allCases {
-          viewOptions.append(option.rawValue)
+extension FilterViewController {
+  func activateSwitches() {
+    for row in optionView.detailsStack.arrangedSubviews {
+      for stack in row.subviews {
+        for elements in stack.subviews {
+          if elements.tag % 2 == 0 && elements.tag != 0 {
+            do {
+              let toggle = elements as! ToggleSwitch
+              toggle.addTarget(self, action: #selector(didToggle), for: .valueChanged)
+            }
+          }
         }
-        
-      case is DietsView:
-        for option in Diet.allCases {
-          viewOptions.append(option.rawValue)
-        }
-        
-      case is IntolerancesView:
-        for option in Intolerances.allCases {
-          viewOptions.append(option.rawValue)
-        }
-        
-      // MARK: - Still not entirely sure how to handle this one...
-//      case is AdvancedMacrosView:
-        
-//        activateButtons()
-        
-      case is MealTypesView:
-        for option in MealType.allCases {
-          viewOptions.append(option.rawValue)
-        }
-        
-      default:
-        break
+      }
     }
+  }
+  
+  @objc func didToggle() {
+    print("yup")
   }
 }
 
-extension OptionViewController {
-  private func activateButtons() {
-    print("loaded")
-  }
-}
 

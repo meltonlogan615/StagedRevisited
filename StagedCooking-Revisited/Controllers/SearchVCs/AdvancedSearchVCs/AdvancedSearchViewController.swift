@@ -96,22 +96,22 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension AdvancedSearchViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let selectedVC = OptionViewController()
+    let selectedVC = FilterViewController()
 
     /// `switch-case` though `indexPath.item` to set the `OptionViewController.optionView`'s correct view & `title`.
     switch indexPath.item {
       case 0:
-        selectedVC.optionView = CuisinesView()
+//        selectedVC.optionView = CuisinesView()
         selectedVC.viewTitle = "Cuisines"
         present(selectedVC, animated: true)
         
       case 1:
-        selectedVC.optionView = DietsView()
+//        selectedVC.optionView = DietsView()
         selectedVC.viewTitle = "Diets"
         present(selectedVC, animated: true)
 
       case 2:
-        selectedVC.optionView = IntolerancesView()
+//        selectedVC.optionView = IntolerancesView()
         selectedVC.viewTitle = "Intolerances"
         present(selectedVC, animated: true)
 
@@ -121,7 +121,7 @@ extension AdvancedSearchViewController: UICollectionViewDelegate {
         present(selected, animated: true)
 
       case 4:
-        selectedVC.optionView = MealTypesView()
+//        selectedVC.optionView = MealTypesView()
         selectedVC.viewTitle = "Meal Types"
         present(selectedVC, animated: true)
       

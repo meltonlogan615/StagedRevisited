@@ -45,9 +45,7 @@
 		3221EF67283449E400A6FCCD /* MealType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF66283449E400A6FCCD /* MealType.swift */; };
 		3221EF6928344A9800A6FCCD /* AdvancedMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF6828344A9800A6FCCD /* AdvancedMacros.swift */; };
 		3221EF6B28344E9900A6FCCD /* IntolerancesSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF6A28344E9900A6FCCD /* IntolerancesSearch.swift */; };
-		3221EF6D28349C2300A6FCCD /* AdvancedMacrosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF6C28349C2300A6FCCD /* AdvancedMacrosView.swift */; };
 		3221EF6F28349D1700A6FCCD /* MacrosTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF6E28349D1700A6FCCD /* MacrosTextField.swift */; };
-		3221EF712834A19D00A6FCCD /* DietsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF702834A19D00A6FCCD /* DietsView.swift */; };
 		3221EF732834A47F00A6FCCD /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF722834A47F00A6FCCD /* ActionButton.swift */; };
 		3221EF7A283511AC00A6FCCD /* EnumOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF79283511AC00A6FCCD /* EnumOptions.swift */; };
 		3221EF7D28352F5700A6FCCD /* IntolerantMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF7C28352F5700A6FCCD /* IntolerantMethod.swift */; };
@@ -68,9 +66,8 @@
 		326F9F9D282216C60086BA53 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F9C282216C60086BA53 /* RecipeView.swift */; };
 		326F9FA1282223EB0086BA53 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9FA0282223EB0086BA53 /* RecipeViewController.swift */; };
 		326F9FA32822298F0086BA53 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9FA22822298F0086BA53 /* ModalViewController.swift */; };
-		3272D3C52844823600D168BB /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272D3C42844823600D168BB /* OptionViewController.swift */; };
+		3272D3C52844823600D168BB /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272D3C42844823600D168BB /* FilterViewController.swift */; };
 		3272D3C7284490DD00D168BB /* FilterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272D3C6284490DD00D168BB /* FilterOptions.swift */; };
-		3272D3C9284494B500D168BB /* MealTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272D3C8284494B500D168BB /* MealTypesView.swift */; };
 		3272D3CB28452C9900D168BB /* UIView-DidToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272D3CA28452C9900D168BB /* UIView-DidToggle.swift */; };
 		32761020282A12C7005346D4 /* MacrosModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276101F282A12C7005346D4 /* MacrosModal.swift */; };
 		32761022282A12D8005346D4 /* SummaryModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32761021282A12D8005346D4 /* SummaryModal.swift */; };
@@ -92,7 +89,7 @@
 		327B5A0B28515750007495AA /* GenerateSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A0A28515750007495AA /* GenerateSummary.swift */; };
 		327B5A132851B2EA007495AA /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A122851B2EA007495AA /* SpinnerViewController.swift */; };
 		327B5A1A2852245E007495AA /* ShowHideSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A192852245E007495AA /* ShowHideSpinner.swift */; };
-		327B5A1D2852F557007495AA /* SortActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A1C2852F557007495AA /* SortActions.swift */; };
+		327B5A1D2852F557007495AA /* SortAndFilterActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A1C2852F557007495AA /* SortAndFilterActions.swift */; };
 		327B5A1F2852F630007495AA /* SwipeActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A1E2852F630007495AA /* SwipeActions.swift */; };
 		327B5A2328541417007495AA /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A2228541417007495AA /* TabViewController.swift */; };
 		327B5A2528541AD1007495AA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A2428541AD1007495AA /* SettingsViewController.swift */; };
@@ -104,7 +101,6 @@
 		329C097A28374CED00CECE6C /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C097928374CED00CECE6C /* LandingViewController.swift */; };
 		329C097C28374D2800CECE6C /* TextOnlyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C097B28374D2800CECE6C /* TextOnlyButton.swift */; };
 		329F377E28336357004A758D /* AdvancedSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F377D28336357004A758D /* AdvancedSearch.swift */; };
-		329F378128336432004A758D /* IntolerancesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F378028336432004A758D /* IntolerancesView.swift */; };
 		329F3783283368E8004A758D /* AdvancedSearchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F3782283368E8004A758D /* AdvancedSearchRow.swift */; };
 		329F37882833C39F004A758D /* ToggleSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F37872833C39F004A758D /* ToggleSwitch.swift */; };
 		329F378A2833C404004A758D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F37892833C404004A758D /* Constants.swift */; };
@@ -127,7 +123,7 @@
 		32E191722860E62700743E36 /* MacrosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E191712860E62700743E36 /* MacrosViewController.swift */; };
 		32E191762862048900743E36 /* MacroPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E191752862048900743E36 /* MacroPickerView.swift */; };
 		32E1917828635BB100743E36 /* IncludeExcludeSeg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E1917728635BB100743E36 /* IncludeExcludeSeg.swift */; };
-		32ED32C42837C5840045F41A /* CuisinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32ED32C32837C5840045F41A /* CuisinesView.swift */; };
+		32E1917A286420F000743E36 /* UIView-ActivitySpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E19179286420F000743E36 /* UIView-ActivitySpinner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -171,9 +167,7 @@
 		3221EF66283449E400A6FCCD /* MealType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealType.swift; sourceTree = "<group>"; };
 		3221EF6828344A9800A6FCCD /* AdvancedMacros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedMacros.swift; sourceTree = "<group>"; };
 		3221EF6A28344E9900A6FCCD /* IntolerancesSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntolerancesSearch.swift; sourceTree = "<group>"; };
-		3221EF6C28349C2300A6FCCD /* AdvancedMacrosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedMacrosView.swift; sourceTree = "<group>"; };
 		3221EF6E28349D1700A6FCCD /* MacrosTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosTextField.swift; sourceTree = "<group>"; };
-		3221EF702834A19D00A6FCCD /* DietsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietsView.swift; sourceTree = "<group>"; };
 		3221EF722834A47F00A6FCCD /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		3221EF79283511AC00A6FCCD /* EnumOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumOptions.swift; sourceTree = "<group>"; };
 		3221EF7C28352F5700A6FCCD /* IntolerantMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntolerantMethod.swift; sourceTree = "<group>"; };
@@ -195,9 +189,8 @@
 		326F9F9C282216C60086BA53 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		326F9FA0282223EB0086BA53 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
 		326F9FA22822298F0086BA53 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
-		3272D3C42844823600D168BB /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
+		3272D3C42844823600D168BB /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		3272D3C6284490DD00D168BB /* FilterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptions.swift; sourceTree = "<group>"; };
-		3272D3C8284494B500D168BB /* MealTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTypesView.swift; sourceTree = "<group>"; };
 		3272D3CA28452C9900D168BB /* UIView-DidToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-DidToggle.swift"; sourceTree = "<group>"; };
 		3276101F282A12C7005346D4 /* MacrosModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosModal.swift; sourceTree = "<group>"; };
 		32761021282A12D8005346D4 /* SummaryModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryModal.swift; sourceTree = "<group>"; };
@@ -219,7 +212,7 @@
 		327B5A0A28515750007495AA /* GenerateSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateSummary.swift; sourceTree = "<group>"; };
 		327B5A122851B2EA007495AA /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		327B5A192852245E007495AA /* ShowHideSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideSpinner.swift; sourceTree = "<group>"; };
-		327B5A1C2852F557007495AA /* SortActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortActions.swift; sourceTree = "<group>"; };
+		327B5A1C2852F557007495AA /* SortAndFilterActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAndFilterActions.swift; sourceTree = "<group>"; };
 		327B5A1E2852F630007495AA /* SwipeActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActions.swift; sourceTree = "<group>"; };
 		327B5A2228541417007495AA /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 		327B5A2428541AD1007495AA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -231,7 +224,6 @@
 		329C097928374CED00CECE6C /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		329C097B28374D2800CECE6C /* TextOnlyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOnlyButton.swift; sourceTree = "<group>"; };
 		329F377D28336357004A758D /* AdvancedSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSearch.swift; sourceTree = "<group>"; };
-		329F378028336432004A758D /* IntolerancesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntolerancesView.swift; sourceTree = "<group>"; };
 		329F3782283368E8004A758D /* AdvancedSearchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSearchRow.swift; sourceTree = "<group>"; };
 		329F37872833C39F004A758D /* ToggleSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleSwitch.swift; sourceTree = "<group>"; };
 		329F37892833C404004A758D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -254,7 +246,7 @@
 		32E191712860E62700743E36 /* MacrosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosViewController.swift; sourceTree = "<group>"; };
 		32E191752862048900743E36 /* MacroPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroPickerView.swift; sourceTree = "<group>"; };
 		32E1917728635BB100743E36 /* IncludeExcludeSeg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncludeExcludeSeg.swift; sourceTree = "<group>"; };
-		32ED32C32837C5840045F41A /* CuisinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisinesView.swift; sourceTree = "<group>"; };
+		32E19179286420F000743E36 /* UIView-ActivitySpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-ActivitySpinner.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -476,7 +468,7 @@
 		322199CF27FA96FD003FD4F6 /* SearchViews */ = {
 			isa = PBXGroup;
 			children = (
-				329F377F283363D8004A758D /* AdvancedSearchViews */,
+				329F377D28336357004A758D /* AdvancedSearch.swift */,
 				322199B727FA6328003FD4F6 /* SearchView.swift */,
 			);
 			path = SearchViews;
@@ -652,6 +644,7 @@
 				3272D3CA28452C9900D168BB /* UIView-DidToggle.swift */,
 				32E0F40B2849AD2A008CA294 /* UILableKerning.swift */,
 				32E1916F285EED4B00743E36 /* SlideAnimation.swift */,
+				32E19179286420F000743E36 /* UIView-ActivitySpinner.swift */,
 			);
 			name = "UIView-Extensions";
 			sourceTree = "<group>";
@@ -727,7 +720,7 @@
 		327B5A1B2852F52A007495AA /* RecipeCollectionExtension */ = {
 			isa = PBXGroup;
 			children = (
-				327B5A1C2852F557007495AA /* SortActions.swift */,
+				327B5A1C2852F557007495AA /* SortAndFilterActions.swift */,
 				327B5A1E2852F630007495AA /* SwipeActions.swift */,
 			);
 			path = RecipeCollectionExtension;
@@ -755,24 +748,11 @@
 			path = AccountVCs;
 			sourceTree = "<group>";
 		};
-		329F377F283363D8004A758D /* AdvancedSearchViews */ = {
-			isa = PBXGroup;
-			children = (
-				329F377D28336357004A758D /* AdvancedSearch.swift */,
-				32ED32C32837C5840045F41A /* CuisinesView.swift */,
-				3221EF702834A19D00A6FCCD /* DietsView.swift */,
-				329F378028336432004A758D /* IntolerancesView.swift */,
-				3221EF6C28349C2300A6FCCD /* AdvancedMacrosView.swift */,
-				3272D3C8284494B500D168BB /* MealTypesView.swift */,
-			);
-			path = AdvancedSearchViews;
-			sourceTree = "<group>";
-		};
 		329F37842833BC19004A758D /* AdvancedSearchVCs */ = {
 			isa = PBXGroup;
 			children = (
 				3221EF882835E89400A6FCCD /* AdvancedSearchViewController.swift */,
-				3272D3C42844823600D168BB /* OptionViewController.swift */,
+				3272D3C42844823600D168BB /* FilterViewController.swift */,
 				32E191712860E62700743E36 /* MacrosViewController.swift */,
 				3221EF7B28352F4300A6FCCD /* AdvancedSearchViewModels */,
 			);
@@ -911,9 +891,9 @@
 				32027D50282A03D900F0F167 /* WeightPerServing.swift in Sources */,
 				32AB724227FFE2CF00AF0E2A /* CardModel.swift in Sources */,
 				322199B627FA62C4003FD4F6 /* ExtendedIngredient.swift in Sources */,
-				3221EF712834A19D00A6FCCD /* DietsView.swift in Sources */,
 				32761040282CB2AC005346D4 /* GeneralInfo.swift in Sources */,
 				324C61F0285D02ED007226D2 /* MessageView.swift in Sources */,
+				32E1917A286420F000743E36 /* UIView-ActivitySpinner.swift in Sources */,
 				327B5A2328541417007495AA /* TabViewController.swift in Sources */,
 				329C097A28374CED00CECE6C /* LandingViewController.swift in Sources */,
 				32027D4A2829F68100F0F167 /* CalorieBreakdown.swift in Sources */,
@@ -944,15 +924,13 @@
 				32D70DC42807565B000328B9 /* CardContainerViewController.swift in Sources */,
 				326F9FA1282223EB0086BA53 /* RecipeViewController.swift in Sources */,
 				327B59FF285155A1007495AA /* ButtonActions.swift in Sources */,
-				32ED32C42837C5840045F41A /* CuisinesView.swift in Sources */,
 				322199C427FA6A55003FD4F6 /* SearchResult.swift in Sources */,
 				327B5A0928515722007495AA /* GenerateMacros.swift in Sources */,
-				329F378128336432004A758D /* IntolerancesView.swift in Sources */,
 				3276102C282B0B4C005346D4 /* SCModal.swift in Sources */,
 				327B5A2528541AD1007495AA /* SettingsViewController.swift in Sources */,
 				322199A027FA5E99003FD4F6 /* EndPoints.swift in Sources */,
 				32289FFF2858EEF700D0BE1D /* APIKeys.swift in Sources */,
-				3272D3C52844823600D168BB /* OptionViewController.swift in Sources */,
+				3272D3C52844823600D168BB /* FilterViewController.swift in Sources */,
 				3221998127FA5DB2003FD4F6 /* AppDelegate.swift in Sources */,
 				322199AC27FA5F75003FD4F6 /* Recipe.swift in Sources */,
 				32761022282A12D8005346D4 /* SummaryModal.swift in Sources */,
@@ -961,7 +939,6 @@
 				32761020282A12C7005346D4 /* MacrosModal.swift in Sources */,
 				3214AC12284B344100474068 /* AccountTextField.swift in Sources */,
 				32027D4E282A038E00F0F167 /* Flavonoid.swift in Sources */,
-				3221EF6D28349C2300A6FCCD /* AdvancedMacrosView.swift in Sources */,
 				3276103B282CA643005346D4 /* MacrosLabelView.swift in Sources */,
 				322199C727FA6BB3003FD4F6 /* ImageURLProtocol.swift in Sources */,
 				3221EF67283449E400A6FCCD /* MealType.swift in Sources */,
@@ -971,7 +948,7 @@
 				32D70DBD28073A80000328B9 /* StagedCardViewController.swift in Sources */,
 				322199BF27FA6567003FD4F6 /* LargeTextField.swift in Sources */,
 				329F37882833C39F004A758D /* ToggleSwitch.swift in Sources */,
-				327B5A1D2852F557007495AA /* SortActions.swift in Sources */,
+				327B5A1D2852F557007495AA /* SortAndFilterActions.swift in Sources */,
 				3221EF612834474300A6FCCD /* Cuisine.swift in Sources */,
 				32289FF9285842C100D0BE1D /* SavedViewController.swift in Sources */,
 				327B5A1A2852245E007495AA /* ShowHideSpinner.swift in Sources */,
@@ -998,7 +975,6 @@
 				322199A927FA5F34003FD4F6 /* ChefDefault.swift in Sources */,
 				326F9F8B281D099C0086BA53 /* IngredientListViewController.swift in Sources */,
 				3221EF7F28355CEE00A6FCCD /* MealTypeMethod.swift in Sources */,
-				3272D3C9284494B500D168BB /* MealTypesView.swift in Sources */,
 				329C096D2836964100CECE6C /* LogInView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
