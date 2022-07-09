@@ -49,7 +49,7 @@ extension RecipeViewController: ModalDataSource {
         present(modal, animated: true)
         
       case "Diets":
-        modal.labelText = "Diets"
+        modal.labelText = "Diets"        
         guard let diets = self.dietInfo else { return }
         let dietsModal = DietsModal(info: diets)
         modal.modalView = dietsModal

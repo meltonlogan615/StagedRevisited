@@ -40,10 +40,11 @@ extension EndPoints {
     guard let query = query else { fatalError("Query Endpoint Failed") }
     guard let filter = filter else { fatalError("Filter Endpoint URL Failed") }
     let formattedQuery = query.replacingOccurrences(of: " ", with: "%20", options: .regularExpression, range: nil)
-    let completedURL = URL(string: "\(baseURL)\(searchType)?apiKey=\(apiKey)&offset=\(offset)&query=\(formattedQuery)&number=1&instructionsRequired=true&addRecipeNutrition=true\(filter)")
+    let completedURL = URL(string: "\(baseURL)\(searchType)?apiKey=\(apiKey)&offset=\(offset)&query=\(formattedQuery)&number=999&instructionsRequired=true&addRecipeNutrition=true&\(filter)")
     guard let url = completedURL else {
       preconditionFailure("Invalid URL: \(String(describing: completedURL))")
     }
+    print(url)
     return url
   }
 }

@@ -54,7 +54,7 @@ struct Recipe: Decodable, Identifiable, Comparable {
 
   // Allergens Missing??
   var intolerances: [Intolerances]?
-  var diets: [String]? // May need to be updated to dedicated type
+  var diets: [Diet]? // May need to be updated to dedicated type
   var vegan: Bool?
   var vegetarian: Bool?
   var dairyFree: Bool?

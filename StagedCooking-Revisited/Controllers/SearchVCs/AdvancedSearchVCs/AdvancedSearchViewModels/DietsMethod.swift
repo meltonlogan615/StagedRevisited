@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-  func dietaryRestrictions(from choices: [Diet]) -> String {
+  func dietaryRestrictions(from choices: [String]) -> String {
     var resultString = "diet="
     switch choices.count {
         
@@ -19,12 +19,12 @@ extension UIViewController {
         
         // One Intolerance Selected
       case 1:
-        if choices[0].rawValue.contains(" ") {
-          if let formatted = choices[0].rawValue.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) {
+        if choices[0].contains(" ") {
+          if let formatted = choices[0].addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) {
             resultString += formatted
           }
         } else {
-          resultString += choices[0].rawValue.localizedLowercase
+          resultString += choices[0].localizedLowercase
         }
         
         // Multiple Intoerances Selected
@@ -36,25 +36,25 @@ extension UIViewController {
   }
   
   // Method for dealing with Mutliple Selected
-  fileprivate func compileString(from choices: [Diet]) -> String {
-    var allAllergens = String()
+  fileprivate func compileString(from choices: [String]) -> String {
+    var allDiets = String()
     
     // Loop through selection
     for choice in choices {
       
-      let chosen = choice.rawValue
+      let chosen = choice
       
       if chosen.contains(" ") {
         if let diet = chosen.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) {
-          allAllergens += "\(diet)"
+          allDiets += "\(diet)"
         }
       } else {
-        allAllergens += "\(chosen)"
+        allDiets += "\(chosen)"
       }
       if choice != choices.last {
-        allAllergens += ","
+        allDiets += ","
       }
     }
-    return allAllergens
+    return allDiets
   }
 }
