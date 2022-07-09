@@ -36,13 +36,19 @@ class RecipeListCollectionView: UIViewController {
   
   let spinner = SpinnerViewController()
   var dataprovider = DataProvider()
-  var model = Response()
+  
+  var model = Response() {
+    didSet {
+      self.recipeCollection.reloadData()
+    }
+  }
 
   var searchedRecipe = String()
   var cellTitle = String()
   
-  var additionalFilters = String()
-  
+//  var additionalFilters = String()
+  var modelFilters = [String]()
+    
   let recipeCollection: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     var recipeCollection = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -51,9 +57,6 @@ class RecipeListCollectionView: UIViewController {
     return recipeCollection
   }()
   
-  override func viewWillAppear(_ animated: Bool) {
-    recipeCollection.reloadData()
-  }
   override func viewDidLoad() {
     super.viewDidLoad()
     loadRecipes(for: searchedRecipe)
@@ -67,8 +70,8 @@ class RecipeListCollectionView: UIViewController {
     style()
     layout()
   }
-  
 }
+
 // MARK: - Styling & Layout
 extension RecipeListCollectionView {
   func style() {
@@ -123,6 +126,7 @@ extension RecipeListCollectionView: UICollectionViewDelegate {
     recipeVC.recipeID = selectedID
     recipeVC.recipeTitle = selectedTitle.capitalized
     recipeVC.recipeImage = img.loadImageToPass(url: recipeImage)
+    recipeVC.modalPresentationStyle = .fullScreen
     
     ChefDefault.addToViewed(recipeID: String(selectedID), recipeTitle: selectedTitle)
 //    ChefDefault.viewedRecipes[selectedID] = selectedTitle
@@ -130,7 +134,7 @@ extension RecipeListCollectionView: UICollectionViewDelegate {
 //    ChefDefault.defaults.object(forKey: <#T##String#>)
 //    ChefDefault.saveChanges()
     
-    navigationController?.pushViewController(recipeVC, animated: true)
+    present(recipeVC, animated: true)
   }
 }
 
@@ -156,7 +160,7 @@ extension RecipeListCollectionView: UICollectionViewDelegateFlowLayout {
 
 // MARK: - Networking, Spoonacular ComplexSearch
 
-extension RecipeListCollectionView: FilteredSearch {
+extension RecipeListCollectionView: Filterable {
   // MARK: - Regular Search
   func loadRecipes(for recipe: String) {
     showActivity()
@@ -170,7 +174,7 @@ extension RecipeListCollectionView: FilteredSearch {
           self.noResults(for: recipe)
           
           // total number of results
-          guard let totalCount = self.model.totalResults else { return }
+          guard let totalCount = self.model.results?.count else { return }
           self.title = "\(self.searchedRecipe.capitalized) (\(totalCount))"
           
         case .failure(let error):
@@ -180,20 +184,24 @@ extension RecipeListCollectionView: FilteredSearch {
     }
   }
   
-  // MARK: - Filtered Search
+//   MARK: - Filtered Search - Will be based on ChefDefault Preferences
   func filterRecipes(for recipe: String, with options: String) {
-    dataprovider.getFilteredRecipes(for: recipe, with: options) { (foodResult: Result<Response, Error>) in
-//      guard let self = self else { return }
+    print("0")
+    dataprovider.getFilteredRecipes(for: recipe, with: options) { [weak self] (foodResult: Result<Response, Error>) in
+      print("1")
+      guard let self = self else { return }
+      print("2")
+
       switch foodResult {
         case .success(let model):
           self.model = model as Response
           // if there are no results for the searched phrase, display alert
           self.noResults(for: recipe)
-          
+
           // total number of results
           guard let totalCount = self.model.totalResults else { return }
           self.title = "\(self.searchedRecipe.capitalized) (\(totalCount))"
-          
+
         case .failure(let error):
           print(error)
       }
@@ -249,8 +257,6 @@ extension RecipeListCollectionView {
     }
   }
 }
-
-
 
 
 

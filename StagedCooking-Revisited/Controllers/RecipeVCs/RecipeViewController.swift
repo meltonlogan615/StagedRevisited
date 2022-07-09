@@ -117,15 +117,19 @@ extension RecipeViewController: RecipeByID {
   func loadRecipeByID(for selectedRecipe: Int) {
     dataprovider.getRecipeByID(for: selectedRecipe) { [weak self] (foodResult: Result<Recipe, Error>) in
       guard let self = self else { return }
+    
+      
       switch foodResult {
         case .success(let model):
           DispatchQueue.main.async { [self] in
             guard let selectedRecipe = model as Recipe? else { return }
             self.setProperties(for: selectedRecipe)
+            self.dietInfo = DietInfo(from: selectedRecipe)
+//            self.generateDietsInfo(for: selectedRecipe)
+            
             self.generateIngredientsList(for: selectedRecipe)
             self.generateSummary(for: selectedRecipe)
             self.generateMacrosModel(for: selectedRecipe)
-            self.generateDietsInfo(for: selectedRecipe)
           }
         case .failure(let error):
           print("recipe error:", error)
@@ -151,12 +155,6 @@ extension RecipeViewController {
   }
 }
 
-//extension RecipeViewController {
-//  func addToViewed(vieweId: Int, viewedTitle: String) {
-//    ChefDefault.viewedRecipes[vieweId] = viewedTitle
-//    ChefDefault.saveChanges()
-//  }
-//}
 
 extension RecipeViewController {
   func setLeftBarButton(_ sender: ListVCs) {
