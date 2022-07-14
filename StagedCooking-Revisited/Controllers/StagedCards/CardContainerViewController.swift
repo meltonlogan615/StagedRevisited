@@ -12,7 +12,7 @@ import UIKit
 
 
 protocol CardBuilder: AnyObject {
-  func buildCards(ingredients: [String], instructionsDictionary: [Int: String], ingredientDictionary: [Int: [String]]) -> [Card]
+  func buildCards(ingredients: Ingredients, instructionsDictionary: [Int: String], ingredientDictionary: [Int: [String]]) -> [Card]
 }
 
 /// Acts as a holder for the StagedCardViewControllers
@@ -28,7 +28,7 @@ class StagedCardContainerViewController: UIViewController {
   
   var cards = [Card]() //
   var recipe = Recipe()
-  var ingredientList = [String]()
+  var ingredientList: Ingredients?
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)

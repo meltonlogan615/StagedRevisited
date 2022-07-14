@@ -204,12 +204,12 @@ extension MacrosViewController {
   }
   
   @objc func saveButtonTapped() {
-    let filteredList = RecipeListCollectionView()
-    for option in addedOptionsForSearch {
-      additionalFilters += "&\(option)"
-    }
-    filteredList.additionalFilters = self.additionalFilters
-    filteredList.filterRecipes(for: searchedRecipe, with: additionalFilters)
+//    let filteredList = RecipeListCollectionView()
+//    for option in addedOptionsForSearch {
+//      additionalFilters += "&\(option)"
+//    }
+//    filteredList.additionalFilters = self.additionalFilters
+//    filteredList.filterRecipes(for: searchedRecipe, with: additionalFilters)
     self.dismiss(animated: true)
   }
 }

@@ -16,15 +16,26 @@ import Foundation
   - value in `generateIngredientsList(for selectedRecipe: Recipe)` to create `ingredientsList`.
  */
 struct ExtendedIngredient: Codable, Hashable, Identifiable {
-  var id: Int? 
-  var name: String?
   var aisle: String?
-  var image: String?
   var amount: Double?
-  var consistency: String? 
+  var consistency: String?
+  var id: Int?
+  var image: String?
+  var measures: Measures?
   var meta: [String]?
+  var name: String?
 
   var nameClean: String?
   var original: String?
   var originalName: String?
+}
+
+struct Measures: Codable, Hashable {
+  var metric, us: Unit?
+}
+
+struct Unit: Codable, Hashable {
+  var amount: Double?
+  var unitLong: String?
+  var unitShort: String?
 }

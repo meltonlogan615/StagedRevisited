@@ -30,6 +30,7 @@ class DietsModal: SCModal {
   var veryHealthyLabel = SCLabel()
   var healthScoreLabel = SCLabel()
   var wwSmartPointsLabel = SCLabel()
+  let divider = Divider()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -54,6 +55,7 @@ extension DietsModal {
   func styleDietLabels(with info: DietInfo) {
     dietsLabel.translatesAutoresizingMaskIntoConstraints = false
     dietsLabel.text = info.diets
+    dietsLabel.tag = 0
 
     veryHealthyLabel.translatesAutoresizingMaskIntoConstraints = false
     veryHealthyLabel.text = info.veryHealthy
@@ -84,13 +86,24 @@ extension DietsModal {
     
     wwSmartPointsLabel.translatesAutoresizingMaskIntoConstraints = false
     wwSmartPointsLabel.text = info.wwSmartPoints
+    
+    divider.translatesAutoresizingMaskIntoConstraints = false
   }
   
   func layoutDietLabels(with info: DietInfo) {
+    
     detailsStack.addArrangedSubview(dietsLabel)
+    detailsStack.addArrangedSubview(divider)
+    
     detailsStack.addArrangedSubview(veryHealthyLabel)
+    detailsStack.addArrangedSubview(divider)
+
     detailsStack.addArrangedSubview(healthScoreLabel)
+    detailsStack.addArrangedSubview(divider)
+
     detailsStack.addArrangedSubview(whole30Label)
+    detailsStack.addArrangedSubview(divider)
+
     detailsStack.addArrangedSubview(veganLabel)
     detailsStack.addArrangedSubview(veganLabel)
     detailsStack.addArrangedSubview(dairyFreeLabel)

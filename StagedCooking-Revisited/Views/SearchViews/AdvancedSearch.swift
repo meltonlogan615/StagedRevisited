@@ -22,25 +22,18 @@ class AdvancedSearch: UIView {
   var detailsStack = UIStackView()
   
   var allOptions = [String]()
+  var selectedOptions = [String]()
   var switches = [Int: Bool]()
-
+  
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     style()
     layout()
   }
-
+  
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
-  }
-  
-  deinit {
-    for (key, value) in switches {
-      if value {
-        print(key)
-      }
-    }
   }
 }
 
@@ -88,121 +81,123 @@ extension AdvancedSearch {
 
 extension AdvancedSearch {
   func layoutCuisines() {
-    var rowTag = 2
+    var tag = -1
     for option in Cuisine.allCases {
       let row = AdvancedSearchRow()
       row.translatesAutoresizingMaskIntoConstraints = false
       
       let label = LargeLabel()
+      let optionText = "\(option.rawValue.localizedCapitalized)"
       label.translatesAutoresizingMaskIntoConstraints = false
-      label.text = "\(option.rawValue.localizedCapitalized)"
+      label.text = optionText
+      allOptions.append(optionText)
       
-      let toggle = IncludeExcludeSeg()
-      toggle.translatesAutoresizingMaskIntoConstraints = false
-      toggle.tag = rowTag
+      let seg = IncludeExcludeSeg()
+      seg.translatesAutoresizingMaskIntoConstraints = false
+      seg.tag = tag
       
       let divider = Divider()
       divider.translatesAutoresizingMaskIntoConstraints = false
       
-      row.includeStack.addArrangedSubview(label)
-      row.includeStack.addArrangedSubview(toggle)
+      row.rowStack.addArrangedSubview(label)
+      row.rowStack.addArrangedSubview(seg)
       
       detailsStack.addArrangedSubview(row)
       detailsStack.addArrangedSubview(divider)
       
-      rowTag += 2
+      tag -= 1
     }
   }
 }
 
 extension AdvancedSearch {
   func layoutDiets() {
-    var rowTag = 2
+    var rowTag = 1
     for option in Diet.allCases {
       let row = AdvancedSearchRow()
       row.translatesAutoresizingMaskIntoConstraints = false
       
-      let rowLabel = LargeLabel()
-      rowLabel.translatesAutoresizingMaskIntoConstraints = false
-      rowLabel.text = option.rawValue.localizedCapitalized
+      let label = LargeLabel()
+      let optionText = "\(option.rawValue.localizedCapitalized)"
+      label.translatesAutoresizingMaskIntoConstraints = false
+      label.text = optionText
+      allOptions.append(optionText)
       
-      let excludeToggle = ToggleSwitch()
-      excludeToggle.translatesAutoresizingMaskIntoConstraints = false
-      excludeToggle.tag = rowTag
+      let toggle = ToggleSwitch()
+      toggle.translatesAutoresizingMaskIntoConstraints = false
+      toggle.tag = rowTag
       
       let divider = Divider()
       divider.translatesAutoresizingMaskIntoConstraints = false
       
-      row.excludeStack.addArrangedSubview(rowLabel)
-      row.excludeStack.addArrangedSubview(excludeToggle)
+      row.rowStack.addArrangedSubview(label)
+      row.rowStack.addArrangedSubview(toggle)
       
       detailsStack.addArrangedSubview(row)
       detailsStack.addArrangedSubview(divider)
       
-      rowTag += 2
+      rowTag += 1
     }
   }
 }
 
 extension AdvancedSearch {
   func layoutIntolerances() {
-    var rowTag = 2
+    var rowTag = 1
     for option in Intolerances.allCases {
       let row = AdvancedSearchRow()
       
-      let rowLabel = LargeLabel()
-      rowLabel.translatesAutoresizingMaskIntoConstraints = false
-      rowLabel.text = option.rawValue.localizedCapitalized
-      rowLabel.tag = rowTag
+      let label = LargeLabel()
+      let optionText = "\(option.rawValue.localizedCapitalized)"
+      label.translatesAutoresizingMaskIntoConstraints = false
+      label.text = optionText
+      allOptions.append(optionText)
       
-      let excludeToggle = ToggleSwitch()
-      excludeToggle.translatesAutoresizingMaskIntoConstraints = false
-      excludeToggle.tag = rowTag
-
+      let toggle = ToggleSwitch()
+      toggle.translatesAutoresizingMaskIntoConstraints = false
+      toggle.tag = rowTag
       
       let divider = Divider()
       divider.translatesAutoresizingMaskIntoConstraints = false
       
-      row.excludeStack.addArrangedSubview(rowLabel)
-      row.excludeStack.addArrangedSubview(excludeToggle)
+      row.rowStack.addArrangedSubview(label)
+      row.rowStack.addArrangedSubview(toggle)
       
       detailsStack.addArrangedSubview(row)
       detailsStack.addArrangedSubview(divider)
       
-      rowTag += 2
+      rowTag += 1
     }
   }
 }
 
 extension AdvancedSearch {
-func layoutMealTypes() {
-    var rowTag = 2
+  func layoutMealTypes() {
+    var rowTag = 1
     for option in MealType.allCases {
       let row = AdvancedSearchRow()
       row.translatesAutoresizingMaskIntoConstraints = false
       
-      let includeLabel = LargeLabel()
-      includeLabel.translatesAutoresizingMaskIntoConstraints = false
-      includeLabel.text = option.rawValue.localizedCapitalized
+      let label = LargeLabel()
+      let optionText = "\(option.rawValue.localizedCapitalized)"
+      label.translatesAutoresizingMaskIntoConstraints = false
+      label.text = optionText
+      allOptions.append(optionText)
       
-      
-      let includeToggle = ToggleSwitch()
-      includeToggle.translatesAutoresizingMaskIntoConstraints = false
-      includeToggle.tag = rowTag
+      let toggle = ToggleSwitch()
+      toggle.translatesAutoresizingMaskIntoConstraints = false
+      toggle.tag = rowTag
       
       let divider = Divider()
       divider.translatesAutoresizingMaskIntoConstraints = false
       
-      row.includeStack.addArrangedSubview(includeLabel)
-      row.includeStack.addArrangedSubview(includeToggle)
+      row.rowStack.addArrangedSubview(label)
+      row.rowStack.addArrangedSubview(toggle)
       
       detailsStack.addArrangedSubview(row)
       detailsStack.addArrangedSubview(divider)
       
-      rowTag += 2
+      rowTag += 1
     }
   }
 }
-
-
-

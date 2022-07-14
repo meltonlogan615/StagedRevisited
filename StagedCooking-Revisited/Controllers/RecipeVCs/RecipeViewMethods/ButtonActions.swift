@@ -32,7 +32,8 @@ extension RecipeViewController: ModalDataSource {
     switch senderTitle {
       case "Ingredients":
         modal.labelText = "Ingredients"
-        let ingredientsModal = IngredientsModal(ingredients: self.ingredientList)
+        guard let ingredients = self.ingredientList else { return }
+        let ingredientsModal = IngredientsModal(ingredients: ingredients)
         modal.modalView = ingredientsModal
         present(modal, animated: true)
         
@@ -44,12 +45,13 @@ extension RecipeViewController: ModalDataSource {
         
       case "Nutrition":
         modal.labelText = "Nutrition"
-        let macrosModal = MacrosModal(macros: self.macros)
+        guard let macros = self.macros else { return }
+        let macrosModal = MacrosModal(macros: macros)
         modal.modalView = macrosModal
         present(modal, animated: true)
         
       case "Diets":
-        modal.labelText = "Diets"
+        modal.labelText = "Diets"        
         guard let diets = self.dietInfo else { return }
         let dietsModal = DietsModal(info: diets)
         modal.modalView = dietsModal
@@ -63,7 +65,8 @@ extension RecipeViewController: ModalDataSource {
   // MARK: - Start Cooking Button Pressed
   /// Creates the `Card`s that will be used in the `StagedCardContainerViewController`, and then presents the Container
   @objc func startCookingButtonTapped(_ sender: UIButton) {
-    let cards = buildCards(ingredients: ingredientList, instructionsDictionary: stepInstructions, ingredientDictionary: stepIngredients)
+    guard let ingredients = ingredientList else { return }
+    let cards = buildCards(ingredients: ingredients, instructionsDictionary: stepInstructions, ingredientDictionary: stepIngredients)
     let stagesVC = StagedCardContainerViewController()
 
     stagesVC.recipe = recipe

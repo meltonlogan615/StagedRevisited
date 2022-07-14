@@ -29,7 +29,7 @@ class StagedCardViewController: UIViewController {
   
   // MARK: - Ingredients
   let ingredientsStack = UIStackView()
-  var ingredients = [String]()
+  var ingredients: Ingredients?
 
   let dividerView = Divider()
   
@@ -45,7 +45,7 @@ class StagedCardViewController: UIViewController {
   }
   
   /// intializer used inorder to create an array of VCs.
-  init(recipeName: String, cardCounter: Int, ingredients: [String], instructions: String) {
+  init(recipeName: String, cardCounter: Int, ingredients: Ingredients, instructions: String) {
     self.nameAndStepNumberLabel.text = "\(recipeName.capitalized)\nStage \(cardCounter)"
     self.directionsLabel.text = "\(instructions)"
     self.cardCounter = cardCounter
@@ -136,6 +136,7 @@ extension StagedCardViewController {
     ])
 
     // Looping through [ingredients] to generate LargeLabels and place them into ingredientsStack
+    guard let ingredients = ingredients?.ingredients else { return }
     if ingredients.isEmpty {
       let ingredientLine = LargeLabel()
       ingredientsStack.addArrangedSubview(ingredientLine)
@@ -146,7 +147,7 @@ extension StagedCardViewController {
         let ingredientLine = LargeLabel()
         ingredientsStack.addArrangedSubview(ingredientLine)
         ingredientLine.translatesAutoresizingMaskIntoConstraints = false
-        ingredientLine.text = ingredients[i].capitalized
+        ingredientLine.text = ingredients[i].nameClean?.capitalized ?? ""
       }
     }
     

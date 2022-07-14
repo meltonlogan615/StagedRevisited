@@ -15,8 +15,7 @@ import UIKit
  - If either does not have values assigned, they are not rendered.
  */
 class AdvancedSearchRow: UIStackView {
-  let includeStack = UIStackView()
-  let excludeStack = UIStackView()
+  let rowStack = UIStackView()
   override init(frame: CGRect) {
     super.init(frame: frame)
     
@@ -24,17 +23,12 @@ class AdvancedSearchRow: UIStackView {
     axis = .vertical
     spacing = 8
 //    distribution = .fillProportionally
+        
+    rowStack.translatesAutoresizingMaskIntoConstraints = false
+    rowStack.axis = .horizontal
+    rowStack.distribution = .equalSpacing
     
-    includeStack.translatesAutoresizingMaskIntoConstraints = false
-    includeStack.axis = .horizontal
-    includeStack.distribution = .equalSpacing
-    
-    excludeStack.translatesAutoresizingMaskIntoConstraints = false
-    excludeStack.axis = .horizontal
-    excludeStack.distribution = .equalSpacing
-    
-    addArrangedSubview(includeStack)
-    addArrangedSubview(excludeStack)
+    addArrangedSubview(rowStack)
   }
   
   required init(coder: NSCoder) {

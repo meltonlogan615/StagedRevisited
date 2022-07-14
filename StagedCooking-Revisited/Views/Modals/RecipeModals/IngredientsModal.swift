@@ -16,7 +16,10 @@ import UIKit
 class IngredientsModal: SCModal {
   
   // MARK: - Ingredient Properties
-  var ingredients = [String]()
+  var ingredients: Ingredients?
+  var name = String()
+  var amount = Double()
+  var unit = String()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -25,7 +28,7 @@ class IngredientsModal: SCModal {
     layout()
   }
   
-  convenience init(ingredients: [String]) {
+  convenience init(ingredients: Ingredients) {
     self.init()
     self.ingredients = ingredients
     generateIngredientLabels()
@@ -38,11 +41,25 @@ class IngredientsModal: SCModal {
 
 extension IngredientsModal {
   func generateIngredientLabels() {
-    for i in 0 ..< ingredients.count {
+    guard let allIngredients = ingredients else { return }
+    let labelIngredients = allIngredients.ingredients
+    for i in 0 ..< labelIngredients.count {
+      guard let name = labelIngredients[i].nameClean else { return }
+      print(name)
+      guard let measure = labelIngredients[i].measures else {
+        print(labelIngredients[i])
+        return }
+      print(measure)
+      guard let us = measure.us else { return }
+      guard let usAmount = us.amount else { return }
+      guard let usShort = us.unitShort else { return }
+      guard let metric = measure.metric else { return }
+      guard let metricAmount = metric.amount else { return }
+      guard let metricShort = metric.unitShort else { return }
       let ingredientLine = LargeLabel()
-      let divder = Divider()
       ingredientLine.translatesAutoresizingMaskIntoConstraints = false
-      ingredientLine.text = ingredients[i].capitalized
+      ingredientLine.text = "\(usAmount) \(usShort.capitalized) (\(metricAmount) \(metricShort)) \(name.capitalized)"
+      let divder = Divider()
       detailsStack.addArrangedSubview(ingredientLine)
       detailsStack.addArrangedSubview(divder)
     }

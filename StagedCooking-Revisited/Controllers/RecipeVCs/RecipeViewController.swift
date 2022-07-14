@@ -35,8 +35,8 @@ class RecipeViewController: UIViewController {
   var nutrition = [String]()
   
   // Ingredients
-  var extendedIngredients = [ExtendedIngredient]()
-  var ingredientList = [String]()
+  var extendedIngredients: Ingredients?
+  var ingredientList: Ingredients?
   var stepIngredients = [Int: [String]]()
   
   // Instructions
@@ -45,7 +45,7 @@ class RecipeViewController: UIViewController {
   var stepInstructions = [Int: String]()
   
   // Macronutrients
-  var macros = [Macros]()
+  var macros: Macros?
   var generalInfo: GeneralInfo?
   var dietInfo: DietInfo?
   
@@ -117,15 +117,21 @@ extension RecipeViewController: RecipeByID {
   func loadRecipeByID(for selectedRecipe: Int) {
     dataprovider.getRecipeByID(for: selectedRecipe) { [weak self] (foodResult: Result<Recipe, Error>) in
       guard let self = self else { return }
+    
+      
       switch foodResult {
         case .success(let model):
           DispatchQueue.main.async { [self] in
             guard let selectedRecipe = model as Recipe? else { return }
+            guard let image = selectedRecipe.image else { return }
+            self.recipeView.mainImage.loadImage(url: image)
+                    
             self.setProperties(for: selectedRecipe)
-            self.generateIngredientsList(for: selectedRecipe)
+            self.ingredientList = Ingredients(from: selectedRecipe)
+            self.dietInfo = DietInfo(from: selectedRecipe)
+            self.generalInfo = GeneralInfo(from: selectedRecipe)
             self.generateSummary(for: selectedRecipe)
-            self.generateMacrosModel(for: selectedRecipe)
-            self.generateDietsInfo(for: selectedRecipe)
+            self.macros = Macros(from: selectedRecipe)
           }
         case .failure(let error):
           print("recipe error:", error)
@@ -151,12 +157,6 @@ extension RecipeViewController {
   }
 }
 
-//extension RecipeViewController {
-//  func addToViewed(vieweId: Int, viewedTitle: String) {
-//    ChefDefault.viewedRecipes[vieweId] = viewedTitle
-//    ChefDefault.saveChanges()
-//  }
-//}
 
 extension RecipeViewController {
   func setLeftBarButton(_ sender: ListVCs) {

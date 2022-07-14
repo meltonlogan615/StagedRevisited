@@ -29,4 +29,6 @@ struct Response: Decodable {
   var processingTimeMs: Int?
   var expires: Int?
   var isStale: Bool?
+    
+  
 }

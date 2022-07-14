@@ -23,11 +23,14 @@ import Foundation
  - `CaseIterable` to allow for the AdvanceSearch views to iterate over Cuisine.allCases and access the RawValue for use as `UILabel.text`.
  */
 
-enum Diet: String, CaseIterable {
-  case glutenFree = "Gluten Free"
+enum Diet: String, CaseIterable, Codable, Equatable {
+  case dairyFree = "dairy free"
+  case fodmapFriendly = "fodmap friendly"
+  case glutenFree = "gluten free"
   case ketogenic
-  case lactoVegetarian = "Lacto-Vegetarian"
+  case lactoVegetarian = "lacto-vegetarian"
+  case lactoOvoVegetarian = "lacto ovo vegetarian"
   case lowFodmmap = "Low FODMAP"
   case ovoVegetarian = "Ovo-Vegetarian"
-  case paleo, pescetarian, primal, vegan, vegetarian, whole30
+  case paleo, pescatarian, primal, vegan, vegetarian, whole30
 }

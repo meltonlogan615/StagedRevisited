@@ -17,15 +17,15 @@ import UIKit
  */
 class MacrosModal: SCModal {
   
-  var macros = [Macros]()
+  var macros: Macros?
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     style()
     layout()
-  } 
+  }
   
-  convenience init(macros: [Macros]) {
+  convenience init(macros: Macros) {
     self.init()
     self.macros = macros
     generateMacrosLabels()
@@ -38,12 +38,17 @@ class MacrosModal: SCModal {
 
 extension MacrosModal {
   func generateMacrosLabels() {
+    guard let macros = macros?.macros else { return }
     for i in 0 ..< macros.count {
       let macrosLabel = MacrosLabelView()
+      guard let name = macros[i].name else { return }
+      guard let amount = macros[i].amount else { return }
+      guard let unit = macros[i].unit else { return }
+      guard let percent = macros[i].percentOfDailyNeeds else { return }
       macrosLabel.translatesAutoresizingMaskIntoConstraints = false
-      macrosLabel.titleLabel.text = macros[i].name.capitalized + ":"
-      macrosLabel.amountLabel.text = "\(macros[i].amount)\(macros[i].unit)"
-      macrosLabel.dailyPercentLabel.text = "\(macros[i].percentOfDailyNeeds)% of Daily Needs"
+      macrosLabel.titleLabel.text = name.capitalized + ":"
+      macrosLabel.amountLabel.text = "\(amount) \(unit)"
+      macrosLabel.dailyPercentLabel.text = "\(percent)% of Daily Needs"
       detailsStack.addArrangedSubview(macrosLabel)
     }
   }

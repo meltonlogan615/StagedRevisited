@@ -13,7 +13,7 @@ import Foundation
  
  - Is not  being used in any current context at this time.
  */
-struct WeightPerServing: Decodable {
+struct WeightPerServing: Codable {
   var amount: Int?
   var unit: String?
 }

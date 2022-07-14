@@ -12,7 +12,7 @@ import Foundation
 /**
  Holder for additional DataTypes (Each property of `Nutrition` is itself a custom DataType).
  */
-struct Nutrition: Decodable {
+struct Nutrition: Codable {
   var nutrients, properties, flavonoids: [Flavonoid]?
   var caloricBreakdown: CaloricBreakdown?
   var weightPerServing: WeightPerServing?

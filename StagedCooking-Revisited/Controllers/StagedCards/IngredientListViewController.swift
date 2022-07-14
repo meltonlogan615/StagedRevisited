@@ -20,7 +20,7 @@ class IngredientListViewController: UIViewController {
   let dividerView = Divider()
   var ingredientStack = UIStackView()
   
-  var ingredients = [String]()
+  var ingredients: Ingredients?
   
   var recipeName = String()
   
@@ -77,13 +77,13 @@ extension IngredientListViewController {
     ])
 
     
-    
+    guard let ingredients = ingredients?.ingredients else { return }
     for i in 0 ..< ingredients.count {
       let ingredientLine = UILabel()
       ingredientStack.addArrangedSubview(ingredientLine)
       ingredientLine.translatesAutoresizingMaskIntoConstraints = false
       ingredientLine.numberOfLines = 0
-      ingredientLine.text = ingredients[i].capitalized
+      ingredientLine.text = ingredients[i].nameClean?.capitalized
       ingredientLine.font = .systemFont(ofSize: 20)
     }
     

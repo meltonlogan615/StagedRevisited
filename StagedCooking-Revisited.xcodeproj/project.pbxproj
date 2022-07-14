@@ -29,7 +29,7 @@
 		322199A927FA5F34003FD4F6 /* ChefDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199A827FA5F34003FD4F6 /* ChefDefault.swift */; };
 		322199AC27FA5F75003FD4F6 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199AB27FA5F75003FD4F6 /* Recipe.swift */; };
 		322199AE27FA5FAA003FD4F6 /* RecipeSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199AD27FA5FAA003FD4F6 /* RecipeSummary.swift */; };
-		322199B427FA627A003FD4F6 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199B327FA627A003FD4F6 /* Ingredient.swift */; };
+		322199B427FA627A003FD4F6 /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199B327FA627A003FD4F6 /* Ingredients.swift */; };
 		322199B627FA62C4003FD4F6 /* ExtendedIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199B527FA62C4003FD4F6 /* ExtendedIngredient.swift */; };
 		322199B827FA6328003FD4F6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199B727FA6328003FD4F6 /* SearchView.swift */; };
 		322199BB27FA6407003FD4F6 /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199BA27FA6407003FD4F6 /* RecipeCell.swift */; };
@@ -72,7 +72,7 @@
 		32761020282A12C7005346D4 /* MacrosModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276101F282A12C7005346D4 /* MacrosModal.swift */; };
 		32761022282A12D8005346D4 /* SummaryModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32761021282A12D8005346D4 /* SummaryModal.swift */; };
 		32761024282A12EF005346D4 /* IngredientsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32761023282A12EF005346D4 /* IngredientsModal.swift */; };
-		3276102A282AE7FC005346D4 /* MacrosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32761029282AE7FC005346D4 /* MacrosModel.swift */; };
+		3276102A282AE7FC005346D4 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32761029282AE7FC005346D4 /* Macros.swift */; };
 		3276102C282B0B4C005346D4 /* SCModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276102B282B0B4C005346D4 /* SCModal.swift */; };
 		3276103B282CA643005346D4 /* MacrosLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276103A282CA643005346D4 /* MacrosLabelView.swift */; };
 		3276103D282CB1C6005346D4 /* DietsModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3276103C282CB1C6005346D4 /* DietsModal.swift */; };
@@ -82,10 +82,7 @@
 		32761053282CC01B005346D4 /* GetInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32761052282CC01B005346D4 /* GetInstructions.swift */; };
 		327B59FB284FFCE3007495AA /* RecipeRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B59FA284FFCE3007495AA /* RecipeRowView.swift */; };
 		327B59FF285155A1007495AA /* ButtonActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B59FE285155A1007495AA /* ButtonActions.swift */; };
-		327B5A032851568E007495AA /* GenerateDietsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A022851568E007495AA /* GenerateDietsInfo.swift */; };
 		327B5A05285156D0007495AA /* GenerateGeneralInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A04285156D0007495AA /* GenerateGeneralInfo.swift */; };
-		327B5A0728515703007495AA /* GenerateIngredientsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A0628515703007495AA /* GenerateIngredientsList.swift */; };
-		327B5A0928515722007495AA /* GenerateMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A0828515722007495AA /* GenerateMacros.swift */; };
 		327B5A0B28515750007495AA /* GenerateSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A0A28515750007495AA /* GenerateSummary.swift */; };
 		327B5A132851B2EA007495AA /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A122851B2EA007495AA /* SpinnerViewController.swift */; };
 		327B5A1A2852245E007495AA /* ShowHideSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A192852245E007495AA /* ShowHideSpinner.swift */; };
@@ -151,7 +148,7 @@
 		322199A827FA5F34003FD4F6 /* ChefDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefDefault.swift; sourceTree = "<group>"; };
 		322199AB27FA5F75003FD4F6 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		322199AD27FA5FAA003FD4F6 /* RecipeSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSummary.swift; sourceTree = "<group>"; };
-		322199B327FA627A003FD4F6 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		322199B327FA627A003FD4F6 /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		322199B527FA62C4003FD4F6 /* ExtendedIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtendedIngredient.swift; sourceTree = "<group>"; };
 		322199B727FA6328003FD4F6 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		322199BA27FA6407003FD4F6 /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
@@ -195,20 +192,17 @@
 		3276101F282A12C7005346D4 /* MacrosModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosModal.swift; sourceTree = "<group>"; };
 		32761021282A12D8005346D4 /* SummaryModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryModal.swift; sourceTree = "<group>"; };
 		32761023282A12EF005346D4 /* IngredientsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsModal.swift; sourceTree = "<group>"; };
-		32761029282AE7FC005346D4 /* MacrosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosModel.swift; sourceTree = "<group>"; };
+		32761029282AE7FC005346D4 /* Macros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
 		3276102B282B0B4C005346D4 /* SCModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCModal.swift; sourceTree = "<group>"; };
 		3276103A282CA643005346D4 /* MacrosLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosLabelView.swift; sourceTree = "<group>"; };
 		3276103C282CB1C6005346D4 /* DietsModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietsModal.swift; sourceTree = "<group>"; };
-		3276103F282CB2AC005346D4 /* GeneralInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInfo.swift; sourceTree = "<group>"; };
+		3276103F282CB2AC005346D4 /* GeneralInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeneralInfo.swift; path = ../ModalModels/GeneralInfo.swift; sourceTree = "<group>"; };
 		3276104E282CBC6B005346D4 /* DietsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietsInfo.swift; sourceTree = "<group>"; };
 		32761050282CBFD6005346D4 /* CardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBuilder.swift; sourceTree = "<group>"; };
 		32761052282CC01B005346D4 /* GetInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetInstructions.swift; sourceTree = "<group>"; };
 		327B59FA284FFCE3007495AA /* RecipeRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRowView.swift; sourceTree = "<group>"; };
 		327B59FE285155A1007495AA /* ButtonActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonActions.swift; sourceTree = "<group>"; };
-		327B5A022851568E007495AA /* GenerateDietsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateDietsInfo.swift; sourceTree = "<group>"; };
 		327B5A04285156D0007495AA /* GenerateGeneralInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateGeneralInfo.swift; sourceTree = "<group>"; };
-		327B5A0628515703007495AA /* GenerateIngredientsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateIngredientsList.swift; sourceTree = "<group>"; };
-		327B5A0828515722007495AA /* GenerateMacros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateMacros.swift; sourceTree = "<group>"; };
 		327B5A0A28515750007495AA /* GenerateSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateSummary.swift; sourceTree = "<group>"; };
 		327B5A122851B2EA007495AA /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		327B5A192852245E007495AA /* ShowHideSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideSpinner.swift; sourceTree = "<group>"; };
@@ -267,7 +261,7 @@
 				32027D492829F68100F0F167 /* CalorieBreakdown.swift */,
 				32027D4D282A038E00F0F167 /* Flavonoid.swift */,
 				32027D4F282A03D900F0F167 /* WeightPerServing.swift */,
-				32761029282AE7FC005346D4 /* MacrosModel.swift */,
+				32761029282AE7FC005346D4 /* Macros.swift */,
 			);
 			path = Nutrition;
 			sourceTree = "<group>";
@@ -419,7 +413,7 @@
 		322199B227FA6260003FD4F6 /* Ingredient */ = {
 			isa = PBXGroup;
 			children = (
-				322199B327FA627A003FD4F6 /* Ingredient.swift */,
+				322199B327FA627A003FD4F6 /* Ingredients.swift */,
 				322199B527FA62C4003FD4F6 /* ExtendedIngredient.swift */,
 			);
 			path = Ingredient;
@@ -679,7 +673,6 @@
 		3276103E282CB297005346D4 /* ModalModels */ = {
 			isa = PBXGroup;
 			children = (
-				3276103F282CB2AC005346D4 /* GeneralInfo.swift */,
 				3276104E282CBC6B005346D4 /* DietsInfo.swift */,
 			);
 			path = ModalModels;
@@ -699,10 +692,7 @@
 			isa = PBXGroup;
 			children = (
 				327B59FE285155A1007495AA /* ButtonActions.swift */,
-				327B5A022851568E007495AA /* GenerateDietsInfo.swift */,
 				327B5A04285156D0007495AA /* GenerateGeneralInfo.swift */,
-				327B5A0628515703007495AA /* GenerateIngredientsList.swift */,
-				327B5A0828515722007495AA /* GenerateMacros.swift */,
 				327B5A0A28515750007495AA /* GenerateSummary.swift */,
 			);
 			path = RecipeViewMethods;
@@ -762,6 +752,7 @@
 		32AB724727FFEA0B00AF0E2A /* Recipes */ = {
 			isa = PBXGroup;
 			children = (
+				3276103F282CB2AC005346D4 /* GeneralInfo.swift */,
 				322199AB27FA5F75003FD4F6 /* Recipe.swift */,
 				322199AD27FA5FAA003FD4F6 /* RecipeSummary.swift */,
 			);
@@ -914,9 +905,8 @@
 				3214AC16284BED3100474068 /* SignWithAppleButton.swift in Sources */,
 				321E29F02841F86D003BCC47 /* AdvancedMicrosCell.swift in Sources */,
 				3272D3CB28452C9900D168BB /* UIView-DidToggle.swift in Sources */,
-				327B5A0728515703007495AA /* GenerateIngredientsList.swift in Sources */,
 				3272D3C7284490DD00D168BB /* FilterOptions.swift in Sources */,
-				3276102A282AE7FC005346D4 /* MacrosModel.swift in Sources */,
+				3276102A282AE7FC005346D4 /* Macros.swift in Sources */,
 				3276104F282CBC6B005346D4 /* DietsInfo.swift in Sources */,
 				329F3783283368E8004A758D /* AdvancedSearchRow.swift in Sources */,
 				325678F4283F2FDE00D32646 /* LargeLabel.swift in Sources */,
@@ -925,7 +915,6 @@
 				326F9FA1282223EB0086BA53 /* RecipeViewController.swift in Sources */,
 				327B59FF285155A1007495AA /* ButtonActions.swift in Sources */,
 				322199C427FA6A55003FD4F6 /* SearchResult.swift in Sources */,
-				327B5A0928515722007495AA /* GenerateMacros.swift in Sources */,
 				3276102C282B0B4C005346D4 /* SCModal.swift in Sources */,
 				327B5A2528541AD1007495AA /* SettingsViewController.swift in Sources */,
 				322199A027FA5E99003FD4F6 /* EndPoints.swift in Sources */,
@@ -952,8 +941,7 @@
 				3221EF612834474300A6FCCD /* Cuisine.swift in Sources */,
 				32289FF9285842C100D0BE1D /* SavedViewController.swift in Sources */,
 				327B5A1A2852245E007495AA /* ShowHideSpinner.swift in Sources */,
-				327B5A032851568E007495AA /* GenerateDietsInfo.swift in Sources */,
-				322199B427FA627A003FD4F6 /* Ingredient.swift in Sources */,
+				322199B427FA627A003FD4F6 /* Ingredients.swift in Sources */,
 				3221EF8B2835F01600A6FCCD /* AdvancedCell.swift in Sources */,
 				322199B827FA6328003FD4F6 /* SearchView.swift in Sources */,
 				32E1917828635BB100743E36 /* IncludeExcludeSeg.swift in Sources */,

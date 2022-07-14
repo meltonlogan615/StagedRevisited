@@ -12,7 +12,7 @@ class RecipeRowView: UIView {
   let row = UIStackView()
   let icon = UIImageView()
   let sign = UIImageView()
-  let size = CGSize(width: 28, height: 28)
+  let size = CGSize(width: 30, height: 28)
 
   let label = SCLabel()
   
@@ -41,6 +41,7 @@ extension RecipeRowView {
     icon.translatesAutoresizingMaskIntoConstraints = false
     icon.tintColor = K.invertPrimary
     icon.frame.size = size
+  
     
     sign.translatesAutoresizingMaskIntoConstraints = false
     sign.tintColor = K.invertPrimary
@@ -48,7 +49,7 @@ extension RecipeRowView {
     
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textColor = K.invertPrimary
-    label.numberOfLines = 1
+    label.numberOfLines = 0
     
   }
   

@@ -11,29 +11,26 @@ import UIKit
 // MARK: - setProperties Method, receives data, unwraps and sends to the view to display
 extension RecipeViewController {
   /// Simplifying setting VC properties into a single function rather than creatibng a massive `loadRecipeNew` method of each of the necessary properties.
-  func setProperties(for selectedRecipe: Recipe) {
-    self.recipe = selectedRecipe
+  func setProperties(for recipe: Recipe) {
+    self.recipe = recipe
     
-    guard let image = selectedRecipe.image else { return }
+    guard let image = recipe.image else { return }
     self.recipeView.mainImage.loadImage(url: image)
     
-    guard let title = selectedRecipe.title else { return }
-    self.recipeTitle = title
     
-    if let totalTime = selectedRecipe.readyInMinutes {
+    if let totalTime = recipe.readyInMinutes {
       self.recipeView.readyInMinutesLabel.icon.image = UIImage(systemName: "clock")
       self.recipeView.readyInMinutesLabel.sign.image = UIImage(systemName: "equal")
       self.recipeView.readyInMinutesLabel.label.text = "\(totalTime) minutes"
-      
     }
     
-    if let servings = selectedRecipe.servings {
+    if let servings = recipe.servings {
       self.recipeView.servingsLabel.icon.image = UIImage(systemName: "person")
       self.recipeView.servingsLabel.sign.image = UIImage(systemName: "equal")
       self.recipeView.servingsLabel.label.text = "\(servings)"
     }
     
-    if let dishType = selectedRecipe.dishTypes {
+    if let dishType = recipe.dishTypes {
       var dishText = String()
       // Formatting the string to be passed as the label text
       if !dishType.isEmpty {
@@ -52,7 +49,7 @@ extension RecipeViewController {
       }
     }
     
-    if let cuisines = selectedRecipe.cuisines {
+    if let cuisines = recipe.cuisines {
       var string = String()
       // Formatting the string to be passed as the label text
       if cuisines.isEmpty {
@@ -70,7 +67,7 @@ extension RecipeViewController {
       self.recipeView.cuisinesLabel.label.text = string
     }
     
-    if let popular = selectedRecipe.veryPopular {
+    if let popular = recipe.veryPopular {
       if popular {
         self.recipeView.veryPopularLabel.label.text = "Very Popular"
         self.recipeView.veryPopularLabel.backgroundColor = .blue
@@ -78,7 +75,7 @@ extension RecipeViewController {
       // if not, do not include
     }
     
-    if let sustainable = selectedRecipe.sustainable {
+    if let sustainable = recipe.sustainable {
       if sustainable {
         self.recipeView.sustainableLabel.icon.image = UIImage(systemName: "leaf")
         self.recipeView.sustainableLabel.sign.image = UIImage(systemName: "equal")
@@ -87,6 +84,6 @@ extension RecipeViewController {
       }
       // if not, do not include
     }
-    
+
   }
 }

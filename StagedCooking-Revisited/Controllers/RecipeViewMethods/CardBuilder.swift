@@ -25,12 +25,12 @@ extension RecipeViewController: CardBuilder {
    - ~/VCMethods/RecipeViewMethods/DataGeneration/GetInstructions
    
    */
-  func buildCards(ingredients: [String], instructionsDictionary: [Int: String], ingredientDictionary: [Int: [String]]) -> [Card]{
+  func buildCards(ingredients: Ingredients, instructionsDictionary: [Int: String], ingredientDictionary: [Int: [String]]) -> [Card]{
     var cards = [Card]()
     // Sort Dictionaries bu their IDs
     let sortedInstructions = instructionsDictionary.sorted(by: { $0.key < $1.key } )
     let sortedIngredients = ingredientDictionary.sorted(by: { $0.key < $1.key } )
-    var cabinet = ingredients // need mutable [String]
+    var cabinet = ingredients.ingredients // need mutable [String]
     
     var cardNumber = 0
     
@@ -44,17 +44,19 @@ extension RecipeViewController: CardBuilder {
         
         // if keys match
         if instructionsKey == ingredientKey {
-          var mixingBowl = [String]()
+          var mixingBowl = ingredients
           // iterate through ingredientDictionary values array
           for i in 0 ..< ingredientValue.count {
             
             // iterate through ingredients array
             for j in 0 ..< cabinet.count {
-              
-              // if value from ingredientDictionary is found in the ingredient string
-              if cabinet[j].lowercased().contains(ingredientValue[i].lowercased()) {
-                mixingBowl.append(cabinet[j])
-                cabinet[j] = ""
+              if let name = cabinet[j].nameClean {
+                // if value from ingredientDictionary is found in the ingredient string
+                if name.lowercased().contains(ingredientValue[i].lowercased()) {
+                  mixingBowl.ingredients.append(cabinet[j])
+                  cabinet.remove(at: j)
+                }
+                
               }
               
             }

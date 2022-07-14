@@ -15,6 +15,6 @@ Each property is a `Double` that will be passed into `Nutrition` as a subset of 
  
  - Is currently not in use.
  */
-struct CaloricBreakdown: Decodable {
+struct CaloricBreakdown: Codable {
   var percentProtein, percentFat, percentCarbs: Double?
 }

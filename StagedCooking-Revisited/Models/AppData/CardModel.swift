@@ -16,7 +16,7 @@ import Foundation
  */
 struct Card: Codable, Identifiable, Comparable, Hashable {
   var id: Int
-  var ingredients: [String]
+  var ingredients: Ingredients
   var instructions: String
   
   static func < (lhs: Self, rhs: Self) -> Bool {
