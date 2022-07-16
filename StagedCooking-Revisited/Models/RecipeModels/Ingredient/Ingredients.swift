@@ -18,5 +18,9 @@ struct Ingredients: Codable, Hashable {
     guard let ingredients = recipe.extendedIngredients else { return }
     self.ingredients = ingredients
   }
+  
+  init() {
+    self.ingredients = []
+  }
 }
 

@@ -126,7 +126,7 @@ extension RecipeListCollectionView: UICollectionViewDelegate {
     recipeVC.recipeID = selectedID
     recipeVC.recipeTitle = selectedTitle.capitalized
     recipeVC.recipeImage = img.loadImageToPass(url: recipeImage)
-    recipeVC.modalPresentationStyle = .fullScreen
+    recipeVC.setLeftBarButton(.collection)
     
     ChefDefault.addToViewed(recipeID: String(selectedID), recipeTitle: selectedTitle)
 //    ChefDefault.viewedRecipes[selectedID] = selectedTitle
@@ -134,7 +134,9 @@ extension RecipeListCollectionView: UICollectionViewDelegate {
 //    ChefDefault.defaults.object(forKey: <#T##String#>)
 //    ChefDefault.saveChanges()
     
-    present(recipeVC, animated: true)
+    let navController = NavController(rootViewController: recipeVC)
+    navController.modalPresentationStyle = .fullScreen
+    present(navController, animated: true)
   }
 }
 

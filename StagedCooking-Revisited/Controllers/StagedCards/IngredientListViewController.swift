@@ -16,14 +16,14 @@ import UIKit
 class IngredientListViewController: UIViewController {
   
   var ingredientsView = UIView()
+  
+  var recipeName = String()
   var titleLabel = UILabel()
+  
   let dividerView = Divider()
   var ingredientStack = UIStackView()
   
   var ingredients: Ingredients?
-  
-  var recipeName = String()
-  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -53,6 +53,7 @@ extension IngredientListViewController {
     ingredientStack.axis = .vertical
     ingredientStack.distribution = .fillProportionally
     ingredientStack.spacing = 8
+    
   }
   
   func layout() {
@@ -75,21 +76,28 @@ extension IngredientListViewController {
       ingredientsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       ingredientsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
     ])
+    
 
     
     guard let ingredients = ingredients?.ingredients else { return }
     for i in 0 ..< ingredients.count {
-      let ingredientLine = UILabel()
-      ingredientStack.addArrangedSubview(ingredientLine)
+      let ingredientLine = LargeLabel()
       ingredientLine.translatesAutoresizingMaskIntoConstraints = false
       ingredientLine.numberOfLines = 0
-      ingredientLine.text = ingredients[i].nameClean?.capitalized
-      ingredientLine.font = .systemFont(ofSize: 20)
+
+      ingredientStack.addArrangedSubview(ingredientLine)
+      
+      guard let name = ingredients[i].nameClean?.capitalized else { return }
+      guard let measures = ingredients[i].measures else { return }
+      guard let usAmount = measures.us?.amount else { return }
+      guard let usUnit = measures.us?.unitShort else { return }
+      guard let metricAmount = measures.metric?.amount else { return }
+      guard let metricUnit = measures.metric?.unitShort else { return }
+      ingredientLine.text = "- \(usAmount) \(usUnit) (\(metricAmount) \(metricUnit)) \(name)"
     }
     
     ingredientsView.addSubview(ingredientStack)
     NSLayoutConstraint.activate([
-//      ingredientStack.topAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 1),
       ingredientsView.trailingAnchor.constraint(equalToSystemSpacingAfter: ingredientStack.trailingAnchor, multiplier: 4),
       ingredientStack.leadingAnchor.constraint(equalToSystemSpacingAfter: ingredientsView.leadingAnchor, multiplier: 4),
     ])

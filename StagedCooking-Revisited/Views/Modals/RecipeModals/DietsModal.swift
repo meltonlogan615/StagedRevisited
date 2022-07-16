@@ -19,21 +19,22 @@ class DietsModal: SCModal {
   
   var dietInfo: DietInfo?
   
-  var dietsLabel = SCLabel()
-  var whole30Label = SCLabel()
-  var veganLabel = SCLabel()
-  var vegetarianLabel = SCLabel()
-  var dairyFreeLabel = SCLabel()
-  var glutenFreeLabel = SCLabel()
-  var ketoLabel = SCLabel()
-  var lowFodmapLabel = SCLabel()
-  var veryHealthyLabel = SCLabel()
-  var healthScoreLabel = SCLabel()
-  var wwSmartPointsLabel = SCLabel()
-  let divider = Divider()
+  var dietsLabel = LargeLabel()
+  var whole30Label = LargeLabel()
+  var veganLabel = LargeLabel()
+  var vegetarianLabel = LargeLabel()
+  var dairyFreeLabel = LargeLabel()
+  var glutenFreeLabel = LargeLabel()
+  var ketoLabel = LargeLabel()
+  var lowFodmapLabel = LargeLabel()
+  var veryHealthyLabel = LargeLabel()
+  var healthScoreLabel = LargeLabel()
+  var wwSmartPointsLabel = LargeLabel()
+  var labels = [LargeLabel]()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    labels = [dietsLabel, whole30Label, veganLabel, vegetarianLabel, dairyFreeLabel, glutenFreeLabel, ketoLabel, lowFodmapLabel, veryHealthyLabel, healthScoreLabel, wwSmartPointsLabel]
     style()
     layout()
   }
@@ -87,30 +88,20 @@ extension DietsModal {
     wwSmartPointsLabel.translatesAutoresizingMaskIntoConstraints = false
     wwSmartPointsLabel.text = info.wwSmartPoints
     
-    divider.translatesAutoresizingMaskIntoConstraints = false
   }
   
   func layoutDietLabels(with info: DietInfo) {
     
-    detailsStack.addArrangedSubview(dietsLabel)
-    detailsStack.addArrangedSubview(divider)
-    
-    detailsStack.addArrangedSubview(veryHealthyLabel)
-    detailsStack.addArrangedSubview(divider)
-
-    detailsStack.addArrangedSubview(healthScoreLabel)
-    detailsStack.addArrangedSubview(divider)
-
-    detailsStack.addArrangedSubview(whole30Label)
-    detailsStack.addArrangedSubview(divider)
-
-    detailsStack.addArrangedSubview(veganLabel)
-    detailsStack.addArrangedSubview(veganLabel)
-    detailsStack.addArrangedSubview(dairyFreeLabel)
-    detailsStack.addArrangedSubview(glutenFreeLabel)
-    detailsStack.addArrangedSubview(ketoLabel)
-    detailsStack.addArrangedSubview(lowFodmapLabel)
-    detailsStack.addArrangedSubview(wwSmartPointsLabel)
+    for label in labels {
+      let divider = Divider()
+      divider.translatesAutoresizingMaskIntoConstraints = false
+      if label.text == "" {
+        continue
+      } else {
+        detailsStack.addArrangedSubview(label)
+        detailsStack.addArrangedSubview(divider)
+      }
+    }
   }
 }
 

@@ -45,17 +45,16 @@ extension IngredientsModal {
     let labelIngredients = allIngredients.ingredients
     for i in 0 ..< labelIngredients.count {
       guard let name = labelIngredients[i].nameClean else { return }
-      print(name)
-      guard let measure = labelIngredients[i].measures else {
-        print(labelIngredients[i])
-        return }
-      print(measure)
+      guard let measure = labelIngredients[i].measures else { return }
+      
       guard let us = measure.us else { return }
       guard let usAmount = us.amount else { return }
       guard let usShort = us.unitShort else { return }
+      
       guard let metric = measure.metric else { return }
       guard let metricAmount = metric.amount else { return }
       guard let metricShort = metric.unitShort else { return }
+      
       let ingredientLine = LargeLabel()
       ingredientLine.translatesAutoresizingMaskIntoConstraints = false
       ingredientLine.text = "\(usAmount) \(usShort.capitalized) (\(metricAmount) \(metricShort)) \(name.capitalized)"

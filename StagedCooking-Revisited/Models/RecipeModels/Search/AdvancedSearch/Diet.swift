@@ -31,6 +31,8 @@ enum Diet: String, CaseIterable, Codable, Equatable {
   case lactoVegetarian = "lacto-vegetarian"
   case lactoOvoVegetarian = "lacto ovo vegetarian"
   case lowFodmmap = "Low FODMAP"
+  case morningMeal = "morning meal"
   case ovoVegetarian = "Ovo-Vegetarian"
-  case paleo, pescatarian, primal, vegan, vegetarian, whole30
+  case paleo, paleolithic, pescatarian, primal, vegan, vegetarian
+  case whole30 = "whole 30"
 }

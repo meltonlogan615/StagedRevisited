@@ -44,21 +44,24 @@ extension RecipeViewController: CardBuilder {
         
         // if keys match
         if instructionsKey == ingredientKey {
-          var mixingBowl = ingredients
+          var mixingBowl = Ingredients()
+          
           // iterate through ingredientDictionary values array
           for i in 0 ..< ingredientValue.count {
             
             // iterate through ingredients array
             for j in 0 ..< cabinet.count {
-              if let name = cabinet[j].nameClean {
-                // if value from ingredientDictionary is found in the ingredient string
-                if name.lowercased().contains(ingredientValue[i].lowercased()) {
-                  mixingBowl.ingredients.append(cabinet[j])
-                  cabinet.remove(at: j)
-                }
+              if let ingredient = cabinet[j].name {
                 
+ // if value from ingredientDictionary is found in the ingredient string
+                if ingredient.lowercased().contains(ingredientValue[i].lowercased()) {
+                  if !mixingBowl.ingredients.contains(cabinet[j]) {
+                    mixingBowl.ingredients.append(cabinet[j])
+                    print(ingredient, j)
+                    cabinet[j] = ExtendedIngredient()
+                  }
+                }
               }
-              
             }
           }
           //  Build the cards from the parameters passed in

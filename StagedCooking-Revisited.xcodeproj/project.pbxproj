@@ -121,6 +121,7 @@
 		32E191762862048900743E36 /* MacroPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E191752862048900743E36 /* MacroPickerView.swift */; };
 		32E1917828635BB100743E36 /* IncludeExcludeSeg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E1917728635BB100743E36 /* IncludeExcludeSeg.swift */; };
 		32E1917A286420F000743E36 /* UIView-ActivitySpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E19179286420F000743E36 /* UIView-ActivitySpinner.swift */; };
+		32F9B3BE288341C40057711D /* RemoveDups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F9B3BD288341C40057711D /* RemoveDups.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -241,6 +242,7 @@
 		32E191752862048900743E36 /* MacroPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroPickerView.swift; sourceTree = "<group>"; };
 		32E1917728635BB100743E36 /* IncludeExcludeSeg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncludeExcludeSeg.swift; sourceTree = "<group>"; };
 		32E19179286420F000743E36 /* UIView-ActivitySpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-ActivitySpinner.swift"; sourceTree = "<group>"; };
+		32F9B3BD288341C40057711D /* RemoveDups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDups.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -452,6 +454,7 @@
 		322199C827FA6C1C003FD4F6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				32F9B3BC2883417E0057711D /* Arrays */,
 				3272D3CE28452CF500D168BB /* UITextField-Extensions */,
 				3272D3CD28452CDF00D168BB /* UIViewController-Extensions */,
 				3272D3CC28452CC500D168BB /* UIView-Extensions */,
@@ -472,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				326F9F9C282216C60086BA53 /* RecipeView.swift */,
+				327B59FA284FFCE3007495AA /* RecipeRowView.swift */,
 			);
 			path = RecipeViews;
 			sourceTree = "<group>";
@@ -545,7 +549,6 @@
 			children = (
 				3276103A282CA643005346D4 /* MacrosLabelView.swift */,
 				32C99134282EF80800667F65 /* SCLabel.swift */,
-				327B59FA284FFCE3007495AA /* RecipeRowView.swift */,
 				325678F3283F2FDE00D32646 /* LargeLabel.swift */,
 			);
 			path = Labels;
@@ -778,6 +781,14 @@
 			path = StagedCards;
 			sourceTree = "<group>";
 		};
+		32F9B3BC2883417E0057711D /* Arrays */ = {
+			isa = PBXGroup;
+			children = (
+				32F9B3BD288341C40057711D /* RemoveDups.swift */,
+			);
+			name = Arrays;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -944,6 +955,7 @@
 				322199B427FA627A003FD4F6 /* Ingredients.swift in Sources */,
 				3221EF8B2835F01600A6FCCD /* AdvancedCell.swift in Sources */,
 				322199B827FA6328003FD4F6 /* SearchView.swift in Sources */,
+				32F9B3BE288341C40057711D /* RemoveDups.swift in Sources */,
 				32E1917828635BB100743E36 /* IncludeExcludeSeg.swift in Sources */,
 				32E0F40C2849AD2A008CA294 /* UILableKerning.swift in Sources */,
 				3276103D282CB1C6005346D4 /* DietsModal.swift in Sources */,

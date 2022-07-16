@@ -12,6 +12,9 @@ import UIKit
  */
 class MacrosLabelView: UIView {
   
+  let hStack = UIStackView()
+  let vStack = UIStackView()
+  
   var titleLabel = UILabel()
   var amountLabel = UILabel()
   var dailyPercentLabel = UILabel()
@@ -32,6 +35,14 @@ class MacrosLabelView: UIView {
 extension MacrosLabelView {
   
   func style() {
+    vStack.translatesAutoresizingMaskIntoConstraints = false
+    vStack.axis = .vertical
+    vStack.spacing = 2
+    
+    hStack.translatesAutoresizingMaskIntoConstraints = false
+    hStack.axis = .horizontal
+    hStack.distribution = .equalSpacing
+    
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.font = .systemFont(ofSize: 20, weight: .semibold)
     
@@ -44,26 +55,40 @@ extension MacrosLabelView {
   }
   
   func layout() {
-    addSubview(titleLabel)
+    hStack.addArrangedSubview(titleLabel)
+    hStack.addArrangedSubview(amountLabel)
+    
+    vStack.addArrangedSubview(hStack)
+    vStack.addArrangedSubview(dailyPercentLabel)
+    
+    addSubview(vStack)
     NSLayoutConstraint.activate([
-      titleLabel.topAnchor.constraint(equalTo: topAnchor),
-      titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor)
+      vStack.topAnchor.constraint(equalTo: topAnchor),
+      vStack.leadingAnchor.constraint(equalTo: leadingAnchor),
+      vStack.trailingAnchor.constraint(equalTo: trailingAnchor),
+      vStack.bottomAnchor.constraint(equalTo: bottomAnchor)
     ])
     
-    addSubview(amountLabel)
-    NSLayoutConstraint.activate([
-      amountLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
-      amountLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: titleLabel.trailingAnchor, multiplier: 2),
-//      amountLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-    ])
-    
-    addSubview(dailyPercentLabel)
-    NSLayoutConstraint.activate([
-      dailyPercentLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-      dailyPercentLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-      dailyPercentLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-      dailyPercentLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
-    ])
+//    addSubview(titleLabel)
+//    NSLayoutConstraint.activate([
+//      titleLabel.topAnchor.constraint(equalTo: topAnchor),
+//      titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor)
+//    ])
+//
+//    addSubview(amountLabel)
+//    NSLayoutConstraint.activate([
+//      amountLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
+//      amountLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: titleLabel.trailingAnchor, multiplier: 2),
+////      amountLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+//    ])
+//
+//    addSubview(dailyPercentLabel)
+//    NSLayoutConstraint.activate([
+//      dailyPercentLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+//      dailyPercentLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+//      dailyPercentLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+//      dailyPercentLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+//    ])
 
   }
 }

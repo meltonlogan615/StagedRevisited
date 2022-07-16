@@ -10,9 +10,11 @@ import UIKit
 class RecipeRowView: UIView {
   
   let row = UIStackView()
+  let imageRow = UIStackView()
   let icon = UIImageView()
   let sign = UIImageView()
-  let size = CGSize(width: 30, height: 28)
+  let size = CGSize(width: 32, height: 28)
+  let disclosure = UIImageView()
 
   let label = SCLabel()
   
@@ -38,6 +40,8 @@ extension RecipeRowView {
     row.spacing = 4
     row.distribution = .fillProportionally
     
+
+    
     icon.translatesAutoresizingMaskIntoConstraints = false
     icon.tintColor = K.invertPrimary
     icon.frame.size = size
@@ -49,17 +53,27 @@ extension RecipeRowView {
     
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textColor = K.invertPrimary
-    label.numberOfLines = 0
+    label.numberOfLines = 1
+    label.lineBreakStrategy = .standard
     
+    disclosure.translatesAutoresizingMaskIntoConstraints = false
+    disclosure.tintColor = K.scAccent
+    disclosure.frame.size = size
+    disclosure.image = UIImage(systemName: "info.circle")
+    disclosure.isHidden = true
   }
   
   func layout() {
     row.addArrangedSubview(icon)
-    icon.heightAnchor.constraint(lessThanOrEqualToConstant: size.height).isActive = true
 
     row.addArrangedSubview(sign)
-    sign.heightAnchor.constraint(lessThanOrEqualToConstant: size.height).isActive = true
-
+//    imageRow.widthAnchor.constraint(equalToConstant: 36).isActive = true
+//    imageRow.heightAnchor.constraint(equalToConstant: 36).isActive = true
+    
+    row.addArrangedSubview(imageRow)
+//    row.addArrangedSubview(label)
+//    row.addArrangedSubview(disclosure)
+    
     addSubview(row)
     NSLayoutConstraint.activate([
       row.topAnchor.constraint(equalTo: topAnchor),

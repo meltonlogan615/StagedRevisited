@@ -12,7 +12,7 @@ extension RecipeViewController {
   func generateSummary(for selectedRecipe: Recipe) {
     guard let summery = self.recipe.summary else { return }
     let formattedSummery = summery.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-    let brokenSummary = formattedSummery.replacingOccurrences(of: ".", with: ".\n\n")
+    let brokenSummary = formattedSummery.replacingOccurrences(of: ". ", with: ".\n\n")
     self.summary = brokenSummary
   }
 }

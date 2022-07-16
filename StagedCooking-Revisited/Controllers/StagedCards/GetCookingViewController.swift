@@ -50,12 +50,6 @@ extension GetCookingViewController {
     recipeLabel.textAlignment = .center
     recipeLabel.numberOfLines = 0
     
-    startLabel.translatesAutoresizingMaskIntoConstraints = false
-    startLabel.font = .preferredFont(forTextStyle: .title1)
-    startLabel.textColor = K.invertPrimary
-    startLabel.textAlignment = .center
-    startLabel.text = "Swipe Left To Get Started"
-    
     numberOfStepsLabel.translatesAutoresizingMaskIntoConstraints = false
     numberOfStepsLabel.font = .preferredFont(forTextStyle: .title3)
     numberOfStepsLabel.textColor = K.invertPrimary
@@ -68,6 +62,12 @@ extension GetCookingViewController {
     totalTimeLabel.font = .preferredFont(forTextStyle: .title3)
     totalTimeLabel.text = "Total Time: \(totalTime) minutes"
     
+    // TODO: - Animation. Something that will indicate a from right to left motion
+    startLabel.translatesAutoresizingMaskIntoConstraints = false
+    startLabel.font = .preferredFont(forTextStyle: .title1)
+    startLabel.textColor = K.invertPrimary
+    startLabel.textAlignment = .center
+    startLabel.text = "Swipe Left To Get Started"
   }
   
   func layout() {

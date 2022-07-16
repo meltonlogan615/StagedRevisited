@@ -15,7 +15,7 @@ import UIKit
  */
 class SummaryModal: SCModal {
   
-  var summaryLabel = SCLabel()
+  var summaryLabel = LargeLabel()
   var summary = String()
 
   override init(frame: CGRect) {

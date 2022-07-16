@@ -41,6 +41,8 @@ extension MacrosModal {
     guard let macros = macros?.macros else { return }
     for i in 0 ..< macros.count {
       let macrosLabel = MacrosLabelView()
+      let divider = Divider()
+      divider.translatesAutoresizingMaskIntoConstraints = false
       guard let name = macros[i].name else { return }
       guard let amount = macros[i].amount else { return }
       guard let unit = macros[i].unit else { return }
@@ -50,6 +52,7 @@ extension MacrosModal {
       macrosLabel.amountLabel.text = "\(amount) \(unit)"
       macrosLabel.dailyPercentLabel.text = "\(percent)% of Daily Needs"
       detailsStack.addArrangedSubview(macrosLabel)
+      detailsStack.addArrangedSubview(divider)
     }
   }
 }

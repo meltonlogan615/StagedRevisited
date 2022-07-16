@@ -84,6 +84,18 @@ extension RecipeViewController {
       }
       // if not, do not include
     }
+    
+//    if let cheap = recipe.cheap {
+//      if cheap {
+//        self.recipeView.cheapLabel.label.text = ""
+//      }
+//    }
+    
+    if let price = recipe.pricePerServing {
+      self.recipeView.pricePerServingLabel.icon.image = UIImage(systemName: "banknote")
+      self.recipeView.pricePerServingLabel.sign.image = UIImage(systemName: "equal")
+      self.recipeView.pricePerServingLabel.label.text = "\(price / 100) Per Serving"
+    }
 
   }
 }
