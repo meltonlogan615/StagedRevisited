@@ -48,15 +48,15 @@ extension TabViewController {
     favoriteNav.navigationBar.prefersLargeTitles = true
 
 
-//    let preferencesTab = UIViewController()
-//    let preferencesTabItem = UITabBarItem(title: "Preferences", image: UIImage(systemName: "gear.circle"), selectedImage: UIImage(named: "gear.circle.fill"))
-//    preferencesTab.tabBarItem = preferencesTabItem
-//    let preferencesNav = UINavigationController(rootViewController: preferencesTab)
-//    preferencesNav.navigationBar.prefersLargeTitles = true
+    let settingsTab = UIViewController()
+    let settingsTabItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear.circle"), selectedImage: UIImage(named: "gear.circle.fill"))
+    settingsTab.tabBarItem = settingsTabItem
+    let preferencesNav = UINavigationController(rootViewController: settingsTab)
+    preferencesNav.navigationBar.prefersLargeTitles = true
 
 
 
-    self.viewControllers = [searchTab, historyNav, savedNav, favoriteNav]
+    self.viewControllers = [searchTab, historyNav, savedNav, favoriteNav, settingsTab]
   }
   
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

@@ -189,6 +189,6 @@ extension RecipeViewController {
       faved = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .plain, target: self, action: #selector(favRecipe))
     }
     
-    navigationItem.rightBarButtonItems = [saved, faved]
+    navigationItem.rightBarButtonItems = [faved, saved]
   }
 }

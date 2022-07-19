@@ -29,7 +29,6 @@ class StagedCardContainerViewController: UIViewController {
   var cards = [Card]() //
   var recipe = Recipe()
   var ingredientList: Ingredients?
-  var stringedIngredients = [String]()
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
@@ -82,17 +81,6 @@ extension StagedCardContainerViewController {
     
     pageViewController.setViewControllers([cardVCs.first!], direction: .forward, animated: false, completion: nil)
     currentVC = cardVCs.first!
-    
-    guard let ingredients = ingredientList?.ingredients else { return }
-    for ingredient in ingredients {
-      guard let name = ingredient.nameClean else { return }
-      guard let measures = ingredient.measures else { return }
-      guard let usAmount = measures.us?.amount else { return }
-      guard let usUnit = measures.us?.unitShort else { return }
-      guard let metricAmount = measures.metric?.amount else { return }
-      guard let metricUnit = measures.metric?.unitShort else { return }
-      stringedIngredients.append("\(usAmount) \(usUnit) (\(metricAmount) \(metricUnit)) \(name)")
-    }
   }
 }
 

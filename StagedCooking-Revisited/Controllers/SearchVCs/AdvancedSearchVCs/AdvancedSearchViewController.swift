@@ -101,27 +101,22 @@ extension AdvancedSearchViewController: UICollectionViewDelegate {
     /// `switch-case` though `indexPath.item` to set the `OptionViewController.optionView`'s correct view & `title`.
     switch indexPath.item {
       case 0:
-//        selectedVC.optionView = CuisinesView()
         selectedVC.viewTitle = "Cuisines"
         present(selectedVC, animated: true)
         
       case 1:
-//        selectedVC.optionView = DietsView()
         selectedVC.viewTitle = "Diets"
         present(selectedVC, animated: true)
 
       case 2:
-//        selectedVC.optionView = IntolerancesView()
         selectedVC.viewTitle = "Intolerances"
         present(selectedVC, animated: true)
 
       case 3:
         let selected = MacrosViewController()
-
         present(selected, animated: true)
 
       case 4:
-//        selectedVC.optionView = MealTypesView()
         selectedVC.viewTitle = "Meal Types"
         present(selectedVC, animated: true)
       

@@ -68,27 +68,5 @@ extension MacrosLabelView {
       vStack.trailingAnchor.constraint(equalTo: trailingAnchor),
       vStack.bottomAnchor.constraint(equalTo: bottomAnchor)
     ])
-    
-//    addSubview(titleLabel)
-//    NSLayoutConstraint.activate([
-//      titleLabel.topAnchor.constraint(equalTo: topAnchor),
-//      titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor)
-//    ])
-//
-//    addSubview(amountLabel)
-//    NSLayoutConstraint.activate([
-//      amountLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
-//      amountLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: titleLabel.trailingAnchor, multiplier: 2),
-////      amountLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-//    ])
-//
-//    addSubview(dailyPercentLabel)
-//    NSLayoutConstraint.activate([
-//      dailyPercentLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-//      dailyPercentLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-//      dailyPercentLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-//      dailyPercentLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
-//    ])
-
   }
 }

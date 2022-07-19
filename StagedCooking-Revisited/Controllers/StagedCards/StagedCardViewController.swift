@@ -149,11 +149,14 @@ extension StagedCardViewController {
         ingredientLine.translatesAutoresizingMaskIntoConstraints = false
         guard let name = ingredients[i].nameClean?.capitalized else { return }
         guard let measures = ingredients[i].measures else { return }
-        guard let usAmount = measures.us?.amount else { return }
-        guard let usUnit = measures.us?.unitShort else { return }
+//        guard let usAmount = measures.us?.amount else { return }
+//        guard let usUnit = measures.us?.unitShort else { return }
         guard let metricAmount = measures.metric?.amount else { return }
         guard let metricUnit = measures.metric?.unitShort else { return }
-        ingredientLine.text = "- \(usAmount) \(usUnit) (\(metricAmount) \(metricUnit)) \(name)"
+        // TODO: - Later will be switch on settings based on ChefSettings for measurements
+//        let usFormat = "\(usAmount) \(usUnit) "
+        let metricFormat = "\(metricAmount) \(metricUnit)"
+        ingredientLine.text = metricFormat + name
       }
     }
     

@@ -6,23 +6,12 @@
 //
 
 import UIKit
-import SwiftUI
-
-protocol Filterable: AnyObject {
-   func filterRecipes(for recipe: String, with options: String)
-//  func filterCuisines(for options: [String])
-//  func filterDiets(for options: [String], with list: Response)
-//  func filterIntolerances(for options: [String])
-//  func filterMealTypes(for options: [String])
-}
 
 /**
  Generic `OptionViewController`. Will recieve the view based on the `didSelectItemAt` method in `AdvancedSearchViewController`.
- 
- 
  */
+
 class FilterViewController: UIViewController {
-  
   
   let optionLabel = UILabel()
   var viewTitle = String()
@@ -30,9 +19,21 @@ class FilterViewController: UIViewController {
   
   var model = Response()
   var searchedRecipe = String()
-  var options = [String]()
-  var selectedOptions = [String]()
+  
+  var cuisineOptions = [Cuisine]()
+  var selectedCusines = [Cuisine]()
+  
+  var dietOptions = [Diet]()
+  var selectedDiets = [Diet]()
+  
+  var intoleranceOptions = [Intolerance]()
+  var selectedIntolerances = [Intolerance]()
+  
+  var mealOptions = [MealType]()
+  var selectedMeals = [MealType]()
+  
   let saveButton = ActionButton()
+  var sourceView: UIViewController?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -87,24 +88,51 @@ extension FilterViewController {
 
 extension FilterViewController {
   @objc func saveButtonTapped() {
-    let listVC = RecipeListCollectionView()
+    guard let source = sourceView as? RecipeListCollectionView else { return }
     switch self.viewTitle.localizedLowercase {
+        
+      case FilterOptions.cuisines.rawValue.localizedLowercase:
+        source.selectedCuisines = self.selectedCusines
+        source.returnedFilters = FilterOptions.cuisines.rawValue.localizedLowercase
+        
       case FilterOptions.diets.rawValue.localizedLowercase:
-        print(selectedOptions)
-         let testy = dietaryRestrictions(from: selectedOptions)
-        listVC.filterRecipes(for: searchedRecipe, with: testy)
-        print(testy)
+        source.selectedDiets = self.selectedDiets
+        source.returnedFilters = FilterOptions.diets.rawValue.localizedLowercase
+        
+      case FilterOptions.intolerances.rawValue.localizedLowercase:
+        source.selectedIntolerances = self.selectedIntolerances
+        source.returnedFilters = FilterOptions.intolerances.rawValue.localizedLowercase
+
+      case FilterOptions.mealTypes.rawValue.localizedLowercase:
+        source.selectedMealTypes = self.selectedMeals
+        source.returnedFilters = FilterOptions.mealTypes.rawValue.localizedLowercase
+        
       default:
         break
-        
     }
     self.dismiss(animated: true)
   }
 }
 
+// MARK: - Switches
 extension FilterViewController {
   func activateSwitches() {
-    options = optionView.allOptions
+    switch self.viewTitle.localizedLowercase {
+      case FilterOptions.cuisines.rawValue.localizedLowercase:
+        //        cuisineOptions = optionView.cuisineOptions
+        print("Cuisines")
+      case FilterOptions.diets.rawValue.localizedLowercase:
+        dietOptions = optionView.dietOptions
+        print("Diets")
+      case FilterOptions.intolerances.rawValue.localizedLowercase:
+        intoleranceOptions = optionView.intoleranceOptions
+        print("Intolerances")
+      case FilterOptions.mealTypes.rawValue.localizedLowercase:
+        mealOptions = optionView.mealOptions
+        print("Meal Types")
+      default:
+        print("5-0")
+    }
     for row in optionView.detailsStack.arrangedSubviews {
       for stack in row.subviews {
         for elements in stack.subviews {
@@ -114,7 +142,6 @@ extension FilterViewController {
               toggle.addTarget(self, action: #selector(didToggle), for: .valueChanged)
             }
           }
-          
         }
       }
     }
@@ -125,87 +152,38 @@ extension FilterViewController {
   @objc func didToggle(_ sender: ToggleSwitch) {
     if sender.isOn {
       let index = sender.tag - 1
-      selectedOptions.append(options[index])
+      switch self.viewTitle.localizedLowercase {
+        case FilterOptions.cuisines.rawValue.localizedLowercase:
+          selectedCusines = optionView.cuisineOptions
+        case FilterOptions.diets.rawValue.localizedLowercase:
+          selectedDiets.append(dietOptions[index])
+        case FilterOptions.intolerances.rawValue.localizedLowercase:
+          selectedIntolerances.append(intoleranceOptions[index])
+        case FilterOptions.mealTypes.rawValue.localizedLowercase:
+          selectedMeals.append(mealOptions[index])
+        default:
+          break
+      }
+    }
+    
+    if !sender.isOn {
+      let index = sender.tag - 1
+      switch self.viewTitle.localizedLowercase {
+        case FilterOptions.cuisines.rawValue.localizedLowercase:
+          selectedCusines.remove(at: index)
+          selectedCusines = optionView.cuisineOptions
+        case FilterOptions.diets.rawValue.localizedLowercase:
+          selectedDiets.remove(at: index)
+          selectedDiets.append(dietOptions[index])
+        case FilterOptions.intolerances.rawValue.localizedLowercase:
+          selectedIntolerances.remove(at: index)
+          selectedIntolerances.append(intoleranceOptions[index])
+        case FilterOptions.mealTypes.rawValue.localizedLowercase:
+          selectedMeals.remove(at: index)
+          selectedMeals.append(mealOptions[index])
+        default:
+          break
+      }
     }
   }
 }
-
-extension FilterViewController {
-  func filterCuisines(for options: [String]) {
-    var newModel = Response()
-    var newResults = [Recipe]()
-    guard let recipes = model.results else { return }
-    for recipe in recipes {
-      guard let cuisines = recipe.cuisines else { return }
-      for cuisine in cuisines {
-        if options.contains(cuisine) {
-          newResults.append(recipe)
-          newModel.results = newResults
-          self.model = newModel
-        }
-      }
-    }
-  }
-
-  func filterDiets(for selections: [String]) {
-    var newModel = Response()
-    var newResults = [Recipe]()
-    guard let recipes = self.model.results else { return }
-    for recipe in recipes {
-      
-      guard let diets = recipe.diets else { return }
-      
-      // convert [Diet] into [String] before matching
-      let test2: [String] = {
-        var test = [String]()
-        for diet in diets {
-          test.append(diet.rawValue)
-        }
-        return test
-      }()
-      
-      if Set(test2).isSubset(of: Set(selections)) {
-        newResults.append(recipe)
-      }
-        
-    }
-    newModel.results = newResults
-    self.model = newModel
-  }
-
-  func filterIntolerances(for options: [String]) {
-    var newModel = Response()
-    var newResults = [Recipe]()
-    guard let recipes = model.results else { return }
-    for recipe in recipes {
-      guard let allergens = recipe.intolerances else { return }
-      for allergen in allergens {
-        if options.contains(allergen.rawValue) {
-          newResults.append(recipe)
-          newModel.results = newResults
-          self.model = newModel
-
-        }
-      }
-    }
-  }
-
-  func filterMealTypes(for options: [String]) {
-    var newModel = Response()
-    var newResults = [Recipe]()
-    guard let recipes = model.results else { return }
-    for recipe in recipes {
-      guard let dishTypes = recipe.dishTypes else { return }
-      for dishType in dishTypes {
-        if options.contains(dishType.rawValue) {
-          newResults.append(recipe)
-          newModel.results = newResults
-          self.model = newModel
-        }
-      }
-    }
-  }
-
-}
-
-

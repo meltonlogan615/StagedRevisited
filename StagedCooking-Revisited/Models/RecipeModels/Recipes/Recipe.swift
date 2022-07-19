@@ -22,7 +22,7 @@ import Foundation
  
  Is again passed from `RecipeViewController` as a property within `StagedCardContainerViewController`
  */
-struct Recipe: Decodable, Identifiable, Comparable {
+struct Recipe: Decodable, Identifiable, Comparable, Hashable {
   
   // Basics
   var id: Int?
@@ -52,9 +52,8 @@ struct Recipe: Decodable, Identifiable, Comparable {
   var weightWatcherSmartPoints: Int?
   var whole30: Bool?
 
-  // Allergens Missing??
-  var intolerances: [Intolerances]?
-  var diets: [Diet]? // May need to be updated to dedicated type
+  var intolerances: [Intolerance]?
+  var diets: [Diet]?
   var vegan: Bool?
   var vegetarian: Bool?
   var dairyFree: Bool?

@@ -65,14 +65,8 @@ extension RecipeRowView {
   
   func layout() {
     row.addArrangedSubview(icon)
-
     row.addArrangedSubview(sign)
-//    imageRow.widthAnchor.constraint(equalToConstant: 36).isActive = true
-//    imageRow.heightAnchor.constraint(equalToConstant: 36).isActive = true
-    
     row.addArrangedSubview(imageRow)
-//    row.addArrangedSubview(label)
-//    row.addArrangedSubview(disclosure)
     
     addSubview(row)
     NSLayoutConstraint.activate([

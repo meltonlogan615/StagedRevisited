@@ -83,7 +83,7 @@ extension RecipeViewController: ModalDataSource {
   }
   
   @objc func favRecipe() {
-    ChefDefault.favoriteRecipes[String(recipeID)] = recipeTitle
+    ChefDefault.addToFavorites(recipeID: String(recipeID), recipeTitle: recipeTitle)
     self.setRightBarButtons()
   }
 }

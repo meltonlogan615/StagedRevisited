@@ -24,8 +24,9 @@ import Foundation
  - `CaseIterable` to allow for the AdvanceSearch views to iterate over Cuisine.allCases and access the RawValue for use as `UILabel.text`.
  */
 
-enum Intolerances: String, Codable, CaseIterable {
+enum Intolerance: String, Codable, CaseIterable {
   case dairy, egg, gluten, grain, peanut, seafood, sesame, shellfish, soy, sulfite
-  case treeNut = "Tree Nut"
+  case treeNut = "tree nut"
   case wheat
 }
+

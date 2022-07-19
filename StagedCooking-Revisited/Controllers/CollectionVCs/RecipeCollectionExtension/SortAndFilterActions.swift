@@ -182,31 +182,37 @@ extension RecipeListCollectionView {
       
       UIAction(title: FilterOptions.cuisines.rawValue.localizedCapitalized, image: UIImage(systemName: "globe.europe.africa"), identifier: nil, discoverabilityTitle: nil) {_ in
         let filterView = FilterViewController()
+        filterView.sourceView = self
+        filterView.modalPresentationStyle = .fullScreen
         filterView.viewTitle = FilterOptions.cuisines.rawValue.localizedCapitalized
         filterView.optionView.layoutCuisines()
-//        filterView.model = self.model
         self.present(filterView, animated: true)
       },
-      
+
       UIAction(title: FilterOptions.diets.rawValue.localizedCapitalized, image: UIImage(systemName: "scalemass"), identifier: nil, discoverabilityTitle: nil) { _ in
         let filterView = FilterViewController()
+        filterView.sourceView = self
+        filterView.modalPresentationStyle = .fullScreen
         filterView.viewTitle = FilterOptions.diets.rawValue.localizedCapitalized
         filterView.optionView.layoutDiets()
-        filterView.searchedRecipe = self.searchedRecipe
-//        filterView.model = self.model
         self.present(filterView, animated: true)
       },
       
-      UIAction(title: FilterOptions.intolerances.rawValue.localizedCapitalized, image: UIImage(systemName: "hand.raised.slash"), identifier: nil, discoverabilityTitle: nil) {_ in
-        let filterView = FilterViewController()
-        filterView.viewTitle = FilterOptions.intolerances.rawValue.localizedCapitalized
-        filterView.optionView.layoutIntolerances()
-//        filterView.model = self.model
-        self.present(filterView, animated: true)
-      },
+      /// Existis in Docs, but not showing up in any of the results
+//      UIAction(title: FilterOptions.intolerances.rawValue.localizedCapitalized, image: UIImage(systemName: "hand.raised.slash"), identifier: nil, discoverabilityTitle: nil) {_ in
+//        let filterView = FilterViewController()
+//        filterView.sourceView = self
+//        filterView.modalPresentationStyle = .fullScreen
+//        filterView.viewTitle = FilterOptions.intolerances.rawValue.localizedCapitalized
+//        filterView.optionView.layoutIntolerances()
+////        filterView.model = self.model
+//        self.present(filterView, animated: true)
+//      },
       
       UIAction(title: FilterOptions.macros.rawValue.localizedCapitalized, image: UIImage(systemName: "atom"), identifier: nil, discoverabilityTitle: nil) {_ in
         let filterView = MacrosViewController()
+        filterView.sourceView = self
+        filterView.modalPresentationStyle = .fullScreen
         filterView.viewTitle = FilterOptions.macros.rawValue.localizedCapitalized
         filterView.searchedRecipe = self.searchedRecipe
         self.present(filterView, animated: true)
@@ -214,9 +220,10 @@ extension RecipeListCollectionView {
       
       UIAction(title: FilterOptions.mealTypes.rawValue.localizedCapitalized, image: UIImage(systemName: "checklist"), identifier: nil, discoverabilityTitle: nil) {_ in
         let filterView = FilterViewController()
+        filterView.sourceView = self
+        filterView.modalPresentationStyle = .fullScreen
         filterView.viewTitle = FilterOptions.mealTypes.rawValue.localizedCapitalized
         filterView.optionView.layoutMealTypes()
-//        filterView.model = self.model
         self.present(filterView, animated: true)
       }
     ])
@@ -227,96 +234,3 @@ extension RecipeListCollectionView {
     ]
   }
 }
-//
-//extension RecipeListCollectionView: Filterable {
-//  
-//  
-//  func filterCuisines(for options: [String]) {
-//    var newModel = Response()
-//    var newResults = [Recipe]()
-//    guard let recipes = model.results else { return }
-//    for recipe in recipes {
-//      guard let cuisines = recipe.cuisines else { return }
-//      for cuisine in cuisines {
-//        if options.contains(cuisine) {
-//          newResults.append(recipe)
-//          newModel.results = newResults
-//          self.model = newModel
-//        }
-//      }
-//    }
-//  }
-//  
-////  func filterDiets(for selections: [String], with list: Response) {
-////    var mutableList = list
-////    var newResults = [Recipe]()
-////    print(selections)
-//////    guard let recipes = self.model.results else { return }
-////    if let recipes = mutableList.results {
-////      for recipe in recipes {
-////        guard let diets = recipe.diets else { return }
-////// convert [Diet] into [String] before matching
-////        let dietStrings: [String] = {
-////          var test = [String]()
-////          for diet in diets {
-////            test.append(diet.rawValue)
-////          }
-////          return test
-////        }()
-////        if Set(dietStrings).isSubset(of: Set(selections)) {
-////          newResults.append(recipe)
-////          print(recipe.title)
-////        }
-////      }
-////    }
-////    if !newResults.isEmpty {
-////      mutableList.results = newResults
-////      self.model = mutableList
-////      print(String(describing: self.model.results?.count))
-////    }
-////    self.recipeCollection.reloadData()
-////    print(String(describing: self.model.results?.count))
-////  } // End Filter By Diets
-//  
-//  func filterIntolerances(for options: [String]) {
-//    var newModel = Response()
-//    var newResults = [Recipe]()
-//    guard let recipes = model.results else { return }
-//    for recipe in recipes {
-//      guard let allergens = recipe.intolerances else { return }
-//      for allergen in allergens {
-//        if options.contains(allergen.rawValue) {
-//          newResults.append(recipe)
-//          newModel.results = newResults
-//          self.model = newModel
-//        
-//        }
-//      }
-//    }
-//  }
-//  
-//  func filterMacros(_ options: [String: Int], by: String) {
-//    guard let recipes = model.results else { return }
-//    for recipe in recipes {
-//      print(recipe)
-//    }
-//  }
-//  
-//  func filterMealTypes(for options: [String]) {
-//    var newModel = Response()
-//    var newResults = [Recipe]()
-//    guard let recipes = model.results else { return }
-//    for recipe in recipes {
-//      guard let dishTypes = recipe.dishTypes else { return }
-//      for dishType in dishTypes {
-//        if options.contains(dishType.rawValue) {
-//          newResults.append(recipe)
-//          newModel.results = newResults
-//          self.model = newModel
-//        }
-//      }
-//    }
-//    self.recipeCollection.reloadData()
-//  }
-//  
-//}// End of Extension
