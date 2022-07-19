@@ -35,6 +35,8 @@ class MacrosViewController: UIViewController {
   let saveButton = ActionButton()
   
   var additionalFilters = String()
+  
+  var sourceView = UIViewController()
 
   override func viewDidLoad() {
     super.viewDidLoad()

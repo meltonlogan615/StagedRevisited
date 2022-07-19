@@ -39,7 +39,7 @@ class HistoryViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    title = "Search History"
+    title = "History"
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     tableView.dataSource = self
     tableView.delegate = self
@@ -173,7 +173,7 @@ extension HistoryViewController {
 
 extension HistoryViewController {
   func setViewedHistoryCellCount() -> Int {
-    self.title = "Viewed History"
+    self.title = "History"
     var count = Int()
     if ChefDefault.viewedRecipes.isEmpty {
       count = 1

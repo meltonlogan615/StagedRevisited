@@ -44,7 +44,6 @@ extension EndPoints {
     guard let url = completedURL else {
       preconditionFailure("Invalid URL: \(String(describing: completedURL))")
     }
-    print(url)
     return url
   }
 }

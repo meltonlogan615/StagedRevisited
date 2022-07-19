@@ -68,8 +68,6 @@ extension SearchViewController {
       view.trailingAnchor.constraint(equalToSystemSpacingAfter: searchView.trailingAnchor, multiplier: 4),
       searchView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
     ])
-    
-//    view.keyboardLayoutGuide.topAnchor.constraint(equalTo: searchView.searchTextField.bottomAnchor).isActive = true
   }
 }
 

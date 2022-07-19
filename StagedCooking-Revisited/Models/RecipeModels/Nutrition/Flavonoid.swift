@@ -17,7 +17,7 @@ import Foundation
  - `Nutrition.properties`
  - `Nutrition.flavonoids` (which I'm not entirely sure is being used in any current context at this time.
  */
-struct Flavonoid: Codable, Comparable {
+struct Flavonoid: Codable, Comparable, Hashable {
   var name: String?
   var amount: Double?
   var unit: String?

@@ -93,7 +93,7 @@ extension IngredientListViewController {
       guard let usUnit = measures.us?.unitShort else { return }
       guard let metricAmount = measures.metric?.amount else { return }
       guard let metricUnit = measures.metric?.unitShort else { return }
-      ingredientLine.text = "- \(usAmount) \(usUnit) (\(metricAmount) \(metricUnit)) \(name)"
+      ingredientLine.text = "\(usAmount) \(usUnit) (\(metricAmount) \(metricUnit)) \(name)"
     }
     
     ingredientsView.addSubview(ingredientStack)

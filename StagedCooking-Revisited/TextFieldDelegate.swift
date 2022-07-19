@@ -25,22 +25,5 @@ extension UIViewController: UITextFieldDelegate {
   public func textFieldDidEndEditing(_ textField: UITextField) {
     
   }
-  
-//  public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//    if onlyValidCharacters(string) {
-//      return true
-//    }
-//    return false
-//  }
-//  
-//  private func onlyValidCharacters(_ text: String) -> Bool {
-//    let validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\\/()-.,:;'\""
-//    let invalidSet = CharacterSet(charactersIn: validChars).inverted
-//    return text.rangeOfCharacter(from: invalidSet) == nil
-//  }
-  
-  
-
-  
 }
 

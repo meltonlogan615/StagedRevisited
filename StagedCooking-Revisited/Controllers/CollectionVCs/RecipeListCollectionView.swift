@@ -26,9 +26,6 @@ protocol RecipeByID: AnyObject {
   func loadRecipeByID(for chosenID: Int)
 }
 
-//protocol FilteredSearch: AnyObject {
-//  func filterRecipes(for recipe: String, with options: String)
-//}
 /**
  Basic `CollectionView`  displays `[Response]`s from network call
  */
@@ -37,18 +34,18 @@ class RecipeListCollectionView: UIViewController {
   let spinner = SpinnerViewController()
   var dataprovider = DataProvider()
   
-  var model = Response() {
-    didSet {
-      self.recipeCollection.reloadData()
-    }
-  }
-
+  var model = Response()
+  
   var searchedRecipe = String()
   var cellTitle = String()
+  var currentCount = Int()
   
-//  var additionalFilters = String()
-  var modelFilters = [String]()
-    
+  var returnedFilters = String()
+  var selectedCuisines = [Cuisine]()
+  var selectedDiets = [Diet]()
+  var selectedIntolerances = [Intolerance]()
+  var selectedMealTypes = [MealType]()
+  
   let recipeCollection: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     var recipeCollection = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -60,7 +57,6 @@ class RecipeListCollectionView: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     loadRecipes(for: searchedRecipe)
-    
     view.backgroundColor = K.primary
     title = searchedRecipe.capitalized
     sortMenu()
@@ -69,6 +65,28 @@ class RecipeListCollectionView: UIViewController {
     recipeCollection.delegate = self
     style()
     layout()
+    
+  }
+  
+  
+  override func viewDidAppear(_ animated: Bool) {
+    switch returnedFilters.localizedLowercase {
+        
+      case FilterOptions.cuisines.rawValue.localizedLowercase:
+        print("fart")
+        
+      case FilterOptions.diets.rawValue.localizedLowercase:
+        filterDiets(with: selectedDiets, from: model)
+        
+      case FilterOptions.intolerances.rawValue.localizedLowercase:
+        filterIntolerances(with: selectedIntolerances, from: model)
+
+      case FilterOptions.mealTypes.rawValue.localizedLowercase:
+        filterMeals(with: selectedMealTypes, from: model)
+        
+      default:
+        break
+    }
   }
 }
 
@@ -111,7 +129,7 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
     }
     return cell
   }
-
+  
 }
 
 // MARK: - CollectionView - Delegate
@@ -129,10 +147,6 @@ extension RecipeListCollectionView: UICollectionViewDelegate {
     recipeVC.setLeftBarButton(.collection)
     
     ChefDefault.addToViewed(recipeID: String(selectedID), recipeTitle: selectedTitle)
-//    ChefDefault.viewedRecipes[selectedID] = selectedTitle
-//    ChefDefault.viewedRecipes = [selectedID: selectedTitle]
-//    ChefDefault.defaults.object(forKey: <#T##String#>)
-//    ChefDefault.saveChanges()
     
     let navController = NavController(rootViewController: recipeVC)
     navController.modalPresentationStyle = .fullScreen
@@ -162,7 +176,7 @@ extension RecipeListCollectionView: UICollectionViewDelegateFlowLayout {
 
 // MARK: - Networking, Spoonacular ComplexSearch
 
-extension RecipeListCollectionView: Filterable {
+extension RecipeListCollectionView {
   // MARK: - Regular Search
   func loadRecipes(for recipe: String) {
     showActivity()
@@ -172,46 +186,19 @@ extension RecipeListCollectionView: Filterable {
       switch foodResult {
         case .success(let model):
           self.model = model as Response
+          
           // if there are no results for the searched phrase, display alert
           self.noResults(for: recipe)
           
           // total number of results
           guard let totalCount = self.model.results?.count else { return }
-          self.title = "\(self.searchedRecipe.capitalized) (\(totalCount))"
+          self.currentCount = totalCount
           
         case .failure(let error):
           print(error)
       }
       self.recipeCollection.reloadData()
     }
-  }
-  
-//   MARK: - Filtered Search - Will be based on ChefDefault Preferences
-  func filterRecipes(for recipe: String, with options: String) {
-    print("0")
-    dataprovider.getFilteredRecipes(for: recipe, with: options) { [weak self] (foodResult: Result<Response, Error>) in
-      print("1")
-      guard let self = self else { return }
-      print("2")
-
-      switch foodResult {
-        case .success(let model):
-          self.model = model as Response
-          // if there are no results for the searched phrase, display alert
-          self.noResults(for: recipe)
-
-          // total number of results
-          guard let totalCount = self.model.totalResults else { return }
-          self.title = "\(self.searchedRecipe.capitalized) (\(totalCount))"
-
-        case .failure(let error):
-          print(error)
-      }
-      print("Self:", self)
-      print("TotalResults:", String(describing: (self.model.totalResults)))
-      print("Model:", String(describing: (self.model.results?.count)))
-    }
-    self.recipeCollection.reloadData()
   }
 }
 

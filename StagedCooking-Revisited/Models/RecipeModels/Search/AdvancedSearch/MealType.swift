@@ -23,13 +23,15 @@ import Foundation
  */
 
 enum MealType: String, Codable, CaseIterable {
-  case antipasti, antipasto, appetizer, beverage, bread, breakfast, condiment, dessert, dinner, dip, drink
+  case antipasti, antipasto, appetizer, beverage, bread, breakfast, brunch, condiment, dessert, dinner, dip, drink
   case fingerfood // = "Finger Food"
   case hordoeuvre = "hor d'oeuvre"
   case lunch
   case mainCourse = "main course"
   case mainDish = "main dish"
-  case marinade, salad, sauce
+  case marinade
+  case morningMeal = "morning meal"
+  case salad, sauce
   case sideDish = "side dish"
   case snack, soup, spread, starter
 }

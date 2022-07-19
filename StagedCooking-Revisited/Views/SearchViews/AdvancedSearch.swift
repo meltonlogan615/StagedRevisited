@@ -21,7 +21,11 @@ class AdvancedSearch: UIView {
   var contentView = UIView()
   var detailsStack = UIStackView()
   
-  var allOptions = [String]()
+  var cuisineOptions = [Cuisine]()
+  var dietOptions = [Diet]()
+  var intoleranceOptions = [Intolerance]()
+  var mealOptions = [MealType]()
+  
   var selectedOptions = [String]()
   var switches = [Int: Bool]()
   
@@ -90,7 +94,7 @@ extension AdvancedSearch {
       let optionText = "\(option.rawValue.localizedCapitalized)"
       label.translatesAutoresizingMaskIntoConstraints = false
       label.text = optionText
-      allOptions.append(optionText)
+      cuisineOptions.append(option)
       
       let seg = IncludeExcludeSeg()
       seg.translatesAutoresizingMaskIntoConstraints = false
@@ -121,7 +125,7 @@ extension AdvancedSearch {
       let optionText = "\(option.rawValue.localizedCapitalized)"
       label.translatesAutoresizingMaskIntoConstraints = false
       label.text = optionText
-      allOptions.append(optionText)
+      dietOptions.append(option)
       
       let toggle = ToggleSwitch()
       toggle.translatesAutoresizingMaskIntoConstraints = false
@@ -144,14 +148,14 @@ extension AdvancedSearch {
 extension AdvancedSearch {
   func layoutIntolerances() {
     var rowTag = 1
-    for option in Intolerances.allCases {
+    for option in Intolerance.allCases {
       let row = AdvancedSearchRow()
       
       let label = LargeLabel()
       let optionText = "\(option.rawValue.localizedCapitalized)"
       label.translatesAutoresizingMaskIntoConstraints = false
       label.text = optionText
-      allOptions.append(optionText)
+      intoleranceOptions.append(option)
       
       let toggle = ToggleSwitch()
       toggle.translatesAutoresizingMaskIntoConstraints = false
@@ -182,7 +186,7 @@ extension AdvancedSearch {
       let optionText = "\(option.rawValue.localizedCapitalized)"
       label.translatesAutoresizingMaskIntoConstraints = false
       label.text = optionText
-      allOptions.append(optionText)
+      mealOptions.append(option)
       
       let toggle = ToggleSwitch()
       toggle.translatesAutoresizingMaskIntoConstraints = false

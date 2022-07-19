@@ -10,10 +10,10 @@ import Foundation
  Enum for all of the different filters that can be applied
  
  */
-enum FilterViews: String, CaseIterable {
-  case CuisinesView
-  case DietsView
-  case IntolerancesView
-  case Macros
+enum Filters: String, CaseIterable {
+  case Cuisine
+  case Diet
+  case Intolerances
+  case AdvancedMacros
   case MealType
 }

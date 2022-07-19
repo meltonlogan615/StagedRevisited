@@ -15,7 +15,7 @@ class LandingViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = K.dWhite
+    view.backgroundColor = K.invertPrimary
     style()
     layout()
     setButtons()

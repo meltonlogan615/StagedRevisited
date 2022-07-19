@@ -12,8 +12,21 @@ import Foundation
 /**
  Holder for additional DataTypes (Each property of `Nutrition` is itself a custom DataType).
  */
-struct Nutrition: Codable {
+struct Nutrition: Codable, Hashable {
   var nutrients, properties, flavonoids: [Flavonoid]?
   var caloricBreakdown: CaloricBreakdown?
   var weightPerServing: WeightPerServing?
+  
+  static func == (lhs: Nutrition, rhs: Nutrition) -> Bool {
+    var result = false
+    if let nutrientsL  = lhs.nutrients {
+      if let nutrientsR = rhs.nutrients {
+        if nutrientsL == nutrientsR {
+          result = true
+        }
+      }
+    }
+    return result
+  }
+  
 }
