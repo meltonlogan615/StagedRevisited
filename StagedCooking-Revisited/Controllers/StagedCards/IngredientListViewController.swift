@@ -80,20 +80,12 @@ extension IngredientListViewController {
 
     
     guard let ingredients = ingredients?.ingredients else { return }
-    for i in 0 ..< ingredients.count {
+    for ingredient in ingredients {
       let ingredientLine = LargeLabel()
       ingredientLine.translatesAutoresizingMaskIntoConstraints = false
       ingredientLine.numberOfLines = 0
-
+      ingredientLine.text = unwrapMeasures(from: ingredient)
       ingredientStack.addArrangedSubview(ingredientLine)
-      
-      guard let name = ingredients[i].nameClean?.capitalized else { return }
-      guard let measures = ingredients[i].measures else { return }
-      guard let usAmount = measures.us?.amount else { return }
-      guard let usUnit = measures.us?.unitShort else { return }
-      guard let metricAmount = measures.metric?.amount else { return }
-      guard let metricUnit = measures.metric?.unitShort else { return }
-      ingredientLine.text = "\(usAmount) \(usUnit) (\(metricAmount) \(metricUnit)) \(name)"
     }
     
     ingredientsView.addSubview(ingredientStack)
@@ -104,3 +96,4 @@ extension IngredientListViewController {
     
   }
 }
+

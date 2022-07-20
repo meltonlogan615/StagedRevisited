@@ -85,7 +85,7 @@ extension AdvancedSearch {
 
 extension AdvancedSearch {
   func layoutCuisines() {
-    var tag = -1
+    var tag = 1
     for option in Cuisine.allCases {
       let row = AdvancedSearchRow()
       row.translatesAutoresizingMaskIntoConstraints = false
@@ -96,8 +96,9 @@ extension AdvancedSearch {
       label.text = optionText
       cuisineOptions.append(option)
       
-      let seg = IncludeExcludeSeg()
+      let seg = UISegmentedControl(items: ["Include", "Exclude"])
       seg.translatesAutoresizingMaskIntoConstraints = false
+      seg.selectedSegmentTintColor = K.modalBG
       seg.tag = tag
       
       let divider = Divider()
@@ -109,14 +110,14 @@ extension AdvancedSearch {
       detailsStack.addArrangedSubview(row)
       detailsStack.addArrangedSubview(divider)
       
-      tag -= 1
+      tag += 1
     }
   }
 }
 
 extension AdvancedSearch {
   func layoutDiets() {
-    var rowTag = 1
+    var tag = 1
     for option in Diet.allCases {
       let row = AdvancedSearchRow()
       row.translatesAutoresizingMaskIntoConstraints = false
@@ -129,7 +130,7 @@ extension AdvancedSearch {
       
       let toggle = ToggleSwitch()
       toggle.translatesAutoresizingMaskIntoConstraints = false
-      toggle.tag = rowTag
+      toggle.tag = tag
       
       let divider = Divider()
       divider.translatesAutoresizingMaskIntoConstraints = false
@@ -140,14 +141,14 @@ extension AdvancedSearch {
       detailsStack.addArrangedSubview(row)
       detailsStack.addArrangedSubview(divider)
       
-      rowTag += 1
+      tag += 1
     }
   }
 }
 
 extension AdvancedSearch {
   func layoutIntolerances() {
-    var rowTag = 1
+    var tag = 1
     for option in Intolerance.allCases {
       let row = AdvancedSearchRow()
       
@@ -159,7 +160,7 @@ extension AdvancedSearch {
       
       let toggle = ToggleSwitch()
       toggle.translatesAutoresizingMaskIntoConstraints = false
-      toggle.tag = rowTag
+      toggle.tag = tag
       
       let divider = Divider()
       divider.translatesAutoresizingMaskIntoConstraints = false
@@ -170,14 +171,14 @@ extension AdvancedSearch {
       detailsStack.addArrangedSubview(row)
       detailsStack.addArrangedSubview(divider)
       
-      rowTag += 1
+      tag += 1
     }
   }
 }
 
 extension AdvancedSearch {
   func layoutMealTypes() {
-    var rowTag = 1
+    var tag = 1
     for option in MealType.allCases {
       let row = AdvancedSearchRow()
       row.translatesAutoresizingMaskIntoConstraints = false
@@ -190,7 +191,7 @@ extension AdvancedSearch {
       
       let toggle = ToggleSwitch()
       toggle.translatesAutoresizingMaskIntoConstraints = false
-      toggle.tag = rowTag
+      toggle.tag = tag
       
       let divider = Divider()
       divider.translatesAutoresizingMaskIntoConstraints = false
@@ -201,7 +202,7 @@ extension AdvancedSearch {
       detailsStack.addArrangedSubview(row)
       detailsStack.addArrangedSubview(divider)
       
-      rowTag += 1
+      tag += 1
     }
   }
 }

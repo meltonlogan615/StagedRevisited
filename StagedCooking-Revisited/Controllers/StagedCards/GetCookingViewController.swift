@@ -35,9 +35,6 @@ class GetCookingViewController: UIViewController {
   }
 }
 
-
-
-
 extension GetCookingViewController {
   func style() {
     getCookingStack.translatesAutoresizingMaskIntoConstraints = false

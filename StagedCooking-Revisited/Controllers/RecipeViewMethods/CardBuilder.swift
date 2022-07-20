@@ -57,7 +57,6 @@ extension RecipeViewController: CardBuilder {
                 if ingredient.lowercased().contains(ingredientValue[i].lowercased()) {
                   if !mixingBowl.ingredients.contains(cabinet[j]) {
                     mixingBowl.ingredients.append(cabinet[j])
-                    print(ingredient, j)
                     cabinet[j] = ExtendedIngredient()
                   }
                 }
