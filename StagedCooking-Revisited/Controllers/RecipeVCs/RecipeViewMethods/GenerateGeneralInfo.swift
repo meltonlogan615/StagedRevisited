@@ -94,7 +94,8 @@ extension RecipeViewController {
     if let price = recipe.pricePerServing {
       self.recipeView.pricePerServingLabel.icon.image = UIImage(systemName: "banknote")
       self.recipeView.pricePerServingLabel.sign.image = UIImage(systemName: "equal")
-      self.recipeView.pricePerServingLabel.label.text = "\(price / 100) Per Serving"
+      let perServing = String(format: "%.2f", (price / 100))
+      self.recipeView.pricePerServingLabel.label.text = "$\(perServing) Per Serving"
     }
 
   }

@@ -60,8 +60,8 @@ extension StagedCardContainerViewController {
     guard let recipeName = recipe.title else { return }
     
     // Life Cycle, adding child VCs, all lines required
-    for i in 0 ..< cards.count {
-      let card = StagedCardViewController(recipeName: recipeName, cardCounter: cards[i].id, ingredients: cards[i].ingredients, instructions: cards[i].instructions)
+    for card in cards {
+      let card = StagedCardViewController(recipeName: recipeName, cardCounter: card.id, ingredients: card.ingredients, instructions: card.instructions)
       cardVCs.append(card)
     }
     

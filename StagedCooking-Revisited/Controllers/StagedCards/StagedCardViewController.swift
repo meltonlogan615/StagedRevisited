@@ -143,20 +143,11 @@ extension StagedCardViewController {
       ingredientLine.translatesAutoresizingMaskIntoConstraints = false
       ingredientLine.text = "No Ingredients Used"
     } else {
-      for i in 0 ..< ingredients.count {
+      for ingredient in ingredients {
         let ingredientLine = LargeLabel()
         ingredientsStack.addArrangedSubview(ingredientLine)
         ingredientLine.translatesAutoresizingMaskIntoConstraints = false
-        guard let name = ingredients[i].nameClean?.capitalized else { return }
-        guard let measures = ingredients[i].measures else { return }
-//        guard let usAmount = measures.us?.amount else { return }
-//        guard let usUnit = measures.us?.unitShort else { return }
-        guard let metricAmount = measures.metric?.amount else { return }
-        guard let metricUnit = measures.metric?.unitShort else { return }
-        // TODO: - Later will be switch on settings based on ChefSettings for measurements
-//        let usFormat = "\(usAmount) \(usUnit) "
-        let metricFormat = "\(metricAmount) \(metricUnit)"
-        ingredientLine.text = metricFormat + name
+        ingredientLine.text = unwrapMeasures(from: ingredient)
       }
     }
     

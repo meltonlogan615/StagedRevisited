@@ -23,7 +23,7 @@ class MacrosViewController: UIViewController {
   let macroPicker = UIPickerView()
   
   let textField = LargeTextField()
-  let confrimButton = ActionButton()
+  let confirmButton = ActionButton()
   
   let options = MacrosForSpin.allCases
   var selection = String()
@@ -78,10 +78,10 @@ extension MacrosViewController {
     textField.textAlignment = .center
     textField.placeholder = "Amount"
     
-    confrimButton.translatesAutoresizingMaskIntoConstraints = false
-    confrimButton.setTitle("Confrim", for: [])
-    confrimButton.backgroundColor = .cyan
-    confrimButton.addTarget(self, action: #selector(addOptions), for: .primaryActionTriggered)
+    confirmButton.translatesAutoresizingMaskIntoConstraints = false
+    confirmButton.setTitle("Confrim", for: [])
+    confirmButton.backgroundColor = .cyan
+    confirmButton.addTarget(self, action: #selector(addOptions), for: .primaryActionTriggered)
     
     table.translatesAutoresizingMaskIntoConstraints = false
     table.dataSource = self
@@ -102,48 +102,47 @@ extension MacrosViewController {
       view.trailingAnchor.constraint(equalToSystemSpacingAfter: optionLabel.trailingAnchor, multiplier: 4),
     ])
     
-    view.addSubview(segController)
-    NSLayoutConstraint.activate([
-      segController.topAnchor.constraint(equalTo: optionLabel.bottomAnchor),
-      segController.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
-      view.trailingAnchor.constraint(equalToSystemSpacingAfter: segController.trailingAnchor, multiplier: 4),
-    ])
-    
     view.addSubview(macroPicker)
     NSLayoutConstraint.activate([
-      macroPicker.topAnchor.constraint(equalToSystemSpacingBelow: segController.bottomAnchor, multiplier: 1),
-      macroPicker.leadingAnchor.constraint(equalTo: segController.leadingAnchor),
-      macroPicker.trailingAnchor.constraint(equalTo: segController.trailingAnchor),
+      macroPicker.topAnchor.constraint(equalToSystemSpacingBelow: optionLabel.bottomAnchor, multiplier: 1),
+      macroPicker.leadingAnchor.constraint(equalTo: optionLabel.leadingAnchor),
+      macroPicker.trailingAnchor.constraint(equalTo: optionLabel.trailingAnchor),
     ])
     
+    view.addSubview(segController)
+    NSLayoutConstraint.activate([
+      segController.topAnchor.constraint(equalTo: macroPicker.bottomAnchor),
+      segController.leadingAnchor.constraint(equalTo: optionLabel.leadingAnchor),
+      segController.trailingAnchor.constraint(equalTo: optionLabel.trailingAnchor),
+    ])
     
     view.addSubview(textField)
     NSLayoutConstraint.activate([
-      textField.topAnchor.constraint(equalTo: macroPicker.bottomAnchor),
+      textField.topAnchor.constraint(equalToSystemSpacingBelow: segController.bottomAnchor, multiplier: 2),
       textField.leadingAnchor.constraint(equalTo: segController.leadingAnchor),
       textField.trailingAnchor.constraint(equalTo: segController.trailingAnchor),
       
     ])
     
-    view.addSubview(confrimButton)
+    view.addSubview(confirmButton)
     NSLayoutConstraint.activate([
-      confrimButton.topAnchor.constraint(equalToSystemSpacingBelow: textField.bottomAnchor, multiplier: 2),
-      confrimButton.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
-      confrimButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
+      confirmButton.topAnchor.constraint(equalToSystemSpacingBelow: textField.bottomAnchor, multiplier: 2),
+      confirmButton.leadingAnchor.constraint(equalTo: textField.leadingAnchor),
+      confirmButton.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
     ])
     
     view.addSubview(table)
     NSLayoutConstraint.activate([
-      table.topAnchor.constraint(equalToSystemSpacingBelow: confrimButton.bottomAnchor, multiplier: 2),
-      table.leadingAnchor.constraint(equalTo: confrimButton.leadingAnchor),
-      table.trailingAnchor.constraint(equalTo: confrimButton.trailingAnchor),
+      table.topAnchor.constraint(equalToSystemSpacingBelow: confirmButton.bottomAnchor, multiplier: 2),
+      table.leadingAnchor.constraint(equalTo: confirmButton.leadingAnchor),
+      table.trailingAnchor.constraint(equalTo: confirmButton.trailingAnchor),
     ])
     
     view.addSubview(saveButton)
     NSLayoutConstraint.activate([
       saveButton.topAnchor.constraint(equalToSystemSpacingBelow: table.bottomAnchor, multiplier: 2),
-      saveButton.leadingAnchor.constraint(equalTo: confrimButton.leadingAnchor),
-      saveButton.trailingAnchor.constraint(equalTo: confrimButton.trailingAnchor),
+      saveButton.leadingAnchor.constraint(equalTo: confirmButton.leadingAnchor),
+      saveButton.trailingAnchor.constraint(equalTo: confirmButton.trailingAnchor),
       view.bottomAnchor.constraint(equalToSystemSpacingBelow: saveButton.safeAreaLayoutGuide.bottomAnchor, multiplier: 6)
     ])
   }
@@ -193,10 +192,10 @@ extension MacrosViewController {
       switch segController.selectedSegmentIndex {
         case 0:
           addedOptionsForSearch.append("min\(selection)=\(amount)")
-          addedOptionsForTable.append("Minium \(selection): \(amount)")
+          addedOptionsForTable.append("Minimum \(selection): \(amount)")
         case 1:
           addedOptionsForSearch.append("max\(selection)=\(amount)")
-          addedOptionsForTable.append("Maxium \(selection): \(amount)")
+          addedOptionsForTable.append("Maximum \(selection): \(amount)")
         default:
           break
       }

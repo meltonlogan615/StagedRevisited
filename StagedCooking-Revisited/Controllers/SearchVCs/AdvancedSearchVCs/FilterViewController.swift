@@ -41,7 +41,7 @@ class FilterViewController: UIViewController {
     view.backgroundColor = K.primary
     style()
     layout()
-    activateSwitches()
+    selectInputStyle()
   }
 }
 
@@ -114,22 +114,28 @@ extension FilterViewController {
   }
 }
 
-// MARK: - Switches
+extension FilterViewController {
+  func selectInputStyle() {
+    switch self.viewTitle.localizedLowercase {
+      case FilterOptions.cuisines.rawValue.localizedLowercase:
+        print("")
+        activateSegControllers()
+      default:
+        activateSwitches()
+    }
+  }
+}
+
+// MARK: - Toggle Switches
 extension FilterViewController {
   func activateSwitches() {
     switch self.viewTitle.localizedLowercase {
-      case FilterOptions.cuisines.rawValue.localizedLowercase:
-        //        cuisineOptions = optionView.cuisineOptions
-        print("Cuisines")
       case FilterOptions.diets.rawValue.localizedLowercase:
         dietOptions = optionView.dietOptions
-        print("Diets")
       case FilterOptions.intolerances.rawValue.localizedLowercase:
         intoleranceOptions = optionView.intoleranceOptions
-        print("Intolerances")
       case FilterOptions.mealTypes.rawValue.localizedLowercase:
         mealOptions = optionView.mealOptions
-        print("Meal Types")
       default:
         print("5-0")
     }
@@ -153,8 +159,6 @@ extension FilterViewController {
     if sender.isOn {
       let index = sender.tag - 1
       switch self.viewTitle.localizedLowercase {
-        case FilterOptions.cuisines.rawValue.localizedLowercase:
-          selectedCusines = optionView.cuisineOptions
         case FilterOptions.diets.rawValue.localizedLowercase:
           selectedDiets.append(dietOptions[index])
         case FilterOptions.intolerances.rawValue.localizedLowercase:
@@ -169,9 +173,6 @@ extension FilterViewController {
     if !sender.isOn {
       let index = sender.tag - 1
       switch self.viewTitle.localizedLowercase {
-        case FilterOptions.cuisines.rawValue.localizedLowercase:
-          selectedCusines.remove(at: index)
-          selectedCusines = optionView.cuisineOptions
         case FilterOptions.diets.rawValue.localizedLowercase:
           selectedDiets.remove(at: index)
           selectedDiets.append(dietOptions[index])
@@ -184,6 +185,37 @@ extension FilterViewController {
         default:
           break
       }
+    }
+  }
+}
+
+// MARK: - Segmented Controllers
+extension FilterViewController {
+  func activateSegControllers() {
+    cuisineOptions = optionView.cuisineOptions
+    for row in optionView.detailsStack.arrangedSubviews {
+      for stack in row.subviews {
+        for elements in stack.subviews {
+          if elements.tag > 0 {
+            print("Fart")
+            let seg = elements as! UISegmentedControl
+            seg.addTarget(self, action: #selector(includeExclude), for: .valueChanged)
+          }
+        }
+      }
+    }
+  }
+  
+  @objc func includeExclude(_ sender: IncludeExcludeSeg) {
+    let index = sender.tag - 1
+//    sender.selectedSegmentIndex = selectedIndex
+    switch sender.selectedSegmentIndex {
+      case 0:
+        print("Include", cuisineOptions[index], sender.selectedSegmentIndex)
+      case 1:
+        print("Exclude", cuisineOptions[index], sender.selectedSegmentIndex)
+      default:
+        print("Nothing")
     }
   }
 }

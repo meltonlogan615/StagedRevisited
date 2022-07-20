@@ -56,7 +56,13 @@ extension TabViewController {
 
 
 
-    self.viewControllers = [searchTab, historyNav, savedNav, favoriteNav, settingsTab]
+    self.viewControllers = [
+      searchTab,
+      historyNav,
+      savedNav,
+      favoriteNav,
+//      settingsTab
+    ]
   }
   
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

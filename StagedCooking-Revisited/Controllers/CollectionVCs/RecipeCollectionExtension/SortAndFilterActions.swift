@@ -180,14 +180,15 @@ extension RecipeListCollectionView {
     
     let filter = UIMenu(title: "Filter By:", image: nil, identifier: nil, options: .singleSelection, children: [
       
-      UIAction(title: FilterOptions.cuisines.rawValue.localizedCapitalized, image: UIImage(systemName: "globe.europe.africa"), identifier: nil, discoverabilityTitle: nil) {_ in
-        let filterView = FilterViewController()
-        filterView.sourceView = self
-        filterView.modalPresentationStyle = .fullScreen
-        filterView.viewTitle = FilterOptions.cuisines.rawValue.localizedCapitalized
-        filterView.optionView.layoutCuisines()
-        self.present(filterView, animated: true)
-      },
+      /// Existis in Docs, but rarely showing up in any of the results
+//      UIAction(title: FilterOptions.cuisines.rawValue.localizedCapitalized, image: UIImage(systemName: "globe.europe.africa"), identifier: nil, discoverabilityTitle: nil) {_ in
+//        let filterView = FilterViewController()
+//        filterView.sourceView = self
+//        filterView.modalPresentationStyle = .fullScreen
+//        filterView.viewTitle = FilterOptions.cuisines.rawValue.localizedCapitalized
+//        filterView.optionView.layoutCuisines()
+//        self.present(filterView, animated: true)
+//      },
 
       UIAction(title: FilterOptions.diets.rawValue.localizedCapitalized, image: UIImage(systemName: "scalemass"), identifier: nil, discoverabilityTitle: nil) { _ in
         let filterView = FilterViewController()
@@ -209,14 +210,14 @@ extension RecipeListCollectionView {
 //        self.present(filterView, animated: true)
 //      },
       
-      UIAction(title: FilterOptions.macros.rawValue.localizedCapitalized, image: UIImage(systemName: "atom"), identifier: nil, discoverabilityTitle: nil) {_ in
-        let filterView = MacrosViewController()
-        filterView.sourceView = self
-        filterView.modalPresentationStyle = .fullScreen
-        filterView.viewTitle = FilterOptions.macros.rawValue.localizedCapitalized
-        filterView.searchedRecipe = self.searchedRecipe
-        self.present(filterView, animated: true)
-      },
+//      UIAction(title: FilterOptions.macros.rawValue.localizedCapitalized, image: UIImage(systemName: "atom"), identifier: nil, discoverabilityTitle: nil) {_ in
+//        let filterView = MacrosViewController()
+//        filterView.sourceView = self
+//        filterView.modalPresentationStyle = .fullScreen
+//        filterView.viewTitle = FilterOptions.macros.rawValue.localizedCapitalized
+//        filterView.searchedRecipe = self.searchedRecipe
+//        self.present(filterView, animated: true)
+//      },
       
       UIAction(title: FilterOptions.mealTypes.rawValue.localizedCapitalized, image: UIImage(systemName: "checklist"), identifier: nil, discoverabilityTitle: nil) {_ in
         let filterView = FilterViewController()
