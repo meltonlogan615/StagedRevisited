@@ -74,30 +74,35 @@ extension LogInView {
     
     signInWithAppleButton.translatesAutoresizingMaskIntoConstraints = false
     signInWithAppleButton.setTitle("Sign In With Apple", for: [])
-
+ 
     cancleButton.translatesAutoresizingMaskIntoConstraints = false
     cancleButton.setTitle("Cancel", for: [])
   }
   
   func layout() {
-    stackView.addArrangedSubview(emailTextField)
-    stackView.addArrangedSubview(passwordTextField)
+//    stackView.addArrangedSubview(emailTextField)
+//    stackView.addArrangedSubview(passwordTextField)
     
-    addSubview(stackView)
-    NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 2),
-      stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 4),
-      trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 4),
-    ])
+//    addSubview(stackView)
+//    NSLayoutConstraint.activate([
+//      stackView.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 2),
+//      stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 4),
+//      trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 4),
+//    ])
     
-    buttonstack.addArrangedSubview(submitButton)
-    buttonstack.addArrangedSubview(cancleButton)
-    buttonstack.addArrangedSubview(signInWithAppleButton)
+//    buttonstack.addArrangedSubview(submitButton)
+//    buttonstack.addArrangedSubview(cancleButton)
+//    buttonstack.addArrangedSubview(signInWithAppleButton)
     addSubview(buttonstack)
+//    buttonstack.backgroundColor = .red
     NSLayoutConstraint.activate([
-      buttonstack.topAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 4),
-      buttonstack.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-      buttonstack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
+//      buttonstack.centerXAnchor.constraint(equalTo: centerXAnchor),
+//      buttonstack.centerYAnchor.constraint(equalTo: centerYAnchor),
+      
+      buttonstack.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 4),
+      buttonstack.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 4),
+      trailingAnchor.constraint(equalToSystemSpacingAfter: buttonstack.trailingAnchor, multiplier: 4),
+      bottomAnchor.constraint(equalToSystemSpacingBelow: buttonstack.bottomAnchor, multiplier: 8),
     ])
   }
 }

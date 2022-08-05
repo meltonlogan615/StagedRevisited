@@ -53,8 +53,9 @@ extension SearchViewController {
   }
   
   private func layout() {
-    let imageHeight = (view.frame.height / 3 - 48)
+    let imageHeight = (view.frame.height / 5 - 48)
     let imageWidth = (view.frame.width / 1.25)
+    
     view.addSubview(imageView)
     NSLayoutConstraint.activate([
       imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 4),
@@ -64,7 +65,9 @@ extension SearchViewController {
     ])
     view.addSubview(searchView)
     NSLayoutConstraint.activate([
-      searchView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 2),
+//      searchView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      searchView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//      searchView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 4),
       view.trailingAnchor.constraint(equalToSystemSpacingAfter: searchView.trailingAnchor, multiplier: 4),
       searchView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
     ])
@@ -82,9 +85,8 @@ extension SearchViewController {
 
 extension SearchViewController {
   func configureButtonActions() {
-    searchView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .primaryActionTriggered)
-    searchView.advancedSearchButton.addTarget(self, action: #selector(advancedButtonTapped), for: .primaryActionTriggered)
-    
+    searchView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+    searchView.advancedSearchButton.addTarget(self, action: #selector(advancedButtonTapped), for: .touchUpInside)
   }
 }
 

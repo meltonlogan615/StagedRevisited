@@ -95,12 +95,10 @@ extension RecipeView {
     mainImage.frame.size = imageSize
     
     saveButton.translatesAutoresizingMaskIntoConstraints = false
-    saveButton.tintColor = K.scYellow
     saveButton.setImage(UIImage(systemName: "star"), for: .normal)
     saveButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
     
     favoriteButton.translatesAutoresizingMaskIntoConstraints = false
-    favoriteButton.tintColor = K.scGreen
     favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
     favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .selected)
     

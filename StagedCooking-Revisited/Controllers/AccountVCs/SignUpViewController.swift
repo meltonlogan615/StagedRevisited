@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 class SignUpViewController: UIViewController {
   
@@ -71,9 +72,10 @@ extension SignUpViewController {
   }
   
   @objc func signUpWithAppleTapped() {
-    let main = SearchViewController()
-    main.modalPresentationStyle = .fullScreen
-    present(main, animated: true)
+//    let main = SearchViewController()
+    let tabView = TabViewController()
+    tabView.modalPresentationStyle = .fullScreen
+    present(tabView, animated: true)
   }
   
   @objc func cancelButtonTapped() {

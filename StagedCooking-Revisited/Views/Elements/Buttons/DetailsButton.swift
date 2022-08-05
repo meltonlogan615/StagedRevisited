@@ -20,6 +20,7 @@ class DetailsButton: UIButton {
     self.isAccessibilityElement = true
     var config = UIButton.Configuration.filled()
     config.baseForegroundColor = K.primary
+    config.baseBackgroundColor = K.scAccent
     config.imagePadding = 16
     config.cornerStyle = .fixed
     config.titleAlignment = .leading

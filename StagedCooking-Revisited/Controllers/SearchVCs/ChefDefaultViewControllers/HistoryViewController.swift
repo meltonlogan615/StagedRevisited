@@ -14,9 +14,7 @@ enum HistoryViews: String, CaseIterable {
 }
 
 class HistoryViewController: UIViewController {
-  
-  let test = ["One", "Two", "Three"]
-  
+    
   let segController: UISegmentedControl = {
     let seg = UISegmentedControl(items: [
       HistoryViews.searchHistory.rawValue.localizedCapitalized,
@@ -91,9 +89,9 @@ extension HistoryViewController: UITableViewDataSource {
     var cell = UITableViewCell()
     switch segController.selectedSegmentIndex {
       case 0:
-        cell = setSearchHistoryCellConfig(indexPath)
+        cell = setCellConfiguration(for: .searchHistory, at: indexPath)
       default:
-        cell = setViewedHistoryCellConfig(indexPath)
+        cell = setCellConfiguration(for: .viewedRecipes, at: indexPath)
     }
     return cell
   }
@@ -158,13 +156,16 @@ extension HistoryViewController {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexpath)
     var config = cell.defaultContentConfiguration()
     if ChefDefault.searchHistory.isEmpty {
-      config.text = "Nope"
+      config.text = "No Search History"
+      config.textProperties.alignment = .center
+      cell.isUserInteractionEnabled = false
+      cell.accessoryType = .none
     } else {
       config.text = ChefDefault.searchHistory[indexpath.row]
+      cell.accessoryType = .disclosureIndicator
     }
     cell.layer.cornerRadius = 8
     cell.clipsToBounds = true
-    cell.accessoryType = .disclosureIndicator
     cell.backgroundColor = K.modalBG
     cell.contentConfiguration = config
     return cell
@@ -187,7 +188,10 @@ extension HistoryViewController {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexpath)
     var config = cell.defaultContentConfiguration()
     if ChefDefault.viewedRecipes.isEmpty {
-      config.text = "Nah"
+      config.text = "No Viewed History"
+      config.textProperties.alignment = .center
+      cell.isUserInteractionEnabled = false
+      cell.accessoryType = .none
     } else {
       
       // create an array of all of the keys
@@ -200,7 +204,49 @@ extension HistoryViewController {
         
       }
     }
+    cell.layer.cornerRadius = 8
+    cell.clipsToBounds = true
     cell.accessoryType = .disclosureIndicator
+    cell.backgroundColor = K.modalBG
+    cell.contentConfiguration = config
+    return cell
+  }
+}
+
+extension HistoryViewController {
+  func setCellConfiguration(for view: HistoryViews, at indexpath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexpath)
+    var config = cell.defaultContentConfiguration()
+    switch view {
+      case .searchHistory:
+        if ChefDefault.searchHistory.isEmpty {
+          config.text = "No Search History"
+          config.textProperties.alignment = .center
+          cell.isUserInteractionEnabled = false
+          cell.accessoryType = .none
+        } else {
+          config.text = ChefDefault.searchHistory[indexpath.row]
+          cell.accessoryType = .disclosureIndicator
+        }
+      case .viewedRecipes:
+        if ChefDefault.viewedRecipes.isEmpty {
+          config.text = "No Viewed History"
+          config.textProperties.alignment = .center
+          cell.isUserInteractionEnabled = false
+          cell.accessoryType = .none
+        } else {
+          // create an array of all of the keys
+          let keysArray = Array(ChefDefault.viewedRecipes.keys)
+          // get the indexPath of the key
+          let currentIndex = keysArray[indexpath.row]
+          // unwrap the value using the key at the indexPath
+          if let currentRecipe = ChefDefault.viewedRecipes[currentIndex] {
+            config.text = currentRecipe
+          }
+        }
+    }
+    cell.layer.cornerRadius = 8
+    cell.clipsToBounds = true
     cell.backgroundColor = K.modalBG
     cell.contentConfiguration = config
     return cell

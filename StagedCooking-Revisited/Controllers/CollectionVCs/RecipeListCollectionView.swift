@@ -65,7 +65,6 @@ class RecipeListCollectionView: UIViewController {
     recipeCollection.delegate = self
     style()
     layout()
-    
   }
   
   
@@ -207,7 +206,6 @@ extension RecipeListCollectionView {
   func noResults(for recipe: String) {
     guard let results = self.model.results else { return }
     if results.isEmpty {
-      print("No results found for \(recipe)")
       let nothingAlert = UIAlertController(title: "No results found for \"\(recipe)\"", message: "Please check your spelling or try searching again.", preferredStyle: .alert)
       let dismissAction = UIAlertAction(title: "Dismiss", style: .default) { _ in
         self.dismiss(animated: true)
