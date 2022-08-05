@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 // MARK: - Button Activation
 extension RecipeViewController {
@@ -77,13 +78,23 @@ extension RecipeViewController: ModalDataSource {
   
   // MARK: - Save Recipe for Later
   @objc func saveRecipe() {
-  // need to show to chef that recipe has been saved
-    ChefDefault.addToSaved(recipeID: String(recipeID), recipeTitle: recipeTitle)
+    // need to show to chef that recipe has been saved
+    if ChefDefault.savedRecipes.containsKey(String(recipeID)) {
+      ChefDefault.savedRecipes[String(recipeID)] = nil
+    } else {
+      ChefDefault.addToSaved(recipeID: String(recipeID), recipeTitle: recipeTitle)
+    }
     self.setRightBarButtons()
   }
   
   @objc func favRecipe() {
-    ChefDefault.addToFavorites(recipeID: String(recipeID), recipeTitle: recipeTitle)
+    if ChefDefault.favoriteRecipes.containsKey(String(recipeID)) {
+      ChefDefault.favoriteRecipes[String(recipeID)] = nil
+    } else {
+      ChefDefault.addToFavorites(recipeID: String(recipeID), recipeTitle: recipeTitle)
+    }
     self.setRightBarButtons()
   }
 }
+
+
