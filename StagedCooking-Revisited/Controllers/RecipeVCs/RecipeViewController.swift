@@ -178,9 +178,9 @@ extension RecipeViewController {
     var saved = UIBarButtonItem()
     var faved = UIBarButtonItem()
     if ChefDefault.savedRecipes[String(recipeID)] == nil {
-      saved = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(saveRecipe))
+      saved = UIBarButtonItem(image: UIImage(systemName: "pin"), style: .plain, target: self, action: #selector(saveRecipe))
     } else {
-      saved = UIBarButtonItem(image: UIImage(systemName: "star.fill"), style: .plain, target: self, action: #selector(saveRecipe))
+      saved = UIBarButtonItem(image: UIImage(systemName: "pin.fill"), style: .plain, target: self, action: #selector(saveRecipe))
     }
     
     if ChefDefault.favoriteRecipes[String(recipeID)] == nil {

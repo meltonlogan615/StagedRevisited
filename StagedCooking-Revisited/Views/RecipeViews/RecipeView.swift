@@ -95,8 +95,8 @@ extension RecipeView {
     mainImage.frame.size = imageSize
     
     saveButton.translatesAutoresizingMaskIntoConstraints = false
-    saveButton.setImage(UIImage(systemName: "star"), for: .normal)
-    saveButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
+    saveButton.setImage(UIImage(systemName: "pin"), for: .normal)
+    saveButton.setImage(UIImage(systemName: "pin.fill"), for: .selected)
     
     favoriteButton.translatesAutoresizingMaskIntoConstraints = false
     favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)

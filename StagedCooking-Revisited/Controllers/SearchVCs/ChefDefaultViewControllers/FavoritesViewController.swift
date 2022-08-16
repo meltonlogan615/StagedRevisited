@@ -27,7 +27,7 @@ class FavoritesViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = "Favorite Recipes"
+    self.title = "Favorites"
     view.backgroundColor = K.primary
     tableView.dataSource = self
     tableView.delegate = self

@@ -31,10 +31,10 @@ class LogInView: UIView {
   let emailTextField = LargeTextField()
   let passwordTextField = LargeTextField()
   
-  let buttonstack = UIStackView()
+  let buttonStack = UIStackView()
   let submitButton = ActionButton()
   let cancleButton = DetailsButton()
-  let signInWithAppleButton = SignWithAppleButton()
+//  let signInWithAppleButton = SignWithAppleButton()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -60,49 +60,50 @@ extension LogInView {
     emailTextField.translatesAutoresizingMaskIntoConstraints = false
     emailTextField.placeholder = "Email"
     emailTextField.becomeFirstResponder()
+    emailTextField.textContentType = .emailAddress
     
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     passwordTextField.placeholder = "Password"
     passwordTextField.isSecureTextEntry = true
+    passwordTextField.textContentType = .password
     
-    buttonstack.translatesAutoresizingMaskIntoConstraints = false
-    buttonstack.axis = .vertical
-    buttonstack.spacing = 16
+    buttonStack.translatesAutoresizingMaskIntoConstraints = false
+    buttonStack.axis = .vertical
+    buttonStack.spacing = 16
     
     submitButton.translatesAutoresizingMaskIntoConstraints = false
     submitButton.setTitle("Log In", for: [])
     
-    signInWithAppleButton.translatesAutoresizingMaskIntoConstraints = false
-    signInWithAppleButton.setTitle("Sign In With Apple", for: [])
+//    signInWithAppleButton.translatesAutoresizingMaskIntoConstraints = false
+//    signInWithAppleButton.setTitle("Sign In With Apple", for: [])
  
     cancleButton.translatesAutoresizingMaskIntoConstraints = false
     cancleButton.setTitle("Cancel", for: [])
   }
   
   func layout() {
-//    stackView.addArrangedSubview(emailTextField)
-//    stackView.addArrangedSubview(passwordTextField)
+    stackView.addArrangedSubview(emailTextField)
+    stackView.addArrangedSubview(passwordTextField)
     
-//    addSubview(stackView)
-//    NSLayoutConstraint.activate([
-//      stackView.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 2),
-//      stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 4),
-//      trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 4),
-//    ])
+    addSubview(stackView)
+    NSLayoutConstraint.activate([
+      stackView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 2),
+      stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 4),
+      trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 4),
+    ])
     
-//    buttonstack.addArrangedSubview(submitButton)
-//    buttonstack.addArrangedSubview(cancleButton)
+    buttonStack.addArrangedSubview(submitButton)
+    buttonStack.addArrangedSubview(cancleButton)
 //    buttonstack.addArrangedSubview(signInWithAppleButton)
-    addSubview(buttonstack)
-//    buttonstack.backgroundColor = .red
+    addSubview(buttonStack)
     NSLayoutConstraint.activate([
 //      buttonstack.centerXAnchor.constraint(equalTo: centerXAnchor),
 //      buttonstack.centerYAnchor.constraint(equalTo: centerYAnchor),
       
-      buttonstack.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 4),
-      buttonstack.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 4),
-      trailingAnchor.constraint(equalToSystemSpacingAfter: buttonstack.trailingAnchor, multiplier: 4),
-      bottomAnchor.constraint(equalToSystemSpacingBelow: buttonstack.bottomAnchor, multiplier: 8),
+      buttonStack.topAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 4),
+      buttonStack.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 4),
+      trailingAnchor.constraint(equalToSystemSpacingAfter: buttonStack.trailingAnchor, multiplier: 4),
+//      bottomAnchor.constraint(equalToSystemSpacingBelow: buttonstack.bottomAnchor, multiplier: 8),
     ])
   }
 }

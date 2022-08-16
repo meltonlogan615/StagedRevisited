@@ -1,0 +1,20 @@
+
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "1627721900.com.meltonlogan.StagedCooking-Revisited",
+          "stagedcooking.firebaseapp.com"
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["1627721900.com.meltonlogan.StagedCooking-Revisited",
+      "stagedcooking.web.app"
+    ]
+  },
+  "appclips": {
+  }
+}

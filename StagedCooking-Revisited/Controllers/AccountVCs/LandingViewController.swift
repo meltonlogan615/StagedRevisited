@@ -15,7 +15,7 @@ class LandingViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = K.invertPrimary
+    view.backgroundColor = K.primary
     style()
     layout()
     setButtons()
@@ -61,7 +61,6 @@ extension LandingViewController {
     self.landing.logInButton.addTarget(self, action: #selector(logInTapped), for: .primaryActionTriggered)
     self.landing.signUpButton.addTarget(self, action: #selector(signUpTapped), for: .primaryActionTriggered)
     self.landing.forgotPassword.addTarget(self, action: #selector(forgotTapped), for: .primaryActionTriggered)
-
   }
 }
 
