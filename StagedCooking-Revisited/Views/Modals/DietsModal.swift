@@ -87,7 +87,6 @@ extension DietsModal {
     
     wwSmartPointsLabel.translatesAutoresizingMaskIntoConstraints = false
     wwSmartPointsLabel.text = info.wwSmartPoints
-    
   }
   
   func layoutDietLabels(with info: DietInfo) {

@@ -36,7 +36,7 @@ class SignUpView: UIView {
   let passwordConfirmationTextField = LargeTextField()
   
   let buttonStack = UIStackView()
-  let submitButton = ActionButton()
+  let signUpButton = ActionButton()
   let cancelButton = DetailsButton()
   let signUpWithAppleButton = SignWithAppleButton()
     
@@ -63,26 +63,31 @@ extension SignUpView {
     
     nameTextField.translatesAutoresizingMaskIntoConstraints = false
     nameTextField.placeholder = "Name"
+    nameTextField.textContentType = .name
     nameTextField.becomeFirstResponder()
     
     emailTextField.translatesAutoresizingMaskIntoConstraints = false
     emailTextField.placeholder = "Email Address"
+    emailTextField.textContentType = .emailAddress
+    emailTextField.keyboardType = .emailAddress
     
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     passwordTextField.placeholder = "Password"
     passwordTextField.isSecureTextEntry = true
+//    passwordTextField.textContentType = .newPassword
     
     passwordConfirmationTextField.translatesAutoresizingMaskIntoConstraints = false
     passwordConfirmationTextField.placeholder = "Confirm Password"
     passwordConfirmationTextField.isSecureTextEntry = true
+    passwordConfirmationTextField.textContentType = .newPassword
     
     // MARK: - Buttons
     buttonStack.translatesAutoresizingMaskIntoConstraints = false
     buttonStack.axis = .vertical
     buttonStack.spacing = 16
     
-    submitButton.translatesAutoresizingMaskIntoConstraints = false
-    submitButton.setTitle("Sign Up", for: [])
+    signUpButton.translatesAutoresizingMaskIntoConstraints = false
+    signUpButton.setTitle("Sign Up", for: [])
     
     signUpWithAppleButton.translatesAutoresizingMaskIntoConstraints = false
     signUpWithAppleButton.setTitle("Sign Up With Apple", for: [])
@@ -103,8 +108,8 @@ extension SignUpView {
       trailingAnchor.constraint(equalToSystemSpacingAfter: textFieldStack.trailingAnchor, multiplier: 4)
     ])
     
-    buttonStack.addArrangedSubview(submitButton)
-    buttonStack.addArrangedSubview(signUpWithAppleButton)
+    buttonStack.addArrangedSubview(signUpButton)
+//    buttonStack.addArrangedSubview(signUpWithAppleButton)
     buttonStack.addArrangedSubview(cancelButton)
     addSubview(buttonStack)
     NSLayoutConstraint.activate([

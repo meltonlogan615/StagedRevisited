@@ -21,6 +21,8 @@ class SavedViewController: UIViewController {
     self.tableView.reloadData()
   }
   
+  let noListView = NoListView()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = K.primary
@@ -43,13 +45,26 @@ extension SavedViewController {
       tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
     ])
   }
+  
+  func layoutForEmpty() {
+    view.addSubview(noListView)
+    noListView.translatesAutoresizingMaskIntoConstraints = false
+    noListView.noListLabel.text = "No Saved Recipes"
+    NSLayoutConstraint.activate([
+      noListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      noListView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+      view.trailingAnchor.constraint(equalToSystemSpacingAfter: noListView.trailingAnchor, multiplier: 2),
+      noListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+    ])
+  }
 }
 
 extension SavedViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     var count = 1
     if ChefDefault.savedRecipes.count == 0 {
-      count = 1
+      tableView.removeFromSuperview()
+      layoutForEmpty()
     } else {
       count = ChefDefault.savedRecipes.count
     }
@@ -86,8 +101,12 @@ extension SavedViewController: UITableViewDelegate {
     // create an array of all of the keys
     let keysArray = Array(ChefDefault.savedRecipes.keys)
     // get the indexPath of the key
-    let currentIndex = keysArray[indexPath.row]
-    showSelectedRecipe(for: Int(currentIndex)!)
+    if !keysArray.isEmpty {
+      let currentIndex = keysArray[indexPath.row]
+      showSelectedRecipe(for: Int(currentIndex)!)
+    } else {
+      self.noResults(title: "No Saved Recipes", message: "You currently do not have any recipes saved. Search around and find something that'll make your tummy happy.")
+    }
   }
   
   private func showSelectedRecipe(for recipeID: Int) {

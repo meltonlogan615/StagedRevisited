@@ -45,15 +45,21 @@ struct ChefDefault {
   
   static var favoriteRecipes = [String: String]()
   static var savedRecipes = [String: String]() // Saved, but not an explicit favorite. But can still be both
+  
   static var viewedRecipes = [String: String]()
   static var searchHistory = [String]() // perhaps used later as part of an autocomplete in search
   static var hateListe = [String: String]() // Never see a recipe again.
   
+  var name: String?
+  var email: String?
+  var uid: String?
+
   static var isLoggedIn = true
   static var hasOnboarded = false
   
   static var intolerances = [Intolerance]()
   static var dietPreferences = [Diet]()
+  
   
   static func saveSettings(allergies: [Intolerance]?, restrictions: [Diet]?) {
     if let intolerances = allergies {
@@ -96,6 +102,10 @@ struct ChefDefault {
     self.intolerances.insert(intolerance, at: 0)
     ChefDefault.defaults.set(ChefDefault.intolerances, forKey: "intolerances")
   }
+  
+//  static func setChefData() {
+//    ChefDefault.defaults.set(ChefDefault.chefName, forKey: "ChefName")
+//  }
   
   static func saveChanges() {
     ChefDefault.defaults.set(ChefDefault.favoriteRecipes, forKey: "favorites")

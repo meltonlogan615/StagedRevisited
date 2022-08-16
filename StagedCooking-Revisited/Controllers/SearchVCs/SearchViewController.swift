@@ -5,6 +5,8 @@
 //  Created by Logan Melton on 4/3/22.
 //
 
+import FirebaseAuth
+import FirebaseCore
 import UIKit
 
 protocol PassingRequest: AnyObject {
@@ -17,6 +19,9 @@ class SearchViewController: UIViewController {
   let imageView = UIImageView()
   let searchView = SearchView()
   let acctButton = TextOnlyButton()
+  
+  var handle: AuthStateDidChangeListenerHandle?
+  var user: User?
 
   var searched: String? {
     return searchView.searchTextField.text
@@ -28,10 +33,19 @@ class SearchViewController: UIViewController {
     style()
     layout()
     configureButtonActions()
-    setupToolbar()
+    setupToolbar(for: self, textFields: [searchView.searchTextField])
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    handle = Auth.auth().addStateDidChangeListener { _, user in
+      guard let user = user else { return }
+      self.user = user
+    }
   }
   
   override func viewDidDisappear(_ animated: Bool) {
+    guard let handle = handle else { return }
+    Auth.auth().removeStateDidChangeListener(handle)
     searchView.searchTextField.text = ""
     searchView.errorLabel.isHidden = true
   }
@@ -53,8 +67,9 @@ extension SearchViewController {
   }
   
   private func layout() {
-    let imageHeight = (view.frame.height / 3 - 48)
+    let imageHeight = (view.frame.height / 5 - 48)
     let imageWidth = (view.frame.width / 1.25)
+    
     view.addSubview(imageView)
     NSLayoutConstraint.activate([
       imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 4),
@@ -64,7 +79,9 @@ extension SearchViewController {
     ])
     view.addSubview(searchView)
     NSLayoutConstraint.activate([
-      searchView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 2),
+//      searchView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      searchView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//      searchView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 4),
       view.trailingAnchor.constraint(equalToSystemSpacingAfter: searchView.trailingAnchor, multiplier: 4),
       searchView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 4),
     ])
@@ -82,9 +99,8 @@ extension SearchViewController {
 
 extension SearchViewController {
   func configureButtonActions() {
-    searchView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .primaryActionTriggered)
-    searchView.advancedSearchButton.addTarget(self, action: #selector(advancedButtonTapped), for: .primaryActionTriggered)
-    
+    searchView.searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+    searchView.advancedSearchButton.addTarget(self, action: #selector(advancedButtonTapped), for: .touchUpInside)
   }
 }
 
@@ -121,32 +137,32 @@ extension SearchViewController {
   }
 }
 
-extension SearchViewController {
-  func setupToolbar() {
+//extension SearchViewController {
+//  func setupToolbar() {
+//
+//    let bar = UIToolbar()
+//
+//    //Create a done button with an action to trigger our function to dismiss the keyboard
+//    let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissMyKeyboard))
+//
+//    //Create a felxible space item so that we can add it around in toolbar to position our done button
+//    let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+//
+//    //Add the created button items in the toobar
+//    bar.items = [flexSpace, flexSpace, doneButton]
+//    bar.sizeToFit()
+//
+//    //Add the toolbar to our textfield
+//    searchView.searchTextField.inputAccessoryView = bar
+//  }
+//
+//  @objc func dismissMyKeyboard(){
+//    view.endEditing(true)
+//  }
+//}
 
-    let bar = UIToolbar()
-
-    //Create a done button with an action to trigger our function to dismiss the keyboard
-    let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissMyKeyboard))
-
-    //Create a felxible space item so that we can add it around in toolbar to position our done button
-    let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-
-    //Add the created button items in the toobar
-    bar.items = [flexSpace, flexSpace, doneButton]
-    bar.sizeToFit()
-
-    //Add the toolbar to our textfield
-    searchView.searchTextField.inputAccessoryView = bar
-  }
-
-  @objc func dismissMyKeyboard(){
-    view.endEditing(true)
-  }
-}
-
-extension SearchViewController {
-  override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+extension SearchViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     if searchView.searchTextField.text != nil {
       textField.resignFirstResponder()
       searchButtonTapped()

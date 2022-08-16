@@ -35,11 +35,10 @@ extension TabViewController {
     historyNav.navigationBar.prefersLargeTitles = true
     
     let savedTab = SavedViewController()
-    let savedTabItem = UITabBarItem(title: "Saved", image: UIImage(systemName: "star.circle"), selectedImage: UIImage(systemName: "star.circle.fill"))
+    let savedTabItem = UITabBarItem(title: "Saved", image: UIImage(systemName: "pin.circle"), selectedImage: UIImage(systemName: "pin.circle.fill"))
     savedTab.tabBarItem = savedTabItem
     let savedNav = UINavigationController(rootViewController: savedTab)
     savedNav.navigationBar.prefersLargeTitles = true
-
     
     let favoritesTab = FavoritesViewController()
     let favoritesTabItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "heart.circle"), selectedImage: UIImage(systemName: "heart.circle.fill"))
@@ -47,21 +46,24 @@ extension TabViewController {
     let favoriteNav = UINavigationController(rootViewController: favoritesTab)
     favoriteNav.navigationBar.prefersLargeTitles = true
 
-
-    let settingsTab = UIViewController()
-    let settingsTabItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear.circle"), selectedImage: UIImage(named: "gear.circle.fill"))
+    let settingsTab = SettingsViewController()
+    let settingsTabItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear.circle"), selectedImage: UIImage(systemName: "gear.circle.fill"))
     settingsTab.tabBarItem = settingsTabItem
-    let preferencesNav = UINavigationController(rootViewController: settingsTab)
-    preferencesNav.navigationBar.prefersLargeTitles = true
-
-
+    let settingsNav = UINavigationController(rootViewController: settingsTab)
+    settingsNav.navigationBar.prefersLargeTitles = true
+    
+//    let settingsTab = SettingsViewController()
+//    let settingsTabItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear.circle"), selectedImage: UIImage(named: "gear.circle.fill"))
+//    settingsTab.tabBarItem = settingsTabItem
+//    let settingsNav = UINavigationController(rootViewController: settingsTab)
+//    settingsNav.navigationBar.prefersLargeTitles = true
 
     self.viewControllers = [
       searchTab,
       historyNav,
       savedNav,
       favoriteNav,
-//      settingsTab
+      settingsNav
     ]
   }
   

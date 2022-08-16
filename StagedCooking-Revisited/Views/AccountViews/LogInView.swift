@@ -31,10 +31,10 @@ class LogInView: UIView {
   let emailTextField = LargeTextField()
   let passwordTextField = LargeTextField()
   
-  let buttonstack = UIStackView()
+  let buttonStack = UIStackView()
   let submitButton = ActionButton()
   let cancleButton = DetailsButton()
-  let signInWithAppleButton = SignWithAppleButton()
+//  let signInWithAppleButton = SignWithAppleButton()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -60,21 +60,23 @@ extension LogInView {
     emailTextField.translatesAutoresizingMaskIntoConstraints = false
     emailTextField.placeholder = "Email"
     emailTextField.becomeFirstResponder()
+    emailTextField.textContentType = .emailAddress
     
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     passwordTextField.placeholder = "Password"
     passwordTextField.isSecureTextEntry = true
+    passwordTextField.textContentType = .password
     
-    buttonstack.translatesAutoresizingMaskIntoConstraints = false
-    buttonstack.axis = .vertical
-    buttonstack.spacing = 16
+    buttonStack.translatesAutoresizingMaskIntoConstraints = false
+    buttonStack.axis = .vertical
+    buttonStack.spacing = 16
     
     submitButton.translatesAutoresizingMaskIntoConstraints = false
     submitButton.setTitle("Log In", for: [])
     
-    signInWithAppleButton.translatesAutoresizingMaskIntoConstraints = false
-    signInWithAppleButton.setTitle("Sign In With Apple", for: [])
-
+//    signInWithAppleButton.translatesAutoresizingMaskIntoConstraints = false
+//    signInWithAppleButton.setTitle("Sign In With Apple", for: [])
+ 
     cancleButton.translatesAutoresizingMaskIntoConstraints = false
     cancleButton.setTitle("Cancel", for: [])
   }
@@ -85,19 +87,23 @@ extension LogInView {
     
     addSubview(stackView)
     NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 2),
+      stackView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 2),
       stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 4),
       trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 4),
     ])
     
-    buttonstack.addArrangedSubview(submitButton)
-    buttonstack.addArrangedSubview(cancleButton)
-    buttonstack.addArrangedSubview(signInWithAppleButton)
-    addSubview(buttonstack)
+    buttonStack.addArrangedSubview(submitButton)
+    buttonStack.addArrangedSubview(cancleButton)
+//    buttonstack.addArrangedSubview(signInWithAppleButton)
+    addSubview(buttonStack)
     NSLayoutConstraint.activate([
-      buttonstack.topAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 4),
-      buttonstack.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-      buttonstack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor)
+//      buttonstack.centerXAnchor.constraint(equalTo: centerXAnchor),
+//      buttonstack.centerYAnchor.constraint(equalTo: centerYAnchor),
+      
+      buttonStack.topAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 4),
+      buttonStack.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 4),
+      trailingAnchor.constraint(equalToSystemSpacingAfter: buttonStack.trailingAnchor, multiplier: 4),
+//      bottomAnchor.constraint(equalToSystemSpacingBelow: buttonstack.bottomAnchor, multiplier: 8),
     ])
   }
 }

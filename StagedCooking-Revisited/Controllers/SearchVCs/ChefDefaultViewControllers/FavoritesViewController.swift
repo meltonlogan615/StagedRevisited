@@ -19,13 +19,15 @@ class FavoritesViewController: UIViewController {
     return table
   }()
   
+  let noListView = NoListView()
+
   override func viewWillAppear(_ animated: Bool) {
     tableView.reloadData()
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = "Favorite Recipes"
+    self.title = "Favorites"
     view.backgroundColor = K.primary
     tableView.dataSource = self
     tableView.delegate = self
@@ -44,13 +46,26 @@ extension FavoritesViewController {
       tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
     ])
   }
+  
+  func layoutForEmpty() {
+    view.addSubview(noListView)
+    noListView.translatesAutoresizingMaskIntoConstraints = false
+    noListView.noListLabel.text = "No Favorited Recipes"
+    NSLayoutConstraint.activate([
+      noListView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      noListView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+      view.trailingAnchor.constraint(equalToSystemSpacingAfter: noListView.trailingAnchor, multiplier: 2),
+      noListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+    ])
+  }
 }
 
 extension FavoritesViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     var count = 1
     if ChefDefault.favoriteRecipes.count == 0 {
-      count = 1
+      tableView.removeFromSuperview()
+      layoutForEmpty()
     } else {
       count = ChefDefault.favoriteRecipes.count
     }
@@ -86,8 +101,13 @@ extension FavoritesViewController: UITableViewDelegate {
     // create an array of all of the keys
     let keysArray = Array(ChefDefault.favoriteRecipes.keys)
     // get the indexPath of the key
-    let currentIndex = keysArray[indexPath.row]
-    showSelectedRecipe(for: Int(currentIndex)!)
+    if !keysArray.isEmpty {
+      let currentIndex = keysArray[indexPath.row]
+      showSelectedRecipe(for: Int(currentIndex)!)
+    } else {
+      self.noResults(title: "No Favorite Recipes", message: "You currently do not have any recipes favorited. Experiment. Try something new.\n\nYou might like it.")
+    }
+
   }
   
   private func showSelectedRecipe(for recipeID: Int) {
