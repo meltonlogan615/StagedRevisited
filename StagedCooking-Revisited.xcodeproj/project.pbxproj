@@ -57,6 +57,9 @@
 		325678F4283F2FDE00D32646 /* LargeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325678F3283F2FDE00D32646 /* LargeLabel.swift */; };
 		3268459428ADE57D00DB63B5 /* AccountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3268459328ADE57D00DB63B5 /* AccountTextField.swift */; };
 		3268459628ADE5BB00DB63B5 /* IcludeExcludeSeg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3268459528ADE5BB00DB63B5 /* IcludeExcludeSeg.swift */; };
+		3268459828ADE62900DB63B5 /* LargeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3268459728ADE62900DB63B5 /* LargeTextField.swift */; };
+		3268459A28ADE63E00DB63B5 /* MacroPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3268459928ADE63E00DB63B5 /* MacroPicker.swift */; };
+		3268459C28ADE67600DB63B5 /* MacrosTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3268459B28ADE67600DB63B5 /* MacrosTextField.swift */; };
 		326F9F8B281D099C0086BA53 /* IngredientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */; };
 		326F9F9D282216C60086BA53 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F9C282216C60086BA53 /* RecipeView.swift */; };
 		326F9FA1282223EB0086BA53 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9FA0282223EB0086BA53 /* RecipeViewController.swift */; };
@@ -168,6 +171,9 @@
 		3264D35E28386A3F00C06555 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3268459328ADE57D00DB63B5 /* AccountTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTextField.swift; sourceTree = "<group>"; };
 		3268459528ADE5BB00DB63B5 /* IcludeExcludeSeg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IcludeExcludeSeg.swift; sourceTree = "<group>"; };
+		3268459728ADE62900DB63B5 /* LargeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTextField.swift; sourceTree = "<group>"; };
+		3268459928ADE63E00DB63B5 /* MacroPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroPicker.swift; sourceTree = "<group>"; };
+		3268459B28ADE67600DB63B5 /* MacrosTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosTextField.swift; sourceTree = "<group>"; };
 		326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListViewController.swift; sourceTree = "<group>"; };
 		326F9F9C282216C60086BA53 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		326F9FA0282223EB0086BA53 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
@@ -710,6 +716,9 @@
 			children = (
 				3268459328ADE57D00DB63B5 /* AccountTextField.swift */,
 				3268459528ADE5BB00DB63B5 /* IcludeExcludeSeg.swift */,
+				3268459728ADE62900DB63B5 /* LargeTextField.swift */,
+				3268459928ADE63E00DB63B5 /* MacroPicker.swift */,
+				3268459B28ADE67600DB63B5 /* MacrosTextField.swift */,
 			);
 			path = ChefInputs;
 			sourceTree = "<group>";
@@ -827,6 +836,7 @@
 			files = (
 				327B59FB284FFCE3007495AA /* RecipeRowView.swift in Sources */,
 				322199BB27FA6407003FD4F6 /* RecipeCell.swift in Sources */,
+				3268459C28ADE67600DB63B5 /* MacrosTextField.swift in Sources */,
 				322199A627FA5EE3003FD4F6 /* NetworkDataFlow.swift in Sources */,
 				32027D4C2829F6D900F0F167 /* Nutrition.swift in Sources */,
 				32B56B4D28866CE900F7707D /* TabViewController.swift in Sources */,
@@ -862,6 +872,7 @@
 				32C99135282EF80800667F65 /* SCLabel.swift in Sources */,
 				32D70DC82808BEE1000328B9 /* GetCookingViewController.swift in Sources */,
 				324A2CE8289D7A3B000B7F9A /* ContainsKey.swift in Sources */,
+				3268459A28ADE63E00DB63B5 /* MacroPicker.swift in Sources */,
 				3221EF892835E89500A6FCCD /* AdvancedSearchViewController.swift in Sources */,
 				3221998527FA5DB2003FD4F6 /* SearchViewController.swift in Sources */,
 				329C096F2836966C00CECE6C /* SignUpView.swift in Sources */,
@@ -924,6 +935,7 @@
 				32BD7A3F28398C230055B9CF /* String-Folding.swift in Sources */,
 				3221EF83283565B000A6FCCD /* CuisinesMethod.swift in Sources */,
 				329C097C28374D2800CECE6C /* TextOnlyButton.swift in Sources */,
+				3268459828ADE62900DB63B5 /* LargeTextField.swift in Sources */,
 				322199A927FA5F34003FD4F6 /* ChefDefault.swift in Sources */,
 				326F9F8B281D099C0086BA53 /* IngredientListViewController.swift in Sources */,
 				3221EF7F28355CEE00A6FCCD /* MealTypeMethod.swift in Sources */,
