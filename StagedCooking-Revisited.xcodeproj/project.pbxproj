@@ -62,6 +62,7 @@
 		326845A228ADE7C100DB63B5 /* CuisineMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326845A128ADE7C100DB63B5 /* CuisineMethod.swift */; };
 		326845A428ADE81200DB63B5 /* DietsMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326845A328ADE81200DB63B5 /* DietsMethod.swift */; };
 		326845A628ADE85900DB63B5 /* MealTypeMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326845A528ADE85900DB63B5 /* MealTypeMethod.swift */; };
+		326845AB28ADEA7000DB63B5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326845AA28ADEA7000DB63B5 /* SettingsViewController.swift */; };
 		326F9F8B281D099C0086BA53 /* IngredientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */; };
 		326F9F9D282216C60086BA53 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F9C282216C60086BA53 /* RecipeView.swift */; };
 		326F9FA1282223EB0086BA53 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9FA0282223EB0086BA53 /* RecipeViewController.swift */; };
@@ -86,7 +87,6 @@
 		327B5A132851B2EA007495AA /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A122851B2EA007495AA /* SpinnerViewController.swift */; };
 		327B5A1A2852245E007495AA /* ShowHideSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A192852245E007495AA /* ShowHideSpinner.swift */; };
 		327B5A1D2852F557007495AA /* SortAndFilterActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A1C2852F557007495AA /* SortAndFilterActions.swift */; };
-		327B5A2528541AD1007495AA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A2428541AD1007495AA /* SettingsViewController.swift */; };
 		329C096D2836964100CECE6C /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C096C2836964100CECE6C /* LogInView.swift */; };
 		329C096F2836966C00CECE6C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C096E2836966C00CECE6C /* SignUpView.swift */; };
 		329C09762837432B00CECE6C /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C09752837432B00CECE6C /* TextFieldDelegate.swift */; };
@@ -178,6 +178,7 @@
 		326845A128ADE7C100DB63B5 /* CuisineMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineMethod.swift; sourceTree = "<group>"; };
 		326845A328ADE81200DB63B5 /* DietsMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietsMethod.swift; sourceTree = "<group>"; };
 		326845A528ADE85900DB63B5 /* MealTypeMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTypeMethod.swift; sourceTree = "<group>"; };
+		326845AA28ADEA7000DB63B5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListViewController.swift; sourceTree = "<group>"; };
 		326F9F9C282216C60086BA53 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		326F9FA0282223EB0086BA53 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
@@ -202,7 +203,6 @@
 		327B5A122851B2EA007495AA /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		327B5A192852245E007495AA /* ShowHideSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHideSpinner.swift; sourceTree = "<group>"; };
 		327B5A1C2852F557007495AA /* SortAndFilterActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortAndFilterActions.swift; sourceTree = "<group>"; };
-		327B5A2428541AD1007495AA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		329C096C2836964100CECE6C /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		329C096E2836966C00CECE6C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		329C09752837432B00CECE6C /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
@@ -304,12 +304,12 @@
 		3221999527FA5DE2003FD4F6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				327B5A142851B40D007495AA /* SystemVCs */,
-				322199D327FA975E003FD4F6 /* SearchVCs */,
+				329C097428373D0600CECE6C /* AccountVCs */,
 				322199D427FA9771003FD4F6 /* CollectionVCs */,
 				322199D527FA9790003FD4F6 /* RecipeVCs */,
+				322199D327FA975E003FD4F6 /* SearchVCs */,
 				32D70DBB28073A53000328B9 /* StagedCards */,
-				329C097428373D0600CECE6C /* AccountVCs */,
+				327B5A142851B40D007495AA /* SystemVCs */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -699,7 +699,7 @@
 				329C097928374CED00CECE6C /* LandingViewController.swift */,
 				3214AC13284BE78600474068 /* LogInViewController.swift */,
 				3214AC0F284B312D00474068 /* SignUpViewController.swift */,
-				327B5A2428541AD1007495AA /* SettingsViewController.swift */,
+				326845AA28ADEA7000DB63B5 /* SettingsViewController.swift */,
 			);
 			path = AccountVCs;
 			sourceTree = "<group>";
@@ -902,7 +902,6 @@
 				327B59FF285155A1007495AA /* ButtonActions.swift in Sources */,
 				322199C427FA6A55003FD4F6 /* SearchResult.swift in Sources */,
 				3276102C282B0B4C005346D4 /* SCModal.swift in Sources */,
-				327B5A2528541AD1007495AA /* SettingsViewController.swift in Sources */,
 				322199A027FA5E99003FD4F6 /* EndPoints.swift in Sources */,
 				32289FFF2858EEF700D0BE1D /* APIKeys.swift in Sources */,
 				3268459428ADE57D00DB63B5 /* AccountTextField.swift in Sources */,
@@ -948,6 +947,7 @@
 				326F9F8B281D099C0086BA53 /* IngredientListViewController.swift in Sources */,
 				326845A428ADE81200DB63B5 /* DietsMethod.swift in Sources */,
 				329C096D2836964100CECE6C /* LogInView.swift in Sources */,
+				326845AB28ADEA7000DB63B5 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
