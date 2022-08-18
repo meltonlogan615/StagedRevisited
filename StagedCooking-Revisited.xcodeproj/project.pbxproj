@@ -60,6 +60,8 @@
 		3268459828ADE62900DB63B5 /* LargeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3268459728ADE62900DB63B5 /* LargeTextField.swift */; };
 		3268459A28ADE63E00DB63B5 /* MacroPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3268459928ADE63E00DB63B5 /* MacroPicker.swift */; };
 		3268459C28ADE67600DB63B5 /* MacrosTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3268459B28ADE67600DB63B5 /* MacrosTextField.swift */; };
+		3268459E28ADE6B900DB63B5 /* MediumTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3268459D28ADE6B900DB63B5 /* MediumTextField.swift */; };
+		326845A028ADE6E900DB63B5 /* ToggleSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3268459F28ADE6E900DB63B5 /* ToggleSwitch.swift */; };
 		326F9F8B281D099C0086BA53 /* IngredientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */; };
 		326F9F9D282216C60086BA53 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F9C282216C60086BA53 /* RecipeView.swift */; };
 		326F9FA1282223EB0086BA53 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9FA0282223EB0086BA53 /* RecipeViewController.swift */; };
@@ -174,6 +176,8 @@
 		3268459728ADE62900DB63B5 /* LargeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTextField.swift; sourceTree = "<group>"; };
 		3268459928ADE63E00DB63B5 /* MacroPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroPicker.swift; sourceTree = "<group>"; };
 		3268459B28ADE67600DB63B5 /* MacrosTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosTextField.swift; sourceTree = "<group>"; };
+		3268459D28ADE6B900DB63B5 /* MediumTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumTextField.swift; sourceTree = "<group>"; };
+		3268459F28ADE6E900DB63B5 /* ToggleSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleSwitch.swift; sourceTree = "<group>"; };
 		326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListViewController.swift; sourceTree = "<group>"; };
 		326F9F9C282216C60086BA53 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		326F9FA0282223EB0086BA53 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
@@ -719,6 +723,8 @@
 				3268459728ADE62900DB63B5 /* LargeTextField.swift */,
 				3268459928ADE63E00DB63B5 /* MacroPicker.swift */,
 				3268459B28ADE67600DB63B5 /* MacrosTextField.swift */,
+				3268459D28ADE6B900DB63B5 /* MediumTextField.swift */,
+				3268459F28ADE6E900DB63B5 /* ToggleSwitch.swift */,
 			);
 			path = ChefInputs;
 			sourceTree = "<group>";
@@ -847,6 +853,7 @@
 				3221EF6928344A9800A6FCCD /* AdvancedMacros.swift in Sources */,
 				32E191722860E62700743E36 /* MacrosViewController.swift in Sources */,
 				32289FFD285843CD00D0BE1D /* FavoritesViewController.swift in Sources */,
+				326845A028ADE6E900DB63B5 /* ToggleSwitch.swift in Sources */,
 				32289FFB285843AD00D0BE1D /* HistoryViewController.swift in Sources */,
 				32BD7A4128398DA80055B9CF /* NavController.swift in Sources */,
 				3214AC14284BE78600474068 /* LogInViewController.swift in Sources */,
@@ -905,6 +912,7 @@
 				322199AC27FA5F75003FD4F6 /* Recipe.swift in Sources */,
 				32B56B4B28865B5200F7707D /* FilterMealTypes.swift in Sources */,
 				32761022282A12D8005346D4 /* SummaryModal.swift in Sources */,
+				3268459E28ADE6B900DB63B5 /* MediumTextField.swift in Sources */,
 				322199CA27FA6C2F003FD4F6 /* UIImage-Extension.swift in Sources */,
 				329F378A2833C404004A758D /* Constants.swift in Sources */,
 				32761020282A12C7005346D4 /* MacrosModal.swift in Sources */,
