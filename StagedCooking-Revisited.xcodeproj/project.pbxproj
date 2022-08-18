@@ -96,6 +96,7 @@
 		329F37882833C39F004A758D /* ToggleSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F37872833C39F004A758D /* ToggleSwitch.swift */; };
 		329F378A2833C404004A758D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F37892833C404004A758D /* Constants.swift */; };
 		32A8C3852805A0E40091D785 /* Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8C3842805A0E40091D785 /* Instructions.swift */; };
+		32AB43E228ADE3E1006D77AB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB43E128ADE3E1006D77AB /* Constants.swift */; };
 		32AB724227FFE2CF00AF0E2A /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724127FFE2CF00AF0E2A /* CardModel.swift */; };
 		32AB724A27FFEDA800AF0E2A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724927FFEDA800AF0E2A /* Response.swift */; };
 		32B56B452886392900F7707D /* FilterDiets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B56B442886392900F7707D /* FilterDiets.swift */; };
@@ -212,6 +213,7 @@
 		329F37872833C39F004A758D /* ToggleSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleSwitch.swift; sourceTree = "<group>"; };
 		329F37892833C404004A758D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		32A8C3842805A0E40091D785 /* Instructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructions.swift; sourceTree = "<group>"; };
+		32AB43E128ADE3E1006D77AB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		32AB724127FFE2CF00AF0E2A /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		32AB724927FFEDA800AF0E2A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		32B56B442886392900F7707D /* FilterDiets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDiets.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 			isa = PBXGroup;
 			children = (
 				322199C627FA6BB3003FD4F6 /* ImageURLProtocol.swift */,
+				32AB43E128ADE3E1006D77AB /* Constants.swift */,
 			);
 			name = "Protocols-Delegates";
 			sourceTree = "<group>";
@@ -857,6 +860,7 @@
 				32BD7A4128398DA80055B9CF /* NavController.swift in Sources */,
 				3214AC14284BE78600474068 /* LogInViewController.swift in Sources */,
 				32BD7A54283E55210055B9CF /* UIView-Blurry.swift in Sources */,
+				32AB43E228ADE3E1006D77AB /* Constants.swift in Sources */,
 				32C9913B2830BCBF00667F65 /* FadeAnimation.swift in Sources */,
 				326F9FA32822298F0086BA53 /* ModalViewController.swift in Sources */,
 				3221EF8128355DFD00A6FCCD /* DietsMethod.swift in Sources */,
