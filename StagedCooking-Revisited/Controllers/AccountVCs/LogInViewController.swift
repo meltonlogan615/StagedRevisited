@@ -16,7 +16,6 @@ class LogInViewController: UIViewController {
   let imageView = UIImageView()
   let loginView = LogInView()
   
-  let nonce = Nonce()
   var handle: AuthStateDidChangeListenerHandle?
 
   fileprivate var currentNonce: String?
@@ -27,7 +26,7 @@ class LogInViewController: UIViewController {
 //    title = "Log In"
     style()
     layout()
-    setupToolbar(for: self, textFields: [loginView.emailTextField, loginView.passwordTextField])
+//    setupToolbar()
 //    setupProviderLoginView()
     activateButtons()
   }
@@ -106,8 +105,8 @@ extension LogInViewController {
           !email.isEmpty,
           !password.isEmpty
     else {
-      loginView.emailTextField.checkIfEmpty(errorMsg: "I don't know who I am")
-      loginView.passwordTextField.checkIfEmpty(errorMsg: "I'm sad and empty inside")
+      loginView.emailTextField.placeholder = "I don't know who I am"
+      loginView.passwordTextField.placeholder = "I'm sad and empty inside"
       return
     }
     Auth.auth().signIn(withEmail: email, password: password) { user, error in

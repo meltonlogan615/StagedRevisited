@@ -45,7 +45,7 @@ extension SettingsViewController {
   }
 }
 
-extension FavoritesViewController: UITableViewDataSource {
+extension SettingsViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     var count = 1
     return count
@@ -54,7 +54,7 @@ extension FavoritesViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     var config = cell.defaultContentConfiguration()
-    config.text "FART"
+    config.text = "FART"
     cell.layer.cornerRadius = 8
     cell.clipsToBounds = true
     cell.accessoryType = .disclosureIndicator
@@ -64,7 +64,7 @@ extension FavoritesViewController: UITableViewDataSource {
   }
 }
 
-extension FavoritesViewController: UITableViewDelegate {
+extension SettingsViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
     
