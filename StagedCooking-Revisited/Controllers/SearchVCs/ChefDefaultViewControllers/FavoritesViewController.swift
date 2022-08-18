@@ -104,10 +104,7 @@ extension FavoritesViewController: UITableViewDelegate {
     if !keysArray.isEmpty {
       let currentIndex = keysArray[indexPath.row]
       showSelectedRecipe(for: Int(currentIndex)!)
-    } else {
-      self.noResults(title: "No Favorite Recipes", message: "You currently do not have any recipes favorited. Experiment. Try something new.\n\nYou might like it.")
     }
-
   }
   
   private func showSelectedRecipe(for recipeID: Int) {

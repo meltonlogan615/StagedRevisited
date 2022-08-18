@@ -209,11 +209,11 @@ extension FilterViewController {
   @objc func includeExclude(_ sender: IncludeExcludeSeg) {
     let index = sender.tag - 1
 //    sender.selectedSegmentIndex = selectedIndex
-    switch sender.selectedSegmentIndex {
+    switch sender.seg.selectedSegmentIndex {
       case 0:
-        print("Include", cuisineOptions[index], sender.selectedSegmentIndex)
+        print("Include", cuisineOptions[index], sender.seg.selectedSegmentIndex)
       case 1:
-        print("Exclude", cuisineOptions[index], sender.selectedSegmentIndex)
+        print("Exclude", cuisineOptions[index], sender.seg.selectedSegmentIndex)
       default:
         print("Nothing")
     }

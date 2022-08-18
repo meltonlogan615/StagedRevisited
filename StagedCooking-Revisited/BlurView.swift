@@ -1,16 +1,15 @@
 //
-//  UIView-Blurry.swift
+//  BlurView.swift
 //  StagedCooking-Revisited
 //
 //  Created by Logan Melton on 5/25/22.
 //
-
 import Foundation
 import UIKit
 
 extension UIViewController {
   /**
-  Extension on UIViewController that returns a *UIVisualEffectView*.
+   Extension on UIViewController that returns a *UIVisualEffectView*.
    
    Only current is is in ModalViewController.
    */

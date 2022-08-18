@@ -4,7 +4,6 @@
 //
 //  Created by Logan Melton on 4/3/22.
 //
-
 import Foundation
 import UIKit
 
@@ -53,6 +52,6 @@ extension UIImageView {
     return recipeImg
   }
 }
-  
-  // Source:
-  // https://www.hackingwithswift.com/quick-start/swiftui/how-to-load-a-remote-image-from-a-url
+
+// Source:
+// https://www.hackingwithswift.com/quick-start/swiftui/how-to-load-a-remote-image-from-a-url

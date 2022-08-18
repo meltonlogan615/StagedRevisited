@@ -104,9 +104,7 @@ extension SavedViewController: UITableViewDelegate {
     if !keysArray.isEmpty {
       let currentIndex = keysArray[indexPath.row]
       showSelectedRecipe(for: Int(currentIndex)!)
-    } else {
-      self.noResults(title: "No Saved Recipes", message: "You currently do not have any recipes saved. Search around and find something that'll make your tummy happy.")
-    }
+    } 
   }
   
   private func showSelectedRecipe(for recipeID: Int) {
