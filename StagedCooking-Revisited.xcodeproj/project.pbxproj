@@ -12,10 +12,8 @@
 		32027D4E282A038E00F0F167 /* Flavonoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32027D4D282A038E00F0F167 /* Flavonoid.swift */; };
 		32027D50282A03D900F0F167 /* WeightPerServing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32027D4F282A03D900F0F167 /* WeightPerServing.swift */; };
 		3214AC10284B312D00474068 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3214AC0F284B312D00474068 /* SignUpViewController.swift */; };
-		3214AC12284B344100474068 /* AccountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3214AC11284B344100474068 /* AccountTextField.swift */; };
 		3214AC14284BE78600474068 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3214AC13284BE78600474068 /* LogInViewController.swift */; };
 		3214AC16284BED3100474068 /* SignWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3214AC15284BED3100474068 /* SignWithAppleButton.swift */; };
-		321E29F42842059C003BCC47 /* MediumTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321E29F32842059C003BCC47 /* MediumTextField.swift */; };
 		3221998127FA5DB2003FD4F6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221998027FA5DB2003FD4F6 /* AppDelegate.swift */; };
 		3221998527FA5DB2003FD4F6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221998427FA5DB2003FD4F6 /* SearchViewController.swift */; };
 		3221998A27FA5DB3003FD4F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3221998927FA5DB3003FD4F6 /* Assets.xcassets */; };
@@ -32,7 +30,6 @@
 		322199B827FA6328003FD4F6 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199B727FA6328003FD4F6 /* SearchView.swift */; };
 		322199BB27FA6407003FD4F6 /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199BA27FA6407003FD4F6 /* RecipeCell.swift */; };
 		322199BD27FA6517003FD4F6 /* DetailsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199BC27FA6517003FD4F6 /* DetailsButton.swift */; };
-		322199BF27FA6567003FD4F6 /* LargeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199BE27FA6567003FD4F6 /* LargeTextField.swift */; };
 		322199C127FA6608003FD4F6 /* RecipeListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199C027FA6608003FD4F6 /* RecipeListCollectionView.swift */; };
 		322199C427FA6A55003FD4F6 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199C327FA6A55003FD4F6 /* SearchResult.swift */; };
 		322199C727FA6BB3003FD4F6 /* ImageURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322199C627FA6BB3003FD4F6 /* ImageURLProtocol.swift */; };
@@ -43,7 +40,6 @@
 		3221EF67283449E400A6FCCD /* MealType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF66283449E400A6FCCD /* MealType.swift */; };
 		3221EF6928344A9800A6FCCD /* AdvancedMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF6828344A9800A6FCCD /* AdvancedMacros.swift */; };
 		3221EF6B28344E9900A6FCCD /* IntolerancesSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF6A28344E9900A6FCCD /* IntolerancesSearch.swift */; };
-		3221EF6F28349D1700A6FCCD /* MacrosTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF6E28349D1700A6FCCD /* MacrosTextField.swift */; };
 		3221EF732834A47F00A6FCCD /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF722834A47F00A6FCCD /* ActionButton.swift */; };
 		3221EF7A283511AC00A6FCCD /* EnumOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF79283511AC00A6FCCD /* EnumOptions.swift */; };
 		3221EF7F28355CEE00A6FCCD /* MealTypeMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3221EF7E28355CEE00A6FCCD /* MealTypeMethod.swift */; };
@@ -59,6 +55,8 @@
 		324A2CE8289D7A3B000B7F9A /* ContainsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324A2CE7289D7A3B000B7F9A /* ContainsKey.swift */; };
 		324C61F0285D02ED007226D2 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C61EF285D02ED007226D2 /* MessageView.swift */; };
 		325678F4283F2FDE00D32646 /* LargeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325678F3283F2FDE00D32646 /* LargeLabel.swift */; };
+		3268459428ADE57D00DB63B5 /* AccountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3268459328ADE57D00DB63B5 /* AccountTextField.swift */; };
+		3268459628ADE5BB00DB63B5 /* IcludeExcludeSeg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3268459528ADE5BB00DB63B5 /* IcludeExcludeSeg.swift */; };
 		326F9F8B281D099C0086BA53 /* IngredientListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */; };
 		326F9F9D282216C60086BA53 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9F9C282216C60086BA53 /* RecipeView.swift */; };
 		326F9FA1282223EB0086BA53 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326F9FA0282223EB0086BA53 /* RecipeViewController.swift */; };
@@ -86,14 +84,12 @@
 		327B5A2528541AD1007495AA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327B5A2428541AD1007495AA /* SettingsViewController.swift */; };
 		329C096D2836964100CECE6C /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C096C2836964100CECE6C /* LogInView.swift */; };
 		329C096F2836966C00CECE6C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C096E2836966C00CECE6C /* SignUpView.swift */; };
-		329C097328373CCC00CECE6C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C097228373CCC00CECE6C /* SettingsView.swift */; };
 		329C09762837432B00CECE6C /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C09752837432B00CECE6C /* TextFieldDelegate.swift */; };
 		329C0978283744F600CECE6C /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C0977283744F600CECE6C /* LandingView.swift */; };
 		329C097A28374CED00CECE6C /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C097928374CED00CECE6C /* LandingViewController.swift */; };
 		329C097C28374D2800CECE6C /* TextOnlyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C097B28374D2800CECE6C /* TextOnlyButton.swift */; };
 		329F377E28336357004A758D /* AdvancedSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F377D28336357004A758D /* AdvancedSearch.swift */; };
 		329F3783283368E8004A758D /* AdvancedSearchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F3782283368E8004A758D /* AdvancedSearchRow.swift */; };
-		329F37882833C39F004A758D /* ToggleSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F37872833C39F004A758D /* ToggleSwitch.swift */; };
 		329F378A2833C404004A758D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329F37892833C404004A758D /* Constants.swift */; };
 		32A8C3852805A0E40091D785 /* Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8C3842805A0E40091D785 /* Instructions.swift */; };
 		32AB43E228ADE3E1006D77AB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB43E128ADE3E1006D77AB /* Constants.swift */; };
@@ -115,8 +111,6 @@
 		32E0F40C2849AD2A008CA294 /* UILableKerning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E0F40B2849AD2A008CA294 /* UILableKerning.swift */; };
 		32E19170285EED4B00743E36 /* SlideAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E1916F285EED4B00743E36 /* SlideAnimation.swift */; };
 		32E191722860E62700743E36 /* MacrosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E191712860E62700743E36 /* MacrosViewController.swift */; };
-		32E191762862048900743E36 /* MacroPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E191752862048900743E36 /* MacroPickerView.swift */; };
-		32E1917828635BB100743E36 /* IncludeExcludeSeg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E1917728635BB100743E36 /* IncludeExcludeSeg.swift */; };
 		32F9B3BE288341C40057711D /* RemoveDups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F9B3BD288341C40057711D /* RemoveDups.swift */; };
 /* End PBXBuildFile section */
 
@@ -126,10 +120,8 @@
 		32027D4D282A038E00F0F167 /* Flavonoid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flavonoid.swift; sourceTree = "<group>"; };
 		32027D4F282A03D900F0F167 /* WeightPerServing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightPerServing.swift; sourceTree = "<group>"; };
 		3214AC0F284B312D00474068 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		3214AC11284B344100474068 /* AccountTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTextField.swift; sourceTree = "<group>"; };
 		3214AC13284BE78600474068 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		3214AC15284BED3100474068 /* SignWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignWithAppleButton.swift; sourceTree = "<group>"; };
-		321E29F32842059C003BCC47 /* MediumTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumTextField.swift; sourceTree = "<group>"; };
 		3221997D27FA5DB2003FD4F6 /* StagedCooking-Revisited.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StagedCooking-Revisited.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3221998027FA5DB2003FD4F6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3221998427FA5DB2003FD4F6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -148,7 +140,6 @@
 		322199B727FA6328003FD4F6 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		322199BA27FA6407003FD4F6 /* RecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCell.swift; sourceTree = "<group>"; };
 		322199BC27FA6517003FD4F6 /* DetailsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsButton.swift; sourceTree = "<group>"; };
-		322199BE27FA6567003FD4F6 /* LargeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTextField.swift; sourceTree = "<group>"; };
 		322199C027FA6608003FD4F6 /* RecipeListCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListCollectionView.swift; sourceTree = "<group>"; };
 		322199C327FA6A55003FD4F6 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		322199C627FA6BB3003FD4F6 /* ImageURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageURLProtocol.swift; sourceTree = "<group>"; };
@@ -159,7 +150,6 @@
 		3221EF66283449E400A6FCCD /* MealType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealType.swift; sourceTree = "<group>"; };
 		3221EF6828344A9800A6FCCD /* AdvancedMacros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedMacros.swift; sourceTree = "<group>"; };
 		3221EF6A28344E9900A6FCCD /* IntolerancesSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntolerancesSearch.swift; sourceTree = "<group>"; };
-		3221EF6E28349D1700A6FCCD /* MacrosTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosTextField.swift; sourceTree = "<group>"; };
 		3221EF722834A47F00A6FCCD /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		3221EF79283511AC00A6FCCD /* EnumOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumOptions.swift; sourceTree = "<group>"; };
 		3221EF7E28355CEE00A6FCCD /* MealTypeMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealTypeMethod.swift; sourceTree = "<group>"; };
@@ -176,6 +166,8 @@
 		324C61EF285D02ED007226D2 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		325678F3283F2FDE00D32646 /* LargeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeLabel.swift; sourceTree = "<group>"; };
 		3264D35E28386A3F00C06555 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3268459328ADE57D00DB63B5 /* AccountTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTextField.swift; sourceTree = "<group>"; };
+		3268459528ADE5BB00DB63B5 /* IcludeExcludeSeg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IcludeExcludeSeg.swift; sourceTree = "<group>"; };
 		326F9F8A281D099C0086BA53 /* IngredientListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientListViewController.swift; sourceTree = "<group>"; };
 		326F9F9C282216C60086BA53 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		326F9FA0282223EB0086BA53 /* RecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewController.swift; sourceTree = "<group>"; };
@@ -203,14 +195,12 @@
 		327B5A2428541AD1007495AA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		329C096C2836964100CECE6C /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		329C096E2836966C00CECE6C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
-		329C097228373CCC00CECE6C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		329C09752837432B00CECE6C /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		329C0977283744F600CECE6C /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		329C097928374CED00CECE6C /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		329C097B28374D2800CECE6C /* TextOnlyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOnlyButton.swift; sourceTree = "<group>"; };
 		329F377D28336357004A758D /* AdvancedSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSearch.swift; sourceTree = "<group>"; };
 		329F3782283368E8004A758D /* AdvancedSearchRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSearchRow.swift; sourceTree = "<group>"; };
-		329F37872833C39F004A758D /* ToggleSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleSwitch.swift; sourceTree = "<group>"; };
 		329F37892833C404004A758D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		32A8C3842805A0E40091D785 /* Instructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructions.swift; sourceTree = "<group>"; };
 		32AB43E128ADE3E1006D77AB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -232,8 +222,6 @@
 		32E0F40B2849AD2A008CA294 /* UILableKerning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILableKerning.swift; sourceTree = "<group>"; };
 		32E1916F285EED4B00743E36 /* SlideAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideAnimation.swift; sourceTree = "<group>"; };
 		32E191712860E62700743E36 /* MacrosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosViewController.swift; sourceTree = "<group>"; };
-		32E191752862048900743E36 /* MacroPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroPickerView.swift; sourceTree = "<group>"; };
-		32E1917728635BB100743E36 /* IncludeExcludeSeg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncludeExcludeSeg.swift; sourceTree = "<group>"; };
 		32F9B3BD288341C40057711D /* RemoveDups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveDups.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -414,11 +402,11 @@
 		322199B927FA63EA003FD4F6 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				3221EF782834A53800A6FCCD /* Misc */,
-				3221EF772834A4BB00A6FCCD /* ChefInputs */,
-				3221EF762834A4B200A6FCCD /* Cells */,
-				3221EF752834A49800A6FCCD /* Labels */,
 				3221EF742834A48500A6FCCD /* Buttons */,
+				3221EF762834A4B200A6FCCD /* Cells */,
+				32AB43E328ADE4EA006D77AB /* ChefInputs */,
+				3221EF752834A49800A6FCCD /* Labels */,
+				3221EF782834A53800A6FCCD /* Misc */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -552,20 +540,6 @@
 				3221EF8A2835F01600A6FCCD /* AdvancedCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		3221EF772834A4BB00A6FCCD /* ChefInputs */ = {
-			isa = PBXGroup;
-			children = (
-				329F37872833C39F004A758D /* ToggleSwitch.swift */,
-				3221EF6E28349D1700A6FCCD /* MacrosTextField.swift */,
-				322199BE27FA6567003FD4F6 /* LargeTextField.swift */,
-				321E29F32842059C003BCC47 /* MediumTextField.swift */,
-				3214AC11284B344100474068 /* AccountTextField.swift */,
-				32E191752862048900743E36 /* MacroPickerView.swift */,
-				32E1917728635BB100743E36 /* IncludeExcludeSeg.swift */,
-			);
-			path = ChefInputs;
 			sourceTree = "<group>";
 		};
 		3221EF782834A53800A6FCCD /* Misc */ = {
@@ -705,7 +679,6 @@
 				329C0977283744F600CECE6C /* LandingView.swift */,
 				329C096C2836964100CECE6C /* LogInView.swift */,
 				329C096E2836966C00CECE6C /* SignUpView.swift */,
-				329C097228373CCC00CECE6C /* SettingsView.swift */,
 			);
 			path = AccountViews;
 			sourceTree = "<group>";
@@ -730,6 +703,15 @@
 				3221EF7B28352F4300A6FCCD /* AdvancedSearchViewModels */,
 			);
 			path = AdvancedSearchVCs;
+			sourceTree = "<group>";
+		};
+		32AB43E328ADE4EA006D77AB /* ChefInputs */ = {
+			isa = PBXGroup;
+			children = (
+				3268459328ADE57D00DB63B5 /* AccountTextField.swift */,
+				3268459528ADE5BB00DB63B5 /* IcludeExcludeSeg.swift */,
+			);
+			path = ChefInputs;
 			sourceTree = "<group>";
 		};
 		32AB724727FFEA0B00AF0E2A /* Recipes */ = {
@@ -850,7 +832,6 @@
 				32B56B4D28866CE900F7707D /* TabViewController.swift in Sources */,
 				322199A427FA5ED8003FD4F6 /* DataProvider.swift in Sources */,
 				3221999E27FA5E77003FD4F6 /* NetworkAccess.swift in Sources */,
-				329C097328373CCC00CECE6C /* SettingsView.swift in Sources */,
 				32761051282CBFD6005346D4 /* CardBuilder.swift in Sources */,
 				327B5A0B28515750007495AA /* GenerateSummary.swift in Sources */,
 				3221EF6928344A9800A6FCCD /* AdvancedMacros.swift in Sources */,
@@ -907,6 +888,7 @@
 				327B5A2528541AD1007495AA /* SettingsViewController.swift in Sources */,
 				322199A027FA5E99003FD4F6 /* EndPoints.swift in Sources */,
 				32289FFF2858EEF700D0BE1D /* APIKeys.swift in Sources */,
+				3268459428ADE57D00DB63B5 /* AccountTextField.swift in Sources */,
 				3272D3C52844823600D168BB /* FilterViewController.swift in Sources */,
 				3221998127FA5DB2003FD4F6 /* AppDelegate.swift in Sources */,
 				322199AC27FA5F75003FD4F6 /* Recipe.swift in Sources */,
@@ -915,17 +897,15 @@
 				322199CA27FA6C2F003FD4F6 /* UIImage-Extension.swift in Sources */,
 				329F378A2833C404004A758D /* Constants.swift in Sources */,
 				32761020282A12C7005346D4 /* MacrosModal.swift in Sources */,
-				3214AC12284B344100474068 /* AccountTextField.swift in Sources */,
 				32027D4E282A038E00F0F167 /* Flavonoid.swift in Sources */,
 				3276103B282CA643005346D4 /* MacrosLabelView.swift in Sources */,
+				3268459628ADE5BB00DB63B5 /* IcludeExcludeSeg.swift in Sources */,
 				322199C727FA6BB3003FD4F6 /* ImageURLProtocol.swift in Sources */,
 				3221EF67283449E400A6FCCD /* MealType.swift in Sources */,
 				3221EF65283448FC00A6FCCD /* Diet.swift in Sources */,
 				32AB724A27FFEDA800AF0E2A /* Response.swift in Sources */,
 				32761024282A12EF005346D4 /* IngredientsModal.swift in Sources */,
 				32D70DBD28073A80000328B9 /* StagedCardViewController.swift in Sources */,
-				322199BF27FA6567003FD4F6 /* LargeTextField.swift in Sources */,
-				329F37882833C39F004A758D /* ToggleSwitch.swift in Sources */,
 				327B5A1D2852F557007495AA /* SortAndFilterActions.swift in Sources */,
 				3221EF612834474300A6FCCD /* Cuisine.swift in Sources */,
 				32289FF9285842C100D0BE1D /* SavedViewController.swift in Sources */,
@@ -934,17 +914,13 @@
 				3221EF8B2835F01600A6FCCD /* AdvancedCell.swift in Sources */,
 				322199B827FA6328003FD4F6 /* SearchView.swift in Sources */,
 				32F9B3BE288341C40057711D /* RemoveDups.swift in Sources */,
-				32E1917828635BB100743E36 /* IncludeExcludeSeg.swift in Sources */,
 				32E0F40C2849AD2A008CA294 /* UILableKerning.swift in Sources */,
 				3276103D282CB1C6005346D4 /* DietsModal.swift in Sources */,
 				32441EFB2827711E00DA426F /* Divider.swift in Sources */,
-				32E191762862048900743E36 /* MacroPickerView.swift in Sources */,
 				329F377E28336357004A758D /* AdvancedSearch.swift in Sources */,
 				3221EF6B28344E9900A6FCCD /* IntolerancesSearch.swift in Sources */,
 				329C0978283744F600CECE6C /* LandingView.swift in Sources */,
-				321E29F42842059C003BCC47 /* MediumTextField.swift in Sources */,
 				322199CC27FA84CD003FD4F6 /* ViewController-Extensions.swift in Sources */,
-				3221EF6F28349D1700A6FCCD /* MacrosTextField.swift in Sources */,
 				32BD7A3F28398C230055B9CF /* String-Folding.swift in Sources */,
 				3221EF83283565B000A6FCCD /* CuisinesMethod.swift in Sources */,
 				329C097C28374D2800CECE6C /* TextOnlyButton.swift in Sources */,
