@@ -5,6 +5,9 @@
 //  Created by Logan Melton on 6/13/22.
 //
 
+import Firebase
+import FirebaseAuth
+import FirebaseCore
 import Foundation
 import UIKit
 
@@ -24,7 +27,7 @@ class SettingsViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = "Favorites"
+    self.title = "Settings"
     view.backgroundColor = K.primary
     tableView.dataSource = self
     tableView.delegate = self
@@ -47,14 +50,19 @@ extension SettingsViewController {
 
 extension SettingsViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    var count = 1
+    var count = 5
     return count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
     var config = cell.defaultContentConfiguration()
-    config.text = "FART"
+    switch indexPath.item {
+      case 0:
+        config.text = "Sign Out"
+      default:
+        config.text = "FART"
+    }
     cell.layer.cornerRadius = 8
     cell.clipsToBounds = true
     cell.accessoryType = .disclosureIndicator
@@ -66,7 +74,18 @@ extension SettingsViewController: UITableViewDataSource {
 
 extension SettingsViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    switch indexPath.item {
+      case 0:
+        signOut()
+      default:
+        print("Default")
+    }
+  }
+}
 
-    
+extension SettingsViewController {
+  @objc
+  func signOut() {
+    print("poop")
   }
 }
