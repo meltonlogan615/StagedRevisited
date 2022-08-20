@@ -138,31 +138,62 @@ extension SignUpViewController {
   }
 }
 
+extension SignUpViewController {
+  @objc
+  func signUp() {
+    guard let name = signupView.nameTextField.text,
+          let email = signupView.emailTextField.text,
+          let pw = signupView.passwordTextField.text,
+          let pwCheck = signupView.passwordConfirmationTextField.text
+    else {
+      return
+    }
+    
+    if pwCheck != pw {
+      print("FART FAIL")
+    }
+    
+    Auth.auth().createUser(withEmail: email, password: pwCheck) { _, error in
+      if let error = error {
+        let alert = UIAlertController(title: "Unable To Create Account", message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true)
+      } else {
+        let vc = TabViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true)
+      }
+    }
+    ChefDefault.name = name
+  }
+}
+
 // MARK: - SIGN IN WITH APPLE
 extension SignUpViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
   func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
     return self.view.window!
   }
-  
+
   func setupProviderLoginView() {
     let authorizationButton = ASAuthorizationAppleIDButton(type: .signUp, style: .black)
     authorizationButton.addTarget(self, action: #selector(handleAuthorization), for: .touchUpInside)
     authorizationButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
     self.signupView.buttonStack.addArrangedSubview(authorizationButton)
   }
-  
+
   @objc
   func handleAuthorization() {
     let appleIDProvider = ASAuthorizationAppleIDProvider()
     let request = appleIDProvider.createRequest()
     request.requestedScopes = [.fullName, .email]
-    
+
     let authorizationController = ASAuthorizationController(authorizationRequests: [request])
     authorizationController.delegate = self
     authorizationController.presentationContextProvider = self
     authorizationController.performRequests()
     print("nope")
-    
+
     let searchTab = TabViewController()
     searchTab.modalTransitionStyle = .crossDissolve
     searchTab.modalPresentationStyle = .fullScreen

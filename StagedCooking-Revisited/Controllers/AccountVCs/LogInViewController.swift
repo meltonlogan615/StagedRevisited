@@ -9,29 +9,17 @@ import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
 import UIKit
-import SwiftUI
 
 class LogInViewController: UIViewController {
 
   let imageView = UIImageView()
   let loginView = LogInView()
   
+  var nonce = Nonce()
   var handle: AuthStateDidChangeListenerHandle?
 
   fileprivate var currentNonce: String?
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    view.backgroundColor = K.primary
-//    title = "Log In"
-    style()
-    layout()
-//    setupToolbar()
-//    setupProviderLoginView()
-    activateButtons()
-  }
-  
-  // From Firebase Documentation
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(true)
     handle = Auth.auth().addStateDidChangeListener { auth, user in
@@ -39,14 +27,22 @@ class LogInViewController: UIViewController {
         self.navigationController?.popToRootViewController(animated: true)
       } else {
         print(String(describing: user))
-//        self.present(TabViewController(), animated: true)
         self.loginView.emailTextField.text = nil
         self.loginView.passwordTextField.text = nil
       }
     }
   }
   
-  // From Firebase Documentation
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = K.primary
+    style()
+    layout()
+    //    setupToolbar()
+    //    setupProviderLoginView()
+    activateButtons()
+  }
+  
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(true)
     guard let handle = handle else { return }
@@ -57,11 +53,10 @@ class LogInViewController: UIViewController {
 extension LogInViewController {
   
   func style() {
-    
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = UIImage(named: "StagedLogo")
     imageView.contentMode = .scaleAspectFill
-
+    
     loginView.translatesAutoresizingMaskIntoConstraints = false
   }
   
@@ -92,6 +87,11 @@ extension LogInViewController {
 extension LogInViewController {
   func activateButtons() {
     self.loginView.submitButton.addTarget(self, action: #selector(loginButtonTapped), for: .primaryActionTriggered)
+    
+    let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
+    authorizationButton.addTarget(self, action: #selector(startSignInWithAppleFlow), for: .touchUpInside)
+    authorizationButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+    self.loginView.buttonStack.addArrangedSubview(authorizationButton)
     
     self.loginView.cancleButton.addTarget(self, action: #selector(cancelButtonTapped), for: .primaryActionTriggered)
   }
@@ -131,106 +131,69 @@ extension LogInViewController {
   }
 }
 
-// From Apple Documentation
-//extension LogInViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-//  func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-//    return self.view.window!
-//  }
-//
-//  // From Apple Documentation
-//  func setupProviderLoginView() {
-//    let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
-//    authorizationButton.addTarget(self, action: #selector(handleAuthorization), for: .touchUpInside)
-//    authorizationButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
-//    self.loginView.buttonStack.addArrangedSubview(authorizationButton)
-//  }
-//
-//  @objc
-//  func handleAuthorization() {
-//    let appleIDProvider = ASAuthorizationAppleIDProvider()
-//    let request = appleIDProvider.createRequest()
-//    request.requestedScopes = [.fullName, .email]
-//
-//    let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-//    authorizationController.delegate = self
-//    authorizationController.presentationContextProvider = self
-//    authorizationController.performRequests()
-//    print("nope")
-//
-//    let searchTab = TabViewController()
-//    searchTab.modalTransitionStyle = .crossDissolve
-//    searchTab.modalPresentationStyle = .fullScreen
-//    present(searchTab, animated: true)
-//  }
-//
-//
-//  // Unhashed nonce.
-//  // From Firebase Documentation
-//  @available(iOS 13, *)
-//  func startSignInWithAppleFlow() {
-//    let nonce = self.nonce.randomNonceString()
-//    currentNonce = nonce
-//    let appleIDProvider = ASAuthorizationAppleIDProvider()
-//    let request = appleIDProvider.createRequest()
-//    request.requestedScopes = [.fullName, .email]
-//    request.nonce = self.nonce.sha256(nonce)
-//
-//    let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-//    authorizationController.delegate = self
-//    authorizationController.presentationContextProvider = self
-//    authorizationController.performRequests()
-//  }
-//}
-//
-//
-//// From Firebase Documentation
-//@available(iOS 13.0, *)
-//extension LogInViewController {
-//
-//  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-//    if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
-//      guard let nonce = currentNonce else {
-//        fatalError("Invalid state: A login callback was received, but no login request was sent.")
-//      }
-//      guard let appleIDToken = appleIDCredential.identityToken else {
-//        print("Unable to fetch identity token")
-//        return
-//      }
-//      guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-//        print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
-//        return
-//      }
-//      // Initialize a Firebase credential.
-//      let credential = OAuthProvider.credential(withProviderID: "apple.com",
-//                                                idToken: idTokenString,
-//                                                rawNonce: nonce)
-//      // Sign in with Firebase.
-//      Auth.auth().signIn(with: credential) { (authResult, error) in
-//        if error != nil {
-//          // Error. If error.code == .MissingOrInvalidNonce, make sure
-//          // you're sending the SHA256-hashed nonce as a hex string with
-//          // your request to Apple.
-//          print(String(describing: error?.localizedDescription))
-//          return
-//        }
-//
-////        if let chef = self.chef {
-////          let uid = chef.uid
-////          let email = chef.email
-////          var multiFactorString = "MutliFactor: "
-////          for info in chef.multiFactor.enrolledFactors {
-////            multiFactorString += info.displayName ?? "Chef"
-////            multiFactorString += " "
-////          }
-////        }
-//      }
-//    }
-//  }
-//
-//  // From Firebase Documentation
-//  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-//    // Handle error.
-//    print("Sign in with Apple errored: \(error)")
-//  }
-//
-//}
+extension LogInViewController: ASAuthorizationControllerPresentationContextProviding {
+  func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+    var safeAnchor = ASPresentationAnchor()
+    if let anchor = self.view.window {
+      safeAnchor = anchor
+    }
+    return safeAnchor
+  }
+  
+  @available(iOS 13, *)
+  @objc
+  func startSignInWithAppleFlow() {
+    let nonce = self.nonce.randomNonceString()
+    currentNonce = nonce
+    let appleIDProvider = ASAuthorizationAppleIDProvider()
+    let request = appleIDProvider.createRequest()
+    request.requestedScopes = [.fullName, .email]
+    request.nonce = self.nonce.sha256(nonce)
+    
+    let authController = ASAuthorizationController(authorizationRequests: [request])
+    authController.delegate = self
+    authController.presentationContextProvider = self
+    authController.performRequests()
+  }
+}
+
+extension LogInViewController: ASAuthorizationControllerDelegate {
+  @available(iOS 13.0, *)
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+      guard let nonce = currentNonce else {
+        print("Invalid state. Recived, but not requested")
+        return
+      }
+      guard let appleIDToken = appleIDCredential.identityToken else {
+        print("No token")
+        return
+      }
+      guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+        print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+        return
+      }
+      // Firebase portion
+      let credential = OAuthProvider.credential(withProviderID: "apple.com",
+                                                idToken: idTokenString,
+                                                rawNonce: nonce)
+      
+      Auth.auth().signIn(with: credential) { (authResult, error) in
+        if error != nil {
+          print(String(describing: error?.localizedDescription))
+          return
+        }
+        if authResult != nil {
+          let vc = TabViewController()
+          vc.modalPresentationStyle = .fullScreen
+          vc.modalTransitionStyle = .crossDissolve
+          self.present(vc, animated: true)
+        }
+      }
+    }
+  }
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    print("Error Signing In W/ Apple", error)
+  }
+}
+
