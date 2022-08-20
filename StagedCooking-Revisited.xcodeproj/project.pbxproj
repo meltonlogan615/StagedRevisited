@@ -45,7 +45,6 @@
 		32289FF9285842C100D0BE1D /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32289FF8285842C100D0BE1D /* SavedViewController.swift */; };
 		32289FFB285843AD00D0BE1D /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32289FFA285843AD00D0BE1D /* HistoryViewController.swift */; };
 		32289FFD285843CD00D0BE1D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32289FFC285843CD00D0BE1D /* FavoritesViewController.swift */; };
-		32289FFF2858EEF700D0BE1D /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32289FFE2858EEF700D0BE1D /* APIKeys.swift */; };
 		32441EFB2827711E00DA426F /* Divider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32441EFA2827711E00DA426F /* Divider.swift */; };
 		324A2CE8289D7A3B000B7F9A /* ContainsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324A2CE7289D7A3B000B7F9A /* ContainsKey.swift */; };
 		324C61F0285D02ED007226D2 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C61EF285D02ED007226D2 /* MessageView.swift */; };
@@ -164,7 +163,6 @@
 		32289FF8285842C100D0BE1D /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		32289FFA285843AD00D0BE1D /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		32289FFC285843CD00D0BE1D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		32289FFE2858EEF700D0BE1D /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		32441EFA2827711E00DA426F /* Divider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Divider.swift; sourceTree = "<group>"; };
 		324A2CE7289D7A3B000B7F9A /* ContainsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainsKey.swift; sourceTree = "<group>"; };
 		324C61EF285D02ED007226D2 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 		3221997F27FA5DB2003FD4F6 /* StagedCooking-Revisited */ = {
 			isa = PBXGroup;
 			children = (
-				3264D35A28386A3100C06555 /* IgnoreFiles */,
 				3221999427FA5DB9003FD4F6 /* SupportFiles */,
 				3221999727FA5DF9003FD4F6 /* Models */,
 				3221999627FA5DF1003FD4F6 /* Views */,
@@ -591,14 +588,6 @@
 				324A2CE7289D7A3B000B7F9A /* ContainsKey.swift */,
 			);
 			name = Dictionary;
-			sourceTree = "<group>";
-		};
-		3264D35A28386A3100C06555 /* IgnoreFiles */ = {
-			isa = PBXGroup;
-			children = (
-				32289FFE2858EEF700D0BE1D /* APIKeys.swift */,
-			);
-			path = IgnoreFiles;
 			sourceTree = "<group>";
 		};
 		326845A728ADE87800DB63B5 /* AdvancedSearchMethods */ = {
@@ -929,7 +918,6 @@
 				32A275CA28AE67CA0010DB03 /* NoListView.swift in Sources */,
 				3276102C282B0B4C005346D4 /* SCModal.swift in Sources */,
 				322199A027FA5E99003FD4F6 /* EndPoints.swift in Sources */,
-				32289FFF2858EEF700D0BE1D /* APIKeys.swift in Sources */,
 				3268459428ADE57D00DB63B5 /* AccountTextField.swift in Sources */,
 				3272D3C52844823600D168BB /* FilterViewController.swift in Sources */,
 				3221998127FA5DB2003FD4F6 /* AppDelegate.swift in Sources */,
