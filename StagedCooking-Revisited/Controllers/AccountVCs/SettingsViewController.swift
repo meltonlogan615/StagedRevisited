@@ -50,23 +50,28 @@ extension SettingsViewController {
 
 extension SettingsViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    var count = 5
-    return count
+    return 6
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+    cell.accessoryType = .disclosureIndicator
+    cell.backgroundColor = K.modalBG
+    cell.layer.cornerRadius = 8
+    cell.clipsToBounds = true
+    
     var config = cell.defaultContentConfiguration()
     switch indexPath.item {
       case 0:
         config.text = "Sign Out"
+        config.textProperties.alignment = .center
+      case 1:
+        config.text = "Delete Account"
+        cell.backgroundColor = K.scAccent
+        config.textProperties.alignment = .center
       default:
         config.text = "FART"
     }
-    cell.layer.cornerRadius = 8
-    cell.clipsToBounds = true
-    cell.accessoryType = .disclosureIndicator
-    cell.backgroundColor = K.modalBG
     cell.contentConfiguration = config
     return cell
   }
@@ -77,6 +82,8 @@ extension SettingsViewController: UITableViewDelegate {
     switch indexPath.item {
       case 0:
         signOut()
+      case 1:
+        print("Delete Account")
       default:
         print("Default")
     }
@@ -86,6 +93,11 @@ extension SettingsViewController: UITableViewDelegate {
 extension SettingsViewController {
   @objc
   func signOut() {
-    print("poop")
+    let auth = Auth.auth()
+    do {
+      try auth.signOut()
+    } catch let quitError as NSError {
+      print("Error signing out", quitError)
+    }
   }
 }

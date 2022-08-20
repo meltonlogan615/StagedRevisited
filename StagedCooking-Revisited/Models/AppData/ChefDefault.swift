@@ -50,9 +50,7 @@ struct ChefDefault {
   static var searchHistory = [String]() // perhaps used later as part of an autocomplete in search
   static var hateListe = [String: String]() // Never see a recipe again.
   
-  var name: String?
-  var email: String?
-  var uid: String?
+  static var name: String?
 
   static var isLoggedIn = true
   static var hasOnboarded = false
