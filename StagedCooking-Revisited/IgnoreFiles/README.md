@@ -2,6 +2,16 @@
 
 Lay out and discuss the Flow and the Objects and Methods that control it.
 
+## 0. Getting Started
+0.1 You'll first need to register for an API Key @ https://spoonacular.com/food-api/console#Dashboard
+0.2 Next, in `SupportFiles.swoft` create a file to contain the following:
+```
+    struct APIKey {
+      static let apiKey = YOUR_KEY
+    }
+```
+0.3 In `AppDelegate.swift`, uncomment the line `let root = SearchViewController()` and comment out any lines that are `let root = ...`. Like a Highlander, there can be only one (Connor).
+
 ## 1. SearchViewController
 File: (`~/Controllers/SearchVCs/SearchViewController`)
 1. Loads SearchView (`~/Views/SearchViews/SearchView`)
@@ -77,3 +87,9 @@ Displays a Collection List of Results (`loadRecipes(for: searchedRecipe`)
 <img src="../../readmeImages/SC-StartCookingButton.png" width="300px">
 
 ## StagedCardContainerViewController
+
+
+# DataModels Table of Contents
+
+
+# Networking Table of Contents
