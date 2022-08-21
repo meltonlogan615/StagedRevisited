@@ -102,7 +102,6 @@
 		32A275CA28AE67CA0010DB03 /* NoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A275C928AE67CA0010DB03 /* NoListView.swift */; };
 		32A275CC28AE6CA80010DB03 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32A275CB28AE6CA80010DB03 /* GoogleService-Info.plist */; };
 		32A275FF28AFCCD00010DB03 /* Nonce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A275FE28AFCCD00010DB03 /* Nonce.swift */; };
-		32A2760228B161440010DB03 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2760128B161440010DB03 /* APIKeys.swift */; };
 		32A8C3852805A0E40091D785 /* Instructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8C3842805A0E40091D785 /* Instructions.swift */; };
 		32AB43E228ADE3E1006D77AB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB43E128ADE3E1006D77AB /* Constants.swift */; };
 		32AB724227FFE2CF00AF0E2A /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AB724127FFE2CF00AF0E2A /* CardModel.swift */; };
@@ -220,7 +219,6 @@
 		32A275C928AE67CA0010DB03 /* NoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoListView.swift; sourceTree = "<group>"; };
 		32A275CB28AE6CA80010DB03 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		32A275FE28AFCCD00010DB03 /* Nonce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nonce.swift; sourceTree = "<group>"; };
-		32A2760128B161440010DB03 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		32A8C3842805A0E40091D785 /* Instructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instructions.swift; sourceTree = "<group>"; };
 		32AB43E128ADE3E1006D77AB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		32AB724127FFE2CF00AF0E2A /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
@@ -306,7 +304,6 @@
 				3221998E27FA5DB3003FD4F6 /* Info.plist */,
 				32A275CB28AE6CA80010DB03 /* GoogleService-Info.plist */,
 				3221998B27FA5DB3003FD4F6 /* LaunchScreen.storyboard */,
-				32A2760128B161440010DB03 /* APIKeys.swift */,
 			);
 			name = SupportFiles;
 			sourceTree = "<group>";
@@ -868,7 +865,6 @@
 				326845AF28AE62FD00DB63B5 /* DismissGlobal.swift in Sources */,
 				32E191722860E62700743E36 /* MacrosViewController.swift in Sources */,
 				32289FFD285843CD00D0BE1D /* FavoritesViewController.swift in Sources */,
-				32A2760228B161440010DB03 /* APIKeys.swift in Sources */,
 				326845A028ADE6E900DB63B5 /* ToggleSwitch.swift in Sources */,
 				32289FFB285843AD00D0BE1D /* HistoryViewController.swift in Sources */,
 				32BD7A4128398DA80055B9CF /* NavController.swift in Sources */,
