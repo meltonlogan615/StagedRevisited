@@ -21,6 +21,7 @@ class TabViewController: UITabBarController, UITabBarControllerDelegate {
 extension TabViewController {
   func style() {
     self.tabBar.tintColor = K.scGreen
+    self.tabBar.unselectedItemTintColor = .systemGray2
   }
   
   func layout() {

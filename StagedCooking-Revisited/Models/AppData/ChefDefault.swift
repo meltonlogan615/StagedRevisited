@@ -50,15 +50,16 @@ struct ChefDefault {
   static var searchHistory = [String]() // perhaps used later as part of an autocomplete in search
   static var hateListe = [String: String]() // Never see a recipe again.
   
-  static var name: String?
-
-  static var isLoggedIn = true
-  static var hasOnboarded = false
-  
   static var intolerances = [Intolerance]()
   static var dietPreferences = [Diet]()
+
+  static var name: String?
+  static var userID = String()
+  static var isLoggedIn = false
+  static var hasOnboarded = false
+  static let server = "stagedcooking.firebaseapp.com"
   
-  
+
   static func saveSettings(allergies: [Intolerance]?, restrictions: [Diet]?) {
     if let intolerances = allergies {
       ChefDefault.intolerances += intolerances

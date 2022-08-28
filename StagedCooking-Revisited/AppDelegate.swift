@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    let root = RecipeListCollectionView()
 //    let root = SettingsViewController()
     let navVC = UINavigationController(rootViewController: root)
+    navVC.navigationBar.tintColor = K.invertPrimary
     window?.rootViewController = navVC
     
     return true

@@ -21,7 +21,6 @@ class HistoryViewController: UIViewController {
       HistoryViews.viewedRecipes.rawValue.localizedCapitalized]
     )
     seg.translatesAutoresizingMaskIntoConstraints = false
-    seg.tintColor = UIColor.white // not sure what this does
     seg.selectedSegmentTintColor = K.modalBG // color of the tab
     seg.backgroundColor = K.scGreen // background of the segementedController
     seg.selectedSegmentIndex = 0
@@ -38,6 +37,7 @@ class HistoryViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     title = "History"
+    navigationController?.navigationBar.tintColor = K.invertPrimary
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     tableView.dataSource = self
     tableView.delegate = self
@@ -154,6 +154,7 @@ extension HistoryViewController {
   
   func setSearchHistoryCellConfig(_ indexpath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexpath)
+    cell.textLabel?.textColor = K.invertPrimary
     var config = cell.defaultContentConfiguration()
     if ChefDefault.searchHistory.isEmpty {
       config.text = "No Search History"

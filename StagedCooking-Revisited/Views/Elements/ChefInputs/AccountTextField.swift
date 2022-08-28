@@ -69,6 +69,7 @@ extension StyledTextField {
   func style() {
     translatesAutoresizingMaskIntoConstraints = false
     textField.translatesAutoresizingMaskIntoConstraints = false
+    
     underline.translatesAutoresizingMaskIntoConstraints = false
     underline.frame.size.height = 2
     underline.backgroundColor = K.invertPrimary

@@ -28,13 +28,11 @@ import UIKit
 class LogInView: UIView {
   
   let stackView = UIStackView()
-  let emailTextField = LargeTextField()
-  let passwordTextField = LargeTextField()
+  let emailTextField = LargeTextField(placeholder: "Email")
+  let passwordTextField = LargeTextField(placeholder: "Password")
   
   let buttonStack = UIStackView()
   let submitButton = ActionButton()
-  let cancleButton = DetailsButton()
-//  let signInWithAppleButton = SignWithAppleButton()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -58,12 +56,11 @@ extension LogInView {
     stackView.spacing = 16
     
     emailTextField.translatesAutoresizingMaskIntoConstraints = false
-    emailTextField.placeholder = "Email"
-    emailTextField.becomeFirstResponder()
     emailTextField.textContentType = .emailAddress
+    emailTextField.keyboardType = .emailAddress
+    
     
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-    passwordTextField.placeholder = "Password"
     passwordTextField.isSecureTextEntry = true
     passwordTextField.textContentType = .password
     
@@ -73,12 +70,6 @@ extension LogInView {
     
     submitButton.translatesAutoresizingMaskIntoConstraints = false
     submitButton.setTitle("Log In", for: [])
-    
-//    signInWithAppleButton.translatesAutoresizingMaskIntoConstraints = false
-//    signInWithAppleButton.setTitle("Sign In With Apple", for: [])
- 
-    cancleButton.translatesAutoresizingMaskIntoConstraints = false
-    cancleButton.setTitle("Cancel", for: [])
   }
   
   func layout() {
@@ -93,17 +84,11 @@ extension LogInView {
     ])
     
     buttonStack.addArrangedSubview(submitButton)
-    buttonStack.addArrangedSubview(cancleButton)
-//    buttonstack.addArrangedSubview(signInWithAppleButton)
     addSubview(buttonStack)
     NSLayoutConstraint.activate([
-//      buttonstack.centerXAnchor.constraint(equalTo: centerXAnchor),
-//      buttonstack.centerYAnchor.constraint(equalTo: centerYAnchor),
-      
       buttonStack.topAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 4),
       buttonStack.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 4),
       trailingAnchor.constraint(equalToSystemSpacingAfter: buttonStack.trailingAnchor, multiplier: 4),
-//      bottomAnchor.constraint(equalToSystemSpacingBelow: buttonstack.bottomAnchor, multiplier: 8),
     ])
   }
 }

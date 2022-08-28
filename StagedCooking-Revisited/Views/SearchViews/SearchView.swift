@@ -20,7 +20,7 @@ import UIKit
 class SearchView: UIView {
   
   let stackView = UIStackView()
-  let searchTextField = LargeTextField()
+  let searchTextField = LargeTextField(placeholder: "Search")
   let searchButton = ActionButton()
   let advancedSearchButton = DetailsButton()
   
@@ -50,9 +50,7 @@ extension SearchView {
     stackView.spacing = 24
     stackView.distribution = .fillEqually
     
-    
     searchTextField.translatesAutoresizingMaskIntoConstraints = false
-    searchTextField.placeholder = "Search"
     
     searchButton.translatesAutoresizingMaskIntoConstraints = false
     searchButton.setTitle("Search", for: [])

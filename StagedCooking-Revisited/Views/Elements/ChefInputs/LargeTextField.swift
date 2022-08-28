@@ -20,11 +20,18 @@ class LargeTextField: UITextField {
     right: 8
   )
   
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.isAccessibilityElement = true
     style()
   }
+  
+  convenience init(placeholder: String) {
+    self.init()
+    self.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+  }
+  
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -51,6 +58,7 @@ extension LargeTextField {
     keyboardType = .asciiCapable
     autocorrectionType = .no
     backgroundColor = K.modalBG
+    textColor = K.invertPrimary
     font = .systemFont(ofSize: 24, weight: .regular)
     heightAnchor.constraint(equalToConstant: 48).isActive = true
   }

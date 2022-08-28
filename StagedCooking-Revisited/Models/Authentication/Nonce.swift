@@ -11,11 +11,6 @@ import Foundation
 import CryptoKit
 
 struct Nonce {
-//  var nonce = String()
-//  var hashString = String()
-  
-//  mutating
-//  private
   func randomNonceString(length: Int = 32) -> String {
     precondition(length > 0)
     let charset: [Character] = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-._")

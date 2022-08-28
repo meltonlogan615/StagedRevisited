@@ -30,7 +30,6 @@ extension LandingViewController {
     imageView.tintColor = K.scAccent
     imageView.contentMode = .scaleAspectFill
 
-  
     landing.translatesAutoresizingMaskIntoConstraints = false
   }
   
@@ -67,13 +66,13 @@ extension LandingViewController {
 extension LandingViewController {
   @objc func logInTapped() {
     let loginVC = LogInViewController()
-    loginVC.modalPresentationStyle = .formSheet
+    loginVC.modalPresentationStyle = .fullScreen
     present(loginVC, animated: true)
   }
   
   @objc func signUpTapped() {
     let signUpVC = SignUpViewController()
-    signUpVC.modalPresentationStyle = .formSheet
+    signUpVC.modalPresentationStyle = .fullScreen
     present(signUpVC, animated: true)
   }
   

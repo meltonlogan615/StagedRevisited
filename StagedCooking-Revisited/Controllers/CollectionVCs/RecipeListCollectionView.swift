@@ -59,6 +59,7 @@ class RecipeListCollectionView: UIViewController {
     loadRecipes(for: searchedRecipe)
     view.backgroundColor = K.primary
     title = searchedRecipe.capitalized
+    navigationController?.navigationBar.tintColor = K.invertPrimary
     sortMenu()
     recipeCollection.register(RecipeCell.self, forCellWithReuseIdentifier: "recipeCell")
     recipeCollection.dataSource = self
@@ -121,6 +122,7 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
         cell.titleLabel.text = cellTitle
       }
       if let recipeImage = recipeResults[indexPath.item].image {
+        cell.backgroundColor = .clear
         cell.image.loadImage(url: recipeImage)
         cell.image.layer.cornerRadius = 8
         cell.image.clipsToBounds = true

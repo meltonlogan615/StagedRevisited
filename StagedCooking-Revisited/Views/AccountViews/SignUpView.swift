@@ -30,15 +30,13 @@ import UIKit
 class SignUpView: UIView {
   
   let textFieldStack = UIStackView()
-  let nameTextField = LargeTextField()
-  let emailTextField = LargeTextField()
-  let passwordTextField = LargeTextField()
-  let passwordConfirmationTextField = LargeTextField()
+  let nameTextField = LargeTextField(placeholder: "Name")
+  let emailTextField = LargeTextField(placeholder: "Email Address")
+  let passwordTextField = LargeTextField(placeholder: "Password")
+  let passwordConfirmationTextField = LargeTextField(placeholder: "Confirm Password")
   
   let buttonStack = UIStackView()
   let signUpButton = ActionButton()
-  let cancelButton = DetailsButton()
-  let signUpWithAppleButton = SignWithAppleButton()
     
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -62,22 +60,17 @@ extension SignUpView {
     textFieldStack.spacing = 16
     
     nameTextField.translatesAutoresizingMaskIntoConstraints = false
-    nameTextField.placeholder = "Name"
     nameTextField.textContentType = .name
-    nameTextField.becomeFirstResponder()
     
     emailTextField.translatesAutoresizingMaskIntoConstraints = false
-    emailTextField.placeholder = "Email Address"
     emailTextField.textContentType = .emailAddress
     emailTextField.keyboardType = .emailAddress
     
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-    passwordTextField.placeholder = "Password"
     passwordTextField.isSecureTextEntry = true
-//    passwordTextField.textContentType = .newPassword
+    passwordTextField.textContentType = .newPassword
     
     passwordConfirmationTextField.translatesAutoresizingMaskIntoConstraints = false
-    passwordConfirmationTextField.placeholder = "Confirm Password"
     passwordConfirmationTextField.isSecureTextEntry = true
     passwordConfirmationTextField.textContentType = .newPassword
     
@@ -88,12 +81,6 @@ extension SignUpView {
     
     signUpButton.translatesAutoresizingMaskIntoConstraints = false
     signUpButton.setTitle("Sign Up", for: [])
-    
-    signUpWithAppleButton.translatesAutoresizingMaskIntoConstraints = false
-    signUpWithAppleButton.setTitle("Sign Up With Apple", for: [])
-    
-    cancelButton.translatesAutoresizingMaskIntoConstraints = false
-    cancelButton.setTitle("Cancel", for: [])
   }
   
   func layout() {
@@ -109,14 +96,11 @@ extension SignUpView {
     ])
     
     buttonStack.addArrangedSubview(signUpButton)
-//    buttonStack.addArrangedSubview(signUpWithAppleButton)
-    buttonStack.addArrangedSubview(cancelButton)
     addSubview(buttonStack)
     NSLayoutConstraint.activate([
       buttonStack.topAnchor.constraint(equalToSystemSpacingBelow: textFieldStack.bottomAnchor, multiplier: 4),
       buttonStack.leadingAnchor.constraint(equalTo: textFieldStack.leadingAnchor),
       buttonStack.trailingAnchor.constraint(equalTo: textFieldStack.trailingAnchor)
     ])
-    
   }
 }

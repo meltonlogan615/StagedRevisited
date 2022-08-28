@@ -8,15 +8,18 @@
 import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
+import Security
 import UIKit
 
 class LogInViewController: UIViewController {
 
   let imageView = UIImageView()
   let loginView = LogInView()
+  let button = DetailsButton()
   
   var nonce = Nonce()
   var handle: AuthStateDidChangeListenerHandle?
+  var creds: Credintials?
 
   fileprivate var currentNonce: String?
   
@@ -38,8 +41,7 @@ class LogInViewController: UIViewController {
     view.backgroundColor = K.primary
     style()
     layout()
-    //    setupToolbar()
-    //    setupProviderLoginView()
+    loginView.emailTextField.inputAccessoryView = setupToolbar()
     activateButtons()
   }
   
@@ -58,6 +60,12 @@ extension LogInViewController {
     imageView.contentMode = .scaleAspectFill
     
     loginView.translatesAutoresizingMaskIntoConstraints = false
+    loginView.emailTextField.inputAccessoryView = setupToolbar()
+    loginView.passwordTextField.inputAccessoryView = setupToolbar()
+    
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.setTitle("Cancel", for: [])
+
   }
   
   func layout() {
@@ -81,6 +89,13 @@ extension LogInViewController {
       loginView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       loginView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
     ])
+    
+    view.addSubview(button)
+    NSLayoutConstraint.activate([
+      button.leadingAnchor.constraint(equalTo: loginView.submitButton.leadingAnchor),
+      button.trailingAnchor.constraint(equalTo: loginView.submitButton.trailingAnchor),
+      view.safeAreaLayoutGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: button.bottomAnchor, multiplier: 2)
+    ])
   }
 }
 
@@ -93,10 +108,11 @@ extension LogInViewController {
     authorizationButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
     self.loginView.buttonStack.addArrangedSubview(authorizationButton)
     
-    self.loginView.cancleButton.addTarget(self, action: #selector(cancelButtonTapped), for: .primaryActionTriggered)
+    button.addTarget(self, action: #selector(cancelButtonTapped), for: .primaryActionTriggered)
   }
 }
 
+// MARK: - Firebase Log In
 extension LogInViewController {
   @objc
   func loginButtonTapped() {
@@ -131,6 +147,7 @@ extension LogInViewController {
   }
 }
 
+// MARK: - Sign In With Apple Log In
 extension LogInViewController: ASAuthorizationControllerPresentationContextProviding {
   func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
     var safeAnchor = ASPresentationAnchor()
@@ -143,12 +160,14 @@ extension LogInViewController: ASAuthorizationControllerPresentationContextProvi
   @available(iOS 13, *)
   @objc
   func startSignInWithAppleFlow() {
-    let nonce = self.nonce.randomNonceString()
-    currentNonce = nonce
     let appleIDProvider = ASAuthorizationAppleIDProvider()
     let request = appleIDProvider.createRequest()
     request.requestedScopes = [.fullName, .email]
-    request.nonce = self.nonce.sha256(nonce)
+
+    let nonce = self.nonce.randomNonceString()
+    currentNonce = nonce
+    
+    request.nonce = self.nonce.sha256(currentNonce!)
     
     let authController = ASAuthorizationController(authorizationRequests: [request])
     authController.delegate = self
@@ -158,9 +177,11 @@ extension LogInViewController: ASAuthorizationControllerPresentationContextProvi
 }
 
 extension LogInViewController: ASAuthorizationControllerDelegate {
-  @available(iOS 13.0, *)
+  @available(iOS 13, *)
   func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
     if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+      ChefDefault.defaults.set(appleIDCredential.user, forKey: "appleAuthorizedUserIdKey")
+      
       guard let nonce = currentNonce else {
         print("Invalid state. Recived, but not requested")
         return
@@ -173,25 +194,31 @@ extension LogInViewController: ASAuthorizationControllerDelegate {
         print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
         return
       }
+      
       // Firebase portion
       let credential = OAuthProvider.credential(withProviderID: "apple.com",
                                                 idToken: idTokenString,
                                                 rawNonce: nonce)
       
-      Auth.auth().signIn(with: credential) { (authResult, error) in
+      Auth.auth().signIn(with: credential) { [weak self] (authResult, error) in
         if error != nil {
           print(String(describing: error?.localizedDescription))
           return
         }
         if authResult != nil {
+          guard let self = self else { return }
+          print("poop")
           let vc = TabViewController()
           vc.modalPresentationStyle = .fullScreen
           vc.modalTransitionStyle = .crossDissolve
           self.present(vc, animated: true)
         }
       }
+    } else {
+      print("Credital Auth Failed \(String(describing: authorization.credential))")
     }
   }
+  
   func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
     print("Error Signing In W/ Apple", error)
   }
