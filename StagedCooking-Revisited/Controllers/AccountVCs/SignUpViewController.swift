@@ -9,18 +9,19 @@ import AuthenticationServices
 import FirebaseAuth
 import UIKit
 
-class SignUpViewController: UIViewController, UITextFieldDelegate {
+class SignUpViewController: AccountViewController {
   
-  let imageView = UIImageView()
+//  let imageView = UIImageView()
   
   let signupView = SignUpView()
   var signupViewTextFields: [UITextField]?
-  let cancelButton = DetailsButton()
+  let errorLabel = UILabel()
+//  let cancelButton = DetailsButton()
   
   var email: String?
   var password: String?
   var handle: AuthStateDidChangeListenerHandle?
-  var creds: Credintials?
+//  var creds: Credintials?
   
   var nonce = Nonce()
   fileprivate var currentNonce: String?
@@ -29,8 +30,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     super.viewDidLoad()
     view.backgroundColor = K.primary
     title = "Sign Up"
-    style()
-    layout()
+    styleSignUp()
+    layoutSignUp()
     activateButtons()
   }
   
@@ -50,51 +51,46 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
 extension SignUpViewController {
   
-  func style() {
+  func styleSignUp() {
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = UIImage(named: "StagedLogo")
     imageView.contentMode = .scaleAspectFill
 
     signupView.translatesAutoresizingMaskIntoConstraints = false
+    signupView.nameTextField.delegate = self
+    signupView.nameTextField.inputAccessoryView = setupToolbar()
     
     signupView.emailTextField.delegate = self
     signupView.emailTextField.inputAccessoryView = setupToolbar()
-    
+
     signupView.passwordTextField.delegate = self
     signupView.passwordTextField.inputAccessoryView = setupToolbar()
-    
+
     signupView.passwordConfirmationTextField.delegate = self
     signupView.passwordConfirmationTextField.inputAccessoryView = setupToolbar()
+    
+    errorLabel.translatesAutoresizingMaskIntoConstraints = false
+
+    errorLabel.numberOfLines = 0
+    errorLabel.textColor = K.scAccent
+    errorLabel.textAlignment = .center
+    errorLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+    errorLabel.layer.opacity = 0.0
+    errorLabel.backgroundColor = K.primary
+    errorLabel.layer.zPosition = 10
 
     cancelButton.translatesAutoresizingMaskIntoConstraints = false
     cancelButton.setTitle("Cancel", for: [])
   }
   
-  func layout() {
-    let imageHeight = (view.frame.height / 5 - 48)
-    let imageWidth = (view.frame.width / 1.25)
-    
-    view.addSubview(imageView)
-    NSLayoutConstraint.activate([
-      imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 1),
-      imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      imageView.heightAnchor.constraint(equalToConstant: imageHeight),
-      imageView.widthAnchor.constraint(equalToConstant: imageWidth)
-    ])
-    
+  func layoutSignUp() {
     view.addSubview(signupView)
+    signupView.backgroundColor = .cyan
     NSLayoutConstraint.activate([
-      signupView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 1),
+      signupView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 2),
       signupView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       signupView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      signupView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-    ])
-    
-    view.addSubview(cancelButton)
-    NSLayoutConstraint.activate([
-      cancelButton.leadingAnchor.constraint(equalTo: signupView.emailTextField.leadingAnchor),
-      cancelButton.trailingAnchor.constraint(equalTo: signupView.emailTextField.trailingAnchor),
-      view.safeAreaLayoutGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: cancelButton.bottomAnchor, multiplier: 2)
+      signupView.bottomAnchor.constraint(equalTo: cancelButton.topAnchor),
     ])
   }
 }
@@ -109,7 +105,7 @@ extension SignUpViewController {
     authorizationButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
     signupView.buttonStack.addArrangedSubview(authorizationButton)
     
-    cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .primaryActionTriggered)
+    signupView.buttonStack.addArrangedSubview(errorLabel)
   }
   
   @objc
@@ -117,9 +113,17 @@ extension SignUpViewController {
     createChef()
   }
   
-  @objc
-  func cancelButtonTapped() {
-    self.dismiss(animated: true)
+//  @objc
+//  func cancelButtonTapped() {
+//    self.dismiss(animated: true)
+//  }
+}
+
+extension SignUpViewController {
+  private func configureLabel(withMessage message: String) {
+    errorLabel.fadeIn(0.25, delay: 1.0)
+    errorLabel.text = message
+    errorLabel.fadeOut(2.0, delay: 1.0)
   }
 }
 
@@ -137,7 +141,9 @@ extension SignUpViewController {
     }
     
     if pwCheck != pw {
+      configureLabel(withMessage: "Passwords Do Not Match")
       print("FART FAIL")
+      return
     }
     
     Auth.auth().createUser(withEmail: email, password: pwCheck) { _, error in

@@ -144,3 +144,5 @@ extension ToggleSwitch {
     })
   }
 }
+
+// source: https://factoryhr.medium.com/making-custom-uiswitch-part-1-cc3ab9c0b05b

@@ -59,7 +59,6 @@ extension LogInView {
     emailTextField.textContentType = .emailAddress
     emailTextField.keyboardType = .emailAddress
     
-    
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     passwordTextField.isSecureTextEntry = true
     passwordTextField.textContentType = .password
@@ -87,8 +86,8 @@ extension LogInView {
     addSubview(buttonStack)
     NSLayoutConstraint.activate([
       buttonStack.topAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 4),
-      buttonStack.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 4),
-      trailingAnchor.constraint(equalToSystemSpacingAfter: buttonStack.trailingAnchor, multiplier: 4),
+      buttonStack.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+      buttonStack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
     ])
   }
 }

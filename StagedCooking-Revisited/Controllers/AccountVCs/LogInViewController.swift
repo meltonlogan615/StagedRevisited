@@ -8,19 +8,18 @@
 import AuthenticationServices
 import CryptoKit
 import FirebaseAuth
+import LocalAuthentication
 import Security
 import UIKit
 
-class LogInViewController: UIViewController {
-
-  let imageView = UIImageView()
+class LogInViewController: AccountViewController {
+  
   let loginView = LogInView()
-  let button = DetailsButton()
   
   var nonce = Nonce()
   var handle: AuthStateDidChangeListenerHandle?
-  var creds: Credintials?
-
+  //  var creds: Credintials?
+  
   fileprivate var currentNonce: String?
   
   override func viewWillAppear(_ animated: Bool) {
@@ -39,8 +38,8 @@ class LogInViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = K.primary
-    style()
-    layout()
+    styleLogIn()
+    layoutLogIn()
     loginView.emailTextField.inputAccessoryView = setupToolbar()
     activateButtons()
   }
@@ -54,47 +53,22 @@ class LogInViewController: UIViewController {
 
 extension LogInViewController {
   
-  func style() {
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.image = UIImage(named: "StagedLogo")
-    imageView.contentMode = .scaleAspectFill
-    
+  func styleLogIn() {
     loginView.translatesAutoresizingMaskIntoConstraints = false
     loginView.emailTextField.inputAccessoryView = setupToolbar()
-    loginView.passwordTextField.inputAccessoryView = setupToolbar()
+    loginView.emailTextField.delegate = self
     
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle("Cancel", for: [])
-
+    loginView.passwordTextField.inputAccessoryView = setupToolbar()
+    loginView.passwordTextField.delegate = self
   }
   
-  func layout() {
-    let imageHeight = (view.frame.height / 5 - 48)
-    let imageWidth = (view.frame.width / 1.25)
-
-    view.addSubview(imageView)
+  func layoutLogIn() {
+    view.addSubview(loginView)    
     NSLayoutConstraint.activate([
-      imageView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 4),
-      imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      imageView.heightAnchor.constraint(equalToConstant: imageHeight),
-      imageView.widthAnchor.constraint(equalToConstant: imageWidth)
-    ])
-    
-    view.addSubview(loginView)
-    loginView.emailTextField.textContentType = .emailAddress
-    loginView.passwordTextField.textContentType = .password
-    NSLayoutConstraint.activate([
-      loginView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 1),
+      loginView.topAnchor.constraint(equalToSystemSpacingBelow: imageView.bottomAnchor, multiplier: 2),
       loginView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       loginView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      loginView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-    ])
-    
-    view.addSubview(button)
-    NSLayoutConstraint.activate([
-      button.leadingAnchor.constraint(equalTo: loginView.submitButton.leadingAnchor),
-      button.trailingAnchor.constraint(equalTo: loginView.submitButton.trailingAnchor),
-      view.safeAreaLayoutGuide.bottomAnchor.constraint(equalToSystemSpacingBelow: button.bottomAnchor, multiplier: 2)
+      loginView.bottomAnchor.constraint(equalTo: cancelButton.topAnchor),
     ])
   }
 }
@@ -108,7 +82,7 @@ extension LogInViewController {
     authorizationButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
     self.loginView.buttonStack.addArrangedSubview(authorizationButton)
     
-    button.addTarget(self, action: #selector(cancelButtonTapped), for: .primaryActionTriggered)
+//    button.addTarget(self, action: #selector(cancelButtonTapped), for: .primaryActionTriggered)
   }
 }
 
@@ -141,10 +115,10 @@ extension LogInViewController {
     }
   }
   
-  @objc
-  func cancelButtonTapped() {
-    self.dismiss(animated: true)
-  }
+//  @objc
+//  func cancelButtonTapped() {
+//    self.dismiss(animated: true)
+//  }
 }
 
 // MARK: - Sign In With Apple Log In
@@ -163,7 +137,7 @@ extension LogInViewController: ASAuthorizationControllerPresentationContextProvi
     let appleIDProvider = ASAuthorizationAppleIDProvider()
     let request = appleIDProvider.createRequest()
     request.requestedScopes = [.fullName, .email]
-
+    
     let nonce = self.nonce.randomNonceString()
     currentNonce = nonce
     
@@ -208,10 +182,7 @@ extension LogInViewController: ASAuthorizationControllerDelegate {
         if authResult != nil {
           guard let self = self else { return }
           print("poop")
-          let vc = TabViewController()
-          vc.modalPresentationStyle = .fullScreen
-          vc.modalTransitionStyle = .crossDissolve
-          self.present(vc, animated: true)
+          self.pushToSearchView()
         }
       }
     } else {
@@ -224,3 +195,40 @@ extension LogInViewController: ASAuthorizationControllerDelegate {
   }
 }
 
+// MARK: - Biometrics
+extension LogInViewController {
+  func tryBiometricAuthentication() {
+    let context = LAContext()
+    var error: NSError?
+    
+    if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+      let reason = "Unlocky Lock."
+      context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { authenticated, error in
+        DispatchQueue.main.async {
+          if authenticated {
+            print("authed")
+            self.pushToSearchView()
+          } else {
+            if let errorString = error?.localizedDescription {
+              print("Error: \(errorString)")
+            }
+          }
+        }
+      }
+    } else {
+      if let errorString = error?.localizedDescription {
+        print("Error LoginVC: \(errorString)")
+      }
+    }
+  }
+}
+
+
+extension LogInViewController {
+  private func pushToSearchView() {
+    let vc = TabViewController()
+    vc.modalPresentationStyle = .fullScreen
+    vc.modalTransitionStyle = .crossDissolve
+    self.present(vc, animated: true)
+  }
+}

@@ -72,6 +72,34 @@ extension EndPoints {
   }
 }
 
+extension EndPoints {
+  var endpointForRandomRecipes: URL {
+    var tags = [String]()
+    var formattedTags = [String]()
+    var fullTag = String()
+    for intoleranceString in ChefDefault.intolerances {
+      tags.append(intoleranceString.rawValue)
+    }
+    for dietString in ChefDefault.dietPreferences {
+      tags.append(dietString.rawValue)
+    }
+    for tag in tags {
+      formattedTags.append(tag.replacingOccurrences(of: " ", with: "%20", options: .regularExpression, range: nil))
+    }
+    if formattedTags.count != 0 {
+      let tagParam = formattedTags.joined(separator: ",")
+      fullTag = "tags=\(tagParam)"
+    }
+    let randomURL = URL(string: "\(baseURL)random?apiKey=\(apiKey)&number=10")
+     
+    guard let randomURL = randomURL else {
+      preconditionFailure("Invalid URL: \(String(describing: randomURL))")
+    }
+    print(randomURL)
+    return randomURL
+  }
+}
+
 
 extension EndPoints {
 // Search
@@ -96,6 +124,10 @@ extension EndPoints {
 // Analyzed Instructions
   func getInstructions(forID recipeID: Int) -> EndPoints {
     return EndPoints(recipeID: recipeID)
+  }
+  
+  func getRandomRecipes() -> EndPoints {
+    return EndPoints()
   }
   
 }

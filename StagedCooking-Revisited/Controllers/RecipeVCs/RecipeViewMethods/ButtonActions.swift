@@ -7,15 +7,17 @@
 
 import Foundation
 import UIKit
-import SwiftUI
 
 // MARK: - Button Activation
 extension RecipeViewController {
   func activateButtons() {
     /// Modal Views
     recipeView.showIngredientsButton.addTarget(self, action: #selector(showModal), for: .primaryActionTriggered)
+    
     recipeView.showSummaryButton.addTarget(self, action: #selector(showModal), for: .primaryActionTriggered)
+    
     recipeView.showNutritionButton.addTarget(self, action: #selector(showModal), for: .primaryActionTriggered)
+    
     recipeView.showRestrictionsButton.addTarget(self, action: #selector(showModal), for: .primaryActionTriggered)
     
     /// Begins the Card Building process below
@@ -25,6 +27,10 @@ extension RecipeViewController {
 
 // MARK: - Detail Buttons
 extension RecipeViewController: ModalDataSource {
+  enum Sender: String, CaseIterable {
+    case ing, sum, mac, die
+  }
+  
   @objc func showModal(_ sender: UIButton) {
     guard let senderTitle = sender.currentTitle else { return }
     let modal = ModalViewController()
@@ -34,21 +40,21 @@ extension RecipeViewController: ModalDataSource {
       case "Ingredients":
         modal.labelText = "Ingredients"
         guard let ingredients = self.ingredientList else { return }
-        let ingredientsModal = IngredientsModal(ingredients: ingredients)
-        modal.modalView = ingredientsModal
+        modal.ingredients = ingredients
+        modal.sender = Sender.ing.rawValue
         present(modal, animated: true)
         
       case "Summary":
         modal.labelText = "Summary"
-        let summaryModal = SummaryModal(summary: self.summary)
-        modal.modalView = summaryModal
+        modal.summary = summary
+        modal.sender = Sender.sum.rawValue
         present(modal, animated: true)
         
       case "Nutrition":
         modal.labelText = "Nutrition"
         guard let macros = self.macros else { return }
-        let macrosModal = MacrosModal(macros: macros)
-        modal.modalView = macrosModal
+        modal.macros = macros
+        modal.sender = Sender.mac.rawValue
         present(modal, animated: true)
         
       case "Diets":
@@ -56,6 +62,8 @@ extension RecipeViewController: ModalDataSource {
         guard let diets = self.dietInfo else { return }
         let dietsModal = DietsModal(info: diets)
         modal.modalView = dietsModal
+        modal.diets = diets
+        modal.sender = Sender.die.rawValue
         present(modal, animated: true)
         
       default:

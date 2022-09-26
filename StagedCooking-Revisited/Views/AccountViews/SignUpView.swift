@@ -60,15 +60,16 @@ extension SignUpView {
     textFieldStack.spacing = 16
     
     nameTextField.translatesAutoresizingMaskIntoConstraints = false
-    nameTextField.textContentType = .name
+    nameTextField.textContentType = .givenName
     
     emailTextField.translatesAutoresizingMaskIntoConstraints = false
-    emailTextField.textContentType = .emailAddress
+    emailTextField.textContentType = .username
     emailTextField.keyboardType = .emailAddress
     
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-    passwordTextField.isSecureTextEntry = true
+    passwordTextField .isSecureTextEntry = true
     passwordTextField.textContentType = .newPassword
+    passwordTextField.keyboardType = .asciiCapable
     
     passwordConfirmationTextField.translatesAutoresizingMaskIntoConstraints = false
     passwordConfirmationTextField.isSecureTextEntry = true

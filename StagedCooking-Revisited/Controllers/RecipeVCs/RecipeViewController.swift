@@ -61,6 +61,7 @@ class RecipeViewController: UIViewController {
     
     showActivity()
     navigationController?.navigationBar.prefersLargeTitles = false
+    
     // TODO: - #29 - ADD option to dismiss views back to SearchVC?
     setRightBarButtons()
     style()
@@ -162,11 +163,14 @@ extension RecipeViewController {
   func setLeftBarButton(_ sender: ListVCs) {
     switch sender {
       case .collection:
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Search", style: .plain, target: self, action: #selector(dismissView))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(dismissView))
+        
       case .history:
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Search History", style: .plain, target: self, action: #selector(dismissView))
+        
       case .saved:
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Saved", style: .plain, target: self, action: #selector(dismissView))
+        
       case .favs:
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Favorites", style: .plain, target: self, action: #selector(dismissView))
     }

@@ -65,6 +65,14 @@ class DataProvider  {
       }
     }
   }
+  
+  func getRandomRecipes<T: Decodable>(completion: @escaping (Result<T, Error>) -> Void) {
+    let randomsEndpoint = endpoints.getRandomRecipes()
+    networkDataFlow.getData(for: randomsEndpoint.endpointForRandomRecipes) { (result: Result<T, Error>) in
+      completion(result)
+    
+    }
+  }
 }
 
 // Later, if additional endpoints or API provided functionality added, will ned to add additional func to recive the data that will be passed back in.

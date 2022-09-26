@@ -34,7 +34,7 @@ enum FilterOptions: String {
 }
 
 extension RecipeListCollectionView {
-  func sortMenu() {
+  func showSortMenu() {
     // MARK: - Alphabetically Ascending from A to Z
     let menu = UIMenu(title: "Sort By:", image: nil, identifier: nil, options: .singleSelection, children: [
       

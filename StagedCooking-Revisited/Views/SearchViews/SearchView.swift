@@ -46,14 +46,15 @@ extension SearchView {
     translatesAutoresizingMaskIntoConstraints = false
     
     stackView.translatesAutoresizingMaskIntoConstraints = false
-    stackView.axis = .vertical
-    stackView.spacing = 24
-    stackView.distribution = .fillEqually
+    stackView.axis = .horizontal
+    stackView.spacing = 0
     
     searchTextField.translatesAutoresizingMaskIntoConstraints = false
     
     searchButton.translatesAutoresizingMaskIntoConstraints = false
-    searchButton.setTitle("Search", for: [])
+    searchButton.setImage(UIImage(systemName: "magnifyingglass"), for: [])
+    searchButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
+//    searchButton.setTitle("Search", for: [])
     
     // TODO: - Once it gets close to release time, bring these back into play
     advancedSearchButton.translatesAutoresizingMaskIntoConstraints = false
@@ -70,23 +71,22 @@ extension SearchView {
   }
   
   func layout() {
-    addSubview(errorLabel)
-    NSLayoutConstraint.activate([
-      errorLabel.topAnchor.constraint(equalTo: topAnchor),
-      errorLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-      errorLabel.widthAnchor.constraint(equalTo: widthAnchor),
-    ])
-
     stackView.addArrangedSubview(searchTextField)
     stackView.addArrangedSubview(searchButton)
-//    stackView.addArrangedSubview(advancedSearchButton)
     
     addSubview(stackView)
     NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalToSystemSpacingBelow: errorLabel.bottomAnchor, multiplier: 2),
+      stackView.topAnchor.constraint(equalTo: topAnchor),
       stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
       stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
       stackView.centerYAnchor.constraint(equalTo: centerYAnchor)
+    ])
+    
+    addSubview(errorLabel)
+    NSLayoutConstraint.activate([
+      errorLabel.topAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 1),
+      errorLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+      errorLabel.widthAnchor.constraint(equalTo: widthAnchor),
     ])
     
   }

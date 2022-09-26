@@ -25,6 +25,7 @@ extension RecipeViewController: CardBuilder {
    - ~/VCMethods/RecipeViewMethods/DataGeneration/GetInstructions
    
    */
+  
   func buildCards(ingredients: Ingredients, instructionsDictionary: [Int: String], ingredientDictionary: [Int: [String]]) -> [Card]{
     var cards = [Card]()
     // Sort Dictionaries bu their IDs

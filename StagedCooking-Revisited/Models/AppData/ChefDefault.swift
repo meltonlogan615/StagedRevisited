@@ -55,11 +55,10 @@ struct ChefDefault {
 
   static var name: String?
   static var userID = String()
-  static var isLoggedIn = false
+  static var isLoggedIn = true
   static var hasOnboarded = false
   static let server = "stagedcooking.firebaseapp.com"
   
-
   static func saveSettings(allergies: [Intolerance]?, restrictions: [Diet]?) {
     if let intolerances = allergies {
       ChefDefault.intolerances += intolerances

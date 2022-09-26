@@ -45,13 +45,16 @@ extension MacrosLabelView {
     
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+    titleLabel.textColor = K.invertPrimary
     
     amountLabel.translatesAutoresizingMaskIntoConstraints = false
     amountLabel.font = .systemFont(ofSize: 20)
+    amountLabel.textColor = K.invertPrimary
     
     dailyPercentLabel.translatesAutoresizingMaskIntoConstraints = false
     dailyPercentLabel.font = .systemFont(ofSize: 20)
     dailyPercentLabel.numberOfLines = 0
+    dailyPercentLabel.textColor = K.invertPrimary
   }
   
   func layout() {

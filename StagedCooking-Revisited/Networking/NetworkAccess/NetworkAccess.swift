@@ -13,6 +13,7 @@ enum NetworkError: Error {
   case responseError
   case invalidData
 }
+
 // allows for the use of enum values in completion handlers
 typealias NetworkCompletion = (Result<Data, NetworkError>) -> Void
 

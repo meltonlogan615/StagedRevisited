@@ -61,7 +61,6 @@ extension LandingView {
     ])
     stack.addArrangedSubview(logInButton)
     stack.addArrangedSubview(signUpButton)
-    
     stack.addArrangedSubview(forgotPassword)
   }
 }

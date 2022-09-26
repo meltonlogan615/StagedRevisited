@@ -10,7 +10,6 @@
 	<array>
 		<string>stagedcooking.firebaseapp.com</string>
 		<string>stagedcooking.web.app</string>
-		<string>webcredentials:example.com</string>
 	</array>
 </dict>
 </plist>

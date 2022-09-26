@@ -12,7 +12,6 @@
 // If image is missing, remove from list
 // Format Title Labels
 
-// TODO: - Activity Indicator when loading information
 // TODO: - #27 - Change to Infinite Scrolling
 
 import Foundation
@@ -59,11 +58,14 @@ class RecipeListCollectionView: UIViewController {
     loadRecipes(for: searchedRecipe)
     view.backgroundColor = K.primary
     title = searchedRecipe.capitalized
-    navigationController?.navigationBar.tintColor = K.invertPrimary
-    sortMenu()
+    navigationController?.navigationBar.tintColor = K.scAccent
+    
+    showSortMenu()
+    
     recipeCollection.register(RecipeCell.self, forCellWithReuseIdentifier: "recipeCell")
     recipeCollection.dataSource = self
     recipeCollection.delegate = self
+    
     style()
     layout()
   }
@@ -137,6 +139,7 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
 extension RecipeListCollectionView: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let recipeVC = RecipeViewController()
+    
     guard let selectedID = model.results?[indexPath.item].id else { return }
     guard let selectedTitle = model.results?[indexPath.item].title else { return }
     guard let recipeImage = model.results?[indexPath.item].image else { return }
@@ -176,7 +179,6 @@ extension RecipeListCollectionView: UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - Networking, Spoonacular ComplexSearch
-
 extension RecipeListCollectionView {
   // MARK: - Regular Search
   func loadRecipes(for recipe: String) {

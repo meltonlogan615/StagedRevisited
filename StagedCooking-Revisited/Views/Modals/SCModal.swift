@@ -10,14 +10,8 @@ import UIKit
 
 /**
  Generic `Modal` view to set up the framework for each of the `DetailButtons`
- 
-Inherited by:
- - `IngredientsModal`
- - `SummaryModal`
- - `MacrosModal`
- - `DietsModal`
- - `GeneralModal`, not currently in use.
  */
+
 class SCModal: UIView {
   
   var scrollView = UIScrollView()

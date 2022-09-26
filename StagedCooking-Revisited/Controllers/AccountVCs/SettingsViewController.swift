@@ -82,7 +82,9 @@ extension SettingsViewController: UITableViewDelegate {
     switch indexPath.item {
       case 0:
         signOut()
+        print("Signed Out")
       case 1:
+        deleteAccount()
         print("Delete Account")
       default:
         print("Default")
@@ -96,8 +98,30 @@ extension SettingsViewController {
     let auth = Auth.auth()
     do {
       try auth.signOut()
+      self.dismiss(animated: true)
+      let mainVC = LandingViewController2()
+      mainVC.modalPresentationStyle = .fullScreen
+      self.present(mainVC, animated: true)
     } catch let quitError as NSError {
       print("Error signing out", quitError)
+    }
+  }
+}
+
+extension SettingsViewController {
+  @objc
+  func deleteAccount() {
+    let user = Auth.auth().currentUser
+    
+    user?.delete { error in
+      if let error = error {
+        print(error)
+      } else {
+        self.dismiss(animated: true)
+        let mainVC = LandingViewController2()
+        mainVC.modalPresentationStyle = .fullScreen
+        self.present(mainVC, animated: true)
+      }
     }
   }
 }
