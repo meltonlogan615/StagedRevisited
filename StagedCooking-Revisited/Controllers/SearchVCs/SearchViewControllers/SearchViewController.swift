@@ -102,8 +102,8 @@ extension SearchViewController {
     view.addSubview(collection)
     NSLayoutConstraint.activate([
       collection.topAnchor.constraint(equalToSystemSpacingBelow: searchView.bottomAnchor, multiplier: 5),
-      collection.leadingAnchor.constraint(equalTo: searchView.leadingAnchor),
-      collection.trailingAnchor.constraint(equalTo: searchView.trailingAnchor),
+      collection.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      collection.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       collection.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
     ])
   }

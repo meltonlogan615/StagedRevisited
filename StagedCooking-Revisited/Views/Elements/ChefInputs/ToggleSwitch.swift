@@ -121,6 +121,9 @@ extension ToggleSwitch {
     self.thumbView.layer.shadowRadius = 1.5
     self.thumbView.layer.shadowOpacity = 0.4
     self.thumbView.layer.shadowOffset = CGSize(width: 0.5, height: 2)
+    let image = UIImageView()
+    image.image = UIImage(systemName: "clock")
+    self.thumbView.addSubview(image)
     self.addSubview(self.thumbView)
   }
   

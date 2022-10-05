@@ -32,7 +32,7 @@ class RecipeListCollectionView: UIViewController {
   
   let spinner = SpinnerViewController()
   var dataprovider = DataProvider()
-  
+
   var model = Response()
   
   var searchedRecipe = String()
@@ -45,29 +45,23 @@ class RecipeListCollectionView: UIViewController {
   var selectedIntolerances = [Intolerance]()
   var selectedMealTypes = [MealType]()
   
-  let recipeCollection: UICollectionView = {
-    let layout = UICollectionViewFlowLayout()
-    var recipeCollection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    recipeCollection.backgroundColor = K.primary
-    recipeCollection.layer.zPosition = 10
-    return recipeCollection
-  }()
+  var recipeCollection: UICollectionView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     loadRecipes(for: searchedRecipe)
+    recipeCollection = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
+    style()
+    layout()
+    
     view.backgroundColor = K.primary
     title = searchedRecipe.capitalized
     navigationController?.navigationBar.tintColor = K.scAccent
     
     showSortMenu()
-    
     recipeCollection.register(RecipeCell.self, forCellWithReuseIdentifier: "recipeCell")
     recipeCollection.dataSource = self
     recipeCollection.delegate = self
-    
-    style()
-    layout()
   }
   
   
@@ -95,16 +89,19 @@ class RecipeListCollectionView: UIViewController {
 // MARK: - Styling & Layout
 extension RecipeListCollectionView {
   func style() {
+//    recipeCollection.translatesAutoresizingMaskIntoConstraints = false
+
     recipeCollection.translatesAutoresizingMaskIntoConstraints = false
+    recipeCollection.backgroundColor = K.primary
   }
   
   func layout() {
     view.addSubview(recipeCollection)
     NSLayoutConstraint.activate([
-      recipeCollection.topAnchor.constraint(equalTo: view.topAnchor),
-      recipeCollection.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      recipeCollection.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-      recipeCollection.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
+      recipeCollection.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      recipeCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      recipeCollection.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      recipeCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor)
     ])
   }
 }
@@ -126,16 +123,14 @@ extension RecipeListCollectionView: UICollectionViewDataSource {
       if let recipeImage = recipeResults[indexPath.item].image {
         cell.backgroundColor = .clear
         cell.image.loadImage(url: recipeImage)
-        cell.image.layer.cornerRadius = 8
-        cell.image.clipsToBounds = true
+
       }
     }
     return cell
   }
-  
 }
 
-// MARK: - CollectionView - Delegate
+// MARK: - CollectionView - Delegate / DidSelectItemAt
 extension RecipeListCollectionView: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let recipeVC = RecipeViewController()
@@ -159,22 +154,74 @@ extension RecipeListCollectionView: UICollectionViewDelegate {
 }
 
 // MARK: - CollectionView - Flow Layout & Cell Sizing
-extension RecipeListCollectionView: UICollectionViewDelegateFlowLayout {
-  private enum LayoutConstant {
-    static let spacing = CGFloat(4)
-    static let itemHeight = CGFloat(150)
+//extension RecipeListCollectionView: UICollectionViewDelegateFlowLayout {
+//  private enum LayoutConstant {
+//    static let spacing = CGFloat(4)
+//    static let itemHeight = CGFloat(150)
+//  }
+//
+//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//    let width = itemWidth(for: view.frame.width, spacing: LayoutConstant.spacing)
+//    return CGSize(width: width, height: LayoutConstant.itemHeight)
+//  }
+//
+//  func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
+//    let itemsInRow = 1.0
+//    let totalSpacing = CGFloat(2.0 * spacing + (itemsInRow - 1.0) * spacing)
+//    let finalWidth = (width - totalSpacing) / itemsInRow
+//    return finalWidth - 5.0
+//  }
+//}
+
+extension RecipeListCollectionView {
+  func createCompositionalLayout() -> UICollectionViewLayout {
+    let layout = UICollectionViewCompositionalLayout { _,_ in
+      return self.createGroup()
+    }
+    let config = UICollectionViewCompositionalLayoutConfiguration()
+    config.interSectionSpacing = 20
+    layout.configuration = config
+    return layout
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let width = itemWidth(for: view.frame.width, spacing: LayoutConstant.spacing)
-    return CGSize(width: width, height: LayoutConstant.itemHeight)
-  }
-  
-  func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
-    let itemsInRow = 1.0
-    let totalSpacing = CGFloat(2.0 * spacing + (itemsInRow - 1.0) * spacing)
-    let finalWidth = (width - totalSpacing) / itemsInRow
-    return finalWidth - 5.0
+  func createGroup() -> NSCollectionLayoutSection {
+    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(160))
+    
+    let largeGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(320))
+    
+    let mediumStackGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
+    
+    let sectionSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(640))
+    
+    let largeItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+    let tallItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
+    let mediumItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.5))
+    let smallItemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
+    
+    let largeItem = NSCollectionLayoutItem(layoutSize: largeItemSize)
+    let tallItem = NSCollectionLayoutItem(layoutSize: tallItemSize)
+    let mediumItem = NSCollectionLayoutItem(layoutSize: mediumItemSize)
+    let smallItem = NSCollectionLayoutItem(layoutSize: smallItemSize)
+    
+    let groupOne = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [largeItem])
+    let groupTwo = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [smallItem])
+    let largeGroupOne = NSCollectionLayoutGroup.vertical(layoutSize: largeGroupSize, subitems: [groupOne, groupTwo])
+    
+    let groupThree = NSCollectionLayoutGroup.vertical(layoutSize: mediumStackGroupSize, subitems: [mediumItem])
+    let largeGroupTwo = NSCollectionLayoutGroup.horizontal(layoutSize: largeGroupSize, subitems: [groupThree, tallItem])
+
+    let largeGroupThree = NSCollectionLayoutGroup.horizontal(layoutSize: largeGroupSize, subitems: [tallItem, groupThree])
+    
+    let sectionAssembly = NSCollectionLayoutGroup.vertical(layoutSize: sectionSize, subitems:   [
+      largeGroupOne,
+      largeGroupTwo,
+      largeGroupOne,
+      largeGroupThree
+    ])
+    
+    let section = NSCollectionLayoutSection(group: sectionAssembly)
+    return section
+    
   }
 }
 
@@ -224,7 +271,7 @@ extension RecipeListCollectionView {
 extension RecipeListCollectionView {
   func showActivity() {
     addChild(spinner)
-    recipeCollection.isHidden = true
+//    recipeCollection.isHidden = true
     spinner.view.frame = view.frame
     view.addSubview(spinner.view)
   }

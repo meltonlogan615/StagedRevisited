@@ -43,7 +43,7 @@ class ModalViewController: UIViewController {
 
 extension ModalViewController {
   func style() {
-    view.addSubview(self.blur())
+    view.addSubview(blur())
     
     modalLabel.translatesAutoresizingMaskIntoConstraints = false
     modalLabel.font = .systemFont(ofSize: 36, weight: .semibold)

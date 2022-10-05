@@ -76,27 +76,35 @@ extension EndPoints {
   var endpointForRandomRecipes: URL {
     var tags = [String]()
     var formattedTags = [String]()
-    var fullTag = String()
+    var fullTag: String
+
     for intoleranceString in ChefDefault.intolerances {
       tags.append(intoleranceString.rawValue)
     }
     for dietString in ChefDefault.dietPreferences {
       tags.append(dietString.rawValue)
     }
+    for intolerance in ChefDefault.intolerances {
+      tags.append(intolerance.rawValue)
+    }
+    
     for tag in tags {
       formattedTags.append(tag.replacingOccurrences(of: " ", with: "%20", options: .regularExpression, range: nil))
     }
+    
     if formattedTags.count != 0 {
       let tagParam = formattedTags.joined(separator: ",")
       fullTag = "tags=\(tagParam)"
     }
+    
     let randomURL = URL(string: "\(baseURL)random?apiKey=\(apiKey)&number=10")
-     
-    guard let randomURL = randomURL else {
+    
+    guard let randoURL = randomURL else {
       preconditionFailure("Invalid URL: \(String(describing: randomURL))")
     }
-    print(randomURL)
-    return randomURL
+    
+    print(randoURL)
+    return randoURL
   }
 }
 

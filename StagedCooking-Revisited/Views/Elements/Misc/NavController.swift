@@ -18,20 +18,8 @@ class NavController: UINavigationController {
     navigationBar.prefersLargeTitles = true
     navigationBar.tintColor = K.scAccent
     navigationBar.backgroundColor = K.primary
-    style()
-    layout()
   }
   
   
 }
 
-extension NavController {
-  
-  func style() {
-    
-  }
-  
-  func layout() {
-    
-  }
-}

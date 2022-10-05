@@ -20,3 +20,12 @@ extension UIViewController {
     return blurredBackground
   }
 }
+
+extension UIView {
+  func blurry() -> UIVisualEffectView {
+    let backgroundFilter = UIBlurEffect(style: .systemMaterialDark)
+    let blurredBackground = UIVisualEffectView(effect: backgroundFilter)
+    blurredBackground.frame = CGRect(x: 0, y: 0, width: frame.maxX, height: frame.maxY)
+    return blurredBackground
+  }
+}

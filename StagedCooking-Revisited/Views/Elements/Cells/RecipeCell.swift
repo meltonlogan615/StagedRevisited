@@ -24,37 +24,40 @@ final class RecipeCell: UICollectionViewListCell {
     let image = UIImageView(frame: .zero)
     image.translatesAutoresizingMaskIntoConstraints = false
     image.contentMode = .scaleAspectFill
+    image.clipsToBounds = true
     image.image = UIImage(named: "hotchiken")
     image.layer.zPosition = 1
+    image.backgroundColor = .orange
     return image
   }()
   
-  /// The background of the `UILabel`. Neede to provide adequate contrast.
+  /// The background of the `UILabel`. Needed to provide adequate contrast.
   let labelBackground: UIView = {
     let labelBackground = UIView()
     labelBackground.translatesAutoresizingMaskIntoConstraints = false
     labelBackground.backgroundColor = K.scLabelBG
     labelBackground.layer.zPosition = 10
     return labelBackground
-    
   }()
   
   let titleLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = .systemFont(ofSize: 20, weight: .semibold)
+    label.font = .preferredFont(forTextStyle: .title2)
     label.textColor = K.invertPrimary
-    label.textAlignment = .natural
-    label.adjustsFontSizeToFitWidth = true
+    label.textAlignment = .center
+    label.adjustsFontSizeToFitWidth = false
     label.layer.zPosition = 20
-    label.numberOfLines = 0
-    label.allowsDefaultTighteningForTruncation = true
+    label.numberOfLines = 2
+    label.allowsDefaultTighteningForTruncation = false
     return label
   }()
   
   override init(frame: CGRect) {
     super.init(frame: .zero)
-    
+    layer.borderWidth = 2
+    layer.borderColor = K.primary?.cgColor
+    layer.zPosition = 10
     layout()
   }
   
@@ -71,9 +74,6 @@ final class RecipeCell: UICollectionViewListCell {
 extension RecipeCell {
   
   func layout() {
-    contentView.layer.cornerRadius = 8
-    contentView.clipsToBounds = true
-    
     contentView.addSubview(image)
     contentView.addSubview(labelBackground)
     contentView.addSubview(titleLabel)
@@ -88,9 +88,9 @@ extension RecipeCell {
     NSLayoutConstraint.activate([
       contentView.bottomAnchor.constraint(equalToSystemSpacingBelow: titleLabel.bottomAnchor, multiplier: 1),
       titleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: image.leadingAnchor, multiplier: 1),
-      titleLabel.trailingAnchor.constraint(equalTo: image.trailingAnchor)
+      image.trailingAnchor.constraint(equalToSystemSpacingAfter: titleLabel.trailingAnchor, multiplier: 1),
     ])
-    
+
     NSLayoutConstraint.activate([
       labelBackground.bottomAnchor.constraint(equalTo: image.bottomAnchor),
       labelBackground.widthAnchor.constraint(equalTo: image.widthAnchor),
