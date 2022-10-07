@@ -84,5 +84,7 @@ Displays a Collection List of Results (`loadRecipes(for: searchedRecipe`)
 
 <img src="readmeImages/SC-StartCookingButton.png" width="300px">
 
+<img src="readmeImages/RecipeFlow.gif" width="300px">
+
 
 
